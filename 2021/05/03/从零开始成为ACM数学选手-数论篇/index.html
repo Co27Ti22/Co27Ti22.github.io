@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="前言 本篇为数论篇。虽然这个博客本质就是我的学习笔记，但我希望尽量将它写成一个讲义，注重思路而不是仅仅是笔记。并且因为目的是为了成为ACM数学选手，所以其中会讲一些重要算法的原理，给出证明，讲解用途，代码，最后是例题。 我觉得能找到我这篇博客的，要么是顺着网络爬行的网络醉汉，要么是在网上寻求知识的有志之士。（对后一种人而言）学习数学的方法应该也都清楚，我这篇博客只是一个提纲，真正有意义的不是从">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始成为ACM数学选手-数论篇">
+<meta property="og:url" content="http://example.com/2021/05/03/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%88%90%E4%B8%BAACM%E6%95%B0%E5%AD%A6%E9%80%89%E6%89%8B-%E6%95%B0%E8%AE%BA%E7%AF%87/index.html">
+<meta property="og:site_name" content="Co27Ti22的博客">
+<meta property="og:description" content="前言 本篇为数论篇。虽然这个博客本质就是我的学习笔记，但我希望尽量将它写成一个讲义，注重思路而不是仅仅是笔记。并且因为目的是为了成为ACM数学选手，所以其中会讲一些重要算法的原理，给出证明，讲解用途，代码，最后是例题。 我觉得能找到我这篇博客的，要么是顺着网络爬行的网络醉汉，要么是在网上寻求知识的有志之士。（对后一种人而言）学习数学的方法应该也都清楚，我这篇博客只是一个提纲，真正有意义的不是从">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-02T17:48:22.000Z">
+<meta property="article:modified_time" content="2021-05-02T20:35:45.379Z">
+<meta property="article:author" content="Co27Ti22">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/05/03/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%88%90%E4%B8%BAACM%E6%95%B0%E5%AD%A6%E9%80%89%E6%89%8B-%E6%95%B0%E8%AE%BA%E7%AF%87/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>从零开始成为ACM数学选手-数论篇 | Co27Ti22的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Co27Ti22的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">That's a question</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/03/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%88%90%E4%B8%BAACM%E6%95%B0%E5%AD%A6%E9%80%89%E6%89%8B-%E6%95%B0%E8%AE%BA%E7%AF%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Co27Ti22">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Co27Ti22的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          从零开始成为ACM数学选手-数论篇
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-03 01:48:22 / 修改时间：04:35:45" itemprop="dateCreated datePublished" datetime="2021-05-03T01:48:22+08:00">2021-05-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言">前言</h1>
+<p>本篇为数论篇。虽然这个博客本质就是我的学习笔记，但我希望尽量将它写成一个讲义，注重思路而不是仅仅是笔记。并且因为目的是为了成为ACM数学选手，所以其中会讲一些重要算法的原理，给出证明，讲解用途，代码，最后是例题。</p>
+<p>我觉得能找到我这篇博客的，要么是顺着网络爬行的网络醉汉，要么是在网上寻求知识的有志之士。（对后一种人而言）学习数学的方法应该也都清楚，我这篇博客只是一个提纲，真正有意义的不是从头到尾把这个博客通读一遍，而是拿起笔和草纸动手演算和证明<del>再加上刷题</del>。</p>
+<p>需要注意的是，我这篇博客里的大部分内容都是我从教材，其他地方的博客，比赛题解<del>以及大佬发言</del> 中学来的 <strong><em>二手知识</em></strong> （所以你会在本页面最后看见长的离谱的参考文献），但即便这样，一些内容的出处也已不可考，故无法一一标出。如果知道某段的出处，可以私信我。</p>
+<p>最后祝你有所收获。</p>
+<h1 id="整数的唯一分解定理">整数的唯一分解定理</h1>
+<p>本章会给出算数基本定理（整数的唯一分解定理），这是初等数论中最基本的定理。并介绍与其相关的基本概念和性质。 ## 整除 定义：如果存在一个整数<span class="math inline">\(q\)</span>，使得<span class="math inline">\(a=bq\)</span>成立，我们就说<span class="math inline">\(b\)</span>整除<span class="math inline">\(a\)</span>，记作<span class="math inline">\(b\mid a\)</span>。</p>
+<p>性质（只给出一个比较不显然的）：如果<span class="math inline">\(c\mid a，c\mid b\)</span>，则<span class="math inline">\(\forall m,n \in \mathbb{Z}\)</span>（注意是任意整数），有<span class="math inline">\(c\mid ma+nb\)</span>。</p>
+<p>定理1：设<span class="math inline">\(a,b\)</span>是两个整数，其中<span class="math inline">\(b&gt;0\)</span>，则存在两个唯一的整数<span class="math inline">\(q\)</span>及<span class="math inline">\(r\)</span>，使得<span class="math inline">\(a=bq+r，0\leq r &lt; b\)</span>。其中，<span class="math inline">\(q\)</span>叫做<span class="math inline">\(a\)</span>被<span class="math inline">\(b\)</span>除得到的不完全商，<span class="math inline">\(r\)</span>叫<span class="math inline">\(a\)</span>被<span class="math inline">\(b\)</span>除得到的余数，记作<span class="math inline">\(&lt;a&gt;_b=r\)</span>。在不引起混淆的前提下，<span class="math inline">\(&lt;a&gt;_b=r\)</span>中的<span class="math inline">\(b\)</span>常省略不写。 (虽然上面介绍了<span class="math inline">\(&lt;a&gt;\)</span>这种记法，但以后大概率是不会用了。表示余数还是通常会用 <span class="math inline">\(a \% b\)</span> 或者是 <span class="math inline">\(a\ mod \ b\)</span> 的记法)</p>
+<p>定理2：对于整数<span class="math inline">\(a_1,a_2,b\)</span>，其中<span class="math inline">\(b&gt;0\)</span>，有： <span class="math display">\[(a_1+a_2)\ mod\ b=(a_1\ mod\ b + a_2\ mod \ b)\ mod\ b\\
+(a_1-a_2)\ mod\ b=(a_1\ mod\ b - a_2\ mod \ b)\ mod\ b\\
+(a_1\times a_2)\ mod\ b=(a_1\ mod\ b \times a_2\ mod \ b)\ mod\ b\]</span> 需要注意，上述定理对除法不适用，除法取模请参考乘法逆元。</p>
+<hr>
+<h2 id="最大公约数与辗转相除法">最大公约数与辗转相除法</h2>
+<p>定义：整数<span class="math inline">\(a_1,a_2,...,a_n\)</span>的公因数中最大的一个叫做最大公因数，记作<span class="math inline">\(gcd(a_1,a_2,...,a_n)\)</span>。</p>
+<p>首先给出求两个整数<span class="math inline">\(gcd\)</span>的方法（辗转相除法），后面会给出证明： 辗转相除： <span class="math display">\[a=bq_1+r_1(0&lt; r&lt;b)\\
+b=r_1q_2+r_2(0&lt;r_2&lt;r_1)\\
+以此类推，直到r_{n-1}=r_nq_{n+1}终止，r_n=gcd(a,b)\]</span></p>
+<p>为了证明辗转相除的正确性，首先先给出一个定理。ax+by=c *****定理1*<strong>：设<span class="math inline">\(a，b，c\)</span>是三个不全为零的整数，且<span class="math display">\[
+a=bq+c\]</span>其中<span class="math inline">\(q\)</span>是整数，则<span class="math inline">\(gcd(a,b)=gcd(b,c)\)</span>。</strong></p>
+<p>定理1的证明(该证明来自知乎大佬sola的数论笔记<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>)： 设<span class="math inline">\(S_1\)</span>为<span class="math inline">\(a，b\)</span>公因子的集合，<span class="math inline">\(S_2\)</span>为<span class="math inline">\(b，c\)</span>公因子的集合。 <span class="math inline">\(\forall d\in S_1, d|a,d|b\)</span>，又因为<span class="math inline">\(c=a-bq\)</span>，所以<span class="math inline">\(d|c\)</span>,即<span class="math inline">\(d\in S_2\)</span> <span class="math inline">\(\forall d\in S_2, d|b,d|c\)</span>，又因为<span class="math inline">\(a=bq+c\)</span>，所以<span class="math inline">\(d|a\)</span>,即<span class="math inline">\(d\in S_1\)</span> 因此，集合<span class="math inline">\(S_1=S_2\)</span>，其中最大元相同，即<span class="math inline">\(gcd(a,b)=gcd(b,c)\)</span>。</p>
+<p align="right">
+证毕
+</p>
+<p>根据定理1，就可以保证辗转相除的正确性：</p>
+<p>任给整数<span class="math inline">\(a&gt;0,b&gt;0\)</span>，由带余除法，有下列等式： <span class="math display">\[
+\begin{aligned}
+a=&amp;bq_1+r1,0&lt;r_1&lt;b,\\
+b=&amp;r_1q_2+r_2,0&lt;r_2&lt;r_1,\\
+&amp;…………\\
+r_{n-2}=&amp;r_{n-1}q_n+r_n,0&lt;r_n&lt;r_{n-1},\\
+r_{n-1}=&amp;r_nq_{n+1}+r_{n+1},r_{n+1}=0
+\end{aligned}
+\]</span></p>
+<p>因为<span class="math inline">\(b&gt;r_1&gt;r_2&gt;r3&gt;...\)</span>，故经过有限次带余除法，总可以得到一个余数是零。即上式中的<span class="math inline">\(r_{n+1}=0\)</span>。</p>
+<p>由定理1可得：<span class="math display">\[
+r_n=gcd(0,r_n)=gcd(r_n,r_{n-1})=...=gcd(r_2,r_1)=gcd(r_1,b)=gcd(a,b)\]</span></p>
+<p align="right">
+证毕
+</p>
+<p>这个东西实际上就是说明了<span class="math inline">\(gcd(a,b) = gcd(b, a\%b)\)</span>。由此就可以递归的写出代码了。</p>
+<p>代码： <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 递归版（你怕什么？怕爆栈吗？）</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> b == <span class="number">0</span> ? a : <span class="built_in">gcd</span>(b, a % b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 迭代版（我觉着实在是大可不必）</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (b) &#123;</span><br><span class="line">		<span class="keyword">int</span> tmp = a % b;</span><br><span class="line">		b = a;</span><br><span class="line">		a = tmp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 但其实g++内部就有个函数可以直接算gcd。<del>虽然不是标准函数，但起码cf能用。</del></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x = __gcd(a, b);</span><br></pre></td></tr></table></figure>
+<p>        <strong>定理</strong>：任给整数<span class="math inline">\(a&gt;0,b&gt;0\)</span>，对关于<span class="math inline">\(x，y\)</span>的不定方程<span class="math display">\[ax+by=d\]</span>当且仅当<span class="math inline">\(gcd(a,b)|d\)</span>时有<strong>整数</strong>解。</p>
+<p>先说一下，上面这个定理其实是有名的<strong>裴蜀定理</strong>。此处不会给出证明，因为后续将一次不定方程时还要提到裴蜀定理，证明会在那时候给出，不过证明没有用到什么高深的知识，现在<a name="裴蜀定理证明">跳过去</a>看也行。(我其实在这插了个锚点，但实测好像不好使，如果不好使就自己往下翻吧)</p>
+<p>    由多个正整数的<span class="math inline">\(gcd\)</span>求法，可以推出广义的裴蜀定理：   <strong>定理</strong>：设<span class="math inline">\(a_1,a_2,...,a_n\)</span>均为正整数，<span class="math inline">\(n&gt;2\)</span>，<span class="math inline">\(n\)</span>元一次不定方程<span class="math display">\[
+a_1x_1+a_2x_2+...+a_nx_n=d\]</span>当且仅当<span class="math inline">\(gcd(a_1,...,a_n)|d\)</span>时有整数解。</p>
+<p>有了这个东西做理论基础，就可以看看拓展欧几里得算法了：拓展欧几里得可以求出二元一次不定方程的一个特解： 方法： 证明： 代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 递归版</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">extend_gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span>&amp; x, <span class="keyword">int</span>&amp; y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (b == <span class="number">0</span>) &#123;</span><br><span class="line">		x = <span class="number">1</span>, y = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">int</span> r = <span class="built_in">extend_gcd</span>(b, a % b, y, x);</span><br><span class="line">		y -= x * (a / b);</span><br><span class="line">		<span class="keyword">return</span> r;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>想要追求迭代的话，知乎大佬@xxx 给出了一个迭代的方案，可以参见他的知乎专栏。  </p>
+<p>最后证两个定理作为选看内容吧，个人觉得还是挺常用的(其实接下来的最小公倍数就用到了)：</p>
+<p>定理4：若<span class="math inline">\(a|bc\)</span>，<span class="math inline">\(gcd(a,b)=1\)</span>，则<span class="math inline">\(a|c\)</span></p>
+<p>证明：使用反证法，假设<span class="math inline">\(a\nmid c\)</span>，又<span class="math inline">\(gcd(a,b)=1\quad=&gt;\quad a\nmid b\)</span></p>
+<p>与<span class="math inline">\(a|bc\)</span>矛盾（<span class="math inline">\(a\)</span>既不是<span class="math inline">\(b\)</span>的因数也不是<span class="math inline">\(c\)</span>的因数却是<span class="math inline">\(bc\)</span>的因数）。</p>
+<p align="right">
+证毕
+</p>
+<p> </p>
+<p>定理5：设<span class="math inline">\(a,b\)</span>为任给的两个正整数，<span class="math inline">\(gcd(\frac{a}{gcd(a,b)},\frac{b}{gcd(a,b)})=1\)</span></p>
+<p>证明：使用反证法，假设<span class="math inline">\(gcd(\frac{a}{gcd(a,b)},\frac{b}{gcd(a,b)})=m,m\neq1\)</span></p>
+<p>那么有<span class="math inline">\(m|\frac{a}{gcd(a,b)},m|\frac{b}{gcd(a,b)}\)</span></p>
+<p>那么<span class="math inline">\(m\cdot gcd(a,b)\)</span>为<span class="math inline">\(a,b\)</span>的一个更大的公因数，与<span class="math inline">\(gcd(a,b)\)</span>是<span class="math inline">\(a,b\)</span>的最大公因数矛盾。</p>
+<p align="right">
+证毕
+</p>
+<p>         </p>
+<h2 id="最小公倍数">最小公倍数</h2>
+<p>定理1：设<span class="math inline">\(a,b\)</span>是任给的两个正整数，则</p>
+<ol type="1">
+<li><span class="math inline">\(a,b\)</span>的所有公倍数就是<span class="math inline">\(lcm(a,b)\)</span>的所有倍数。</li>
+<li><span class="math inline">\(lcm(a,b)=\frac{ab}{gcd(a,b)}\)</span></li>
+</ol>
+<p>证明： 设<span class="math inline">\(m\)</span>为<span class="math inline">\(a，b\)</span>的任一公倍数，<span class="math inline">\(m=ak=bk&#39;\)</span> 令<span class="math inline">\(a=a_1\cdot lcm(a,b)\)</span>,<span class="math inline">\(b=b_1\cdot lcm(a,b)\)</span>，代入<span class="math inline">\(ak=bk&#39;\)</span>得 <span class="math display">\[
+\begin{aligned}
+&amp;a_1k\cdot lcm(a,b) = b_1k&#39;\cdot lcm(a,b)\\
+\implies&amp;a_1k=b_1k&#39;\\
+\implies&amp;b_1|a_1k
+\end{aligned}
+\]</span></p>
+<p>又<span class="math inline">\(gcd(a_1,b_1)=gcd(\frac{a}{gcd(a,b)},\frac{b}{gcd(a,b)})=1\)</span>， 所以<span class="math inline">\(b_1|k\quad =&gt;\quad k=b_1t,t\in N^*\)</span> 因此，<span class="math display">\[
+m=ak=ab_1t=\frac{ab}{gcd(a,b)}t\]</span> 因此，<span class="math inline">\(\frac{ab}{gcd(a,b)}t\)</span>表示<span class="math inline">\(a,b\)</span>所有的公倍数，当<span class="math inline">\(t\)</span>取<span class="math inline">\(1\)</span>时，为最小公倍数。即<span class="math inline">\(lcm(a,b)=\frac{ab}{gcd(a,b)}\)</span>          </p>
+<h2 id="质数算数基本定理">质数，算数基本定理</h2>
+<p>定义：一个大于1的整数，如果它的正因数只有1和它本身，就叫做质数，否则称为合数。</p>
+<p><strong>引理1：设<span class="math inline">\(a\)</span>是任意大于<span class="math inline">\(1\)</span>的整数，则<span class="math inline">\(a\)</span>的除<span class="math inline">\(1\)</span>以外的最小正因数<span class="math inline">\(q\)</span>是素数。当<span class="math inline">\(a\)</span>为合数时，<span class="math inline">\(q\leq \sqrt{a}\)</span>。</strong> 证明：使用反证法，假设q不是素数。 由素数定义，<span class="math inline">\(\exist q_1\in (1,q)\)</span>，使得<span class="math inline">\(q_1|q\)</span>。 又<span class="math inline">\(q|a\)</span>，所以有<span class="math inline">\(q_1|a\)</span>，与<span class="math inline">\(q\)</span>是最小正因数矛盾，故<span class="math inline">\(q\)</span>是素数。 后半证明略。</p>
+<p><strong>引理2：若<span class="math inline">\(p\)</span>是一素数，<span class="math inline">\(a\)</span>是任意整数，则有<span class="math inline">\(p\mid a\)</span>或<span class="math inline">\(gcd(p,a)=1\)</span></strong></p>
+<p><strong>引理3：若<span class="math inline">\(p\)</span>是素数，<span class="math inline">\(p\mid a_1a_2...a_n\implies\exist a_i, p\mid a_i\)</span></strong></p>
+<p>上述三个引理都很重要，表明了质数的不可分性，这正是算数基本定理成立的条件（后面会看到，如果我们修改了质数的定义，那么算数基本定理将不再成立）。</p>
+<p>下面就是就是对算数基本定理的证明。以下将给出两种不同的证明（更准确的说是对唯一性的两种证明）。 <strong>定理1(算数基本定理)：任何大于1的整数能够唯一的写成<span class="math display">\[a=p_1^{\alpha_1}\cdot\cdot\cdot p_k^{\alpha_k}，\alpha_i &gt; 0\ (i = 1,...,k)\]</span> 其中，<span class="math inline">\(p_i&lt;p_j(i&lt;j)\)</span>是素数。</strong></p>
+<p>先证存在性：</p>
+<p>再证唯一性： 证明一：</p>
+<p>证明二： 引理：</p>
+<p>得证。</p>
+<hr>
+<p>最后给一些素数的性质作为选看内容：</p>
+<ol type="1">
+<li>素数的个数是无限的</li>
+<li>存在无限个形如<span class="math inline">\(4n-1\)</span>的素数</li>
+<li><span class="math inline">\(\forall x_0 \in Z,\)</span>不存在整系数多项式<span class="math inline">\(f(x)=a_nx^n+a{n-1}x^{n-1}+...+a_1x+a_0(a_n\neq0, n&gt;0)\)</span>，使得x取所有<span class="math inline">\(\geq x_0\)</span>时，<span class="math inline">\(f(x)\)</span>都表示素数。</li>
+</ol>
+<p>补充：</p>
+<ul>
+<li>不仅是<span class="math inline">\(4n-1，6n+1，8n+3，8n+5，8n+7\)</span>形式的素数也是无限多的。一般的，有狄利克雷定理：如果<span class="math inline">\(k&gt;0,l&gt;0,gcd(k,l)=1\)</span>，那么形如<span class="math inline">\(kn+l\)</span>形的素数就有无限多个(证明已经超出了初等数论的级别)</li>
+<li>对于证明性质1，2这种xxx是无限的这样的命题，可以假设有限，然后构造出一个与有限个都不同的。</li>
+<li>曾经有段时间，人们希望找到一个表示素数的方便公式。性质3表明在整系数多项式这条路上的失败。</li>
+</ul>
+<p>性质1，2的证明会视情况补上。 以下给出性质3证明：</p>
+<h2 id="一次不定方程">一次不定方程</h2>
+<p>之前已经给出了说明一次不定方程是否有解的裴蜀定理。现在系统的研究一下一次不定方程。</p>
+<p>二元一次不定方程是指<span class="math display">\[
+a_1x+a_2y = n\]</span>其中<span class="math inline">\(a_1,a_2,n\)</span>是给定的整数，<span class="math inline">\(a_1,a_2\neq0\)</span>。</p>
+<p>首先再来回顾一下裴蜀定理： 定理1(裴蜀定理)：<span class="math inline">\(a_1x+a_2y = n\)</span>有整数解<span class="math inline">\(x,y\)</span>的充要条件是<span class="math display">\[
+gcd(a_1,a_2)|n\]</span></p>
+<p><a href="#裴蜀定理证明">证明</a>： 充分性：如果上述方程有解，那 <span class="math display">\[
+\begin{aligned}
+&amp;gcd(a_1,a_2)|a_1,gcd(a_1,a_2)|a_2\\
+\implies &amp;gcd(a_1,a_2)|n=a_1x+a_2y\\
+\end{aligned}
+\]</span> 必要性：证明略，可以自己百度一下（基本思路似乎是根据拓展欧几里得给出一个构造性证明，没见过其他证法）      </p>
+<p>因此，解二元一次不定方程的过程为：</p>
+<ol type="1">
+<li>裴蜀定理判是否有解</li>
+<li>拓展欧几里得找出一组特解</li>
+<li>求出通解，求通解的方法有下面定理1给出</li>
+</ol>
+<p>定理1： 设<span class="math inline">\((a_1,a_2)=1\)</span>，则方程<span class="math inline">\(a_1x+a_2y = n\)</span>的全部解为：</p>
+<p><span class="math display">\[
+\begin{cases}
+x=x_0+a_2t\\
+y=y_0-a_1t\\
+\end{cases}
+\]</span></p>
+<p>其中<span class="math inline">\(x_0,y_0\)</span>为方程的一组特解，<span class="math inline">\(t\)</span>为任意整数。</p>
+<blockquote>
+<p>二元一次方程的解可以看作平面上的一条线，只不过在数论中我们通常考虑线上的整数点，即整数解。</p>
+</blockquote>
+<blockquote>
+<p>注意定理2有一个前提，<span class="math inline">\(gcd(a_1,a_2)=1\)</span>。如果一个方程不满足这一条，要么像<span class="math inline">\(2x+4y=6\)</span>都可以除以同一个数，使得<span class="math inline">\(gcd(a_1,a_2)=1\)</span>，要么像<span class="math inline">\(2x+4y=5\)</span>，<span class="math inline">\(a,b,c\)</span>同除以一个数，使得<span class="math inline">\(gcd(a_1,a_2)=1\)</span>但最后<span class="math inline">\(c\)</span>对应的不是整数。前一种情况同除一个数对通解没有影响，后一种情况压根没有整数解。</p>
+</blockquote>
+<p>裴蜀定理还有一个常用的引理：</p>
+<p>  <strong>引理</strong>：对一个函数<span class="math inline">\(f(x,y)=a_1x+a_2y(x,y\in Z)\)</span>，其最小的正整数取值为<span class="math inline">\(gcd(a_1,a_2)\)</span>。</p>
+<p>其实这个引理的正确性似乎不是很显然，证明可以参见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/155721651">[传送门]</a></p>
+<h3 id="最大不可表数">最大不可表数</h3>
+<p>如果我们对上面的最小正整数取值问题进行推广，就可以得到<strong>最大不可表数</strong>问题。</p>
+<p>对一个<span class="math inline">\(s\)</span>元线性型<span class="math inline">\(a_1x_1+...+a_sx_s,a_i&gt;0(i=1,...,s),gcd(a_1,...,a_s)=1\)</span>，存在一个正整数<span class="math inline">\(F(a_1,...,a_s)\)</span>，当<span class="math inline">\(n&gt;F(a_1,...,a_s)\)</span>时，<span class="math inline">\(n\)</span>可表示为<span class="math inline">\(a_1x_1+...+a_sx_s(x_i&gt;0,i=1,...,s)\)</span>的形式，但是<span class="math inline">\(F(a_1,...,a_s)\)</span>却不能表示成如上形式。<span class="math inline">\(F(a_1,...,a_s)\)</span>叫做该线性型的最大不可表数。</p>
+<p>举个例子：对一个二元线性型<span class="math inline">\(5x_1+8x_2\)</span>，其最大不可表数为27，任何大于27的数都可以表示成<span class="math inline">\(5x_1+8x_2\)</span>的形式，比如<span class="math inline">\(28=5\cdot4+8\cdot1\)</span>。</p>
+<h2 id="抽屉原理">抽屉原理</h2>
+<p>抽屉原理是集合论里的一个基本原理。可以表述成这样：把<span class="math inline">\(m+1\)</span>个物品放入<span class="math inline">\(m\)</span>个抽屉，必有一个抽屉有两个及以上物品。</p>
+<p>通过抽屉原理，可以得到一些简单但有用的结论。</p>
+<h3 id="斐波那契数列对任意模数存在循环节">斐波那契数列对任意模数存在循环节</h3>
+<p>考虑斐波那契数列中两个相邻元素<span class="math inline">\(f_n, f_{n+1}\)</span>，对<span class="math inline">\(m\)</span>取模后，其取值共有<span class="math inline">\(m^2\)</span>种。因此，在斐波那契数列中连续<span class="math inline">\(m^2+2\)</span>个元素中必有一对相邻的<span class="math inline">\(f_n, f_{n+1}\)</span>与<span class="math inline">\(f_n&#39;, f_{n+1}&#39;\)</span>模<span class="math inline">\(m\)</span>相同，即出现了循环节。</p>
+<h3 id="几道简单的小学题目">几道简单的小学题目</h3>
+<ol type="1">
+<li>从2、4、6、…、30这15个偶数中，至少选出多少个数，才能保证其中一定有两个数之和是34</li>
+<li>从1 ~ 99这99个自然数中，最多选出多少个数，使得其中每两个数之和都不等于100？</li>
+<li>在任意的四个自然数中，是否其中必有两个数，它们的差能被3整除。</li>
+<li>任选7个不同的数，请说明：其中必有2个数的和或者差是10的倍数。</li>
+</ol>
+<p>以第一题为例，2,4,6,...,30中和为34的共有7对(4,30),(6,28),...其中不包含2。将这7对看作7个抽屉，再任意选8个。八个数7个抽屉，必然有一对和为34。考虑到还有一个多余的2也要选，总共至少选9个。</p>
+<h3 id="codeforces上的真题">Codeforces上的真题</h3>
+<p>用到了同余，鸽巢原理 https://www.cnblogs.com/jrfr/p/12920421.html</p>
+<h3 id="用到了抽屉原理的数论证明">用到了抽屉原理的数论证明</h3>
+<p>对ACM用处不大，看情况会考虑补上。（其实斐波那契数列循环节就是，只不过那个太简单）</p>
+<h2 id="筛法">筛法</h2>
+<p>筛法，指素数筛，就是把从1开始的某一范围内的正整数从小到大顺序排列，逐步筛掉非素数留下素数。 经过这一章的学习，我们已经掌握了学习埃氏筛和线性筛的前置知识。</p>
+<blockquote>
+<p>线性筛不是埃式筛的上位替代。该会的都得会，又不是玩手游，怎么还搞五星六星上下位替代。 埃式筛有个花活，就是它可以配合莫比乌斯函数做一些简单的数论容斥。在某些数论问题当中可以略微代替莫反。（莫反也是容斥，但是比较重，而且推式子比较苦手，能筛的话肯定是选筛啊）</p>
+<p>——by 牛客 四糸智乃</p>
+</blockquote>
+<p>我引这段话的重点在于该学都得学，别整什么上位替代。<del>虽然现在我们只能介绍一个埃氏筛。</del> 线性筛会放在介绍完数论函数之后</p>
+<h3 id="埃氏筛">埃氏筛</h3>
+<p>朴素的埃氏筛十分简单(这个毕竟还是慢，就算用来整花活也是朴素的就够用了)，我觉得甚至可以不用讲解： 主要思路就是，<span class="math inline">\(i\)</span>从<span class="math inline">\(2\)</span>开始，如果<span class="math inline">\(i\)</span>是一个素数，那么<span class="math inline">\(i\)</span>的所有倍数都是合数。 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//生成不大于 n 的所有质数</span></span><br><span class="line"><span class="keyword">bool</span> numlist[<span class="number">100000001</span>];</span><br><span class="line"><span class="keyword">int</span> prime[<span class="number">20000001</span>], cnt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(numlist[i]==<span class="literal">false</span>)&#123;</span><br><span class="line">			prime[++cnt] = i ;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=i; i*j&lt;=n; j++)</span><br><span class="line">				numlist[i*j] = <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 埃氏筛的优化有很多，比如不筛偶数，筛至平方根等等。。可以详见<a target="_blank" rel="noopener" href="https://oi-wiki.org/math/sieve/">OI Wiki</a>。</p>
+<h2 id="最后-我们学习了这一章除了上述讲过的还可以在acm中做什么">最后 我们学习了这一章，除了上述讲过的，还可以在ACM中做什么</h2>
+<p>1.<span class="math inline">\((x_1,y_1),(x_2,y_2)\)</span>是平面直角坐标系上的整数点，以这两点为端点的线段通过的整数点个数为<span class="math inline">\(gcd(x_2-x_1,y_2-y_1)+1\)</span>。通过本章的内容即可给出证明：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37304699/article/details/113184446">[传送门]</a> 通常配合<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%9A%AE%E5%85%8B%E5%AE%9A%E7%90%86/7554085?fr=aladdin">皮克定理</a>使用。</p>
+<p>2.一些简单的题目，比如Codeforces Round697 div3 B题，贴一下我写的题解<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37304699/article/details/113180193">[传送门]</a>。</p>
+<blockquote>
+<p>给定T(T<span class="math inline">\(\leq\)</span> 1e3)组数据，每组数据中给定一个数<span class="math inline">\(n\)</span>，判断<span class="math inline">\(n\)</span>是否能表示整数个2020和2021相加得到<span class="math inline">\(\iff\)</span>方程<span class="math inline">\(2020x+2021y=n\)</span>是否存在一组非负解？</p>
+</blockquote>
+<p>（虽然最后的结论好像还挺显然的？）</p>
+<h1 id="数论函数">数论函数</h1>
+<p>  <strong>定义</strong>：数论函数(或算数函数)是指一个定义在正整数集上的实或复值函数<span class="math inline">\(f(n)\)</span>。</p>
+<p>以下，将介绍数论函数的一般理论，以及介绍一些重要的数论函数。 顺便，如果看不同的教材，会发现本章的内容安排顺序各式各样。</p>
+<h2 id="求和">求和</h2>
+<p>在正式介绍数论函数之前，要先了解一些关于求和的知识，在这一章会经常用到。</p>
+<ol type="1">
+<li><p><span class="math display">\[
+\sum_{d\mid n}f(d)=\sum_{d\mid n}f(\frac{n}{d})​
+\]</span></p>
+<p>直观理解，当<span class="math inline">\(d\)</span>取遍所有<span class="math inline">\(n\)</span>的因子时，<span class="math inline">\(\frac{n}{d}\)</span>也能取遍n的因子，最后求和当然是相同的</p></li>
+<li><p><span class="math display">\[
+\sum_{d\mid n}\mu(d)\quad=\quad[n=1]
+\]</span> 上式常见于莫比乌斯反演的公式推导和化简过程中。证明在介绍了莫比乌斯函数后会给出。</p></li>
+</ol>
+<h3 id="数论中常用的二重求和">数论中常用的二重求和</h3>
+<p><span class="math display">\[\sum_{m \leq n}\sum_{d\mid gcd(m, n)}f(d)=\sum_{d\mid n}f(d)\frac{n}{d}\]</span></p>
+<p>  <strong>证明</strong>：考察上面的二重求和，外面为对m求和，里面为对d求和，最后要得到的形式为对d求和。考虑切换求和的顺序。 因为<span class="math inline">\(d\mid gcd(m,n)\iff d\mid m,d\mid n\)</span>(如果觉得不是那么显然可以自己证一下) 那么求和要满足的约束条件就有：<span class="math inline">\(m\leq n,d\mid m, d\mid n\)</span> <span class="math display">\[
+\begin{aligned}
+原式=&amp;\sum_{d\mid n}\sum_{m\leq n,d\mid m}f(d)（这里里面是对m求和，对是d倍数，且小于n的m求和）\\
+=&amp;\sum_{d\mid n}f(d)\sum_{m\leq n,d\mid m}1（因为里面是对m求和，f(d)相当于常量，所以可以提出来）\\
+=&amp;\sum_{d\mid n}f(d)[\frac{n}{d}]
+=\sum_{d\mid n}f(d)\frac{n}{d}
+\end{aligned}
+\]</span></p>
+<hr>
+<p><span class="math display">\[\sum_{n\leq x}\sum_{d\mid n}f(d)=\sum_{d\leq x}f(d)[\frac{x}{d}]\]</span></p>
+<p>其中，<span class="math inline">\(x\)</span>为实数，其他字母为正整数   <strong>证明</strong>： 进行变换<span class="math inline">\(n=dm\)</span> $$</p>
+<p><span class="math display">\[
+\begin{aligned}
+原式=&amp;\sum_{dm\leq x}f(d)
+=&amp;\sum_{d\leq x}\sum_{m\leq \frac{x}{d}}f(d)\\
+=&amp;\sum_{d\leq x}f(d)\sum_{m\leq \frac{x}{d}}\\
+=&amp;\sum_{d\leq x}f(d)[\frac{x}{d}]\\
+\end{aligned}\\
+\]</span> 特别地，上式有些常用的特殊情况： 令<span class="math inline">\(f(d)=\mu(d)\)</span>，得<span class="math inline">\(\sum_{d\leq x}\mu(d)[\frac{x}{d}]=1\)</span></p>
+<p>令<span class="math inline">\(f(d)=1\)</span>，得<span class="math inline">\(\sum_{d\leq x}[\frac{x}{d}]=\sum_{n\leq x}\tau(n)\)</span></p>
+<p>      <span class="math display">\[
+\sum_{n\leq x}\sum_{d\mid n}f(d)\\
+代换，n=dm\\
+\sum_{dm\leq x}f(d)\\
+后面的求和号没了的原因是，这个求和是对每个不大于x的n\\
+将其所有正因子带入f(x)再求和\\
+而将n写成md，\sum_{dm\leq x}f(d)中f(d)本身就能表示是把md的一个因子d带入求和\\
+故省略掉了\sum_{d\mid n}
+\]</span></p>
+<p><span class="math display">\[
+\sum_{dm\leq x}f(d)\\
+\sum_{d\leq x}\sum_{m\leq\frac{x}{d}}f(d)\\
+因为除x外所有字母均为正整数\\
+dm\leq x时，d\leq x，且m\leq\frac{x}{d}\\
+于是将一个求和号换成两个求和号，前一个枚举d，后一个枚举m
+\]</span></p>
+<p><span class="math display">\[
+\sum_{d\leq x}\sum_{m\leq \frac{x}{d}}f(d)=\sum_{d\leq x}f(d)\sum_{m\leq \frac{x}{d}}\\
+因为后面的求和号是对m求和，而f(d)的值只与d有关\\
+对于后一个求和号来说，相当于一个常数，可以提到外面\\
+类似于\sum_{x=1}^{10}3x=3\sum_{x=1}^{10}x
+\]</span>        </p>
+<p><span class="math display">\[\sum_{i=1}^{n}\sum_{j=1}^{m}[gcd(i,j)=k]\quad=\quad\sum_{i=1}^{[\frac{n}{k}]}\sum_{j=1}^{[\frac{m}{k}]}[gcd(i,j)=1]\]</span> 上式常见于莫比乌斯反演推公式的化简过程中。   <strong>证明</strong>：<span class="math display">\[不会\\
+\sum_{i=1}^{n}\sum_{j=1}^{m}[gcd(i,j)=k]
+\]</span> 因为<span class="math inline">\(gcd(i,j)=k\)</span>，所以<span class="math inline">\(k\mid i, k\mid j\)</span>。那么当<span class="math inline">\(gcd(i,j)=k\)</span>时，有<span class="math display">\[
+gcd(\frac{i}{k},\frac{j}{k})=1\]</span></p>
+<h2 id="x函数"><span class="math inline">\([x]\)</span>函数</h2>
+<p>定义：<span class="math inline">\([x]\)</span>函数定义在整个实数集上，其值为不大于<span class="math inline">\(x\)</span>的最大整数。 虽然<span class="math inline">\([x]\)</span>函数定义在整个实数集上，但偶尔也管<span class="math inline">\([x]\)</span>叫做数论函数。</p>
+<p>由定义即得，[x]函数有如下性质：</p>
+<ol type="1">
+<li>若<span class="math inline">\(a,b\)</span>是任意两个正整数，则不大于<span class="math inline">\(a\)</span>的<span class="math inline">\(b\)</span>的倍数有<span class="math inline">\([\frac{a}{b}]\)</span>个，即满足<span class="math inline">\(\begin{cases}n\leq x\\m\mid n\end{cases}\)</span> 的<span class="math inline">\(n\)</span>的个数。</li>
+<li><span class="math inline">\(x\in R,c\in N^*,[\frac{[x]}{c}]=[\frac{x}{c}]\)</span></li>
+</ol>
+<p>注：性质2可以用性质1来解释。</p>
+<h2 id="重数与阶乘的素因子">重数与阶乘的素因子</h2>
+<p>  <strong>定义</strong>：对于一个给定的素数<span class="math inline">\(p\)</span>，若有<span class="math inline">\(p^m\mid n,p^{m+1}\nmid n\)</span>，则<span class="math inline">\(m\)</span>为<span class="math inline">\(n\)</span>的 <span class="math inline">\(p-\)</span> 重数，记作<span class="math inline">\(m=ind_pn\)</span>。直观理解就是<span class="math inline">\(m\)</span>中素因子<span class="math inline">\(p\)</span>的数量。</p>
+<p>性质： <span class="math display">\[
+ind_p(mn)=ind_pm+ind_pn\\
+ind_p\frac{m}{n}=ind_pm-ind_pn\\
+ind_pm^k=k\cdot ind_pm
+\]</span> 性质与对数相似。</p>
+<p>引入重数的概念主要为了研究<strong>阶乘的质因子组成</strong> 首先给出结论： <span class="math display">\[
+ind_p(n!)=\sum_{k=1}^{+\infty}[\frac{n}{p^k}]
+\]</span></p>
+<p>  <strong>证明</strong>：使用归纳法</p>
+<p>给出一个例子：判断<span class="math inline">\(11!\)</span>结尾有多少<span class="math inline">\(0\)</span>。 考虑到上面的公式只能计算<strong>质因子</strong>的数量，所以分别计算因子2和5的数量。</p>
+<h2 id="积性函数">积性函数</h2>
+<p>  <strong>定义</strong>：如果数论函数<span class="math inline">\(f(n)\)</span>不恒等于0，且当<span class="math inline">\(gcd(m,n)=1\)</span>时有<span class="math inline">\(f(mn)=f(m)f(n)\)</span>，则<span class="math inline">\(f(n)\)</span>叫做积性函数。特别的，如果对任意<span class="math inline">\(m,n\)</span>均有<span class="math inline">\(f(mn)=f(m)f(n)\)</span>，则叫做完全积性函数。</p>
+<p>有如下性质(<span class="math inline">\(\theta_1,\theta_2\)</span>均为积性函数)：</p>
+<ol type="1">
+<li><span class="math inline">\(\theta(1)=1\)</span></li>
+<li><span class="math inline">\(n=p_1^{\alpha_1}\cdot\cdot\cdot p_k^{\alpha_k},\theta(n)=\theta(p_1^{\alpha_{1}})...\theta(p_k^{\alpha_{k}})\)</span></li>
+<li><span class="math inline">\(\theta_1\theta_2\)</span>也为积性函数</li>
+</ol>
+<h2 id="莫比乌斯变换">莫比乌斯变换</h2>
+<p>数论中经常出现下面形式的求和，意义为对<span class="math inline">\(n\)</span>的所有正因子求和。 <span class="math display">\[
+F(n)=\sum_{d\mid n}f(d)
+\]</span> 从<span class="math inline">\(f(n)\)</span>到<span class="math inline">\(F(n)\)</span>的变换即为莫比乌斯变换。</p>
+<p>比如： | F(n) | f(n) | | --------------- | ------------ | | <span class="math inline">\(n\)</span> | <span class="math inline">\(\varphi(n)\)</span> | | <span class="math inline">\([\frac{1}{n}]\)</span> | <span class="math inline">\(\mu(n)\)</span> | <span class="math inline">\(\varphi(n)和\mu(n)\)</span>是后面介绍的欧拉函数和莫比乌斯函数，像这样的关系还有很多。</p>
+<p>  <strong>性质</strong>：<span class="math inline">\(F(n)=\sum_{d\mid n}f(d)\)</span>，若f(n)为积性函数，则F(n)也为积性函数。   <strong>证明</strong>：略</p>
+<h2 id="莫比乌斯函数">莫比乌斯函数</h2>
+<p>  <strong>定义</strong>：莫比乌斯函数<span class="math inline">\(\mu(n)\)</span>，当<span class="math inline">\(n=1\)</span>时，<span class="math inline">\(\mu(1)=1\)</span>，当<span class="math inline">\(n&gt;1\)</span>时，设<span class="math inline">\(n=p_1^{\alpha_1}p_2^{\alpha_2}...p_k^{\alpha_k}\)</span>为<span class="math inline">\(n\)</span>的标准分解式，则<span class="math inline">\(\mu(n)\)</span>定义为： <span class="math display">\[
+\mu(n)=
+\begin{cases}
+1 &amp;n= 1\\
+(-1)^k&amp;\alpha_1=\alpha_2=...=\alpha_k=1\\
+0 &amp;else
+\end{cases}
+\]</span></p>
+<p>显然，对素数<span class="math inline">\(p\)</span>，有<span class="math inline">\(\mu(p)=-1\)</span>。</p>
+<p>  <strong>性质</strong>：假设<span class="math inline">\(\theta为积性函数，则\mu\theta也为积性函数，则F(n)=\sum_{d\mid n}\mu(d)\theta(d)也为积性函数\)</span>。</p>
+<p>特殊地，当<span class="math inline">\(\theta(d)=1\)</span>时，<span class="math inline">\(F(n)=\sum_{d\mid n}\mu(d)=\begin{cases} 1\quad if\ n=1\\ 0\quad if\ n&gt;1\\ \end{cases}\)</span> 当<span class="math inline">\(\theta(d)=\frac{1}{d}\)</span>时，设<span class="math inline">\(n=p_1^{\alpha_1}\cdot\cdot\cdot p_k^{\alpha_k}\)</span>，则<span class="math inline">\(F(n)=\sum_{d\mid n}\frac{\mu(d)}{d}=(1-\frac{1}{p_1})(1-\frac{1}{p_2})...(1-\frac{1}{p_k})\)</span></p>
+<h2 id="欧拉函数">欧拉函数</h2>
+<p>  <strong>定义</strong>：欧拉函数<span class="math inline">\(\varphi(n)\)</span>定义在正整数集合上，其值为<span class="math inline">\(0,1,2,...,n-1\)</span>中与<span class="math inline">\(n\)</span>互素的数的个数。即<span class="math inline">\(\varphi(n)=\sum_{m\leq n,gcd(m,n)=1}{1}\)</span>。对于素数<span class="math inline">\(p\)</span>，显然有<span class="math inline">\(\varphi(p)=p-1\)</span>。</p>
+<p>  <strong>定理</strong>：<span class="math inline">\(\varphi(n)\)</span>为积性函数，且<span class="math inline">\(n=p_1^{\alpha_1}\cdot\cdot\cdot p_k^{\alpha_k}\)</span>，则<span class="math inline">\(\varphi(n)=n(1-\frac{1}{p_1})(1-\frac{1}{p_2})...(1-\frac{1}{p_k})\)</span>   <strong>证明</strong>：</p>
+<h2 id="狄利克雷卷积">狄利克雷卷积</h2>
+<p>两个数论函数的狄利克雷卷积仍然是一个数论函数，定义如下：</p>
+<p>  <strong>定义</strong>：<span class="math inline">\(h(n)=\sum_{d\mid n}f(d)g(\frac{n}{d})\)</span>，简记为<span class="math inline">\(h(n)=f(n)*g(n)\)</span></p>
+<p>  <strong>定理</strong>：<span class="math inline">\(f(n)*g(n)=g(n)*f(n)\)</span></p>
+<p>  <strong>证明</strong>：当<span class="math inline">\(d\)</span>取遍<span class="math inline">\(n\)</span>的所有因子时，<span class="math inline">\(\frac{n}{d}\)</span>也取遍<span class="math inline">\(n\)</span>的所有因子。即 <span class="math display">\[
+\begin{aligned}
+&amp;\sum_{d\mid n}f(d)g(\frac{n}{d})=\sum_{d\mid n}f(\frac{n}{d})g(d)\\
+\iff&amp;f(n)*g(n)=g(n)*f(n)
+\end{aligned}
+\]</span></p>
+<hr>
+<p>  <strong>定义</strong>：<span class="math inline">\(I(n)=[\frac{1}{n}]=\begin{cases} 1\quad if\ n = 1\\ 0\quad if\ n&gt;1\\ \end{cases}\)</span></p>
+<p>  <strong>定理</strong>：对于所有的数论函数f(n)，均有<span class="math display">\[
+f(n)*I(n)=I(n)*f(n)=f(n)\]</span></p>
+<p>上述定理显然成立</p>
+<hr>
+<p>  <strong>定义</strong>：对于狄利克雷卷积，<span class="math inline">\(I(n)\)</span>起到单位元的作用，简称<span class="math inline">\(I(n)\)</span>为单位数论函数。</p>
+<p>  <strong>定理</strong>：设数论函数<span class="math inline">\(f(n)\)</span> ，满足<span class="math inline">\(f(1)\neq0\)</span>，则存在唯一数论函数<span class="math inline">\(f^{-1}(n)\)</span>称为<span class="math inline">\(f(n)\)</span>的逆狄利克雷函数，使得：<span class="math inline">\(f(n)*f^{-1}(n)=I(n)\)</span></p>
+<p>对于狄利克雷卷积，全体<span class="math inline">\(f(1)\neq0\)</span>的数论函数构成一个阿贝尔群，记为<span class="math inline">\(D\)</span></p>
+<h2 id="最后-我们学习了这一章除了上述讲过的还可以在acm中做什么-1">最后 我们学习了这一章，除了上述讲过的，还可以在ACM中做什么</h2>
+<p><del>这一章我前面好像就没和ACM擦边</del></p>
+<p>这些讲完，我们能做的那可就多了</p>
+<h3 id="素数筛">素数筛</h3>
+<p>在前一章，我们提到了埃氏筛的写法，可以在<span class="math inline">\(O(nloglogn)\)</span>的时间复杂度下得到小等于<span class="math inline">\(n\)</span>的素数。</p>
+<h4 id="线性筛">线性筛</h4>
+<p>回想一下埃氏筛的代码，可以发现每一个合数被多次标记。线性筛即通过一些方法使得每个合数仅被标记一次，以此实现线性复杂度。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> num[maxn], prime[maxn];</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(num, <span class="number">-1</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(num));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>;i &lt; n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(num[i]) prime[cnt++] = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; cnt &amp;&amp; (ll)i * prime[j] &lt; n;j++)&#123;</span><br><span class="line">            num[i*prime[j]] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(i % prime[j] == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关键之处在：<code>if(i % prime[j]==0)  break;</code> 这句代码保证了每个合数只会被它最小的质因子筛掉，也就是每个合数只会被筛一次，将时间复杂度降到了线性。</p>
+<h5 id="线性筛筛欧拉函数">线性筛筛欧拉函数</h5>
+<p>考虑一个合数<span class="math inline">\(n=p_1^{\alpha_1}\cdot\cdot\cdot p_k^{\alpha_k}\)</span>，其最小的质因子为<span class="math inline">\(p_1\)</span>，设<span class="math inline">\(n=p_1\times n&#39;\)</span> 那么，<span class="math inline">\(n\)</span>在线性筛的过程中一定是在<code>num[i*prime[j]] = 0;</code>被筛掉。也就是被<span class="math inline">\(p_1\times n&#39;\)</span>筛掉</p>
+<p>因为<span class="math inline">\(\varphi\)</span>为积性函数，考虑使用性质： 当<span class="math inline">\(p_1,n&#39;\)</span>互质，有<span class="math display">\[\varphi(n)=\varphi(p)\times\varphi(n&#39;)=(p-1)\varphi(n&#39;)\]</span></p>
+<p>而当<span class="math inline">\(p_1\mid n&#39;\)</span>，<span class="math inline">\(n\)</span>和<span class="math inline">\(n&#39;\)</span>有相同的质因子，因此有</p>
+<p><span class="math display">\[
+\begin{aligned}
+\varphi(n)&amp;=n\times(1-\frac{1}{p_1})(1-\frac{1}{p_2})...(1-\frac{1}{p_k})\\
+&amp;=p_1\times n&#39;\times(1-\frac{1}{p_1})(1-\frac{1}{p_2})...(1-\frac{1}{p_k})\\
+&amp;=p_1\times\varphi(n&#39;)
+\end{aligned}\]</span></p>
+<p>综上，</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;当p_1\mid n&#39;,\varphi(n)=p_1\times\varphi(n&#39;)\\
+&amp;当p_1\nmid m&#39;,\varphi(n)=(p_1-1)\times\varphi(n&#39;)
+\end{aligned}\]</span></p>
+<p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在这里插入代码片</span><br></pre></td></tr></table></figure>
+<h5 id="线性筛筛积性函数-以莫比乌斯函数为例">线性筛筛积性函数-以莫比乌斯函数为例</h5>
+<p>上面介绍了如何用线性筛求欧拉函数，事实上，线性筛可以求基本所有积性函数。 下面以莫比乌斯函数为例，介绍通用的方法：</p>
+<p>首先，考虑1和质数<span class="math inline">\(p\)</span>，这两个需要特殊考虑。因为需要用它们的值去求其余的莫比乌斯函数值，而且<span class="math inline">\(1\)</span>和质数也没法利用积性函数的性质。</p>
+<p>对莫比乌斯函数而言，<span class="math inline">\(\mu(1)=1,\mu(p)=-1\)</span></p>
+<p>然后考虑合数<span class="math inline">\(n=p_1^{\alpha_1}\cdot\cdot\cdot p_k^{\alpha_k}\)</span>，其最小的质因子为<span class="math inline">\(p_1\)</span>，设<span class="math inline">\(n=p_1\times n&#39;\)</span>。</p>
+<p>然后就是利用积性函数性质，如果函数是一个完全积性函数，那只需要直接用性质即可。但如果只是积性函数，就需要考虑<span class="math inline">\(p_1\)</span>和<span class="math inline">\(n&#39;\)</span>的关系。</p>
+<p>莫比乌斯函数属于后一种（同时前一种比较简单，就不展开说了），分别讨论：</p>
+<ol type="1">
+<li><span class="math inline">\(p_1\mid n&#39;\)</span> 那么<span class="math inline">\(n=p_1\times n&#39;\)</span>中质因子<span class="math inline">\(p_1\)</span>的幂次一定大于<span class="math inline">\(1\)</span>，<span class="math inline">\(\mu(n)=0\)</span></li>
+<li><span class="math inline">\(p_1\nmid n&#39;\)</span> 使用积性性质<span class="math inline">\(\mu(n)=\mu(n&#39;)\times \mu(p)=-\mu(n&#39;)\)</span></li>
+</ol>
+<p>以上即为线性筛求积性函数的一般方法。</p>
+<p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(not_prime[i] == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tot++;</span><br><span class="line">		prime[tot] = i; mu[i] = <span class="number">-1</span>; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; prime[j] * i &lt;= n; ++j)</span><br><span class="line">	&#123;</span><br><span class="line">		not_prime[prime[j] * i] = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(i % prime[j] == <span class="number">0</span>) <span class="comment">// 相当于 i 和 prime[j] 不互质</span></span><br><span class="line">		&#123;</span><br><span class="line">			mu[prime[j] * i] = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">break</span>;<span class="number">0</span></span><br><span class="line">		&#125;</span><br><span class="line">		mu[prime[j] * i] = -mu[i]; <span class="comment">// 相当于 i 和 prime[j] 互质,运用积性性质可得</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="因子数因子和">因子数/因子和</h5>
+<p>给定<span class="math inline">\(n=p_1^{\alpha_1}\cdot\cdot\cdot p_k^{\alpha_k}\)</span></p>
+<p><strong>定义</strong>：<span class="math inline">\(\sigma_k(n)=\sum_{d\mid n}d^k\)</span>称为除数函数。 显然，当<span class="math inline">\(k\)</span>分别取<span class="math inline">\(0,1\)</span>时，<span class="math display">\[
+\sigma_0(n)=\sum_{d\mid n}1\\
+\sigma_1(n)=\sum_{d\mid n}d\]</span> 分别为n的因子个数(包括自身)和因子和。</p>
+<p>定理：当给定<span class="math inline">\(n=p_1^{\alpha_1}\cdot\cdot\cdot p_k^{\alpha_k}\)</span>，<span class="math display">\[\begin{aligned}\sigma_1(n)&amp;=\sum_{d\mid n}d\\
+&amp;=\frac{p_1^{\alpha_1+1}-1}{p_1-1}...\frac{p_k^{\alpha^k+1}-1}{p_k-1}\end{aligned}\]</span></p>
+<p>证明：<span class="math inline">\(n=p_1^{\alpha_1}\cdot\cdot\cdot p_k^{\alpha_k}\)</span>，因此n的所有因数可以表示成<span class="math display">\[p_1^{x_1}...p_k^{x_k},0\leq x_1\leq\alpha_1,...,0\leq x_k\leq\alpha_k\]</span> 因此，</p>
+<p><span class="math display">\[\begin{aligned}
+\sigma_1(n)&amp;=\sum_{d\mid n}d=\sum_{x_1=0}^{\alpha_1}...\sum_{x_k=0}^{\alpha_k}p_1^{x_1}...p_k^{x_k}\\
+&amp;=(\sum_{x_1=0}^{\alpha_1}p_1^{x_1})...(\sum_{x_k=0}^{\alpha_k}p_k^{x_k})\\
+&amp;=\frac{p_1^{\alpha_1+1}-1}{p_1-1}...\frac{p_k^{\alpha^k+1}-1}{p_k-1}
+\end{aligned}\]</span></p>
+<p>可以证明<span class="math inline">\(\sigma_k(n)\)</span>均为积性函数，可以通过上述方法用线性筛求值。</p>
+<h5 id="埃氏筛黑科技-筛法树">埃氏筛黑科技-筛法树</h5>
+<h3 id="整除分块">整除分块</h3>
+<p>整除分块是用来求类似<span class="math inline">\(\sum_{i=1}^n[\frac{n}{i}]\)</span>的求和式的。</p>
+<p>对这样的式子，显然有<span class="math inline">\(O(n)\)</span>的算法，但通过打表，我们可以发现如下性质：</p>
+<ol type="1">
+<li>多个<span class="math inline">\([\frac{n}{i}]\)</span>的值可能是相同的，并且相同的值都连续分布。</li>
+<li>对于每一个值相同的块，它的最后一个数就是<span class="math inline">\(n/(n/i)\)</span>，这里的除法当然是整除。</li>
+</ol>
+<p>因此，我们可以用每个值相同的块的值乘以块长度来求上述求和。可以证明，该方法复杂度为<span class="math inline">\(O(\sqrt n)\)</span></p>
+<p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">1</span>,r;l&lt;=n;l=r+<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">	r=n/(n/l);</span><br><span class="line">	ans+=(r-l+<span class="number">1</span>)*(n/l);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="整除分块变形">整除分块变形</h4>
+<p>但是事实上整除分块的题目通常不会这么简单，而且大部分时候还要推一推公式。因此上面的板子基本没啥用。</p>
+<p>以下给出整除分块的一些变形： 求<span class="math inline">\(\sum_{i=1}^n\lceil\frac{n}{i}\rceil\)</span> 显然<del>打表可得</del> ，这个东西也是分块的，</p>
+<hr>
+<h3 id="莫比乌斯反演">莫比乌斯反演</h3>
+<p>定义：对于两个数论函数<span class="math inline">\(f(n),g(n)\)</span>，<span class="math inline">\(f(n)\)</span>是<span class="math inline">\(g(n)\)</span>的莫比乌斯变换的充要条件为<span class="math inline">\(g(n)=\sum_{d\mid n}\mu(d)f(\frac{n}{d})\)</span>。即</p>
+<p><span class="math display">\[
+f(n)=\sum_{d\mid n}g(d)
+\iff
+g(n)=\sum_{d\mid n}\mu(d)f(\frac{n}{d})
+\]</span> 证明：</p>
+<p>应用：通常可以用于一些有关于<span class="math inline">\(gcd\)</span>的计数问题上。 这个东西光靠看是没有用的，只有照着过程自己推才有收获。</p>
+<h3 id="欧拉降幂">欧拉降幂</h3>
+<p>欧拉降幂，故名思意，是使用欧拉定理降低幂次，解决的是高幂次取模的问题。回想上一章的欧拉定理：</p>
+<p>  <strong>定理4(欧拉定理)</strong>：设<span class="math inline">\(m&gt;1\)</span>，<span class="math inline">\(gcd(a,m)=1\)</span>，则 <span class="math display">\[
+a^{\varphi(m)}\equiv1\pmod m
+\]</span> 由此，我们可以推出 <span class="math display">\[
+a^b=a^{\varphi(m)[\frac{b}{\varphi(m)}]+b \mod \varphi(m)}\equiv a^{b\mod \varphi(m)}\pmod m
+\]</span> 即 <span class="math display">\[
+a^b\equiv a^{b \mod \varphi(m)}\pmod m
+\]</span> <del>但事实是我们压根不用这个公式</del> 因为这个公式要求<span class="math inline">\(a,m\)</span>互质，对模数有要求，我们需要一个对任意模数成立的降幂公式。给出<strong>拓展欧拉定理</strong>：</p>
+<p>  <strong>定理(拓展欧拉定理)</strong>：</p>
+<p><span class="math display">\[
+a^b\equiv
+\begin{cases}
+a^{b \mod \varphi(m)},&amp;gcd(a,m)=1\\
+a^b,&amp;gcd(a,m)\neq 1, b&lt;\varphi(m)\\
+a^{b \mod \varphi(m)+\varphi(m)},&amp;gcd(a,m)\neq1,b\geq\varphi(m)
+\end{cases}
+\pmod m
+\]</span></p>
+<p>可以看到，拓展欧拉定理只是将欧拉定理推广到了<span class="math inline">\(a,m\)</span>不互质的情况下。 证明可以参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/24902174">[传送门]</a></p>
+<p>代码写起来还是有些地方需要注意的： 主要思路当然是一个递归降幂，最后对降幂后的<span class="math inline">\(a^b\)</span>线性求一下或者套快速幂。 降幂的过程中注意判<span class="math inline">\(b\)</span>和<span class="math inline">\(\varphi(m)\)</span>的大小，为了方便使用，推荐预处理一个欧拉函数表。 然后就是套公式了。</p>
+<p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在这里插入代码片</span><br></pre></td></tr></table></figure>
+<p>看完了推荐去<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5091">[luogu p5091]</a>练练手。 话说这题还有个另辟蹊径的神仙做法orz <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/lhc/solution-p5091">[传送门]</a></p>
+<p>然后各种东西都可以求了，比如幂塔<a href>[传送门]</a>。 这道题虽然出题人是让你找规律，但实际上暴力降幂也能过。</p>
+<h1 id="同余式">同余式</h1>
+<h2 id="同余的性质概念和性质">同余的性质概念和性质</h2>
+<p>定义：给定正整数<span class="math inline">\(m\)</span>，如果用m去除两个整数a和b所得余数相同，我们就说<span class="math inline">\(a，b\)</span>对模数<span class="math inline">\(m\)</span>同余，记作<span class="math inline">\(a\equiv b\pmod m\)</span>。</p>
+<p>定理1：整数<span class="math inline">\(a,b\)</span>对<span class="math inline">\(m\)</span>同余的充要条件是<span class="math inline">\(m\mid a-b\)</span>。因此，同余也可定义为：若<span class="math inline">\(m\mid a-b\)</span>，则称<span class="math inline">\(a,b\)</span>对模数<span class="math inline">\(m\)</span>同余。 证明：</p>
+<p>定理2：如果<span class="math inline">\(a\equiv b\pmod m,\alpha\equiv\beta\pmod m\)</span>，则有：</p>
+<ol type="1">
+<li><span class="math inline">\(a^n\equiv b^n\pmod m\)</span>，其中<span class="math inline">\(n&gt;0\)</span></li>
+<li><span class="math inline">\(f(a)\equiv f(b)\pmod m\)</span>，其中<span class="math inline">\(f(x)\)</span>为任意整系数多项式</li>
+<li><span class="math inline">\(a\alpha\equiv b\beta\pmod m\)</span></li>
+<li><span class="math inline">\(ax+\alpha y\equiv bx+\beta y\pmod m\)</span>，其中<span class="math inline">\(x,y\)</span>为任给的整数</li>
+</ol>
+<p>举两个应用以下性质的例子：</p>
+<p>例1：证明一个整数<span class="math inline">\(n&gt;0\)</span>被<span class="math inline">\(9\)</span>整除的充要条件是<span class="math inline">\(n\)</span>的各位数字的和被<span class="math inline">\(9\)</span>整除。</p>
+<p>思路：首先一个整数<span class="math inline">\(n&gt;0\)</span>可以表示成<span class="math inline">\(n=a_0+10a_1+10^2a_2+...+10^ka_k\)</span>。因此我们要证明的实际上就是：<span class="math inline">\(n\equiv a_0+a_1+a_2+...+a_k\pmod 9\)</span>。</p>
+<p>  <strong>证明</strong>：设<span class="math inline">\(n=a_0+10a_1+10^2a_2+...+10^ka_k,f(x)=a_0+a_1x+...+a_kx^k\)</span>。</p>
+<p>因为<span class="math inline">\(10\equiv1\pmod9\)</span>，所以<span class="math inline">\(f(10)\equiv f(1)\pmod 9\)</span>。</p>
+<p>即<span class="math inline">\(n\equiv a_0+a_1+a_2+...+a_k\pmod 9\)</span></p>
+<p align="right">
+证毕
+</p>
+<p>例2：当<span class="math inline">\(n\)</span>是奇数时，<span class="math inline">\(3\mid2^n+1\)</span>，当<span class="math inline">\(n\)</span>是偶数时，<span class="math inline">\(3\nmid2^n+1\)</span>。</p>
+<p>  <strong>证明</strong>：因为<span class="math inline">\(2\equiv-1\pmod3\)</span></p>
+<p>所以<span class="math inline">\(2^n\equiv(-1)^n\pmod3\implies2^n+1\equiv(-1)^n+1\pmod3\)</span></p>
+<p>即当<span class="math inline">\(n\)</span>为奇数时，<span class="math inline">\(2^n+1\equiv0\pmod3\)</span>，<span class="math inline">\(n\)</span>为偶数时<span class="math inline">\(2^n+1\equiv2\pmod3\)</span></p>
+<p align="right">
+证毕
+</p>
+<p>利用同余可以得出一些有趣的结论，比如：因为一个数模3只有三种情况<span class="math inline">\(a\equiv0,1,2\pmod 3\)</span>，所以一个数的立方只能是9n，9n＋1，9n-1的形式，所以两个数的立方和只能是9n-2，9n-1，9n，9n+1，9n+2的形式。</p>
+<h3 id="哪些自然数可以写成两个自然数的平方和">哪些自然数可以写成两个自然数的平方和？</h3>
+<p>如何判断一个数是否能表示为两个数的平方和或立方和？ - Matrixor的回答 - 知乎 https://www.zhihu.com/question/40263900/answer/88214196</p>
+<p>通过模法构造同余，来排除掉一些情况似乎是数论中常用的技巧。</p>
+<h2 id="剩余类和完全剩余系">剩余类和完全剩余系</h2>
+<p>由同余定义，同余关系显然有如下性质：</p>
+<ol type="1">
+<li>自反</li>
+<li>对称</li>
+<li>传递</li>
+</ol>
+<p>那么显然(如果你学过离散数学)，同余是对于整数集的等价关系。对于给定的一个整数<span class="math inline">\(m\)</span>，利用模<span class="math inline">\(m\)</span>同余这个关系，可以将全部整数分成若干类。</p>
+<p>  <strong>定义</strong>：设m是一个给定的正整数，<span class="math inline">\(C_r(r=0,1,...,m-1)\)</span>表示所有形如qm+r的整数组成的集合，其中<span class="math inline">\(q=0,\pm1,\pm2,...,\)</span>则<span class="math inline">\(C_0,...,C_{m-1}\)</span>叫做模m的剩余类。</p>
+<p>  我们有   <strong>定理1</strong>：设<span class="math inline">\(m&gt;0,C_0,C_1,...,C_{m-1}\)</span>是模数m的剩余类，则有</p>
+<ol type="1">
+<li>每一个整数恰包括在某个类<span class="math inline">\(C_j(0\leq j\leq m-1)\)</span>中。</li>
+<li>两个整数<span class="math inline">\(x,y\)</span>属于同一个类的充要条件是<span class="math display">\[
+ x\equiv y\pmod m\]</span></li>
+</ol>
+<p>  <strong>定义</strong>：在模数m的剩余类<span class="math inline">\(C_0,C_1,...,C_{m-1}\)</span>中各取一数<span class="math inline">\(a_j\in C_j(j=0,1,...,m-1)\)</span>，此m个数<span class="math inline">\(a_0,a_1,...,a_{m-1}\)</span>称作模数m的一组完全剩余系。最常用的完全剩余系<span class="math inline">\(0,1,2,...,m-1\)</span>，称为模数<span class="math inline">\(m\)</span>的非负最小完全剩余系。</p>
+<p>  <strong>定理2</strong>：<span class="math inline">\(m\)</span>个数构成<span class="math inline">\(m\)</span>的一组完全剩余系的充要条件是这<span class="math inline">\(m\)</span>个数两两对<span class="math inline">\(m\)</span>不同余。</p>
+  <strong>定理3</strong>：若<span class="math inline">\(gcd(k,m)=1\)</span>，而<span class="math inline">\(a_1,a_2,...,a_m\)</span>是模数<span class="math inline">\(m\)</span>的一组完全剩余系，则<span class="math inline">\(ka_1,ka_2,...,ka_m\)</span>是模数<span class="math inline">\(m\)</span>的一组完全剩余系。   <strong>证明</strong>：使用反证法。假设有<span class="math inline">\(ka_i\equiv ka_j\pmod m(1\leq i &lt; j \leq m)\)</span> 则<span class="math inline">\(m\mid k(a_i-a_j)\)</span> 又<span class="math inline">\(gcd(m,k)=1，m\mid k(a_i-a_j)\implies m\mid a_i-a_j\)</span>，即<span class="math inline">\(a_i,a_j\)</span>对<span class="math inline">\(m\)</span>同余，与前提矛盾。
+<p align="right">
+证毕
+</p>
+<p>  <strong>定理4</strong>：</p>
+<p>  <strong>定理5</strong>：   <strong>定理6(Wilson定理)</strong>:设p是一个素数，则<span class="math inline">\((p-1)!+1\equiv 0\pmod p\)</span></p>
+<h3 id="剩余类环">剩余类环</h3>
+<p>我不懂抽象代数，也没学过离散数学，回头再补。</p>
+<h2 id="缩系">缩系</h2>
+<p>  <strong>定义</strong>：如果一个模数<span class="math inline">\(m\)</span>的剩余类里面的数与<span class="math inline">\(m\)</span>互素(显然，只需要有一个与<span class="math inline">\(m\)</span>互素，其余的均与<span class="math inline">\(m\)</span>互素)，就把它叫做一个<strong>与模<span class="math inline">\(m\)</span>互素的剩余类</strong>。在与<span class="math inline">\(m\)</span>互素的全部剩余类中，各取一数所组成的集合叫做模数<span class="math inline">\(m\)</span>的一组<strong>缩系</strong>。</p>
+<blockquote>
+<p>事实上，缩系有多种叫法，缩系，简化剩余系，既约剩余系。其中，我觉得既约剩余系是最合适的，从名字就充分体现出了是从剩余系中约去了些东西(从定义可知约去的是<span class="math inline">\(m\)</span>所有与<span class="math inline">\(m\)</span>有公因子的元素) 比如<span class="math inline">\(8\)</span>的一个剩余系为<span class="math inline">\(0,1,2,3,4,5,6,7\)</span>，一个既约剩余系为<span class="math inline">\(1,3,5,7\)</span>。</p>
+</blockquote>
+<p>在讨论缩系的过程中，需要引入一个常用的数论函数——欧拉函数<span class="math inline">\(\varphi(n)\)</span>。   <strong>定义</strong>：<strong>欧拉函数</strong><span class="math inline">\(\varphi(n)\)</span>是一个定义在正整数集上的函数，<span class="math inline">\(\varphi(n)\)</span>的值为<span class="math inline">\(0,1,2,...,n-1\)</span>中与<span class="math inline">\(n\)</span>互素的数的个数。   这里给出一张欧拉函数表，建议记住前几项以及前几项的前缀和，可以用来找规律。</p>
+<p>  <strong>定理1</strong>：模数m的一组缩系含有<span class="math inline">\(\varphi(m)\)</span>个数。   <strong>定理2</strong>：<span class="math inline">\(\varphi(m)\)</span>个整数为模数m的一组缩系的充要条件是这<span class="math inline">\(\varphi(m)\)</span>个数两两对m不同余。</p>
+<p>定理1,2显然成立。</p>
+  <strong>定理3</strong>：<span class="math inline">\(T\)</span>为模数<span class="math inline">\(m\)</span>的一个缩系，当<span class="math inline">\(gcd(k,m)=1\)</span>时，<span class="math inline">\(kT=\{kr\mid r\in T\}\)</span>也是模数<span class="math inline">\(m\)</span>的一组缩系。   <strong>证明</strong>：分两步，先证集合<span class="math inline">\(kT\)</span>中有<span class="math inline">\(\varphi(m)\)</span>个数并且每一个都与<span class="math inline">\(m\)</span>互素，再证任意两个对<span class="math inline">\(m\)</span>不同余。   当<span class="math inline">\(r\)</span>取遍<span class="math inline">\(T\)</span>中所有元素时，<span class="math inline">\(kr\)</span>也取遍<span class="math inline">\(kT\)</span>中所有元素，所以<span class="math inline">\(|kT|=|T|=\varphi(m)\)</span>。并且<span class="math inline">\(gcd(k, m)=1,gcd(x,m)=1\)</span>，所以<span class="math inline">\(gcd(kx,m)=1\)</span>。   假设有<span class="math inline">\(kr_1\equiv kr_2\pmod m\)</span>，即得<span class="math inline">\(r_1\equiv r_2\pmod m\)</span>，与<span class="math inline">\(T\)</span>为<span class="math inline">\(m\)</span>的缩系矛盾，所以<span class="math inline">\(kT\)</span>中元素两两对<span class="math inline">\(m\)</span>不同余。即<span class="math inline">\(kT\)</span>为<span class="math inline">\(m\)</span>的一个缩系。
+<p align="right">
+证毕
+</p>
+<p>   </p>
+<p>  <strong>定理4(欧拉定理)</strong>：设<span class="math inline">\(m&gt;1\)</span>，<span class="math inline">\(gcd(a,m)=1\)</span>，则$$ a^{(m)}1m</p>
+<p>  <strong>证明</strong>：</p>
+<blockquote>
+<p>引大佬的一段话： 在Euler定理的证明过程中，我们不难体会到既约剩余系的规范性作用（不知道我起的名字咋样233，其实已经带有群论的味道了），我们利用既约剩余系中元素作为中介，造出另一个既约剩余系，却在最后又消去了既约剩余系中元素，来得到一些普遍的结论（是代数学中很重要的思想） 这里多嘴地再提一句，当我们想要证明 <span class="math inline">\(a\equiv b\pmod m\)</span> 时，如果证明遇到困难然而 <span class="math inline">\(\exist k,ka,kb\)</span> 的<strong>形式比较简单，可以利用的一种方法</strong>是先证明 <span class="math inline">\(ka\equiv kb\pmod m\)</span>，再证明 <span class="math inline">\(gcd(k,m)=1\)</span> 来得到结论。</p>
+</blockquote>
+<p>推荐一下大佬的笔记，里面还有费马定理的另外两种证明以及习题，可以体会一下既约剩余系的规范性作用:D</p>
+<p>  <strong>定理5(费马定理)</strong>：若p为素数，则<span class="math inline">\(a^p\equiv a\pmod p\)</span></p>
+<p>由欧拉定理可直接推出费马定理(因为<span class="math inline">\(\varphi(p)=p-1,p\)</span>为素数)</p>
+<h2 id="乘法逆元">乘法逆元</h2>
+<p>此前我们说过，对于除法，没有类似 <span class="math display">\[a\times b\pmod m=(a\pmod m\times b\pmod m)\pmod m\]</span> 这样的方便公式。即类似的操作对<span class="math inline">\(\frac{a}{b}\pmod m\)</span>不成立。 乘法逆元正是用来解决除法取模的问题。即要求得<span class="math inline">\(x\)</span>使得<span class="math inline">\(ax\equiv1\pmod m\)</span>。求得的x即为a的(模m意义下的)乘法逆元，也可以当作是<span class="math inline">\(a\)</span>在<span class="math inline">\(\mod m\)</span>意义下的倒数，记作<span class="math inline">\(inv(a)\)</span>。 于是，对于<span class="math inline">\(\frac{a}{b}\pmod m\)</span>，就可以换成<span class="math inline">\(a\times inv(a)\pmod m\)</span>，然后用乘法取模公式展开即可。</p>
+<p>首先，给出乘法逆元存在的条件：</p>
+<p>  <strong>定理</strong>：<span class="math inline">\(a\)</span>模<span class="math inline">\(m\)</span>的乘法逆元存在的充要条件是<span class="math inline">\(gcd(a,m)=1\)</span></p>
+<p>  <strong>证明</strong>：充分性：</p>
+<p>乘法逆元有多种求法，至此我们已经学过了所有求法的原理。以下具体介绍所有方法。</p>
+<h3 id="拓展欧几里得">拓展欧几里得</h3>
+<p>使用拓展欧几里得求逆元的主要思想就是拓展欧几里得解同余方程。 要求<span class="math inline">\(a\)</span>的逆元，<span class="math inline">\(a\times inv(a)=1\pmod m\)</span>。其中的未知数只有<span class="math inline">\(inv(a)\)</span>，这就是一个同余方程。拓展欧几里得解同余方程即可。</p>
+<h3 id="费马小定理">费马小定理</h3>
+<p>对于数<span class="math inline">\(a\)</span>，求它的逆元，即求<span class="math inline">\(inv(a)\)</span>满足<span class="math inline">\(a\times inv(a)\equiv1\pmod p\)</span>。 而费马小定理告诉我们<span class="math inline">\(a^{p-1}\equiv1\pmod p\)</span>(<span class="math inline">\(p\)</span>为质数)。带入上式得： <span class="math display">\[
+\begin{aligned}
+&amp;a\times inv(a)\equiv1\equiv a^{p-1}\pmod p\\
+\implies &amp;inv(a)\equiv a^{p-2}\pmod p\\
+\end{aligned}
+\]</span> 于是只需要快速幂求<span class="math inline">\(a^{p-2}\pmod p\)</span>即可。 注意费马小定理成立要求模数必须为素数，因此用费马小定理求逆元也要求模数为素数。</p>
+<h3 id="递推法">递推法</h3>
+<p>首先给出递推式，然后给出证明： <span class="math inline">\(a\)</span>模<span class="math inline">\(m\)</span>意义下的逆元<span class="math inline">\(inv(a)\)</span>有如下公式：<span class="math display">\[
+inv(a)=-[\frac{p}{a}]\times inv(p\%a)\%p\]</span></p>
+<p>以下给出证明(不想看证明看上面公式和底下代码就行)： 要求<span class="math inline">\(i\)</span>在模p意义下的逆元，设<span class="math inline">\(i &lt; p\)</span>(如果<span class="math inline">\(i\geq p\)</span>可以先模<span class="math inline">\(p\)</span>得到一个小于<span class="math inline">\(p\)</span>的<span class="math inline">\(i\)</span>。因为两个数如果对<span class="math inline">\(p\)</span>同余，那么模<span class="math inline">\(p\)</span>的逆元相同，证明在最后) 令<span class="math inline">\(p=ki+r,0\leq r&lt;q\)</span>，其中<span class="math inline">\(k=[\frac{p}{i}]\)</span>，则有<span class="math inline">\(ki+r\equiv 0\pmod p\)</span> 上式左右同乘<span class="math inline">\(inv(i)\times inv(r)\)</span>得： <span class="math display">\[
+\begin{aligned}
+&amp;k\times inv(r)+inv(i)\equiv0\pmod p\\
+\implies &amp;inv(i)\equiv -k\times inv(r)\pmod p\\
+\implies &amp;inv(i)\equiv -[\frac{p}{i}]\times inv(p\ mod\ i)\pmod p
+\end{aligned}
+\]</span> 因为<span class="math inline">\(p\ mod\ i\)</span>总是小于<span class="math inline">\(i\)</span>，所有我们已经求出了递推公式。</p>
+<p>但是在代码实现上依旧有一些细节需要注意： 首先是我们求出的<span class="math inline">\(i\)</span>的逆元需要为正数，因此最后求出来之后需要加<span class="math inline">\(p\)</span>，这样可以保证最后求得的是正数，并且也保证了模<span class="math inline">\(p\)</span>意义下值不变。 其次是肯定要用一个数组辅助递推，注意要给数组赋初值<span class="math inline">\(inv[0]=0,inv[1]=1\)</span></p>
+关于上面说的<strong>如果两数模<span class="math inline">\(p\)</span>同余，那么两数在模<span class="math inline">\(p\)</span>意义下的逆元相同</strong>的证明： 设<span class="math inline">\(a\equiv b\pmod p,p\)</span>为素数，由同余性质，即得： <span class="math inline">\(a^{p-2}\equiv b^{p-2}\pmod p\)</span> 由之前费马小定理求逆元的结论可知，<span class="math inline">\(a,b\)</span>的逆元相同。
+<p align="right">
+证毕
+</p>
+<h3 id="阶乘逆元">阶乘逆元</h3>
+<p>特殊的，有方法可以快速的递推求出阶乘的乘法逆元。记阶乘<span class="math inline">\({i!}\)</span>的逆元为<span class="math inline">\(inv(i)\)</span>。(其实并不应该记作这个，这么记只是为了更好的写递推关系)</p>
+<p>假设现在已知<span class="math inline">\((i+1)!\)</span>的逆元，即已知inv(i+1)，那么有(以下等式虽然没标，但均在模<span class="math inline">\(p\)</span>意义下成立，<span class="math inline">\(p\)</span>为素数)：<span class="math display">\[inv(i+1)=\frac{1}{(i+1)!}\]</span> 两侧同乘<span class="math inline">\(i+1\)</span>: <span class="math display">\[inv(i+1)\times(i+1)=\frac{1}{(i+1)!}\times(i+1)=\frac{1}{i!}=inv(i)\]</span></p>
+<p>于是，就有递推关系：<span class="math display">\[
+inv(i+1)\times(i+1)=inv(i)\]</span></p>
+<p>因此，我们可以先求出<span class="math inline">\(n!\)</span>的逆元，然后就可以递推出<span class="math inline">\(1...n!\)</span>的逆元。</p>
+<p>   </p>
+<p>总结：以上介绍了求乘法逆元的三种方法，以及求阶乘的乘法逆元的递推公式。其中拓展欧几里得可以适用于任意模数(也只有这个方法可以任意模数)，只要求<span class="math inline">\(a\)</span>于模数<span class="math inline">\(m\)</span>互质。费马小定理和递推求乘法逆元都要求模数为素数，其中递推用于求一连串数字<span class="math inline">\(\mod p\)</span>意义下的逆元。</p>
+<p>其实求逆元的方法还有很多，比如有一种算前缀积后缀积全积取倒数，一个<span class="math inline">\(O(n)\)</span>复杂度的离线算法。</p>
+<p>而阶乘的逆元的递推公式则是用于对阶乘之商取模。比如卢卡斯定理(组合数展开就有阶乘)： <span class="math display">\[
+C_{n}^{m} \equiv (C^{m/p}_{n/p} \times C^{m \pmod p}_{n \pmod p} )\pmod p
+\]</span></p>
+<h2 id="同余方程">同余方程</h2>
+<p>  <strong>定义</strong>：设<span class="math inline">\(f(x)=a_nx^n+a_{n-1}x^{n-1}+...+a_1x+a_0\)</span>，其中<span class="math inline">\(n&gt;0,a_i\)</span>是整数，又设<span class="math inline">\(m&gt;0\)</span>，则<span class="math display">\[
+f(x)\equiv0\pmod m\]</span>叫做模数<span class="math inline">\(m\)</span>的同余方程。若<span class="math inline">\(a_n\not\equiv0\)</span>，则n称为该同余方程的次数。</p>
+<p>以下将由特殊到一般逐步介绍同余方程的解法。</p>
+<h3 id="单变元模素数线性同余方程">单变元模素数线性同余方程</h3>
+<p><span class="math inline">\(ax\equiv m\pmod p\)</span></p>
+<h3 id="模数为素数的同余方程">模数为素数的同余方程</h3>
+<h3 id="中国剩余定理以及同余方程组">中国剩余定理以及同余方程组</h3>
+<h3 id="模数是素数幂的同余方程">模数是素数幂的同余方程</h3>
+<hr>
+<h4 id="使用数论的实例">使用数论的实例</h4>
+<h6 id="算不上数论">算不上数论</h6>
+<p>判一个质数<span class="math inline">\(p\)</span>是否能表示成两个立方数之差</p>
+<span class="math display">\[\begin{aligned}
+p=x^3-y^3=(x-y)(x^2+y^2+xy)\\
+因为p为质数，(x-y)=1,(x^2+y^2+xy)=p\\
+p=x^2+y^2+xy=(x-y)^2+3xy=1+3xy=3y(y+1)+1\\
+所以p=3y^2+3y+1\\
+判该二元一次方程是否有正整数解即可
+\end{aligned}\]</span>
+<p>$$</p>
+<h6 id="数论题目收集">数论题目收集</h6>
+<p>https://ac.nowcoder.com/acm/contest/9984/J 邬澄瑶的公约数 https://ac.nowcoder.com/acm/contest/9692/E 枚举求和</p>
+<h6 id="哪些自然数可以写成两个自然数的平方和-1">哪些自然数可以写成两个自然数的平方和？</h6>
+<p>如何判断一个数是否能表示为两个数的平方和或立方和？ - Matrixor的回答 - 知乎 https://www.zhihu.com/question/40263900/answer/88214196</p>
+<p>参考文献： <a target="_blank" rel="noopener" href="https://oi-wiki.org/math/">OIwiki</a>：很好的网站，不用多介绍<del>不会还有人不知道吧</del> <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/155721651">裴蜀定理证明</a>：大佬的文章 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/41337006">初等数论学习笔记（一）</a>：大佬的学习笔记，写的很好，后面还有习题可供练习 https://zhuanlan.zhihu.com/p/41588857 https://zhuanlan.zhihu.com/p/41460722 https://www.cnblogs.com/ilverene/p/11448602.html#%E6%95%B0%E8%AE%BA%E5%87%BD%E6%95%B0 https://zhuanlan.zhihu.com/p/24902174 https://www.cnblogs.com/lfri/p/11679306.html</p>
+<section class="footnotes">
+<hr>
+<ol>
+<li id="fn1"><p>https://zhuanlan.zhihu.com/p/41337006<a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/03/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="prev" title="线段树">
+      <i class="fa fa-chevron-left"></i> 线段树
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E7%9A%84%E5%94%AF%E4%B8%80%E5%88%86%E8%A7%A3%E5%AE%9A%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">整数的唯一分解定理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E4%B8%8E%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">最大公约数与辗转相除法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">最小公倍数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%A8%E6%95%B0%E7%AE%97%E6%95%B0%E5%9F%BA%E6%9C%AC%E5%AE%9A%E7%90%86"><span class="nav-number">2.3.</span> <span class="nav-text">质数，算数基本定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E6%AC%A1%E4%B8%8D%E5%AE%9A%E6%96%B9%E7%A8%8B"><span class="nav-number">2.4.</span> <span class="nav-text">一次不定方程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E4%B8%8D%E5%8F%AF%E8%A1%A8%E6%95%B0"><span class="nav-number">2.4.1.</span> <span class="nav-text">最大不可表数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%BD%E5%B1%89%E5%8E%9F%E7%90%86"><span class="nav-number">2.5.</span> <span class="nav-text">抽屉原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E5%AF%B9%E4%BB%BB%E6%84%8F%E6%A8%A1%E6%95%B0%E5%AD%98%E5%9C%A8%E5%BE%AA%E7%8E%AF%E8%8A%82"><span class="nav-number">2.5.1.</span> <span class="nav-text">斐波那契数列对任意模数存在循环节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E9%81%93%E7%AE%80%E5%8D%95%E7%9A%84%E5%B0%8F%E5%AD%A6%E9%A2%98%E7%9B%AE"><span class="nav-number">2.5.2.</span> <span class="nav-text">几道简单的小学题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#codeforces%E4%B8%8A%E7%9A%84%E7%9C%9F%E9%A2%98"><span class="nav-number">2.5.3.</span> <span class="nav-text">Codeforces上的真题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E5%88%B0%E4%BA%86%E6%8A%BD%E5%B1%89%E5%8E%9F%E7%90%86%E7%9A%84%E6%95%B0%E8%AE%BA%E8%AF%81%E6%98%8E"><span class="nav-number">2.5.4.</span> <span class="nav-text">用到了抽屉原理的数论证明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%9B%E6%B3%95"><span class="nav-number">2.6.</span> <span class="nav-text">筛法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%83%E6%B0%8F%E7%AD%9B"><span class="nav-number">2.6.1.</span> <span class="nav-text">埃氏筛</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%90%8E-%E6%88%91%E4%BB%AC%E5%AD%A6%E4%B9%A0%E4%BA%86%E8%BF%99%E4%B8%80%E7%AB%A0%E9%99%A4%E4%BA%86%E4%B8%8A%E8%BF%B0%E8%AE%B2%E8%BF%87%E7%9A%84%E8%BF%98%E5%8F%AF%E4%BB%A5%E5%9C%A8acm%E4%B8%AD%E5%81%9A%E4%BB%80%E4%B9%88"><span class="nav-number">2.7.</span> <span class="nav-text">最后 我们学习了这一章，除了上述讲过的，还可以在ACM中做什么</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E8%AE%BA%E5%87%BD%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">数论函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%82%E5%92%8C"><span class="nav-number">3.1.</span> <span class="nav-text">求和</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E8%AE%BA%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E4%BA%8C%E9%87%8D%E6%B1%82%E5%92%8C"><span class="nav-number">3.1.1.</span> <span class="nav-text">数论中常用的二重求和</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#x%E5%87%BD%E6%95%B0"><span class="nav-number">3.2.</span> <span class="nav-text">\([x]\)函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E6%95%B0%E4%B8%8E%E9%98%B6%E4%B9%98%E7%9A%84%E7%B4%A0%E5%9B%A0%E5%AD%90"><span class="nav-number">3.3.</span> <span class="nav-text">重数与阶乘的素因子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0"><span class="nav-number">3.4.</span> <span class="nav-text">积性函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%98%E6%8D%A2"><span class="nav-number">3.5.</span> <span class="nav-text">莫比乌斯变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%87%BD%E6%95%B0"><span class="nav-number">3.6.</span> <span class="nav-text">莫比乌斯函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0"><span class="nav-number">3.7.</span> <span class="nav-text">欧拉函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8B%84%E5%88%A9%E5%85%8B%E9%9B%B7%E5%8D%B7%E7%A7%AF"><span class="nav-number">3.8.</span> <span class="nav-text">狄利克雷卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%90%8E-%E6%88%91%E4%BB%AC%E5%AD%A6%E4%B9%A0%E4%BA%86%E8%BF%99%E4%B8%80%E7%AB%A0%E9%99%A4%E4%BA%86%E4%B8%8A%E8%BF%B0%E8%AE%B2%E8%BF%87%E7%9A%84%E8%BF%98%E5%8F%AF%E4%BB%A5%E5%9C%A8acm%E4%B8%AD%E5%81%9A%E4%BB%80%E4%B9%88-1"><span class="nav-number">3.9.</span> <span class="nav-text">最后 我们学习了这一章，除了上述讲过的，还可以在ACM中做什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A0%E6%95%B0%E7%AD%9B"><span class="nav-number">3.9.1.</span> <span class="nav-text">素数筛</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%AD%9B"><span class="nav-number">3.9.1.1.</span> <span class="nav-text">线性筛</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%AD%9B%E7%AD%9B%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0"><span class="nav-number">3.9.1.1.1.</span> <span class="nav-text">线性筛筛欧拉函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%AD%9B%E7%AD%9B%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0-%E4%BB%A5%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%87%BD%E6%95%B0%E4%B8%BA%E4%BE%8B"><span class="nav-number">3.9.1.1.2.</span> <span class="nav-text">线性筛筛积性函数-以莫比乌斯函数为例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%A0%E5%AD%90%E6%95%B0%E5%9B%A0%E5%AD%90%E5%92%8C"><span class="nav-number">3.9.1.1.3.</span> <span class="nav-text">因子数&#x2F;因子和</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%83%E6%B0%8F%E7%AD%9B%E9%BB%91%E7%A7%91%E6%8A%80-%E7%AD%9B%E6%B3%95%E6%A0%91"><span class="nav-number">3.9.1.1.4.</span> <span class="nav-text">埃氏筛黑科技-筛法树</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E9%99%A4%E5%88%86%E5%9D%97"><span class="nav-number">3.9.2.</span> <span class="nav-text">整除分块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B4%E9%99%A4%E5%88%86%E5%9D%97%E5%8F%98%E5%BD%A2"><span class="nav-number">3.9.2.1.</span> <span class="nav-text">整除分块变形</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94"><span class="nav-number">3.9.3.</span> <span class="nav-text">莫比乌斯反演</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82"><span class="nav-number">3.9.4.</span> <span class="nav-text">欧拉降幂</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8C%E4%BD%99%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">同余式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E4%BD%99%E7%9A%84%E6%80%A7%E8%B4%A8%E6%A6%82%E5%BF%B5%E5%92%8C%E6%80%A7%E8%B4%A8"><span class="nav-number">4.1.</span> <span class="nav-text">同余的性质概念和性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%AA%E4%BA%9B%E8%87%AA%E7%84%B6%E6%95%B0%E5%8F%AF%E4%BB%A5%E5%86%99%E6%88%90%E4%B8%A4%E4%B8%AA%E8%87%AA%E7%84%B6%E6%95%B0%E7%9A%84%E5%B9%B3%E6%96%B9%E5%92%8C"><span class="nav-number">4.1.1.</span> <span class="nav-text">哪些自然数可以写成两个自然数的平方和？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%A9%E4%BD%99%E7%B1%BB%E5%92%8C%E5%AE%8C%E5%85%A8%E5%89%A9%E4%BD%99%E7%B3%BB"><span class="nav-number">4.2.</span> <span class="nav-text">剩余类和完全剩余系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%A9%E4%BD%99%E7%B1%BB%E7%8E%AF"><span class="nav-number">4.2.1.</span> <span class="nav-text">剩余类环</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%A9%E7%B3%BB"><span class="nav-number">4.3.</span> <span class="nav-text">缩系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83"><span class="nav-number">4.4.</span> <span class="nav-text">乘法逆元</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%93%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97"><span class="nav-number">4.4.1.</span> <span class="nav-text">拓展欧几里得</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86"><span class="nav-number">4.4.2.</span> <span class="nav-text">费马小定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E6%8E%A8%E6%B3%95"><span class="nav-number">4.4.3.</span> <span class="nav-text">递推法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%B6%E4%B9%98%E9%80%86%E5%85%83"><span class="nav-number">4.4.4.</span> <span class="nav-text">阶乘逆元</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B"><span class="nav-number">4.5.</span> <span class="nav-text">同余方程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%8F%98%E5%85%83%E6%A8%A1%E7%B4%A0%E6%95%B0%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B"><span class="nav-number">4.5.1.</span> <span class="nav-text">单变元模素数线性同余方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%95%B0%E4%B8%BA%E7%B4%A0%E6%95%B0%E7%9A%84%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B"><span class="nav-number">4.5.2.</span> <span class="nav-text">模数为素数的同余方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86%E4%BB%A5%E5%8F%8A%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B%E7%BB%84"><span class="nav-number">4.5.3.</span> <span class="nav-text">中国剩余定理以及同余方程组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%95%B0%E6%98%AF%E7%B4%A0%E6%95%B0%E5%B9%82%E7%9A%84%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B"><span class="nav-number">4.5.4.</span> <span class="nav-text">模数是素数幂的同余方程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%95%B0%E8%AE%BA%E7%9A%84%E5%AE%9E%E4%BE%8B"><span class="nav-number">4.5.4.1.</span> <span class="nav-text">使用数论的实例</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%AE%97%E4%B8%8D%E4%B8%8A%E6%95%B0%E8%AE%BA"><span class="nav-number">4.5.4.1.0.1.</span> <span class="nav-text">算不上数论</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%95%B0%E8%AE%BA%E9%A2%98%E7%9B%AE%E6%94%B6%E9%9B%86"><span class="nav-number">4.5.4.1.0.2.</span> <span class="nav-text">数论题目收集</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%93%AA%E4%BA%9B%E8%87%AA%E7%84%B6%E6%95%B0%E5%8F%AF%E4%BB%A5%E5%86%99%E6%88%90%E4%B8%A4%E4%B8%AA%E8%87%AA%E7%84%B6%E6%95%B0%E7%9A%84%E5%B9%B3%E6%96%B9%E5%92%8C-1"><span class="nav-number">4.5.4.1.0.3.</span> <span class="nav-text">哪些自然数可以写成两个自然数的平方和？</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Co27Ti22"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Co27Ti22</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Co27Ti22</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
