@@ -28,7 +28,7 @@
 <meta property="og:description" content="想要不重不漏地计数也是很难的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-07-28T03:34:15.000Z">
-<meta property="article:modified_time" content="2021-07-28T20:40:40.990Z">
+<meta property="article:modified_time" content="2021-07-28T20:45:53.957Z">
 <meta property="article:author" content="Co27Ti22">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="数学">
@@ -189,7 +189,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-29 04:40:40" itemprop="dateModified" datetime="2021-07-29T04:40:40+08:00">2021-07-29</time>
+                <time title="修改时间：2021-07-29 04:45:53" itemprop="dateModified" datetime="2021-07-29T04:45:53+08:00">2021-07-29</time>
               </span>
 
           
@@ -270,8 +270,8 @@ C_n^m=\dfrac{n!}{m!(n-m)!}
 \right)                 %右括号
 x_1^{n_1}x_2^{n_2}...x_k^{n_k}
 \]</span></p>
-<p>其中，$(\begin{array}{ccc}&amp; n&amp;\n_1 &amp;...&amp; n_k\\end{array}) $​​​​为多项式系数。现在考虑这个系数如何计算：</p>
-<p><span class="math inline">\(x_1^{n_1}x_2^{n_2}...x_k^{n_k}\)</span>项表示<span class="math inline">\((x_1+...+x_k)^n\)</span>的<span class="math inline">\(n\)</span>个括号中一定有<span class="math inline">\(n_1\)</span>个选择了<span class="math inline">\(x_1\)</span>这一项，<span class="math inline">\(n_2\)</span>个选择了<span class="math inline">\(x_2\)</span>这一项，<span class="math inline">\(n_3\)</span>个选择了<span class="math inline">\(x_3\)</span>这一项......选择的方案数即为多项式系数$(\begin{array}{ccc}&amp; n&amp;\n_1 &amp;...&amp; n_k\\end{array}) $。</p>
+<p>其中，$(\begin{array}{ccc}&amp; n&amp;\n_1 &amp;...&amp; n_k\ \end{array}) $​​​​​为多项式系数。现在考虑这个系数如何计算：</p>
+<p><span class="math inline">\(x_1^{n_1}x_2^{n_2}...x_k^{n_k}\)</span>​项表示<span class="math inline">\((x_1+...+x_k)^n\)</span>​的<span class="math inline">\(n\)</span>​个括号中一定有<span class="math inline">\(n_1\)</span>​个选择了<span class="math inline">\(x_1\)</span>​这一项，<span class="math inline">\(n_2\)</span>​个选择了<span class="math inline">\(x_2\)</span>​这一项，<span class="math inline">\(n_3\)</span>​个选择了<span class="math inline">\(x_3\)</span>​这一项......选择的方案数即为多项式系数$(\begin{array}{ccc}&amp; n&amp;\n_1 &amp;...&amp; n_k\ \end{array}) $​。</p>
 <p>而该选择的方案数可以这样算：先从<span class="math inline">\(n\)</span>个括号中选<span class="math inline">\(n_1\)</span>个选择<span class="math inline">\(x_1\)</span>的，再从<span class="math inline">\(n-n_1\)</span>中选<span class="math inline">\(n_2\)</span>个选择<span class="math inline">\(x_2\)</span>的...最终结果为 <span class="math display">\[
 \left(                 %左括号
   \begin{array}{ccc}   %该矩阵一共3列，每一列都居中放置
@@ -289,13 +289,13 @@ C_n^{n_1}C_{n-n_1}^{n_2}...C_{n_k}^{n_k}=\dfrac{n!}{n_1!n_2!...n_k!}
 <p><span class="math inline">\(A=\{\infty\cdot a_1,...,\infty\cdot a_k\}\)</span>。A的一个<span class="math inline">\(m\)</span>排列数显然是<span class="math inline">\(k^m\)</span>(每个位置上有<span class="math inline">\(a_1,...,a_kk\)</span>种选择，共<span class="math inline">\(m\)</span>个位置)。</p>
 <h4 id="有限多重集的排列">有限多重集的排列</h4>
 <p><span class="math inline">\(A=\{n_1\cdot a_1,...,n_k\cdot a_k\},n_1+...+n_k=n\)</span>。<span class="math inline">\(A\)</span>中所有元素的排列可以这样算：先从<span class="math inline">\(n\)</span>个位置中选<span class="math inline">\(n_1\)</span>个位置放<span class="math inline">\(a_1\)</span>，再从<span class="math inline">\(n-n_1\)</span>中选<span class="math inline">\(n_2\)</span>个位置放<span class="math inline">\(a_2\)</span>......</p>
-<p>由多项式系数的计算方法可知，<span class="math inline">\(A\)</span>的一个全排列就是$(\begin{array}{ccc}&amp; n&amp;\n_1 &amp;...&amp; n_k\\end{array}) $。<strong>有限多重集的排列对应着多项式系数</strong>。</p>
+<p>由多项式系数的计算方法可知，<span class="math inline">\(A\)</span>​的一个全排列就是$(\begin{array}{ccc}&amp; n&amp;\n_1 &amp;...&amp; n_k\ \end{array}) $​。<strong>有限多重集的排列对应着多项式系数</strong>。</p>
 <p>此外，有限多重集排列问题也可以用<strong>指数生成函数</strong>来解决。</p>
 <p>例（<strong>不同物品放入不同盒子</strong>）：将<span class="math inline">\(mn\)</span>个不同元素放入<span class="math inline">\(m\)</span>个不同的盒子（要求每个盒子有<span class="math inline">\(n\)</span>个元素）的方案数是多少？</p>
 <p><span class="math inline">\(C_{mn}^{n}C_{(m-1)n}^{n}...C_{n}^{n}=\dfrac{(mn)!}{(n!)^m}\)</span></p>
 <p><strong>不同物品放入不同盒子的方案数对应着多项式系数</strong>。</p>
 <p>例（<strong>不同物品放入相同盒子</strong>）：将<span class="math inline">\(mn\)</span>个不同元素放入<span class="math inline">\(m\)</span>个相同的盒子（要求每个盒子有<span class="math inline">\(n\)</span>个元素）的方案数是多少？</p>
-<p>如果将将<span class="math inline">\(mn\)</span>​个不同元素放入<span class="math inline">\(m\)</span>​个不同的盒子，那么结果就为$(\begin{array}{ccc}&amp; mn&amp;\n &amp;...&amp; n\\end{array}) <span class="math inline">\(​。为了消除差别（类似排列数与组合数的差别），需要除掉一个\)</span>m!<span class="math inline">\(​。因此结果为\)</span>=$​</p>
+<p>如果将将<span class="math inline">\(mn\)</span>​​​个不同元素放入<span class="math inline">\(m\)</span>​​​个不同的盒子，那么结果就为$(\begin{array}{ccc}&amp; mn&amp;\n &amp;...&amp; n\ \end{array}) <span class="math inline">\(​​​。为了消除差别（类似排列数与组合数的差别），需要除掉一个\)</span>m!<span class="math inline">\(​​​。因此结果为\)</span>=$​​​</p>
 <p>注：事实上，像这样的将不同的元素放入相同盒子的问题一般只能给出一个包含<strong>第二类斯特林数</strong>的和式结果。之所以这个例子能够得到这样的结果是因为要求每个盒子中元素个数相同。</p>
 <h4 id="无限多重集的组合">无限多重集的组合</h4>
 <p><span class="math inline">\(A=\{\infty\cdot a_1,...,\infty\cdot a_k\}\)</span>。从A中选<span class="math inline">\(m\)</span>个元素的方案数为<span class="math inline">\(C_{m+k-1}^{k-1}=C_{m+k-1}^m\)</span>。</p>
@@ -308,7 +308,7 @@ x_1+x_2+...+x_k=m
 <h2 id="把物体放入盒子">把物体放入盒子</h2>
 <p>许多计数过程都可以等价为把物体放入盒子的过程。物体和盒子都可能是相同的，也可能是不同的。在有限多重集排列那里以及给出了两种情况。</p>
 <p><strong>不同物品放入不同盒子</strong></p>
-<p>把n个不同物体放入k个相同的盒子，使得有n_i个物体放入第i个盒子的方案数为$(\begin{array}{ccc}&amp; n&amp;\n_1 &amp;...&amp; n_k\\end{array}) $。</p>
+<p>把n个不同物体放入k个相同的盒子，使得有n_i个物体放入第i个盒子的方案数为$(\begin{array}{ccc}&amp; n&amp;\n_1 &amp;...&amp; n_k\ \end{array}) $​。</p>
 <p><strong>不同物品放入相同盒子</strong></p>
 <p>无法给出闭公式，涉及到<strong>第二类斯特林数</strong>。</p>
 <p><strong>相同物体放入相同盒子</strong></p>
@@ -344,8 +344,14 @@ a_n=c_1q_1^n+...+c_kq_k^n
 <li><strong>当<span class="math inline">\(f(n)=\alpha\beta^n\)</span>时,若<span class="math inline">\(\beta\)</span>为对应特征方程的<span class="math inline">\(i\)</span>重特征根,其特解通常为<span class="math inline">\(pn^i\beta^n\)</span>形式,否则特解往往具有<span class="math inline">\(p\beta^n\)</span>形式</strong>.</li>
 </ul>
 <h3 id="某些非常系数其次方程">某些非常系数其次方程</h3>
-<p>对形如<span class="math inline">\(f(n)a_n=g(n)a_{n-1}+h(n)\)</span>的方程 $$ \begin{aligned} &amp;f(n)a_n=g(n)a_{n-1}+h(n)\ &amp;a_n=a_{n-1}+    将变形为\</p>
-<p>&amp;a_n=a_{n-1}+\ &amp;(n)a_n=(n-1)a_{n-1}+(n) \end{aligned} $$ 将<span class="math inline">\(\varphi(n)a_n\)</span>看作新数列,即可求解.</p>
+<p>对形如<span class="math inline">\(f(n)a_n=g(n)a_{n-1}+h(n)\)</span>的方程 <span class="math display">\[
+\begin{aligned}
+&amp;f(n)a_n=g(n)a_{n-1}+h(n)\\
+\implies &amp;a_n=\dfrac{g(n)}{f(n)}a_{n-1}+\dfrac{h(n)}{f(n)} \ \ \ 将\dfrac{g(n)}{f(n)}变形为\dfrac{\varphi(n-1)}{\varphi(n)}\\
+\implies &amp;a_n=\dfrac{\varphi(n-1)}{\varphi(n)}a_{n-1}+\dfrac{h(n)}{f(n)}\\
+\implies &amp;\varphi(n)a_n=\varphi(n-1)a_{n-1}+\varphi(n)\dfrac{h(n)}{f(n)}\\
+\end{aligned}
+\]</span> 将<span class="math inline">\(\varphi(n)a_n\)</span>看作新数列,即可求解.</p>
 <h3 id="可变换为线性的方程">可变换为线性的方程</h3>
 <p>对方程 <span class="math display">\[
 T(n)=nT^2(n/2)
@@ -354,6 +360,7 @@ T(n)=nT^2(n/2)
 <p>其他类型的方程(包括可变换为线性的方程),都推荐使用生成函数求解.</p>
 <h3 id="杜教bm算法">杜教bm算法</h3>
 <p>神奇的杜教bm算法可以在你给出数列前几项的情况下直接求出线性递推方程的解。但注意只能用于线性的递推方程。板子网上到处都是。</p>
+<hr>
 <h2 id="生成函数">生成函数</h2>
 <p>数列<span class="math inline">\(\{a_n\}\)</span>的生成函数是无穷级数 <span class="math display">\[
 F(x)=\sum_{n=0}^{\infty}a_nx^n
@@ -387,6 +394,7 @@ x_1+x_2+x_3=17
 <li><p>若<span class="math inline">\(f(x)\)</span>是<span class="math inline">\(a_n\)</span>的生成函数,<span class="math inline">\(x^kf(x)\)</span>是<span class="math inline">\(a_{n-k}\)</span>的生成函数.</p></li>
 <li><p>若<span class="math inline">\(f(x)\)</span>是<span class="math inline">\(a_n\)</span>的生成函数,<span class="math inline">\(\dfrac{f(x)}{1-x}\)</span>为<span class="math inline">\(a_n\)</span>前缀和的生成函数.</p></li>
 </ol>
+<hr>
 <h2 id="对称意义下的计数问题">对称意义下的计数问题</h2>
 <h3 id="利用群的理念">利用群的理念</h3>
 <p>我们知道群就是用来描述和研究对称性的工具，因此在涉及到对称的问题中使用群是个好的想法。</p>
