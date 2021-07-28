@@ -20,15 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Co27Ti22的博客">
-<meta property="og:url" content="http://example.com/archives/2021/05/index.html">
+  <meta name="description" content="这道题已经超出我的能力范围了，不过这个总数不容易求，那就转化为求每个数的贡献的思想还是值得学习的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Product of GCDs 题解">
+<meta property="og:url" content="http://example.com/2021/07/29/Product-of-GCDs-%E9%A2%98%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Co27Ti22的博客">
+<meta property="og:description" content="这道题已经超出我的能力范围了，不过这个总数不容易求，那就转化为求每个数的贡献的思想还是值得学习的">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-28T21:06:15.000Z">
+<meta property="article:modified_time" content="2021-07-28T21:08:05.927Z">
 <meta property="article:author" content="Co27Ti22">
+<meta property="article:tag" content="-数学">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/archives/2021/05/">
+<link rel="canonical" href="http://example.com/2021/07/29/Product-of-GCDs-%E9%A2%98%E8%A7%A3/">
 
 
 <script id="page-configurations">
@@ -36,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | Co27Ti22的博客</title>
+  <title>Product of GCDs 题解 | Co27Ti22的博客</title>
   
 
 
@@ -146,130 +151,101 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 13 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/29/Product-of-GCDs-%E9%A2%98%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Co27Ti22">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Co27Ti22的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Product of GCDs 题解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-07-29 05:06:15 / 修改时间：05:08:05" itemprop="dateCreated datePublished" datetime="2021-07-29T05:06:15+08:00">2021-07-29</time>
+            </span>
+
+          
+            <div class="post-description">这道题已经超出我的能力范围了，不过这个总数不容易求，那就转化为求每个数的贡献的思想还是值得学习的</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-05-05T21:59:07+08:00"
-              content="2021-05-05">
-          05-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/05/05/%E6%95%B0%E8%AE%BA-%E5%8F%AF%E5%81%9A%E4%B8%8E%E4%B8%8D%E5%8F%AF%E5%81%9A/" itemprop="url">
-            <span itemprop="name">数论-可做与不可做以及经验总结</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-05-04T20:27:16+08:00"
-              content="2021-05-04">
-          05-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/05/04/%E6%A0%91%E5%BD%A2DP/" itemprop="url">
-            <span itemprop="name">树形DP</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-05-03T23:22:48+08:00"
-              content="2021-05-03">
-          05-03
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/05/03/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95%E7%AC%94%E8%AE%B0/" itemprop="url">
-            <span itemprop="name">数学物理方法笔记</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-05-03T01:24:44+08:00"
-              content="2021-05-03">
-          05-03
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/05/03/%E7%BA%BF%E6%AE%B5%E6%A0%91/" itemprop="url">
-            <span itemprop="name">线段树</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-05-03T00:17:59+08:00"
-              content="2021-05-03">
-          05-03
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/05/03/Welzl%E7%AE%97%E6%B3%95%E6%B1%82%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96/" itemprop="url">
-            <span itemprop="name">Welze算法求最小圆覆盖</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        <blockquote>
+<p>给出一个多重集<span class="math inline">\(S\)</span>,给出一个数<span class="math inline">\(k\)</span>,保证<span class="math inline">\(1\leq k\leq {\rm min}\{|S|, 30\}\)</span>​.对所有大小为<span class="math inline">\(k\)</span>的子集中的元素计算<span class="math inline">\(\rm gcd\)</span>.求所有子集<span class="math inline">\(\rm gcd\)</span>的乘积.最后结果对<span class="math inline">\(P\)</span>​取模.</p>
+<p>数据规模:<span class="math inline">\(1\leq |S|\leq 40000\)</span>​, <span class="math inline">\(1e6\leq P\leq 1e14\)</span>​, <span class="math inline">\(S\)</span>中元素<span class="math inline">\(1\leq x_i\leq 8e4\)</span>.</p>
+</blockquote>
+<p>可以想到,直接求出所有大小为<span class="math inline">\(k\)</span>​的子集,再求<span class="math inline">\(\gcd\)</span>​​,再乘在一起,那是十分不现实的.</p>
+<p>这时有一个常用到的思路:<strong>总数不容易求，那就转化为求每个数的贡献</strong>.</p>
+<p>简单来说,如果<span class="math inline">\(\rm gcd\)</span>为<span class="math inline">\(i\)</span>的子集个数有<span class="math inline">\(k_i\)</span>个,那么<span class="math inline">\({\rm ans}=\prod\limits_{i=1}^{max\{S\}}i^{k_i}\)</span>​(显然子集可能出现的<span class="math inline">\(\rm gcd\)</span>不可能比<span class="math inline">\(S\)</span>中最大值还大).</p>
+<p>那么枚举每一个可能出现的<span class="math inline">\(\rm gcd\)</span>​​,求出它出现的次数<span class="math inline">\(k_i\)</span>(也就是所谓的<strong>贡献</strong>)即可.</p>
+<p>那么如何计算<span class="math inline">\(\rm gcd\)</span>为<span class="math inline">\(x\)</span>的子集个数呢?</p>
+<p>我们先预处理出一个数组$ a$​​​, $ a[x]<span class="math inline">\(​​​​表示\)</span>S<span class="math inline">\(​​中因子包含\)</span>x<span class="math inline">\(​​​的数的个数(就是\)</span>x$​​的倍数个数).</p>
+<p>对每一个<span class="math inline">\(x\)</span>​,由<span class="math inline">\(x\)</span>​​倍数组成的<span class="math inline">\(k\)</span>​个元素的子集共有<span class="math inline">\(C_{a[x]}^k\)</span>.</p>
+<p>但<span class="math inline">\(C_{a[x]}^k\)</span>个子集实际上包含了<span class="math inline">\({\rm gcd}=tx,\ \ t=1,2,...\)</span>​的情况(比如集合<span class="math inline">\(\{2x,2x,4x\}\)</span>的<span class="math display">\[\rm gcd\]</span>为<span class="math inline">\(2x\)</span>).</p>
+<p>所以要求<span class="math inline">\(\rm gcd\)</span>为<span class="math inline">\(x\)</span>的子集个数我们还要在<span class="math inline">\(C_{a[x]}^k\)</span>的基础上减掉<span class="math inline">\({\rm gcd}=2x,{\rm gcd}=3x...\)</span>​的情况.</p>
+<p>也就是<span class="math inline">\(C_{a[x]}^k-\sum\limits_{t=2}C_{a[tx]}^k\)</span>.</p>
+<p>这样这题的大体思路就完成了,然后就是各种细节(主要是题目没有保证<span class="math inline">\(p\)</span>​是素数,这个属实毒瘤).</p>
+<p><span class="math inline">\({\rm ans}=\prod\limits_{i=1}^{max\{S\}}i^{k_i}\)</span>.</p>
+<ol type="1">
+<li>首先求<span class="math inline">\(i^{k_i}\)</span>需要用欧拉降幂.但<span class="math inline">\(p\)</span>不是素数要注意使用拓展欧拉定理.</li>
+<li>由于<span class="math inline">\(k_i\)</span>​是组合数,用欧拉定理的时候会有组合数取模.由于<span class="math inline">\(p\)</span>​不是素数,我们不能用卢卡斯定理,只能通过杨辉三角递推出组合数再取模.</li>
+<li>因为<span class="math inline">\(p\)</span>不是素数,使用拓展欧拉定理需要求<span class="math inline">\(\varphi(p)\)</span>,注意到<span class="math inline">\(1e6\leq P\leq 1e14\)</span>,这个数据量只能分解质因数求了.​</li>
+</ol>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># -数学</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/29/%E6%B4%9B%E8%B0%B7p2422-%E8%89%AF%E5%A5%BD%E7%9A%84%E6%84%9F%E8%A7%89-%E9%A2%98%E8%A7%A3/" rel="prev" title="洛谷p2422 良好的感觉 题解">
+      <i class="fa fa-chevron-left"></i> 洛谷p2422 良好的感觉 题解
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
