@@ -152,6 +152,520 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/28/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Co27Ti22">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Co27Ti22的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/28/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" class="post-title-link" itemprop="url">组合数学</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-28 11:34:15" itemprop="dateCreated datePublished" datetime="2021-07-28T11:34:15+08:00">2021-07-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/12/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Co27Ti22">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Co27Ti22的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/12/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">抽象代数学习笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-06-12 02:38:46 / 修改时间：14:48:11" itemprop="dateCreated datePublished" datetime="2021-06-12T02:38:46+08:00">2021-06-12</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>抽象代数的主要研究对象是一类代数系统，而非特定的代数系统。抽象代数不关注特定代数系统本身的性质，而是关注<strong>类似的代数系统所共有的性质</strong>。</p>
+<p>在对定理进行理解时，务必要进行形式上的理解而不能只停留在实例的层面，否则容易忽略结论的普遍性，拘泥于特定的代数系统中。</p>
+<p>因此先对代数系统进行严格的定义：</p>
+<p>代数系统<span class="math inline">\(V=&lt;A,\Omega,K&gt;\)</span>，其中<span class="math inline">\(A\)</span>为非空集合，称为载体；<span class="math inline">\(\Omega\)</span>为所有元运算的集合；<span class="math inline">\(K\)</span>为代数常数集合（0元运算）。</p>
+<p>如<span class="math inline">\(&lt;\mathbb{N},+,0&gt;,&lt;\mathbb{C},+,\cdot&gt;\)</span>均为代数系统。</p>
+<p>那么，就显而易见应该从<strong>元素的性质，运算的性质，以及不同代数系统之间的关系</strong>入手去研究代数系统。</p>
+<h2 id="运算">运算</h2>
+<p>  <strong>定义（<span class="math inline">\(n\)</span>元运算）</strong>：一个<span class="math inline">\(S^n\rightarrow S\)</span>的函数被称为集合<span class="math inline">\(S\)</span>上的<span class="math inline">\(n\)</span>元运算。</p>
+<p>特别地，常用到的有二元运算，将<span class="math inline">\(S^2\)</span>中的有序对<span class="math inline">\(&lt;a,b&gt;\ \ a,b\in S\)</span>映射到<span class="math inline">\(S\)</span>中一个元素<span class="math inline">\(c\)</span>。此外，特殊代数常数<span class="math inline">\(k\)</span>可以看作是零元运算<span class="math inline">\(K:\rightarrow k\)</span>，将所有元素都映射到这个常数。</p>
+<p><span class="math inline">\(n\)</span>元运算可以用<span class="math inline">\(\phi(a_1,...,a_n)\)</span>来表示。特别地，二元运算可以简写为<span class="math inline">\(a_1\phi a_2\)</span>。</p>
+<p>为进一步研究二元运算，我们定义一些二元运算可能具有的良好性质：</p>
+<h2 id="特殊元素">特殊元素</h2>
+<h2 id="代数系统之间的关系">代数系统之间的关系</h2>
+<p>  <strong>定义（代数系统同类型）</strong>：<span class="math inline">\(V_1=&lt;A,O_1,...,O_r&gt;,V_2=&lt;B,o_1,...,o_r&gt;\)</span>，若</p>
+<h3 id="子代数">子代数</h3>
+<h3 id="积代数">积代数</h3>
+<h3 id="同态">同态</h3>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/11/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Co27Ti22">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Co27Ti22的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/11/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">组合数学笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-06-11 00:13:21 / 修改时间：11:13:59" itemprop="dateCreated datePublished" datetime="2021-06-11T00:13:21+08:00">2021-06-11</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="多重集">多重集</h1>
+<p>多重集是一个允许有重复的集合，若一个多重集中有<span class="math inline">\(n_i\)</span>个<span class="math inline">\(a_i\)</span>，则即为<span class="math inline">\(A=\{n_1\cdot a_1,...,n_k\cdot a_k\}\)</span>。其中<span class="math inline">\(n_i\)</span>可以取<span class="math inline">\(\infty\)</span>，表示有无穷多个<span class="math inline">\(a_i\)</span>。</p>
+<p><strong>多重集排列</strong></p>
+<p><span class="math inline">\(A=\{n_1\cdot a_1,...,n_k\cdot a_k\}\)</span>，且<span class="math inline">\(n_1+n_2+...+n_k=n\)</span>，则多重集中所有元素的排列（考虑顺序）数为多少？</p>
+<p>考虑：从<span class="math inline">\(n\)</span>个位置中选<span class="math inline">\(n_1\)</span>个放<span class="math inline">\(a_1\)</span>，从<span class="math inline">\(n-n_1\)</span>个位置中选<span class="math inline">\(n_2\)</span>个放<span class="math inline">\(a_2\)</span>...，以此类推，方法数<span class="math inline">\(N\)</span>等于 <span class="math display">\[
+N=C_n^{n_1}C_{n-n_1}^{n_2}...C_{n-n_1-...-n_{k-1}}^{n_k}=\dfrac{n!}{n_1!n_2!...n_k!}
+\]</span> 称N为<strong>多项式系数</strong>（注意与二项式系数不同，是多重集的排列而不是组合）。记作 <span class="math display">\[
+\dfrac{n!}{n_1!n_2!...n_k!}=
+\left(                 %左括号
+  \begin{array}{ccc}   %该矩阵一共3列，每一列都居中放置
+     &amp; n &amp; \\  %第一行元素
+    n_1 &amp; ... &amp; n_k\\  %第二行元素
+  \end{array}
+\right)                 %右括号
+\]</span> 注：多项式系数对应有限多重集的全排列问题，默认k个类相互不同。</p>
+<p><strong>多重集组合</strong></p>
+<p><span class="math inline">\(A=\{\infty\cdot a_1,...,\infty\cdot a_k\}\)</span>，则在<span class="math inline">\(A\)</span>中可重复的选<span class="math inline">\(n\)</span>个元素的组合数为多少？</p>
+<p>考虑：从<span class="math inline">\(A=\{\infty\cdot a_1,...,\infty\cdot a_k\}\)</span>中可重复的选<span class="math inline">\(n\)</span>个元素的每一种选法，与不定方程<span class="math inline">\(x_1+...+x_k=n\)</span>的非负整数解一一对应。</p>
+<p>即无限多重集的组合问题与不定方程的非负整数解问题等价。</p>
+<p>同时也与这样的计数问题等价：有n个相同的球，求将这些球分为k组的方案数（允许有的组没有球）。</p>
+<p>上述问题可以通过隔板法解决，通过r-1个板将n个球分成r份。r-1个板和n个球的每一种多重集排列都对应一个方案（想一想为什么一定要用多重排列？能不能使用插空？），即方案数为 <span class="math display">\[
+\left(                 %左括号
+  \begin{array}{ccc}   %该矩阵一共3列，每一列都居中放置
+     &amp; n+r-1 \\  %第一行元素
+    n &amp;   r-1\\  %第二行元素
+  \end{array}
+\right)                 %右括号
+=C_{n+r-1}^n
+\]</span></p>
+<hr>
+<h1 id="生成函数">生成函数</h1>
+<h2 id="普通生成函数">普通生成函数</h2>
+<h2 id="指数生成函数">指数生成函数</h2>
+<h2 id="狄利克雷生成函数">狄利克雷生成函数</h2>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/27/%E6%B4%9B%E8%B0%B7p2422%20%E8%89%AF%E5%A5%BD%E7%9A%84%E6%84%9F%E8%A7%89%20%E9%A2%98%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Co27Ti22">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Co27Ti22的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/27/%E6%B4%9B%E8%B0%B7p2422%20%E8%89%AF%E5%A5%BD%E7%9A%84%E6%84%9F%E8%A7%89%20%E9%A2%98%E8%A7%A3/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-27 21:38:20" itemprop="dateCreated datePublished" datetime="2021-05-27T21:38:20+08:00">2021-05-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-28 01:50:06" itemprop="dateModified" datetime="2021-05-28T01:50:06+08:00">2021-05-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="洛谷p2422-良好的感觉-题解">洛谷p2422 良好的感觉 题解</h1>
+<blockquote>
+<p>给定一个长为<span class="math inline">\(n(1\leq n\leq 10^5)\)</span>的数组，数组中元素非负，定义数组中某个区间的舒适度为区间中的最小值乘以区间中所有元素的和。求给定数组中最大舒适度。</p>
+</blockquote>
+<p>首先，第一眼就可以得出的：区间和可以用前缀和维护。</p>
+<p>其次，因为数组元素非负。区间越长，那区间和就越大。因此，只要选择了数组中的某个数作为要选择的区间的最小值，那么区间就唯一确定了。</p>
+<p>因此就可以考虑这种枚举方案：枚举每一个数组中的元素作为所选区间的最小值。然后就只需要<strong>找到以该元素作为最小值的最长区间，然后借助前缀和求该区间和</strong>即可。</p>
+<p>而找这样的一个区间可以用单调栈。因为确定的是区间的最小值，只要在最小值的左右两侧找到第一个比该最小值小的元素的位置，再往回退一步就是最长区间。</p>
+<p>然后用前缀和即可。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/05/%E6%95%B0%E8%AE%BA-%E5%8F%AF%E5%81%9A%E4%B8%8E%E4%B8%8D%E5%8F%AF%E5%81%9A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Co27Ti22">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Co27Ti22的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/05/%E6%95%B0%E8%AE%BA-%E5%8F%AF%E5%81%9A%E4%B8%8E%E4%B8%8D%E5%8F%AF%E5%81%9A/" class="post-title-link" itemprop="url">数论-可做与不可做以及经验总结</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-05 21:59:07" itemprop="dateCreated datePublished" datetime="2021-05-05T21:59:07+08:00">2021-05-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-21 10:04:33" itemprop="dateModified" datetime="2021-07-21T10:04:33+08:00">2021-07-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本人对于数学推式子情有独钟，然而许多ACM题都只是套了个数学题的皮，实际上考察的是枚举/优化枚举的能力。而有些题虽然看起来没有数学背景，却可以转化成数学题。</p>
+<p>本文就是一些做题的经验总结，以便下次见到类似题目时可以知道什么时候可以尝试推式子，什么时候应该收心直接枚举。</p>
+<h1 id="表整数为平方和枚举一个map存一个">表整数为平方和：枚举一个，map存一个</h1>
+<p>https://www.cnblogs.com/yhm138/p/13412320.html</p>
+<h1 id="表整数为立方和不可做map存1枚举2">表整数为立方和：不可做（map存1枚举2？）</h1>
+<h1 id="判二次方程是否是整数根">判二次方程是否是整数根：</h1>
+<p>对某特殊的二次方程，如<span class="math inline">\(x^2+mx+n=0\)</span>，其求根公式为<span class="math inline">\(x_{1,2}=\dfrac{-m\pm\sqrt{m^2-4n}}{2}\)</span></p>
+<p>分奇偶性分析，最终结论是只要<span class="math inline">\(\sqrt{m^2-4n}\)</span>为整数，就一定是整数根。</p>
+<p>该结论可以推广：<strong>任意整系数的<span class="math inline">\(n\)</span>次方程，其有理根<span class="math inline">\(r\)</span>一定是整数根。</strong></p>
+<p>  <strong>证明</strong>：</p>
+<p><span class="math inline">\(r\in \mathbb Q\implies r=\frac{p}{q}, gcd(p, q)=1\)</span></p>
+<p>带入方程，同乘以<span class="math inline">\(q^n\)</span>，并移项：<span class="math inline">\(p^n=-q(a_1p^{n-1}+a_2p^{n-2}q+...+a_nq^{n-1})\implies q\mid p^n\)</span></p>
+<p>若<span class="math inline">\(q\not=1\)</span>，取<span class="math inline">\(p&#39;\)</span>为<span class="math inline">\(q\)</span>的任意因子，<span class="math inline">\(p&#39;\mid p^n\)</span>，与<span class="math inline">\(gcd(p, q)=1\)</span>矛盾</p>
+<p>因此，<span class="math inline">\(gcd(p,q)=1\)</span>，<span class="math inline">\(r\)</span>为整数</p>
+<p align="right">
+证毕
+</p>
+<h1 id="axequiv-bpmod-mxaequiv-bpmod-m型同余方程"><span class="math inline">\(a^x\equiv b\pmod m,x^a\equiv b\pmod m\)</span>型同余方程</h1>
+<p>BSGS算法</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/04/%E6%A0%91%E5%BD%A2DP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Co27Ti22">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Co27Ti22的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/04/%E6%A0%91%E5%BD%A2DP/" class="post-title-link" itemprop="url">树形DP</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-04 20:27:16 / 修改时间：20:28:28" itemprop="dateCreated datePublished" datetime="2021-05-04T20:27:16+08:00">2021-05-04</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>p1122 最大子树和 子树问题</p>
+<p>p1352 没有上司的舞会<br>
+p2014 选课 树上背包 p2015 二叉苹果树 树上背包 https://www.luogu.com.cn/blog/stonejuice/solution-p2015</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/03/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Co27Ti22">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Co27Ti22的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/03/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">数学物理方法笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-03 23:22:48" itemprop="dateCreated datePublished" datetime="2021-05-03T23:22:48+08:00">2021-05-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-28 03:04:40" itemprop="dateModified" datetime="2021-06-28T03:04:40+08:00">2021-06-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>没什么好写的，不过是学习笔记而已。不过话说回来，将数学应用于物理，这可是我学物理的初心啊。。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/03/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95%E7%AC%94%E8%AE%B0/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/03/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -175,10 +689,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-05-03 01:24:44 / 修改时间：01:48:34" itemprop="dateCreated datePublished" datetime="2021-05-03T01:24:44+08:00">2021-05-03</time>
+              <time title="创建时间：2021-05-03 01:24:44" itemprop="dateCreated datePublished" datetime="2021-05-03T01:24:44+08:00">2021-05-03</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-04 20:41:47" itemprop="dateModified" datetime="2021-05-04T20:41:47+08:00">2021-05-04</time>
+              </span>
 
           
 
@@ -191,34 +711,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="线段树">线段树</h1>
-<blockquote>
-<p>引入：考虑这样一个问题</p>
-<p>我们需要对一个数组a进行两个操作：</p>
-<p>1.改变某个位置的值</p>
-<p>2.对数组下标为l~r的元素求和</p>
-<p>两个操作进行的次数基本相同。要求效率尽可能的高。</p>
-</blockquote>
-<p>这样的问题，或者是可以变形成这样类型的问题就可以通过线段树来维护了（事实上，线段树的应用范围还要更广一些。线段树可以维护的不仅是求和，而是<strong>满足交换律的运算</strong>，比如最值，异或等等）。</p>
-<p>注意线段树，前缀和，差分三者的使用范围。</p>
-<ol type="1">
-<li>前缀和可以O(1)时间内进行区间求和</li>
-<li>差分可以在O(1)时间内进行一部分区间操作（比如对区间中的每个数都加k）</li>
-<li>树状数组</li>
-</ol>
-<h2 id="权值线段树">权值线段树</h2>
-<p>普通线段树维护的是数组a，以便可以高效的进行区间修改和查询。 权值线段树维护的是数组<span class="math inline">\(a\)</span>的桶，可以用来求全局<span class="math inline">\(k\)</span>大，求<span class="math inline">\(a\)</span>中值在区间<span class="math inline">\([l,r]\)</span>中的数的个数。</p>
-<p>以数组<span class="math inline">\(a=[2,3,3,4,5,6,6]\)</span>,为例,建立起来的权值线段树为: <img src="https://img-blog.csdnimg.cn/20210302111653588.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MzA0Njk5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"> 本质上就是在数组<span class="math inline">\(a\)</span>的桶上建立的线段树.</p>
-<h3 id="线段树求三元逆序对">线段树求三元逆序对</h3>
-<blockquote>
-<p>给定一个数组a，求满足<span class="math inline">\(i&lt;j&lt;k，a[i]&gt;a[j]&gt;a[k]\)</span>的<span class="math inline">\((i,j,k)\)</span>三元组个数。</p>
-</blockquote>
-<p>思路：我们可以枚举<span class="math inline">\(j\)</span>，然后找下标<span class="math inline">\(j\)</span>的左侧有几个大于<span class="math inline">\(a[j]\)</span>的数，右侧有几个小于<span class="math inline">\(a[j]\)</span>的数。然后两者相乘就是<span class="math inline">\(j\)</span>在当前位置时逆序对的个数，枚举所有的<span class="math inline">\(j\)</span>然后求和即可。</p>
-<p>那么用线段树做这道题就是要维护一个数<span class="math inline">\(a[j]\)</span>的左侧有多少大于它的数（右侧同理）。</p>
-<p>首先看线段树如何维护： 任给一个集合<span class="math inline">\(a\)</span>，用<span class="math inline">\(t[val]\)</span>表示值<span class="math inline">\(val\)</span>在集合<span class="math inline">\(a\)</span>中出现的次数(即数组<span class="math inline">\(a\)</span>的桶)，那么<span class="math inline">\(\sum_{i=x}^{y}t[i]\)</span>表示的就是集合<span class="math inline">\(a\)</span>中值的范围在<span class="math inline">\([x,y]\)</span>中元素的个数。</p>
-<p>1.我们用树状数组维护数组<span class="math inline">\(t\)</span>。首先建立一个树状数组，范围是<span class="math inline">\(a\)</span>取值范围（如有必要可以离散化）。初始化全为<span class="math inline">\(0\)</span>。 2.倒序扫描给定的序列<span class="math inline">\(a\)</span>，对于每一个数<span class="math inline">\(a[i]\)</span>： (1):在树状数组中查询<span class="math inline">\(\sum_{i=0}^{a[i]-1}t[i]\)</span>。 (2):执行树状数组单点修改。因为扫描到<span class="math inline">\(a[i]\)</span>，<span class="math inline">\(val=a[i]\)</span>的出现次数增加了一次，而该树状数组维护的正是出现次数，树状数组需要修改。</p>
-<p>在这个算法中，扫描到<span class="math inline">\(a[i]\)</span>，树状数组中维护的是<span class="math inline">\(a[i]\)</span>后面的数据，而<span class="math inline">\(\sum_{i=0}^{a[i]-1}t[i]\)</span>就是求范围在<span class="math inline">\(0\)</span>到集合<span class="math inline">\(a[i]-1\)</span>中数的个数的</p>
-
+          <p>线段树是一种非常有用的数据结构，其主要作用是在数组元素可能会经常变化的前提下高效的进行对数组某区间中的元素进行求和。很多问题都可以抽象成这样的模型。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/03/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -260,93 +761,15 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-05-03 00:17:59 / 修改时间：01:20:05" itemprop="dateCreated datePublished" datetime="2021-05-03T00:17:59+08:00">2021-05-03</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>给定平面上的<span class="math inline">\(n\)</span>个点，求一个最小的圆使得所有的点都落在圆内。</p>
-</blockquote>
-<p>求解上述问题便是<span class="math inline">\(Welzl\)</span>算法的作用。其期望复杂度可以达到<span class="math inline">\(O(n)\)</span>。</p>
-<p>$ Welzl $算法的正确性基于一个定理：</p>
-<p>  <strong>定理</strong>：对于平面上任意<span class="math inline">\(n\)</span>个点，在其最小覆盖圆外取第<span class="math inline">\(n+1\)</span>个点。那么第<span class="math inline">\(n+1\)</span>个点一定在这<span class="math inline">\(n+1\)</span>个点的最小覆盖圆<strong>上</strong>。</p>
-<p>有了这个定理，就可以进行<span class="math inline">\(Welzl\)</span>算法了。先取3个点建立一个圆(不共线的三个点能确定一个圆，如果共线就取距离最远的两个点作为直径建立圆)，然后遍历剩下的所有点，对于一个遍历到的点<span class="math inline">\(k\)</span>：</p>
-<ul>
-<li>如果该点在圆内，那么最小覆盖圆不变。</li>
-<li>如果该点在圆外，根据上述定理，该点一定在想要求得的最小覆盖圆上，又因为三个点才能确定一个圆，所以需要枚举<span class="math inline">\(k\)</span>之前的点来找剩下的两个点。直到找到两个点，使得与<span class="math inline">\(k\)</span>确定的圆能够将<span class="math inline">\(k\)</span>之前的所有点包在里面(或者在圆上)。</li>
-</ul>
-<p>写成代码就是：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a[] 存放需要求最小圆覆盖的所有点，n 为点的数量</span></span><br><span class="line"><span class="comment">// radius 为圆半径，center为圆心，都是全局变量</span></span><br><span class="line"><span class="comment">// point_in 函数判断一个点是否在最小覆盖圆内</span></span><br><span class="line"><span class="comment">// circle_center 函数有两个重载，一个用两个点确定圆，一个用三个点确定圆</span></span><br><span class="line"><span class="comment">// dist 函数计算距离</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">min_circle_cover</span><span class="params">(point a[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	radius = <span class="number">0</span>;</span><br><span class="line">	center = a[<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (!<span class="built_in">point_in</span>(a[i])) &#123;</span><br><span class="line">			center = a[i];</span><br><span class="line">			radius = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (!<span class="built_in">point_in</span>(a[j])) &#123;</span><br><span class="line">					<span class="built_in">circle_center</span>(a[i], a[j], center);</span><br><span class="line">					radius = <span class="built_in">dist</span>(a[j], center);</span><br><span class="line">					<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; j; k++) &#123;</span><br><span class="line">						<span class="keyword">if</span> (!<span class="built_in">point_in</span>(a[k])) &#123;</span><br><span class="line">							<span class="built_in">circle_center</span>(a[i], a[j], a[k], center);</span><br><span class="line">							radius = <span class="built_in">dist</span>(a[k], center);</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>关于这个期望线性复杂度，我并不会证明。</p>
-<p>只要调用<span class="math inline">\(min\_circle\_cover\)</span>之前调用<span class="math inline">\(random\_shuffle\)</span>随机排列一下，就可以保证期望线性复杂度。</p>
-<p>这里给一个完整代码（洛谷p1742的AC代码）：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-8</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">double</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">fabs</span>(x) &lt; eps) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (x &gt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">point</span> &#123;</span></span><br><span class="line">	<span class="keyword">double</span> x, y;</span><br><span class="line">	<span class="built_in">point</span>() &#123;&#125;</span><br><span class="line">	<span class="built_in">point</span>(<span class="keyword">double</span> a, <span class="keyword">double</span> b) : <span class="built_in">x</span>(a), <span class="built_in">y</span>(b) &#123;&#125;</span><br><span class="line">	<span class="keyword">friend</span> point <span class="keyword">operator</span>-(<span class="keyword">const</span> point&amp; a, <span class="keyword">const</span> point&amp; b) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">point</span>(a.x - b.x, a.y - b.y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">double</span> <span class="title">norm</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">sqrt</span>(<span class="built_in">pow</span>(x, <span class="number">2</span>) + <span class="built_in">pow</span>(y, <span class="number">2</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;p[maxn];</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">dist</span><span class="params">(<span class="keyword">const</span> point&amp; a, <span class="keyword">const</span> point&amp; b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (a - b).<span class="built_in">norm</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">circle_center</span><span class="params">(point p0, point p1, point&amp; cp)</span> </span>&#123;</span><br><span class="line">	cp.x = (p0.x + p1.x) / <span class="number">2</span>;</span><br><span class="line">	cp.y = (p0.y + p1.y) / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">circle_center</span><span class="params">(point p0, point p1, point p2, point&amp; cp)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">double</span> a1 = p1.x - p0.x, b1 = p1.y - p0.y, c1 = (a1 * a1 + b1 * b1) / <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">double</span> a2 = p2.x - p0.x, b2 = p2.y - p0.y, c2 = (a2 * a2 + b2 * b2) / <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">double</span> d = (a1 * b2 - a2 * b1);</span><br><span class="line">	cp.x = p0.x + (c1 * b2 - c2 * b1) / d;</span><br><span class="line">	cp.y = p0.y + (a1 * c2 - a2 * c1) / d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">double</span> radius; point center;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">point_in</span><span class="params">(<span class="keyword">const</span> point&amp; p)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">cmp</span>(<span class="built_in">dist</span>(p, center) - radius) &lt; <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">min_circle_cover</span><span class="params">(point a[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	radius = <span class="number">0</span>;</span><br><span class="line">	center = a[<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) <span class="keyword">if</span> (!<span class="built_in">point_in</span>(a[i])) &#123;</span><br><span class="line">		center = a[i], radius = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) <span class="keyword">if</span> (!<span class="built_in">point_in</span>(a[j])) &#123;</span><br><span class="line">			<span class="built_in">circle_center</span>(a[i], a[j], center);</span><br><span class="line">			radius = <span class="built_in">dist</span>(a[j], center);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; j; k++) <span class="keyword">if</span> (!<span class="built_in">point_in</span>(a[k])) &#123;</span><br><span class="line">				<span class="built_in">circle_center</span>(a[i], a[j], a[k], center);</span><br><span class="line">				radius = <span class="built_in">dist</span>(a[k], center);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">double</span> x, y;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%lf%lf&quot;</span>, &amp;x, &amp;y);</span><br><span class="line">		p[i] = <span class="built_in">point</span>(x, y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">random_shuffle</span>(p, p + n);</span><br><span class="line">	<span class="built_in">min_circle_cover</span>(p, n);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%.10lf\n%.10lf %.10lf&quot;</span>, radius, center.x, center.y);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>例题：</p>
-<p>洛谷P1742 最小圆覆盖 <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1742">[传送门]</a></p>
-<p>洛谷P2533 [AHOI2012]信号塔 <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2533">[传送门]</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/02/%E6%A0%91%E5%BD%A2DP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Co27Ti22">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Co27Ti22的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/02/%E6%A0%91%E5%BD%A2DP/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-05-02 11:32:42" itemprop="dateCreated datePublished" datetime="2021-05-02T11:32:42+08:00">2021-05-02</time>
+              <time title="创建时间：2021-05-03 00:17:59" itemprop="dateCreated datePublished" datetime="2021-05-03T00:17:59+08:00">2021-05-03</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-03 00:17:07" itemprop="dateModified" datetime="2021-05-03T00:17:07+08:00">2021-05-03</time>
+                <time title="修改时间：2021-05-04 20:30:56" itemprop="dateModified" datetime="2021-05-04T20:30:56+08:00">2021-05-04</time>
               </span>
 
           
@@ -360,13 +783,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>p1122 最大子树和 子树问题</p>
-<p>p1352 没有上司的舞会<br>
-p2014 选课 树上背包 p2015 二叉苹果树 树上背包 https://www.luogu.com.cn/blog/stonejuice/solution-p2015</p>
-<p><span class="math display">\[
-\sum_{d\mid n}\mu(d) = 1
-\]</span></p>
-
+          <p>给定平面上的$n$个点，求一个最小的圆使得所有的点都落在圆内。高效的求解上述问题便是$Welzl$算法的作用。其期望复杂度可以达到$O(n)$。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/03/Welzl%E7%AE%97%E6%B3%95%E6%B1%82%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -416,7 +841,7 @@ p2014 选课 树上背包 p2015 二叉苹果树 树上背包 https://www.luogu.c
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-01 00:58:19" itemprop="dateModified" datetime="2021-05-01T00:58:19+08:00">2021-05-01</time>
+                <time title="修改时间：2021-06-08 00:31:41" itemprop="dateModified" datetime="2021-06-08T00:31:41+08:00">2021-06-08</time>
               </span>
 
           
@@ -430,279 +855,10 @@ p2014 选课 树上背包 p2015 二叉苹果树 树上背包 https://www.luogu.c
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><del>这个笔记被我从4月初拖到5月初才开始，最后恐怕更是要等到年末才能写完。</del></p>
-<h1 id="设计模式是什么">设计模式是什么？</h1>
-<p>​ 首先，设计模式是为了面向对象编程而服务的。设计模式这个词最早起源于建筑学，后来被软件领域吸收，指的是<strong>解决某种重复发生的问题的解决方案的核心</strong>。</p>
-<p>​ 也就是说，学习设计模式就是为了学习如何去做抽象，了解如何才是好的面向对象设计。</p>
-<p>100层楼无法再扩建地下室，但是软件领域有这样的需求。设计模式就是为了应对变化。</p>
-<p>解决复杂问题：分解/抽象 -&gt; 面向过程/面向对象</p>
-<p>使用了抽象原则的面向对象设计更具有复用性，能将变化造成的影响降到最小。</p>
-<p>本质上就是一套为了能够写出<strong>可复用面向对象代码</strong>而需要遵守的编程模式。</p>
-<h2 id="面向对象设计原则">面向对象设计原则</h2>
-<ul>
-<li><p>依赖倒置原则（DIP）</p>
-<p>高层模块（稳定）不应该依赖于底层模块（变化），二者都应该依赖于抽象（稳定）。</p>
-<p>抽象（稳定）不应该依赖于实现细节（变化），实现细节应该依赖与抽象（稳定）。</p></li>
-<li><p>开闭原则（OCP）</p>
-<p>对扩展开放，对更改封闭</p>
-<p>类模块应该是可扩展的，但是不可修改</p></li>
-<li><p>单一职责原则（SRP）</p>
-<p>一个类应该仅有一个引起它变化的原因</p>
-<p>变化的方向隐含着类的责任</p></li>
-<li><p>Liskov替换原则</p>
-<p>子类必须能够替换它们的基类（IS-A）</p>
-<p>继承表达类型抽象</p></li>
-<li><p>接口隔离原则（ISP）</p>
-<p>不应该强迫客户程序依赖它们不用的方法</p>
-<p>接口应该小而完备</p></li>
-<li><p>优先使用对象组合而不是类继承</p></li>
-<li><p>封装变化点</p>
-<p>使用封装来创建对象之间的分界层，让设计者可以在分界层一侧进行修改，而不会对另一侧产生不良的影响，从而实现层次间的松耦合。</p></li>
-<li><p>针对接口编程，而不是针对实现编程</p>
-<p>不将变量类型声明为某个具体类，而是声明为某个接口。</p>
-<p>客户程序无需获知对象的具体类型，只需要知道对象所具有的接口。</p>
-<p>减少系统中各部分的依赖关系，从而实现“高内聚，低耦合”的类型设计方案。</p></li>
-</ul>
-<p>以上仅是一些纲领性的原则。即便目前还不理解这些原则指的都是什么或者是不理解遵循这些原则的目的。没关系，后续将有各种（违背了上述原则的）例子。可以后期通过这些例子来帮助理解。</p>
-<h3 id="重构获得设计模式">重构获得设计模式</h3>
-<p>设计模式的要点在于<strong>“寻找变化点”</strong>，然后在变化点处应用设计模式，从而应对需求的变化。</p>
-<p>设计模式的应用不宜先入为主，不应该一上来就使用设计模式。Refactoring to Patterns才是普遍公认的方法。</p>
-<h3 id="重构的关键技法">重构的关键技法</h3>
-<ul>
-<li>静态/动态</li>
-<li>早绑定/晚绑定</li>
-<li>继承/组合</li>
-<li>编译时依赖/运行时依赖</li>
-<li>紧耦合/松耦合</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/08/%E6%91%98%E6%8A%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Co27Ti22">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Co27Ti22的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/04/08/%E6%91%98%E6%8A%84/" class="post-title-link" itemprop="url">摘抄</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-04-08 12:11:12" itemprop="dateCreated datePublished" datetime="2021-04-08T12:11:12+08:00">2021-04-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-30 23:50:48" itemprop="dateModified" datetime="2021-04-30T23:50:48+08:00">2021-04-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>摘抄自 博客-“白玉楼之梦”编写光影包教程的后记</p>
-<p align="right">
-&quot;一生倾注于文字 - 但它显然徒劳
-</p>
-<p align="right">
-在保存逝去的事物.
-</p>
-<p align="right">
-因为在我死后不能想象的未来
-</p>
-<p align="right">
-谁还会去读?&quot;
-</p>
-<p align="right">
--John Updike
-</p>
-<p>​ 我认为,撰写序言和后记大概是写作时最大的乐趣所在,有人用微笑曲线来比喻完成一件工作时最大的乐趣是在工作开始和结束时,毕竟从开头到结束的路途往往异常坎坷,在陶瓷国古人云&quot;行百里者半九十&quot;,在西方有人提出过&quot;圆周理论&quot;,指出一项工程的实际耗时往往是理想预期中的3倍 - 刚好是圆的直径与周长的比例,显然无论古今中外,填坑比挖坑要难是公认的.老实说,这篇文章在最后阶段的冲刺经历并不是很愉快,一边忍受着Winter Blue时的寻死觅活,一边面对着一次次被打破的自设Deadline,看着屏幕上支离破碎的图形无论如何调整也总是无法绘制正确,这种绝望感几次让我险些放弃,对程序员来说,&quot;It just doesn't work&quot;是最让人崩溃的情景,幸好我挺过来了! ☺</p>
-<p>​ 在当初撰写教程时的上百个日夜中,我曾想&quot;等写到后记时我一定要好好吐槽一番...&quot; 然而当我真写到这部分时却是无语凝噎,或许当时我真该把想说的话记下来 ? 为什么要写这篇教程啊,Shadersmod的光影包本身就是一个很小众的&quot;市场&quot;呢,或许是因为当初我单纯想把自己研究Shadersmod的经验记下来,又或是纯粹为了憋一通字装逼?大概是因为我喜欢追求没有人做过的事吧.四年前的初春时我也在撰写一篇教程,也同样是作为一个刚刚入门的半瓶子晃荡的新人在作死地撰写一篇专业文章,当时我在那篇教程中写出过一些啼笑皆非的结论(还好都被及时改掉了w),我相信这篇教程里或多或少也会有些不足,事实上,本文的上半部分在截稿时和撰稿之初已有一些差异,这篇文章的写作过程对我而言也是一次学习的过程,正如那句玩笑&quot;学习一个语言的最好办法是去写一个它的解析器&quot;,学习一个事物的最好方式或许是写一部它的教程,因为这会强迫你事无巨细地了解它的每一方面,如果不求甚解的话,我大可大段地从别处复制粘贴代码到我的光影包,幸好我并没有那样做,而是选择尽可能将那些晦涩难懂的原理用朴实的语言转述出来,有人将之称为&quot;二手知识&quot;,比喻为&quot;吃别人嚼烂了吐出来的苹果&quot;,而我更乐意将其比喻做&quot;吃别人烹调出的熟食&quot;.</p>
-<p>​ 诚然,如果我们每个人都有一个极漫长的寿命,那么学习很可能会被作为一门艺术,或许我们可以回到像古希腊的学院一样,让学生们与名师面对面以讨论的方式学习,我们将有无穷无尽的时间,去钻研我们喜爱的学科,然而现实是社会为教育分配的时间已经快到了人的&quot;性价比&quot;的底线了,在这个知识和信息都在爆炸的年代,学习已经成了我们日常生活中,像呼吸、吃饭、撸-唔...我是说&quot;锻炼&quot;,像锻炼一样重要的事情.尽管学习没有捷径,但我们都知道在两点间位移不变的情况下,是可以有无数种路程的,找出一条路程最短的轨迹,是教育者们永恒的追求,我写出这套&quot;二手知识&quot;,也是为了降低入门难度,让更多人能更快地跳入图形学这个大坑 (笑)</p>
-<p>​ 说起来,当时我又是怎么跳进这个大坑的啊,我印象中是13年10月,当时ici2cc给我发了个截图,是在Minecraft中渲染一个超低清的⑨,没错,这个就是后来的CustomSteve的原型,当时问我搞不搞,我当然是滋词,于是就跳入大坑了,当时是学着用传统的立即模式在Minecraft中绘制模型,具体的过程记不清了,总之当我在屏幕上终于绘制出一个不畸形的没贴图的小⑤时,我整个人都感觉生无可恋了(笑^2) 或许这种&quot;视觉刺激&quot;远超过之前写过的任何程序吧,至此我就决定去跳这个大坑了,然而那时我还仅停留在OpenGL的API使用上,对底层的原理和更复杂的着色算法还一无所知,就这样混混沌沌地到了2015年的8月,我决定写这篇教程为止,那么现在呢?唔...我想是只学到了一个,就是从当初的什么都不知道,到现在的&quot;知道自己什么都不知道&quot; ? 在这段学习过程中,恐怕是为数不多的在考前复习之外的情境中,体会到&quot;当我学得越多,觉得自己懂得越少&quot;的感觉了.</p>
-<p>​ 考虑到这段后记正有向学期总结发展的趋势,我们还是来聊一些&quot;严肃&quot;的话题吧,或许你读完这篇教程后依然不能写出一个基本的着色器(当然我希望我的读者们并不是随便沿着超链接爬行的网络醉汉),也许你依然无法理解那些理论,但至少,我希望你能做到不惑,曾几何时计算机系统(但不要提计算机系统结构!那科我挂了!5天后的2月19日我还要去补考!)在外行眼中甚至如同本文开篇提到的&quot;黑魔法&quot;一样,就像祖父辈的人曾认为电灯要靠人点火,收音机里面藏了个人似的,而现如今虽然计算机与它的知识已经普及,但在这个巨大的学科当中不同分支间的隔阂也日益加剧,单是图形系统这一部分,对于日常工作不涉及到的人来说,也几乎与&quot;蛊术&quot;无疑,或许你读完这篇文章中不会去真的动手写一个光影包(如果你真的要这样做的话,小心那很累哦),但至少你不会再困惑于那些神奇的光影魔法是怎样做到的,不会再在UnityAssetStore上花几十刀买了一个五毛特效还感激涕零地给个好评. ?</p>
-<p>​ 话题就这样莫名转到了U3D的黑枪上,我有个习惯是差不多每隔几个月就去跑一趟北京图书大厦,从新书的主题上就可以大致看出时下流行的技术,不过由于写作周期的制约,往往是在某项技术大火后的几个月才会有成书,比如Gradle是在去年9月才有了第一本中文书,然而这对U3D却不是问题,自从在14年初占领了大半个游戏类书架(我在此文中还吐槽过)后,你几乎可以仅凭U3D图书的标题就能知道U3D最新的版本号,足以精确到minor.相比之下,UE我在两年前看到过一两本针对UE3的,针对UE4的我好像没有见到,就连两只脚已经全踏进棺材的XNA都尚有一本书在架(虽然没有看它的封面,不知道是不是那本鱼书),而当初在2D领域与U3D平起平坐的Cocos2d-x现在也只剩寥寥几本了,看起来当年在坛子上一个萌二说的&quot;今后游戏界将只剩下U3D一个引擎&quot;预言快要成真了?好吧,我不知道这会不会成为现实,但我可以肯定André LaMothe在《Windows游戏编程大师技巧》中的结论&quot;一个初学者能在3~6个月中开发出一个Asteroids(爆破彗星)的复刻版就已经很不容易了&quot;已经失效了,甚至于这句话的上一句,&quot;想要开发一个和DOOM或Quake水平相当的游戏作为处女作,显然这是不可能的&quot;,都已经快要失效,软件工程的荒蛮时代已经过去,我们可以尽情地站在前人的成果上攀登高塔,能有一个降低门槛、节省时间的东西,何乐而不为呢?既然如此,那为何现在还会有人在学习底层的技术?显然我们的目的不仅仅是省一笔钱,&quot;在一个免费的3A级游戏引擎横行的时代,我们的工作还有意义吗&quot;,这是JME引擎 - 一个老牌Java游戏引擎 - 的开发者之一,在去年UE4和U3D宣布免费后,于官博上发的一篇文章的标题,在描述二线引擎存在的意义时,作者写道&quot;如果Unity和UE是游戏开发中的乐高玩具,那么JME就是一个怪蜀黍,给了你一把能打开他的塞满各种电动机床和裸露接线的工作间的钥匙,并且嘱咐你'拜托别把自己命玩进去'(当然,这只是一种逗闷子的夸张比喻,事实上我们是很重视用户体验的).大多数孩子在面对这种程度的自由时都会感到无所适从,但总会有人能做出在安全范围内几乎不可想象的东西.&quot;U3D、UE4作为一线的免费引擎,总能满足大部分人的需求,但是总会有人在寻求另一种可能,在两极争霸(甚至更糟的,单极称霸)的背景下开辟一个新的理想国;总会有人愿意去研究终不见天日的底层,为最重要却又最不引人瞩目的基础件添砖加瓦;也总会有人愿意牺牲时间将自己的成果或经验总结成文字、图片、视频或音频,以各种方式传授给后来者.有一段时间我也在给一个Java游戏引擎(但不是JME,猜猜是哪个?☺)写基础件,但工作还是差最后一点,但愿尽快能完成吧.最近一次去书店看到那个引擎居然已经有两本中文书了呢,可喜可贺啊!</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/07/%E5%87%BA%E5%8F%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Co27Ti22">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Co27Ti22的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/04/07/%E5%87%BA%E5%8F%91/" class="post-title-link" itemprop="url">出发</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-04-07 22:36:41" itemprop="dateCreated datePublished" datetime="2021-04-07T22:36:41+08:00">2021-04-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-03 00:33:51" itemprop="dateModified" datetime="2021-05-03T00:33:51+08:00">2021-05-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="与其感慨路难行不如马上出发">与其感慨路难行，不如马上出发</h1>
-<p>从今天起，这个博客将记录我的学习和兴趣。</p>
-<p>好好学物理与计算机，向着梦想进发。</p>
-<p>趁着还有心力和体力，把想学的东西学了，把想做的事做了。</p>
-<figure>
-<img src="/2021/04/07/%E5%87%BA%E5%8F%91/sc1.jpg" alt="sc1"><figcaption>sc1</figcaption>
-</figure>
-<p align="right">
-2021—4—07
-</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/24/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%88%90%E4%B8%BAACM%E6%95%B0%E5%AD%A6%E9%80%89%E6%89%8B-%E6%95%B0%E8%AE%BA%E7%AF%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Co27Ti22">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Co27Ti22的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/24/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%88%90%E4%B8%BAACM%E6%95%B0%E5%AD%A6%E9%80%89%E6%89%8B-%E6%95%B0%E8%AE%BA%E7%AF%87/" class="post-title-link" itemprop="url">从零开始成为ACM数学选手-数论篇</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-02-24 01:48:22" itemprop="dateCreated datePublished" datetime="2021-02-24T01:48:22+08:00">2021-02-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-03 04:48:01" itemprop="dateModified" datetime="2021-05-03T04:48:01+08:00">2021-05-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>本篇为数论篇。虽然这个博客本质就是我的学习笔记，但我希望尽量将它写成一个讲义，注重思路而不是仅仅是笔记。并且因为目的是为了成为ACM数学选手，所以其中会讲一些重要算法的原理，给出证明，讲解用途，代码，最后是例题。</p>
+          <p>我们几乎无法为一个100层的楼再扩建一个地下室，但是在软件领域常常会有类似这样的需求。在我们的软件设计中应用设计模式就是为了增加软件应对变化的能力，使得实现这样的需求成为可能。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/02/24/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%88%90%E4%B8%BAACM%E6%95%B0%E5%AD%A6%E9%80%89%E6%89%8B-%E6%95%B0%E8%AE%BA%E7%AF%87/">
+              <a class="btn" href="/2021/04/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -724,6 +880,9 @@ p2014 选课 树上背包 p2015 二叉苹果树 树上背包 https://www.luogu.c
 
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -790,7 +949,7 @@ p2014 选课 树上背包 p2015 二叉苹果树 树上背包 https://www.luogu.c
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
