@@ -20,14 +20,18 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="组合数学 基础的排列排列数与组合数 排列组合 \(n\)个元素的\(m\)排列数为： \[ A_n^m&#x3D;\dfrac{n!}{(n-m)!} \] \(n\)个元素的\(m\)组合数为： \[ C_n^m&#x3D;\dfrac{n!}{m!(n-m)!} \] 排列相比于组合的区别是排列有序，组合无序。\(m\)排列由顺序产生的不同情况有\(m!\)种。因此\(C_n^m &#x3D;\dfrac{">
+<meta property="og:type" content="article">
 <meta property="og:title" content="组合数学">
 <meta property="og:url" content="http://example.com/2021/07/28/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/index.html">
 <meta property="og:site_name" content="Co27Ti22的博客">
+<meta property="og:description" content="组合数学 基础的排列排列数与组合数 排列组合 \(n\)个元素的\(m\)排列数为： \[ A_n^m&#x3D;\dfrac{n!}{(n-m)!} \] \(n\)个元素的\(m\)组合数为： \[ C_n^m&#x3D;\dfrac{n!}{m!(n-m)!} \] 排列相比于组合的区别是排列有序，组合无序。\(m\)排列由顺序产生的不同情况有\(m!\)种。因此\(C_n^m &#x3D;\dfrac{">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-07-28T03:34:15.000Z">
-<meta property="article:modified_time" content="2021-07-28T03:34:15.530Z">
+<meta property="article:modified_time" content="2021-07-28T03:36:09.790Z">
 <meta property="article:author" content="Co27Ti22">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/2021/07/28/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">
@@ -177,8 +181,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-07-28 11:34:15" itemprop="dateCreated datePublished" datetime="2021-07-28T11:34:15+08:00">2021-07-28</time>
+              <time title="创建时间：2021-07-28 11:34:15 / 修改时间：11:36:09" itemprop="dateCreated datePublished" datetime="2021-07-28T11:34:15+08:00">2021-07-28</time>
             </span>
 
           
@@ -192,7 +197,191 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="组合数学">组合数学</h1>
+<h2 id="基础的排列排列数与组合数">基础的排列排列数与组合数</h2>
+<h3 id="排列组合">排列组合</h3>
+<p><span class="math inline">\(n\)</span>个元素的<span class="math inline">\(m\)</span>排列数为： <span class="math display">\[
+A_n^m=\dfrac{n!}{(n-m)!}
+\]</span> <span class="math inline">\(n\)</span>个元素的<span class="math inline">\(m\)</span>组合数为： <span class="math display">\[
+C_n^m=\dfrac{n!}{m!(n-m)!}
+\]</span></p>
+<p>排列相比于组合的区别是排列有序，组合无序。<span class="math inline">\(m\)</span>排列由顺序产生的不同情况有<span class="math inline">\(m!\)</span>种。因此<span class="math inline">\(C_n^m =\dfrac{A_n^m}{m!}\)</span>。</p>
+<p><strong>注意到<span class="math inline">\(C_n^m=\frac{n-m+1}{m}C_n^{m-1}\)</span>.因此可以递推求<span class="math inline">\(n\)</span>​相同的组合数.​</strong></p>
+<hr>
+<h3 id="二项式定理">二项式定理</h3>
+<p>二项式定理 <span class="math display">\[
+(x+y)^n=\sum_{k=0}^nC_n^mx^{n-k}y^k
+\]</span> 当取<span class="math inline">\(y=1\)</span>时， <span class="math display">\[
+(1+x)^n=\sum_{k=0}^nC_n^mx^{k}
+\]</span> 代入<span class="math inline">\(x=1\)</span>，有<span class="math inline">\(\sum\limits_{k=0}^nC_n^k=2^n\)</span></p>
+<p><span class="math inline">\(x=-1\)</span>，有<span class="math inline">\(\sum\limits_{k=0}^n(-1)^kC_n^k=0\)</span></p>
+<p><span class="math inline">\(x=2\)</span>，有<span class="math inline">\(\sum\limits_{k=0}^n2^kC_n^k=3^n\)</span></p>
+<hr>
+<h3 id="组合恒等式">组合恒等式</h3>
+<ol type="1">
+<li><p>由二项式定理推出的<span class="math inline">\(\sum\limits_{k=0}^nC_n^k=2^n\)</span>等</p></li>
+<li><p>组合数性质<span class="math inline">\(C_n^k=C_n^{n-k}\)</span></p></li>
+<li><p><span class="math inline">\(kC_n^k=nC_{n-1}^{k-1}\)</span></p></li>
+<li><p><span class="math inline">\(C_n^rC_r^k=C_n^kC_{n-k}^{r-k}\)</span></p>
+<p>考虑该恒等式的组合意义：左侧为从<span class="math inline">\(n\)</span>个人中选出<span class="math inline">\(r\)</span>个干部，再从<span class="math inline">\(r\)</span>个干部中选出<span class="math inline">\(k\)</span>个领导，右侧为从<span class="math inline">\(n\)</span>个人中先选出<span class="math inline">\(k\)</span>个领导，再从剩下的<span class="math inline">\(n-k\)</span>个人中选出<span class="math inline">\(r-k\)</span>个干部。描述的是同一计数过程，因此左右恒等。同时注意到恒等式3为该式的特例（<span class="math inline">\(k\)</span>，<span class="math inline">\(n\)</span>可以看作<span class="math inline">\(C_k^1,C_n^1\)</span>）。</p></li>
+<li><p>帕斯卡恒等式 <span class="math inline">\(C_{n+1}^k=C_n^k+C_n^{k-1}\)</span></p>
+<p>考虑一个有<span class="math inline">\(n+1\)</span>个元素的集合<span class="math inline">\(A\)</span>，其中有一个元素为<span class="math inline">\(a\)</span>。等式左侧表示从集合<span class="math inline">\(A\)</span>中选取<span class="math inline">\(k\)</span>个元素的方法数。右侧表示该方法数等于：1.如果这<span class="math inline">\(k\)</span>个元素中包含元素<span class="math inline">\(a\)</span>，这需要在剩下的<span class="math inline">\(n\)</span>个元素中再取<span class="math inline">\(k-1\)</span>个。2.如果这<span class="math inline">\(k\)</span>个元素中不包含元素<span class="math inline">\(a\)</span>，这需要在剩下的<span class="math inline">\(n\)</span>个元素中再取<span class="math inline">\(k\)</span>个。</p></li>
+<li><p>范德蒙恒等式 <span class="math inline">\(C_{n+m}^k=\sum_{r=0}^kC_n^{k-r}C_m^r\)</span></p>
+<p>等式两侧描述的都是从含<span class="math inline">\(n+m\)</span>个元素的集合中选<span class="math inline">\(k\)</span>个元素的过程。</p></li>
+</ol>
+<hr>
+<h3 id="组合数前缀和">组合数前缀和</h3>
+<p>记<span class="math inline">\(\sum_{i=0}^mC_n^i=S(n,m)\)</span>.​</p>
+<p><span class="math inline">\(S(n,m)\)</span>在<span class="math inline">\(n,m\)</span>两个方向上都可以递推的求.</p>
+<ol type="1">
+<li><span class="math inline">\(S(n,m)=S(n,m-1)+C_n^m\)</span>.</li>
+<li><span class="math inline">\(S(n,m)=2S(n-1,m)-C_{n-1}^m\)</span>.(由帕斯卡恒等式)</li>
+</ol>
+<p>处理组合数求和或者是带阶乘的复杂式子求和时,可以考虑将阶乘化为组合数.首选当然是利用恒等式化简,这时帕斯卡恒等式和范德蒙恒等式以及<span class="math inline">\(C_n^rC_r^k=C_n^kC_{n-k}^{r-k}\)</span>往往有大用(能将循环变量从多个组合数上变到一个组合数上).</p>
+<p>如果没有办法,可以考虑使用组合数前缀和.</p>
+<p>  <strong>例</strong>:求 <span class="math display">\[
+\begin{aligned}
+&amp;1.\sum_{i=0}^k \dfrac{k!}{i!(k-i)!} \dfrac{n!}{(n-i)!} \dfrac{m!}{(m-(k-i))!}\\
+&amp;2.\sum_{i=0}^k \dfrac{n!}{(n-i)!} \dfrac{m!}{(m-(k-i))!}
+\end{aligned}
+\]</span>   <strong>答案</strong>: <span class="math display">\[
+\begin{aligned}
+&amp;1.k!C_{n+m}^k\\
+&amp;2.\dfrac{n!m!}{(n+m-k)!}\sum_{i=n-k}^{n}C_{n+m-k}^i
+\end{aligned}
+\]</span></p>
+<p>顺带一提,如果要求多组不同的<span class="math inline">\(S(n,m)\)</span>可以用莫队做.</p>
+<h2 id="多重集上的排列与组合">多重集上的排列与组合</h2>
+<h3 id="多项式定理">多项式定理</h3>
+<p><span class="math display">\[
+(x_1+...+x_k)^n=\sum_{n_1+...+n_k=n}
+\left(                 %左括号
+  \begin{array}{ccc}   %该矩阵一共3列，每一列都居中放置
+     &amp; n &amp; \\  %第一行元素
+    n_1 &amp; ... &amp; n_k\\  %第二行元素
+  \end{array}
+\right)                 %右括号
+x_1^{n_1}x_2^{n_2}...x_k^{n_k}
+\]</span></p>
+<p>其中，<span class="math inline">\(\left( %左括号  \begin{array}{ccc} %该矩阵一共3列，每一列都居中放置  &amp; n &amp; \\ %第一行元素  n_1 &amp; ... &amp; n_k\\ %第二行元素  \end{array} \right) %右括号\)</span>为多项式系数。现在考虑这个系数如何计算：</p>
+<p><span class="math inline">\(x_1^{n_1}x_2^{n_2}...x_k^{n_k}\)</span>项表示<span class="math inline">\((x_1+...+x_k)^n\)</span>的<span class="math inline">\(n\)</span>个括号中一定有<span class="math inline">\(n_1\)</span>个选择了<span class="math inline">\(x_1\)</span>这一项，<span class="math inline">\(n_2\)</span>个选择了<span class="math inline">\(x_2\)</span>这一项，<span class="math inline">\(n_3\)</span>个选择了<span class="math inline">\(x_3\)</span>这一项......选择的方案数即为多项式系数<span class="math inline">\(\left( %左括号  \begin{array}{ccc} %该矩阵一共3列，每一列都居中放置  &amp; n &amp; \\ %第一行元素  n_1 &amp; ... &amp; n_k\\ %第二行元素  \end{array} \right) %右括号\)</span>。</p>
+<p>而该选择的方案数可以这样算：先从<span class="math inline">\(n\)</span>个括号中选<span class="math inline">\(n_1\)</span>个选择<span class="math inline">\(x_1\)</span>的，再从<span class="math inline">\(n-n_1\)</span>中选<span class="math inline">\(n_2\)</span>个选择<span class="math inline">\(x_2\)</span>的...最终结果为 <span class="math display">\[
+\left(                 %左括号
+  \begin{array}{ccc}   %该矩阵一共3列，每一列都居中放置
+     &amp; n &amp; \\  %第一行元素
+    n_1 &amp; ... &amp; n_k\\  %第二行元素
+  \end{array}
+\right)                 %右括号
+=
+C_n^{n_1}C_{n-n_1}^{n_2}...C_{n_k}^{n_k}=\dfrac{n!}{n_1!n_2!...n_k!}
+\]</span></p>
+<hr>
+<h3 id="多重集">多重集</h3>
+<p>多重集是一个允许有重复的集合，若一个多重集中有<span class="math inline">\(n_i\)</span>个<span class="math inline">\(a_i\)</span>，则即为<span class="math inline">\(A=\{n_1\cdot a_1,...,n_k\cdot a_k\}\)</span>。其中<span class="math inline">\(n_i\)</span>可以取<span class="math inline">\(\infty\)</span>，表示有无穷多个<span class="math inline">\(a_i\)</span>。</p>
+<h4 id="无限多重集的排列">无限多重集的排列</h4>
+<p><span class="math inline">\(A=\{\infty\cdot a_1,...,\infty\cdot a_k\}\)</span>。A的一个<span class="math inline">\(m\)</span>排列数显然是<span class="math inline">\(k^m\)</span>(每个位置上有<span class="math inline">\(a_1,...,a_kk\)</span>种选择，共<span class="math inline">\(m\)</span>个位置)。</p>
+<h4 id="有限多重集的排列">有限多重集的排列</h4>
+<p><span class="math inline">\(A=\{n_1\cdot a_1,...,n_k\cdot a_k\},n_1+...+n_k=n\)</span>。<span class="math inline">\(A\)</span>中所有元素的排列可以这样算：先从<span class="math inline">\(n\)</span>个位置中选<span class="math inline">\(n_1\)</span>个位置放<span class="math inline">\(a_1\)</span>，再从<span class="math inline">\(n-n_1\)</span>中选<span class="math inline">\(n_2\)</span>个位置放<span class="math inline">\(a_2\)</span>......</p>
+<p>由多项式系数的计算方法可知，<span class="math inline">\(A\)</span>的一个全排列就是<span class="math inline">\(\left( %左括号  \begin{array}{ccc} %该矩阵一共3列，每一列都居中放置  &amp; n &amp; \\ %第一行元素  n_1 &amp; ... &amp; n_k\\ %第二行元素  \end{array} \right) %右括号\)</span>。<strong>有限多重集的排列对应着多项式系数</strong>。</p>
+<p>此外，有限多重集排列问题也可以用<strong>指数生成函数</strong>来解决。</p>
+<p>例（<strong>不同物品放入不同盒子</strong>）：将<span class="math inline">\(mn\)</span>个不同元素放入<span class="math inline">\(m\)</span>个不同的盒子（要求每个盒子有<span class="math inline">\(n\)</span>个元素）的方案数是多少？</p>
+<p><span class="math inline">\(C_{mn}^{n}C_{(m-1)n}^{n}...C_{n}^{n}=\dfrac{(mn)!}{(n!)^m}\)</span></p>
+<p><strong>不同物品放入不同盒子的方案数对应着多项式系数</strong>。</p>
+<p>例（<strong>不同物品放入相同盒子</strong>）：将<span class="math inline">\(mn\)</span>个不同元素放入<span class="math inline">\(m\)</span>个相同的盒子（要求每个盒子有<span class="math inline">\(n\)</span>个元素）的方案数是多少？</p>
+<p>如果将将<span class="math inline">\(mn\)</span>个不同元素放入<span class="math inline">\(m\)</span>个不同的盒子，那么结果就为<span class="math inline">\(\left( %左括号  \begin{array}{ccc} %该矩阵一共3列，每一列都居中放置  &amp; n &amp; \\ %第一行元素  n_1 &amp; ... &amp; n_k\\ %第二行元素  \end{array} \right) %右括号\)</span>。为了消除差别（类似排列数与组合数的差别），需要除掉一个<span class="math inline">\(m!\)</span>。因此结果为<span class="math inline">\(\dfrac{\left( %左括号  \begin{array}{ccc} %该矩阵一共3列，每一列都居中放置  &amp; n &amp; \\ %第一行元素  n_1 &amp; ... &amp; n_k\\ %第二行元素  \end{array} \right) %右括号}{m!}=\dfrac{(mn)!}{(n!)^mm!}\)</span></p>
+<p>注：事实上，像这样的将不同的元素放入相同盒子的问题一般只能给出一个包含<strong>第二类斯特林数</strong>的和式结果。之所以这个例子能够得到这样的结果是因为要求每个盒子中元素个数相同。</p>
+<h4 id="无限多重集的组合">无限多重集的组合</h4>
+<p><span class="math inline">\(A=\{\infty\cdot a_1,...,\infty\cdot a_k\}\)</span>。从A中选<span class="math inline">\(m\)</span>个元素的方案数为<span class="math inline">\(C_{m+k-1}^{k-1}=C_{m+k-1}^m\)</span>。</p>
+<p>考虑这样一个计数过程：有<span class="math inline">\(m\)</span>个位置和<span class="math inline">\(k-1\)</span>个隔板（<span class="math inline">\(k-1\)</span>个隔板将位置分成<span class="math inline">\(k\)</span>份）。第<span class="math inline">\(i\)</span>个和第<span class="math inline">\(i+1\)</span>个隔板之间的位置数即为选择<span class="math inline">\(a_i\)</span>的个数。</p>
+<p>同时无限多重集问题等价于不定方程的非负整数解问题，即<span class="math inline">\(A=\{\infty\cdot a_1,...,\infty\cdot a_k\}\)</span>的<span class="math inline">\(m\)</span>排列数与不定方程 <span class="math display">\[
+x_1+x_2+...+x_k=m
+\]</span> 的非负整数解个数相同。</p>
+<h4 id="有限多重集的组合">有限多重集的组合</h4>
+<p><span class="math inline">\(A=\{n_1\cdot a_1,...,n_k\cdot a_k\},n_1+...+n_k=n\)</span>。求<span class="math inline">\(A\)</span>的一个<span class="math inline">\(m\)</span>-组合或者是一些无限多重集组合问题的变体（如某个元素只能选择偶数个，某个元素必须选择两个以上等等）虽然有些可以运用一些技巧求解，但一般的解决方法需要一些更高级的计数技巧（生成函数）。</p>
+<h2 id="把物体放入盒子">把物体放入盒子</h2>
+<p>许多计数过程都可以等价为把物体放入盒子的过程。物体和盒子都可能是相同的，也可能是不同的。在有限多重集排列那里以及给出了两种情况。</p>
+<p><strong>不同物品放入不同盒子</strong></p>
+<p>把n个不同物体放入k个相同的盒子，使得有n_i个物体放入第i个盒子的方案数为<span class="math inline">\(\left( %左括号  \begin{array}{ccc} %该矩阵一共3列，每一列都居中放置  &amp; n &amp; \\ %第一行元素  n_1 &amp; ... &amp; n_k\\ %第二行元素  \end{array} \right) %右括号\)</span>。</p>
+<p><strong>不同物品放入相同盒子</strong></p>
+<p>无法给出闭公式，涉及到<strong>第二类斯特林数</strong>。</p>
+<p><strong>相同物体放入相同盒子</strong></p>
+<p>无法给出闭公式，涉及到<strong>整数划分</strong>。</p>
+<p><strong>相同物体放入不同盒子</strong></p>
+<p>n个相同物体放入k个不同盒子。等价为无限多重集的组合。方案数为<span class="math inline">\(C_{n+k-1}^{k-1}\)</span></p>
+<h2 id="整数划分">整数划分</h2>
+<h2 id="斯特林数卡特兰数">斯特林数/卡特兰数</h2>
+<h2 id="求解线性递推关系">求解线性递推关系</h2>
+<p>一个线性递推公式是形如 <span class="math display">\[
+a_n-b_1a_{n-1}-...-b_ka_{n-k}=f(n)
+\]</span> 的递推公式.当<span class="math inline">\(f(n)\equiv 0\)</span>是其为<strong>齐次</strong>的,否则为<strong>非齐次</strong>的.</p>
+<p>其中,若<span class="math inline">\(b_i\)</span>均为与<span class="math inline">\(n\)</span>无关的常数,该公式称为<strong>常系数</strong>,否则称为<strong>非常系数</strong>.</p>
+<p><strong>线性</strong>是指该公式中<span class="math inline">\(a_{n-k}\)</span>项均为一次的.</p>
+<h3 id="常系数齐次">常系数齐次</h3>
+<p>对于一个其次递推公式<span class="math inline">\(a_n-b_1a_{n-1}-...-b_ka_{n-k}=0\)</span>，与之对应的<strong>特征方程</strong>为<span class="math inline">\(x^k-b_1x^{k-1}-...-b_k=0\)</span>.</p>
+<ul>
+<li>当特征方程的<span class="math inline">\(k\)</span>个复根两两不同(分别记为<span class="math inline">\(q_1,q_2,...,q_k\)</span>).</li>
+</ul>
+<p>数列的通项必然形如 <span class="math display">\[
+a_n=c_1q_1^n+...+c_kq_k^n
+\]</span> 然后带入初值解系数即可.</p>
+<ul>
+<li>当<span class="math inline">\(q_1=q_2=...=q_i\)</span>为一个<span class="math inline">\(i\)</span>重根.</li>
+</ul>
+<p>将<span class="math inline">\(a_n=c_1q_1^n+...+c_kq_k^n\)</span>中的<span class="math inline">\(c_1q_1^n+...+c_iq_i^n\)</span>替换为<span class="math inline">\(c_1q_1^n+c_2nq_1^n+...+c_in^{i-1}q_i^n\)</span>即为递推方程解的形式.</p>
+<h3 id="常系数非齐次">常系数非齐次</h3>
+<p>非齐次方程的解等于齐次方程的解(通解)加上非齐次方程的一个特解.</p>
+<p>而非齐次方程的特解我们选择<strong>猜</strong>一个出来.</p>
+<ul>
+<li><strong>当<span class="math inline">\(f(n)\)</span>为<span class="math inline">\(n\)</span>的<span class="math inline">\(t\)</span>次多项式时,特解往往也是<span class="math inline">\(n\)</span>的<span class="math inline">\(t\)</span>次多项式</strong>.</li>
+<li><strong>当<span class="math inline">\(f(n)=\alpha\beta^n\)</span>时,若<span class="math inline">\(\beta\)</span>为对应特征方程的<span class="math inline">\(i\)</span>重特征根,其特解通常为<span class="math inline">\(pn^i\beta^n\)</span>形式,否则特解往往具有<span class="math inline">\(p\beta^n\)</span>形式</strong>.</li>
+</ul>
+<h3 id="某些非常系数其次方程">某些非常系数其次方程</h3>
+<p>对形如<span class="math inline">\(f(n)a_n=g(n)a_{n-1}+h(n)\)</span>的方程 $$ \begin{aligned} &amp;f(n)a_n=g(n)a_{n-1}+h(n)\ &amp;a_n=a_{n-1}+    将变形为\</p>
+<p>&amp;a_n=a_{n-1}+\ &amp;(n)a_n=(n-1)a_{n-1}+(n) \end{aligned} $$ 将<span class="math inline">\(\varphi(n)a_n\)</span>看作新数列,即可求解.</p>
+<h3 id="可变换为线性的方程">可变换为线性的方程</h3>
+<p>对方程 <span class="math display">\[
+T(n)=nT^2(n/2)
+\]</span> 令<span class="math inline">\(n=2^k\)</span>,做变量代换<span class="math inline">\(a_k={\rm log}T(2^k)\)</span>,即得<span class="math inline">\(a_k={\rm log}2^k+2a_{k-1}\)</span>.</p>
+<h3 id="其他类型的方程">其他类型的方程</h3>
+<p>其他类型的方程(包括可变换为线性的方程),都推荐使用生成函数求解.</p>
+<h2 id="生成函数">生成函数</h2>
+<p>数列<span class="math inline">\(\{a_n\}\)</span>的生成函数是无穷级数 <span class="math display">\[
+F(x)=\sum_{n=0}^{\infty}a_nx^n
+\]</span> 在使用生成函数求解计数问题时，通常将它们考虑成<strong>形式幂级数</strong>。因此它们被视为代数对象，收敛性问题被忽略了。</p>
+<p>生成函数常用来<strong>解决有限多重集的组合问题,证明组合恒等式,求解递推公式(特别是递推公式中含有<span class="math inline">\(\sum_{k=0}^na_ka_{n-k}\)</span>的)</strong>.</p>
+<p>  <strong>定理</strong>（幂级数之积）： <span class="math display">\[
+\begin{aligned}
+&amp;f(x)=\sum_{n=0}^{\infty}a_nx^n,\ \ g(x)=\sum_{n=0}^{\infty}b_nx^n\\
+&amp;f(x)g(x)=\sum_{n=0}^\infty(\sum_{k=0}^na_kb_{n-k})x^n
+\end{aligned}
+\]</span> 也就是说，<span class="math inline">\(\{a_n\}\)</span>和<span class="math inline">\(\{b_n\}\)</span>的生成函数的积是<span class="math inline">\(c_n=\sum_{k=0}^na_kb_{n-k}\)</span>的生成函数。</p>
+<p>并且当 <span class="math display">\[
+\begin{aligned}
+&amp;f(x)=\sum_{n=1}^{\infty}a_nx^n,\ \ g(x)=\sum_{n=1}^{\infty}b_nx^n\\
+&amp;f(x)g(x)=\sum_{n=0}^\infty(\sum_{k=1}^na_kb_{n-k})x^n
+\end{aligned}
+\]</span> <strong><span class="math inline">\(\sum\limits_{k=t}^na_kb_{n-k}\)</span>的生成函数为<span class="math inline">\(a_{n-t}\)</span>和<span class="math inline">\(b_{n-t}\)</span>生成函数之积.</strong></p>
+<p>之前提到过多重集组合问题的一些有约束条件的变体，其一般的做法需要用到生成函数。这种问题与不定方程的解的个数是等价的。下面给出一个例子：</p>
+<p>例：求 <span class="math display">\[
+x_1+x_2+x_3=17
+\]</span> 的解的个数。其中<span class="math inline">\(2\leq x_1\leq 5,\ 3\leq x_2\leq 6,\ 4\leq x_3 \leq7\)</span>。</p>
+<p>因为得到<span class="math inline">\(x^{17}\)</span>需要在第一个括号中取<span class="math inline">\(x^{x_1}\)</span>，第二个括号中取<span class="math inline">\(x^{x_2}\)</span>，第三个括号中取<span class="math inline">\(x^{x_3}\)</span>，其中<span class="math inline">\(x_1,x_2,x_3\)</span>满足<span class="math inline">\(x_1+x_2+x_3=17\)</span>。所以生成函数为<span class="math inline">\((x^2+x^3+x^4+x^5)(x^3+x^4+x^5+x^6)(x^4+x^5+x^6+x^7)\)</span>。该问题的解为将生成函数展开后<span class="math inline">\(x^{17}\)</span>项前面的系数。</p>
+<p><strong>生成函数能够用来解决带约束条件的有限多重集组合问题。</strong></p>
+<p><strong>结论</strong>：</p>
+<ol type="1">
+<li><p><span class="math inline">\(\sum\limits_{n=0}^\infty (n-k)x^n\)</span>. <span class="math display">\[
+ \sum\limits_{n=0}^\infty (n-k)x^n
+ =x^{k+1}\sum\limits_{n=0}^\infty (n-k)x^{n-k-1}
+ =x^{k+1}(\sum\limits_{n=0}^\infty x^{n-k})&#39;
+ \]</span> 而<span class="math inline">\(\sum\limits_{n=0}^\infty x^{n-k}\)</span>可借助<span class="math inline">\(\sum\limits_{n=0}^\infty x^{n}=\dfrac{1}{1-x}\)</span>求出.</p></li>
+<li><p>若<span class="math inline">\(f(x)\)</span>是<span class="math inline">\(a_n\)</span>的生成函数,<span class="math inline">\(x^kf(x)\)</span>是<span class="math inline">\(a_{n-k}\)</span>的生成函数.</p></li>
+<li><p>若<span class="math inline">\(f(x)\)</span>是<span class="math inline">\(a_n\)</span>的生成函数,<span class="math inline">\(\dfrac{f(x)}{1-x}\)</span>为<span class="math inline">\(a_n\)</span>前缀和的生成函数.</p></li>
+</ol>
+<h2 id="对称意义下的计数问题">对称意义下的计数问题</h2>
+<h3 id="利用群的理念">利用群的理念</h3>
+<p>我们知道群就是用来描述和研究对称性的工具。</p>
+<h3 id="burnside引理">Burnside引理</h3>
+<h3 id="polya计数定理">Polya计数定理</h3>
 
     </div>
 
@@ -201,6 +390,10 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+          </div>
 
         
 
@@ -270,6 +463,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6"><span class="nav-number">1.</span> <span class="nav-text">组合数学</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9A%84%E6%8E%92%E5%88%97%E6%8E%92%E5%88%97%E6%95%B0%E4%B8%8E%E7%BB%84%E5%90%88%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">基础的排列排列数与组合数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88"><span class="nav-number">1.1.1.</span> <span class="nav-text">排列组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86"><span class="nav-number">1.1.2.</span> <span class="nav-text">二项式定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E6%81%92%E7%AD%89%E5%BC%8F"><span class="nav-number">1.1.3.</span> <span class="nav-text">组合恒等式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E6%95%B0%E5%89%8D%E7%BC%80%E5%92%8C"><span class="nav-number">1.1.4.</span> <span class="nav-text">组合数前缀和</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E9%9B%86%E4%B8%8A%E7%9A%84%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88"><span class="nav-number">1.2.</span> <span class="nav-text">多重集上的排列与组合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86"><span class="nav-number">1.2.1.</span> <span class="nav-text">多项式定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E9%9B%86"><span class="nav-number">1.2.2.</span> <span class="nav-text">多重集</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E9%99%90%E5%A4%9A%E9%87%8D%E9%9B%86%E7%9A%84%E6%8E%92%E5%88%97"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">无限多重集的排列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E9%99%90%E5%A4%9A%E9%87%8D%E9%9B%86%E7%9A%84%E6%8E%92%E5%88%97"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">有限多重集的排列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E9%99%90%E5%A4%9A%E9%87%8D%E9%9B%86%E7%9A%84%E7%BB%84%E5%90%88"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">无限多重集的组合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E9%99%90%E5%A4%9A%E9%87%8D%E9%9B%86%E7%9A%84%E7%BB%84%E5%90%88"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">有限多重集的组合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%8A%E7%89%A9%E4%BD%93%E6%94%BE%E5%85%A5%E7%9B%92%E5%AD%90"><span class="nav-number">1.3.</span> <span class="nav-text">把物体放入盒子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E5%88%92%E5%88%86"><span class="nav-number">1.4.</span> <span class="nav-text">整数划分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%AF%E7%89%B9%E6%9E%97%E6%95%B0%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0"><span class="nav-number">1.5.</span> <span class="nav-text">斯特林数&#x2F;卡特兰数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%82%E8%A7%A3%E7%BA%BF%E6%80%A7%E9%80%92%E6%8E%A8%E5%85%B3%E7%B3%BB"><span class="nav-number">1.6.</span> <span class="nav-text">求解线性递推关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%B3%BB%E6%95%B0%E9%BD%90%E6%AC%A1"><span class="nav-number">1.6.1.</span> <span class="nav-text">常系数齐次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%B3%BB%E6%95%B0%E9%9D%9E%E9%BD%90%E6%AC%A1"><span class="nav-number">1.6.2.</span> <span class="nav-text">常系数非齐次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%90%E4%BA%9B%E9%9D%9E%E5%B8%B8%E7%B3%BB%E6%95%B0%E5%85%B6%E6%AC%A1%E6%96%B9%E7%A8%8B"><span class="nav-number">1.6.3.</span> <span class="nav-text">某些非常系数其次方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E6%8D%A2%E4%B8%BA%E7%BA%BF%E6%80%A7%E7%9A%84%E6%96%B9%E7%A8%8B"><span class="nav-number">1.6.4.</span> <span class="nav-text">可变换为线性的方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%B9%E7%A8%8B"><span class="nav-number">1.6.5.</span> <span class="nav-text">其他类型的方程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0"><span class="nav-number">1.7.</span> <span class="nav-text">生成函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E6%84%8F%E4%B9%89%E4%B8%8B%E7%9A%84%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98"><span class="nav-number">1.8.</span> <span class="nav-text">对称意义下的计数问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E7%BE%A4%E7%9A%84%E7%90%86%E5%BF%B5"><span class="nav-number">1.8.1.</span> <span class="nav-text">利用群的理念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#burnside%E5%BC%95%E7%90%86"><span class="nav-number">1.8.2.</span> <span class="nav-text">Burnside引理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#polya%E8%AE%A1%E6%95%B0%E5%AE%9A%E7%90%86"><span class="nav-number">1.8.3.</span> <span class="nav-text">Polya计数定理</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -288,6 +482,12 @@
           <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
