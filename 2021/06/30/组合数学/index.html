@@ -28,7 +28,7 @@
 <meta property="og:description" content="想要不重不漏地计数也是很难的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-06-30T03:34:15.000Z">
-<meta property="article:modified_time" content="2021-08-09T03:04:00.666Z">
+<meta property="article:modified_time" content="2021-08-10T19:07:47.214Z">
 <meta property="article:author" content="Co27Ti22">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="数学">
@@ -189,7 +189,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-09 11:04:00" itemprop="dateModified" datetime="2021-08-09T11:04:00+08:00">2021-08-09</time>
+                <time title="修改时间：2021-08-11 03:07:47" itemprop="dateModified" datetime="2021-08-11T03:07:47+08:00">2021-08-11</time>
               </span>
 
           
@@ -300,14 +300,14 @@ C_n^{n_1}C_{n-n_1}^{n_2}...C_{n_k}^{n_k}=\dfrac{n!}{n_1!n_2!...n_k!}
 <h4 id="无限多重集的组合">无限多重集的组合</h4>
 <p><span class="math inline">\(A=\{\infty\cdot a_1,...,\infty\cdot a_k\}\)</span>。从A中选<span class="math inline">\(m\)</span>个元素的方案数为<span class="math inline">\(C_{m+k-1}^{k-1}=C_{m+k-1}^m\)</span>。</p>
 <p>考虑这样一个计数过程：有<span class="math inline">\(m\)</span>个位置和<span class="math inline">\(k-1\)</span>个隔板（<span class="math inline">\(k-1\)</span>个隔板将位置分成<span class="math inline">\(k\)</span>份）。第<span class="math inline">\(i\)</span>个和第<span class="math inline">\(i+1\)</span>个隔板之间的位置数即为选择<span class="math inline">\(a_i\)</span>的个数。</p>
-<p>同时无限多重集问题等价于不定方程的非负整数解问题，即<span class="math inline">\(A=\{\infty\cdot a_1,...,\infty\cdot a_k\}\)</span>的<span class="math inline">\(m\)</span>排列数与不定方程 <span class="math display">\[
+<p>同时无限多重集组合问题等价于不定方程的非负整数解问题，即<span class="math inline">\(A=\{\infty\cdot a_1,...,\infty\cdot a_k\}\)</span>的<span class="math inline">\(m\)</span>组合数与不定方程 <span class="math display">\[
 x_1+x_2+...+x_k=m
 \]</span> 的非负整数解个数相同。</p>
 <h4 id="有限多重集的组合">有限多重集的组合</h4>
 <p><span class="math inline">\(A=\{n_1\cdot a_1,...,n_k\cdot a_k\},n_1+...+n_k=n\)</span>​。求<span class="math inline">\(A\)</span>​的一个<span class="math inline">\(m\)</span>​​-组合或者是一些无限多重集组合问题的变体（如某个元素只能选择偶数个，某个元素必须选择两个以上等等）虽然有些可以运用一些技巧求解，但一般的解决方法需要一些更高级的计数技巧（生成函数）。</p>
 <p>当然,只要有算力,不借助生成函数,有限多重集组合问题也不是解决不了<del>大不了暴力枚举也能解决一切</del>.</p>
 <p>方法就是使用容斥原理.具体可以参考<a target="_blank" rel="noopener" href="https://oi-wiki.org/math/combinatorics/combination/#2">OIWiki</a>.</p>
-<p>这里还有例题:<a target="_blank" rel="noopener" href="http://codeforces.com/problemset/problem/451/E">CF451E</a>.如果CF上不去可以去<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF451E">洛谷</a>.我在pastebin上贴了《算法竞赛进阶指南》上的代码<a target="_blank" rel="noopener" href="https://paste.ubuntu.com/p/W6kVsmZ2hg/">[传送门]</a>.</p>
+<p>这里还有例题<sup><a id="测试">1</a></sup>:<a target="_blank" rel="noopener" href="http://codeforces.com/problemset/problem/451/E">CF451E</a>.如果CF上不去可以去<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF451E">洛谷</a>.我在pastebin上贴了《算法竞赛进阶指南》上的代码<a target="_blank" rel="noopener" href="https://paste.ubuntu.com/p/W6kVsmZ2hg/">[传送门]</a>.</p>
 <p><del>按设置能存一年.希望一年以后我能记得补.</del></p>
 <p>需要注意的是，有限多重集组合和无限多重集组合产生了区别，是因为在有限多重集中，选择的元素个数<span class="math inline">\(m\)</span>可能大于<span class="math inline">\(n_1,n_2,...,n_k\)</span>.如果可以保证<span class="math inline">\(n_1,n_2,n_k\)</span>全部大于等于<span class="math inline">\(m\)</span>的话,同样可以用无限多重集组合的方法解决.</p>
 <h2 id="把物体放入盒子">把物体放入盒子</h2>
@@ -357,7 +357,7 @@ a_n=c_1q_1^n+...+c_kq_k^n
 <p>对形如<span class="math inline">\(f(n)a_n=g(n)a_{n-1}+h(n)\)</span>的方程 <span class="math display">\[
 \begin{aligned}
 &amp;f(n)a_n=g(n)a_{n-1}+h(n)\\
-\implies &amp;a_n=\dfrac{g(n)}{f(n)}a_{n-1}+\dfrac{h(n)}{f(n)} \ \ \ 将\dfrac{g(n)}{f(n)}变形为\dfrac{\varphi(n-1)}{\varphi(n)}\\
+\implies &amp;a_n=\dfrac{g(n)}{f(n)}a_{n-1}+\dfrac{h(n)}{f(n)} \ \ \ {\rm将}\dfrac{g(n)}{f(n)}{\rm变形为}\dfrac{\varphi(n-1)}{\varphi(n)}\\
 \implies &amp;a_n=\dfrac{\varphi(n-1)}{\varphi(n)}a_{n-1}+\dfrac{h(n)}{f(n)}\\
 \implies &amp;\varphi(n)a_n=\varphi(n-1)a_{n-1}+\varphi(n)\dfrac{h(n)}{f(n)}\\
 \end{aligned}
@@ -394,6 +394,64 @@ x_1+x_2+x_3=17
 \]</span> 的解的个数。其中<span class="math inline">\(2\leq x_1\leq 5,\ 3\leq x_2\leq 6,\ 4\leq x_3 \leq7\)</span>。</p>
 <p>因为得到<span class="math inline">\(x^{17}\)</span>需要在第一个括号中取<span class="math inline">\(x^{x_1}\)</span>，第二个括号中取<span class="math inline">\(x^{x_2}\)</span>，第三个括号中取<span class="math inline">\(x^{x_3}\)</span>，其中<span class="math inline">\(x_1,x_2,x_3\)</span>满足<span class="math inline">\(x_1+x_2+x_3=17\)</span>。所以生成函数为<span class="math inline">\((x^2+x^3+x^4+x^5)(x^3+x^4+x^5+x^6)(x^4+x^5+x^6+x^7)\)</span>。该问题的解为将生成函数展开后<span class="math inline">\(x^{17}\)</span>项前面的系数。</p>
 <p><strong>生成函数能够用来解决带约束条件的有限多重集组合问题。</strong></p>
+<p>例题：</p>
+<blockquote>
+<p>(2021杭电多校7 1004 Link with Balls)</p>
+<p>共<span class="math inline">\(2n\)</span>个装有球的桶.能够从第<span class="math inline">\(x\)</span>个奇数桶中取<span class="math inline">\(kx\)</span>个球(<span class="math inline">\(k\)</span>为自然数),能从第<span class="math inline">\(x\)</span>个偶数桶中取不超过<span class="math inline">\(x\)</span>个球.现在要去恰好<span class="math inline">\(m\)</span>个球.求取球的方案数.</p>
+<p>两个方案不同当且仅当至少存在一个桶,两个方案从这个桶中取出数量不同的球.</p>
+</blockquote>
+<p>显然是一个(加限制的)多重集组合问题.</p>
+<p>分别对奇数桶和偶数桶进行考虑,可以按照上面的方法直接写出生成函数. <span class="math display">\[
+f(x)=(1+x+\dots)(1+x^2+\dots)\dots(1+x^n+\dots)(1+x)(1+x+x^2)\dots(1+x+\dots+x^n)
+\]</span> 前面一半来自于奇数桶,后面一半来自于偶数桶.</p>
+<p>由 <span class="math display">\[
+\sum_{n=0}^\infty x^{kn}=\dfrac{1}{1-x^k}, \sum_{n=0}^k x^n=\dfrac{1-x^{k+1}}{1-x}
+\]</span> <span class="math inline">\(f(x)\)</span>可化简为: <span class="math display">\[
+f(x)=\dfrac{1-x^{n+1}}{(1-x)^{n+1}}
+\]</span> 将<span class="math inline">\(f(x)\)</span>展成幂级数,<span class="math inline">\(x^m\)</span>项的系数就是答案.当想要将<span class="math inline">\(f(x)\)</span>直接展出来并不是件很容易的事.但是对于<span class="math inline">\(f(x)\)</span>的分母: <span class="math display">\[
+\dfrac{1}{(1-x)^{n+1}}=\sum_{k=0}^\infty C_{n+k}^k x^k
+\]</span></p>
+<blockquote>
+<p><span class="math inline">\(\dfrac{1}{(1-x)^{n}}\)</span>型的幂级数展开还挺常用的,可以记一下.(起码记一下可以有公式可以直接展开)</p>
+<p>但是要注意不要与<span class="math inline">\(\dfrac{1}{(1+x)^{n}}\)</span>的记混了.</p>
+</blockquote>
+<p>因此 <span class="math display">\[
+f(x)=(1-x^{n+1})\sum_{k=0}^\infty C_{n+k}^k x^k
+\]</span> <span class="math inline">\(x^m\)</span>项的系数就是<span class="math inline">\(C_{n+m}^n-C_{m-1}^n\)</span>.</p>
+<hr>
+<p>当然,如果不知道<span class="math inline">\(\dfrac{1}{(1-x)^{n}}\)</span>如何展开,这道题也是可以做的.</p>
+<p>应该都知道平方差,立方差公式.事实上,对于一般的<span class="math inline">\(1-x^{n+1}\)</span>,有 <span class="math display">\[
+1-x^{n+1}=(1-x)(1+x+\dots+x^n)
+\]</span> 因此, <span class="math display">\[
+f(x)=(1+x+\dots+x^n)(1+x+x^2+\dots)^n
+\]</span></p>
+<blockquote>
+<p>这里是又将<span class="math inline">\(n\)</span>个<span class="math inline">\(\dfrac{1}{1-x}\)</span>展开了.​</p>
+</blockquote>
+<p>然后考虑求<span class="math inline">\(x^m\)</span>的系数.</p>
+<p>首先肯定要枚举从第一个括号中取<span class="math inline">\(1,x,x^2,\dots\)</span>​的情况.只需要求第二个括号中<span class="math inline">\(x^{m}, x^{m-1}, x^{m-2},\dots\)</span>的系数即可.</p>
+<p>而这等价于一个多重集组合问题(或者是<span class="math inline">\(x_1+x_2+\dots+x_n=m-k\)</span>​的非负整数解个数).也就是<span class="math inline">\(x^{m-k}\)</span>的系数即为<span class="math inline">\(C_{n+m-k-1}^{n-1}\)</span>.</p>
+<p>注意对<span class="math inline">\(m,n\)</span>的大小关系进行讨论: <span class="math display">\[
+{\rm ans}=
+\begin{cases}
+C_{n+m-1}^{n-1} + C_{n+m}^{n-1} + \dots + C_{n-1}^{n-1} &amp;m&lt;n\\
+C_{n+m-1}^{n-1} + C_{n+m-2}^{n-1} + \dots + C_{m-1}^{n-1} &amp;m\geq n\\
+\end{cases}
+\]</span> 对于<span class="math inline">\(m&lt;n\)</span>的情况,可将<span class="math inline">\(C_{n-1}^{n-1}\)</span>写成<span class="math inline">\(C_n^n\)</span>.然后使用帕斯卡恒等式,可得<span class="math inline">\({\rm ans}=C_{n+m}^n\)</span>.</p>
+<p>对于<span class="math inline">\(m\geq n\)</span>的情况,当<span class="math inline">\(m&gt;n\)</span>,可通过加项减项补上一个<span class="math inline">\(C_{m-1}^n\)</span>.然后使用帕斯卡恒等式,可得<span class="math inline">\({\rm ans}=C_{n+m}^n-C_{m-1}^n\)</span>.当<span class="math inline">\(m=n\)</span>​时,可通过加项减项补上一个<span class="math inline">\(C_m^n\)</span>,<span class="math inline">\({\rm ans}=C_{n+m}^n-C_m^n+1=C_{n+m}^n\)</span>.</p>
+<hr>
+<p>其实这道题还有一个比较逆天的思路:生成函数有一个重要结论:若<span class="math inline">\(f(x)\)</span>是<span class="math inline">\(a_n\)</span>的生成函数,<span class="math inline">\(\dfrac{f(x)}{1-x}\)</span>为<span class="math inline">\(a_n\)</span>​前缀和的生成函数.因此,<span class="math inline">\(f(x)=(1+x+\dots+x^n)(1+x+x^2+\dots)^n\)</span>是序列<span class="math inline">\({1,1,\dots,1,0,0,\dots}\)</span>(共<span class="math inline">\(n+1\)</span>个1,后面都是0)的<span class="math inline">\(n\)</span>次前缀和的生成函数。</p>
+<p>因此只要推出了这个序列的<span class="math inline">\(n\)</span>次前缀和的公式,就解决了这个问题.这个方法正确性肯定没问题,推一推应该也能得到这个公式(大概).就是想法比较反人类(但这其实是我看到这个生成函数的第一思路233).</p>
+<hr>
+<p>从这道题里,生成函数的威力可见一斑.但是生成函数虽然好用,却也不是万能的.之前我们提到一些有限多重集组合问题也可以用容斥原理解决<a href="#测试">[传送门]</a>,并且贴了一道例题.生成函数可以解决那道例题吗?</p>
+<p>答案是:可以,但在那道例题上,相比起容斥原理,生成函数并没有什么优势.</p>
+<p>写出那道题的生成函数 <span class="math display">\[
+\begin{aligned}
+g(x)&amp;=(1+x+x^2+\dots+x^{f_1})\dots(1+x+x^2+\dots+x^{f_n})\\
+&amp;=\dfrac{(1-x^{f_1+1})(1-x^{f_2+1})\dots(1-x^{f_n+1})}{(1-x)^n}\\
+&amp;=(1-x^{f_1+1})(1-x^{f_2+1})\dots(1-x^{f_n+1})\sum_{k=0}^\infty C_{n+k-1}^{n-1} x^{k}
+\end{aligned}
+\]</span> 最后,想要求出特定项的系数,还是要用二进制枚举出前面<span class="math inline">\(n\)</span>个括号的取值.并且由于<span class="math inline">\(k\)</span>的规模,导致我们不能暴力处理组合数,还需要进行变形.总之,(我个人认为)难度并不比二进制枚举子集再容斥简单<del>而且枚举子集再容斥有板子</del>.</p>
 <p><strong>结论</strong>：</p>
 <ol type="1">
 <li><p><span class="math inline">\(\sum\limits_{n=0}^\infty (n-k)x^n\)</span>. <span class="math display">\[
