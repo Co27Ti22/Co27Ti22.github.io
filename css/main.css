@@ -1168,7 +1168,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #cdffff;
+  background: #fff4ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2594,7 +2594,23 @@ mjx-container + br {
   --main-9: #80010a;
   --main-10: #590009;
 }
-h1 {
+.post-body {
+  font-family: "PT Serif", 'Times New Roman', Times, serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  line-height: 1.4;
+  cursor: text;
+}
+.post-body h1 {
   text-align: center;
   padding-bottom: 0.3em;
   font-size: 2.2em;
@@ -2602,11 +2618,107 @@ h1 {
   margin: 2.4em auto 1.2em;
   color: var(--main-10);
 }
-h1:after {
+/* 装饰标题标签 */
+.post-body h1::after {
   content: '';
   display: block;
   margin: 0.2em auto 0;
   width: 100px;
   height: 2px;
   border-bottom: 2px solid var(--main-6);
+}
+h2 {
+  margin: 2em auto 1.4em;
+/* padding-left: 10px; */
+/* display:inline-block; */
+  line-height: 1.4;
+  font-size: 1.8em;
+/* border-left: 9px solid var(--main-6); */
+/* border-bottom: 1px solid #ddd; */
+  border-bottom: 1px solid var(--main-6);
+}
+h2::before {
+  content: '# ' !important;
+  color: #f22f27;
+}
+h3 {
+  font-size: 1.4em;
+  line-height: 1.43;
+  margin: 1.6em auto 1.2em;
+  padding-left: 9px;
+  border-left: 5px solid #f22f27;
+}
+h4 {
+  margin-top: 1.3em;
+  font-size: 1.2em;
+  padding-left: 6px;
+  padding-right: 6px;
+  display: inline-block;
+  border: 1px solid var(--main-6);
+  border-top: 4px solid var(--main-6);
+}
+h5::before,
+h6::before {
+  position: absolute;
+  right: calc(100% + 0.75em);
+  top: 0;
+  color: #5b5b5b;
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-variant: 'small-caps';
+  white-space: nowrap;
+/* 文本强制不换行 */
+  border: 0;
+}
+h5 {
+/* margin-left: 2em; */
+  font-size: 1rem;
+}
+h6 {
+/* margin-left: 2.5em; */
+  font-size: 1rem;
+}
+h5::before {
+  content: 'H5';
+  top: 0.18rem;
+}
+h6::before {
+  content: 'H6';
+  top: 0.18rem;
+}
+/*
+#write {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 30px 160px;
+}
+
+#write p {
+    line-height: 1.8rem;
+    word-spacing: .05rem;
+    color: var(--mid-13);
+}
+*/
+.post-body a {
+  color: #00f;
+  font-weight: 500;
+  padding: 0 2px;
+  text-decoration: none;
+}
+.post-body a {
+  border-bottom: 1px solid #00f;
+  color: #00f;
+  text-decoration: none;
+}
+/* a 标签的下划线就是一个border，默认为1px solid blue */
+/* 这里是加粗下划线并改变颜色 */
+a:hover {
+  border-bottom: 2px solid var(--main-6);
+  color: var(--main-7);
+}
+blockquote {
+  border-left: 4px solid #ef7060;
+  padding: 10px 15px;
+  color: #3f3f3f;
+  background-color: #fff9f9;
 }
