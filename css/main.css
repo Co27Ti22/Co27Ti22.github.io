@@ -1168,7 +1168,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #a3ff0d;
+  background: #cdffff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2559,6 +2559,40 @@ mjx-container + br {
   .pagination {
     margin: 8px 0 0;
   }
+}
+:root {
+  --side-bar-bg-color: #fff;
+  --control-text-color: #777;
+  --select-text-bg-color: #ffafa3;
+  --active-file-text-color: #262626;
+  --active-file-border-color: #f22f27;
+/* --active-file-bg-color: #fff3f0; */
+  --primary-color: #f22f27;
+/* 中性色 */
+  --mid-1: #fff;
+  --mid-2: #fafafa;
+  --mid-3: #f5f5f5;
+  --mid-4: #f0f0f0;
+  --mid-5: #d9d9d9;
+  --mid-6: #bfbfbf;
+  --mid-7: #8c8c8c;
+  --mid-8: #595959;
+  --mid-9: #434343;
+  --mid-10: #262626;
+  --mid-11: #1f1f1f;
+  --mid-12: #141414;
+  --mid-13: #000;
+/* 主题色 */
+  --main-1: #fff3f0;
+  --main-2: #ffd4cc;
+  --main-3: #ffafa3;
+  --main-4: #ff887a;
+  --main-5: #ff5d52;
+  --main-6: #f22f27;
+  --main-7: #cc1616;
+  --main-8: #a60a0f;
+  --main-9: #80010a;
+  --main-10: #590009;
 }
 h1 {
   text-align: center;
