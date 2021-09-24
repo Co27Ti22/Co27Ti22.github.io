@@ -1168,7 +1168,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffe321;
+  background: #a629ac;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2596,6 +2596,7 @@ mjx-container + br {
 }
 .post-body {
   font-family: "PT Serif", 'Times New Roman', Times, serif;
+  color: #000;
 }
 h1,
 h2,
@@ -2723,9 +2724,70 @@ a:hover {
   border-bottom: 2px solid var(--main-6);
   color: var(--main-7);
 }
+/* 引用 */
 blockquote {
   border-left: 4px solid #ef7060;
-  padding: 10px 15px;
+  padding: 3px 15px;
   color: #3f3f3f;
   background-color: #fff9f9;
+}
+blockquote p {
+  margin-bottom: 0px;
+}
+/* 列表 */
+blockquote,
+ul,
+ol,
+dl,
+table {
+  margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+  margin: 0 0;
+}
+hr {
+  height: 2px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+  overflow: hidden;
+  box-sizing: content-box;
+}
+/* 表格 */
+table {
+  padding: 0;
+  word-break: initial;
+}
+table tr {
+  border-top: 1px solid var(--main-6);
+  margin: 0;
+  padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+  background-color: #fafafa;
+}
+table tr th {
+  font-weight: bold;
+  border: 1px solid var(--main-6);
+  border-bottom: 0;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+table tr td {
+  border: 1px solid var(--main-6);
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+  margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+  margin-bottom: 0;
 }
