@@ -1168,7 +1168,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #fff4ff;
+  background: #ffe321;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2627,6 +2627,9 @@ h6 {
   height: 2px;
   border-bottom: 2px solid var(--main-6);
 }
+.site-title h1 {
+  color: #808080;
+}
 h2 {
   margin: 2em auto 1.4em;
 /* padding-left: 10px; */
@@ -2699,16 +2702,20 @@ h6::before {
     color: var(--mid-13);
 }
 */
-.post-body a {
+article .post-body a {
   color: #00f;
   font-weight: 500;
   padding: 0 2px;
   text-decoration: none;
 }
-.post-body a {
+article .post-body a {
   border-bottom: 1px solid #00f;
   color: #00f;
   text-decoration: none;
+}
+article .post-button a {
+  color: #808080;
+  border-bottom: 2px solid #000555;
 }
 /* a 标签的下划线就是一个border，默认为1px solid blue */
 /* 这里是加粗下划线并改变颜色 */
