@@ -28,8 +28,9 @@
 <meta property="og:description" content="有向无环图上不相交路径的计数-LGV引理">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/09/30/%E6%9C%89%E5%90%91%E6%97%A0%E7%8E%AF%E5%9B%BE%E4%B8%8A%E4%B8%8D%E7%9B%B8%E4%BA%A4%E8%B7%AF%E5%BE%84%E7%9A%84%E8%AE%A1%E6%95%B0-LGV%E5%BC%95%E7%90%86/图.png">
+<meta property="og:image" content="http://example.com/2021/09/30/%E6%9C%89%E5%90%91%E6%97%A0%E7%8E%AF%E5%9B%BE%E4%B8%8A%E4%B8%8D%E7%9B%B8%E4%BA%A4%E8%B7%AF%E5%BE%84%E7%9A%84%E8%AE%A1%E6%95%B0-LGV%E5%BC%95%E7%90%86/相交路径的图.png">
 <meta property="article:published_time" content="2021-09-30T04:07:40.000Z">
-<meta property="article:modified_time" content="2021-09-30T04:13:45.475Z">
+<meta property="article:modified_time" content="2021-10-02T04:25:17.390Z">
 <meta property="article:author" content="Co27Ti22">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
@@ -182,10 +183,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-09-30 12:07:40 / 修改时间：12:13:45" itemprop="dateCreated datePublished" datetime="2021-09-30T12:07:40+08:00">2021-09-30</time>
+              <time title="创建时间：2021-09-30 12:07:40" itemprop="dateCreated datePublished" datetime="2021-09-30T12:07:40+08:00">2021-09-30</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-02 12:25:17" itemprop="dateModified" datetime="2021-10-02T12:25:17+08:00">2021-10-02</time>
+              </span>
 
           
             <div class="post-description">有向无环图上不相交路径的计数-LGV引理</div>
@@ -206,11 +213,57 @@
 <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/2021/09/30/%E6%9C%89%E5%90%91%E6%97%A0%E7%8E%AF%E5%9B%BE%E4%B8%8A%E4%B8%8D%E7%9B%B8%E4%BA%A4%E8%B7%AF%E5%BE%84%E7%9A%84%E8%AE%A1%E6%95%B0-LGV%E5%BC%95%E7%90%86/图.png" alt="图片替换文本" width="尺寸" height="尺寸" align="对齐">
 </center>
-<p>按照“不相交 = 两个路径没有公共点”的定义，即便是目测也能看出只有一对不相交的A1到B1，A2到B2的路径。</p>
-<p>记有向无环图G</p>
-<p>起点集合A，是G的点集的一个子集，大小为n。</p>
-<p>终点集合B，是G的点集的一个子集，大小为n。</p>
-<p>一组</p>
+<p>方法是使用容斥定理：用总的路径数减去相交的路径数。多数题目的背景都是在网格图上的路径数，而网格图上的路径数可以通过简单的组合数学得到，那么主要问题就是求相交的路径数。</p>
+<p>首先给出结论：相交的路径数就等于<strong>A1到B2的路径数乘以A2到B1的路径数</strong>。</p>
+<p>直观上可以这样理解：在图上取将A1，A2，B1，B2连接在一起的一组边记作T。（其实就是在图上随意取两条相交的路径，“T”是为了下面表达的严谨和方便<del>不过“在图上取将A1，A2，B1，B2连接在一起的一组边记作T”这种说法本身就不太严谨吧233</del>）</p>
+<center>
+<img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/2021/09/30/%E6%9C%89%E5%90%91%E6%97%A0%E7%8E%AF%E5%9B%BE%E4%B8%8A%E4%B8%8D%E7%9B%B8%E4%BA%A4%E8%B7%AF%E5%BE%84%E7%9A%84%E8%AE%A1%E6%95%B0-LGV%E5%BC%95%E7%90%86/相交路径的图.png" alt="图片替换文本" width="尺寸" height="尺寸" align="对齐"> <br>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">
+图中染红的边构成的集合就是T的一种取法
+</div>
+</center>
+<p>需要注意，边集T只包含了两条路径，但并没有记录A1、A2具体沿什么路径走，甚至边集T都不保证A1到达B1，A2到达B2。具体的说，可能A1通过节点1到达了节点2，A2通过节点2到达节点5，也就是A2的路径在节点1处与A1的路径“相切”。也可能可能A1通过节点1到达了节点5，A2通过节点2到达节点2，也就是A2的路径在节点1处与A1的路径“交叉”。</p>
+<p>如果T中的边共有n个公共节点（例子中的公共节点就是节点1和节点3），那么T实际上表示了<span class="math inline">\(2^n\)</span>种不同的路径。这时不妨将T看作是这<span class="math inline">\(2^n\)</span>条路径的集合。<span class="math inline">\(T=\{t_1,t_2,\dots,t_{2^n}\}\)</span>。</p>
+<blockquote>
+<p>这里的<span class="math inline">\(t_i\)</span>是“将A1，A2，B1，B2连接在一起的相交路径”，因此虽然说是1条路径，但严格来说是两条路径。</p>
+</blockquote>
+<p>这<span class="math inline">\(2^n\)</span>种不同的路径并不保证A1到达B1，A2到达B2。对于<span class="math inline">\(t_i\)</span>来说，只有<span class="math inline">\(t_i\)</span>在偶数（包括0）个点处“交叉”，才能保证A1到达B1、A2到达B2，否则A1会到达B2、A2到达B1。</p>
+<p>在n个交点中有偶数个“交叉”的点的<span class="math inline">\(t_i\)</span>共有<span class="math inline">\(2^{n-1}\)</span>个。那么A1到达B2、A2到达B1的路径数为<span class="math inline">\(2^n-2^{n-1}=2^{n-1}\)</span>种。也就是说，T中的所有具体路径<span class="math inline">\(\{t_1,t_2,\dots,t_{2^n}\}\)</span>其具体表示的相交路径数和A1到达B2、A2到达B1的路径数是相同的。</p>
+<p>以上的分析和计算都是针对单个T的。对于所有可能的T求和，那么相交路径总数就是A1到达B2、A2到达B1的路径总数。这在一些特定情况（比如网格图）中可以直接计算出来。</p>
+<p>以上仅仅是直观理解，并不是严谨证明，比如并没有给出T中不仅有公共点，还有公共边的情况。</p>
+<p>LGV引理的完整公式很复杂： <span class="math display">\[
+\det(M)=\sum_{S:A\rightarrow B}(-1)^{N(\sigma(S))}\prod_{i=1}^n \omega(S_i)
+\]</span> 但如果只是想要在一些<strong>特殊的情况下</strong>进行<strong>路径计数</strong>，那么我们只需要一个简化版的公式。 <span class="math display">\[
+\begin{aligned}
+&amp;M = \left(                
+  \begin{array}{ccc}   
+    e(A_1,B_1) &amp; e(A_1,B_2) &amp; ... &amp; e(A_1,B_n) \\  
+    e(A_2,B_1) &amp; e(A_2,B_2) &amp; ... &amp;e(A_2,B_n) \\
+    \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+    e(A_n,B_1) &amp; e(A_n,B_2) &amp; \dots &amp; e(A_n,B_n)\\
+  \end{array}
+\right)\\
+&amp;\\
+&amp;\sum_{S:A\rightarrow B}=\det(M)
+\end{aligned}
+\]</span> 具体是在什么样的特殊情况下才能做这样的简化等会再说，现在先来解释一下这个公式。</p>
+<p>矩阵M中的元素<span class="math inline">\(e(A_i,B_i)\)</span>表示<span class="math inline">\(A_i\)</span>到<span class="math inline">\(B_i\)</span>的路径数。这个公式左边的<span class="math inline">\(\displaystyle \sum_{S:A\rightarrow B}\)</span>是对所有的不相交路径求和，并且是对1求和，所以结果就是不相交路径数。因此这个公式的意义就是<strong>不相交路径数等于矩阵M的行列式</strong>。</p>
+<p>那么特殊的情况具体是指什么情况呢？如果想要保证存在不相交的路径，那么起点集合A和终点集合B之间存在唯一的一一对应关系。如果不能接受的话可以回过头来看最原始的公式中的符号都是什么意思[<a target="_blank" rel="noopener" href="https://oi-wiki.org/graph/lgv/">OIWIKI</a>]。只要知道<span class="math inline">\(N(\sigma(S)), \omega(S_i)\)</span>都是什么意思，就很容易理解了。当然也可以直接记住。</p>
+<p>如果还没有理解“如果想要保证存在不相交的路径，那么起点集合A和终点集合B之间存在唯一的一一对应关系”这句话，那可以来看例题帮助理解一下：</p>
+<p>题目大意：</p>
+<blockquote>
+<p>在一个建立的笛卡尔坐标系的平面上，<span class="math inline">\((0,a_1),\dots,(0,a_i),\dots,(0,a_n)\)</span>处放置着n辆卡车。每辆卡车都必须前往<span class="math inline">\((1,0),(2,0),\dots,(n,0)\)</span>这n个目的地之一。卡车仅能从<span class="math inline">\((x,y)\)</span>移动到<span class="math inline">\((x+1,y)\)</span>或<span class="math inline">\((x,y-1)\)</span>。必须保证任意两个卡车移动的路径不相交（没有公共点）。</p>
+<p>请问移动卡车的方案数有多少？</p>
+</blockquote>
+<p>纵坐标较大的卡车一定会移动到横坐标较大的终点，不满足这个性质的不相交移动路径是不存在的。这也就是“如果想要保证存在不相交的路径，那么起点集合A和终点集合B之间存在唯一的一一对应关系”的意思。</p>
+<p>如果觉得不能理解这个公式，可以尝试写一个三阶的矩阵M，并将行列式展开。然后用上面容斥的方法理解。想追求严谨也可以看看证明。[<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lindström–Gessel–Viennot_lemma">传送门</a>]</p>
+<p>参考：</p>
+<p>https://zhuanlan.zhihu.com/p/64482425</p>
+<p>https://oi-wiki.org/graph/lgv/</p>
 
     </div>
 
