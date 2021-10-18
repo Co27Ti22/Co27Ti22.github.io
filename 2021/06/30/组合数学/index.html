@@ -28,7 +28,7 @@
 <meta property="og:description" content="想要不重不漏地计数也是很难的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-06-30T03:34:15.000Z">
-<meta property="article:modified_time" content="2021-10-05T15:43:46.272Z">
+<meta property="article:modified_time" content="2021-10-18T08:56:05.725Z">
 <meta property="article:author" content="Co27Ti22">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="笔记">
@@ -189,7 +189,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-05 23:43:46" itemprop="dateModified" datetime="2021-10-05T23:43:46+08:00">2021-10-05</time>
+                <time title="修改时间：2021-10-18 16:56:05" itemprop="dateModified" datetime="2021-10-18T16:56:05+08:00">2021-10-18</time>
               </span>
 
           
@@ -367,7 +367,168 @@ x_1+x_2+...+x_k=m
 <p><strong>相同物体放入不同盒子</strong></p>
 <p><span class="math inline">\(n\)</span>个相同物体放入<span class="math inline">\(k\)</span>个不同盒子。等价为无限多重集的组合。方案数为<span class="math inline">\(C_{n+k-1}^{k-1}\)</span>​</p>
 <h2 id="整数划分">整数划分</h2>
-<h2 id="斯特林数卡特兰数">斯特林数/卡特兰数</h2>
+<h2 id="特殊的数">特殊的数</h2>
+<h3 id="斯特林数">斯特林数</h3>
+<h4 id="斯特林子集数第二类斯特林数">斯特林子集数（第二类斯特林数）</h4>
+<p><span class="math inline">\(\left\{ \begin{array} &amp; n\\ k \end{array} \right\}\)</span>表示将n元集合划分成k个非空子集的方法数。</p>
+<p>递推公式：</p>
+<p>考虑n个元素和其中的特殊元素a：</p>
+<ol type="1">
+<li>a单独一个子集 <span class="math inline">\(\left\{ \begin{array} &amp; n-1\\ k-1 \end{array} \right\}\)</span></li>
+<li>a和别的元素一起 <span class="math inline">\(k\left\{ \begin{array} &amp; n-1\\ k \end{array} \right\}\)</span></li>
+</ol>
+<p>相加。 <span class="math display">\[
+\left\{ 
+\begin{array}
+&amp;
+n\\
+k
+\end{array}
+\right\}
+=
+k\left\{ 
+\begin{array}
+&amp;
+n-1\\
+k
+\end{array}
+\right\}
++
+\left\{ 
+\begin{array}
+&amp;
+n-1\\
+k-1
+\end{array}
+\right\}
+\]</span></p>
+<p>有了斯特林数，就可以回答把不同球放入相同盒子的问题：将n个不同的球放入k个相同的盒子，方法数为<span class="math inline">\(\left\{ \begin{array} &amp; n\\ k \end{array} \right\}\)</span>。</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;S_0=1\\
+&amp;S_1=x\\
+&amp;S_2=x+x^2\\
+&amp;S_3=x+3x^2+x^3\\
+&amp;S_4=x+7x^2+6x^3+x^4\\
+&amp;\dots\\
+&amp;S_n=xS_{n-1}+xS&#39;_{n-1}
+\end{aligned}
+\]</span></p>
+<h4 id="斯特林轮换数第一类斯特林数">斯特林轮换数（第一类斯特林数）</h4>
+<p><span class="math inline">\(\left[ \begin{array} &amp; n\\ k \end{array} \right]\)</span>表示将n个元素排成k个圆排列（轮换）的方法数。</p>
+<p>递推公式：</p>
+<p>考虑n个元素和其中的特殊元素a：</p>
+<ol type="1">
+<li><p>a单独一个圆排列 <span class="math inline">\(\left[ \begin{array} &amp; n-1\\ k-1 \end{array} \right]\)</span>.</p></li>
+<li><p>a与其他元素一起排列 <span class="math inline">\((n-1)\left[ \begin{array} &amp; n-1\\ k \end{array} \right]\)</span>.</p>
+<blockquote>
+<p>a与其他元素一起排列这个需要仔细考虑一下：</p>
+<ol type="1">
+<li>n个元素组成<strong>一个</strong>圆排列的方案数是<span class="math inline">\(\dfrac{A_n^n}{n}=(n-1)!\)</span>。n+1个元素组成<strong>一个</strong>圆排列的方案数是<span class="math inline">\(n!\)</span>。也就是说向n个元素中新增一个元素，组成圆排列的方案数是原来的n倍。</li>
+<li>而斯特林轮换数并不要求一定组成<strong>一个</strong>圆排列。假设x个元素构成k个圆排列，每个圆排列中分别有<span class="math inline">\(x_1,x_2,\dots,x_k\)</span>个元素。在x个元素中加入一个新的元素：它可以插入到k个圆排列中的任意一个。根据分类相加，方案数应该是<span class="math inline">\(x_1+x_2+\dots+x_k=x\)</span>种。</li>
+</ol>
+</blockquote></li>
+</ol>
+<p>相加。 <span class="math display">\[
+\left[ 
+\begin{array}
+&amp;
+n\\
+k
+\end{array}
+\right]
+=
+\left[ 
+\begin{array}
+&amp;
+n-1\\
+k-1
+\end{array}
+\right]
++
+(n-1)\left[ 
+\begin{array}
+&amp;
+n-1\\
+k
+\end{array}
+\right]
+\]</span> <span class="math inline">\(\left[ \begin{array} &amp; n\\ k \end{array} \right]\)</span>表示将n个元素排成k个圆排列（轮换）的方法数。也就是是<strong>总元素个数为n的，k个不交轮换的方案数</strong>。又因为不交轮换之积与排列一一对应，因此对<span class="math inline">\(\left[ \begin{array} &amp; n\\ k \end{array} \right]\)</span>的所有k求和得到的就是排列的总数。 <span class="math display">\[
+\sum_{k=0}^n\left[ 
+\begin{array}
+&amp;
+n\\
+k
+\end{array}
+\right]=n!, {\rm 整数}n\geq0
+\]</span></p>
+<p>根据观察和归纳，可以得到： <span class="math display">\[
+\begin{aligned}
+&amp;x^n=\sum_k\left\{ 
+\begin{array}
+&amp;
+n\\
+k
+\end{array}
+\right\}x^{\underline{k}}=\sum_{k}\left\{ 
+\begin{array}
+&amp;
+n\\
+k
+\end{array}
+\right\}(-1)^{n-k}x^{\overline{k}}\\
+&amp;x^{\underline{n}}=\sum_k\left[ 
+\begin{array}
+&amp;
+n\\
+k
+\end{array}
+\right](-1)^{n-k}x^k\\
+&amp;x^{\overline{n}}=\sum_k\left[ 
+\begin{array}
+&amp;
+n\\
+k
+\end{array}
+\right]x^k\\
+\end{aligned}
+\]</span> 互相带入可以得到一个对所有x成立的二重和式： <span class="math display">\[
+x^n=\sum_{k}\left\{ 
+\begin{array}
+&amp;
+n\\
+k
+\end{array}
+\right\}(-1)^{n-k}x^{\overline{k}}=
+\sum_{k,m}\left\{ 
+\begin{array}
+&amp;
+n\\
+k
+\end{array}
+\right\}\left[ 
+\begin{array}
+&amp;
+k\\
+m
+\end{array}
+\right](-1)^{n-k}x^m
+\]</span> 右边除了<span class="math inline">\(x^n\)</span>前的系数一定都为0，所以可以得到： <span class="math display">\[
+\sum_k\left\{ 
+\begin{array}
+&amp;
+n\\
+k
+\end{array}
+\right\}\left[ 
+\begin{array}
+&amp;
+k\\
+m
+\end{array}
+\right](-1)^{n-k}=[m=n],\ {\rm 整数}m,n\geq 0
+\]</span></p>
+<h3 id="卡特兰数">卡特兰数</h3>
 <p>鸽了</p>
 <h2 id="求解线性递推关系">求解线性递推关系</h2>
 <p>一个线性递推公式是形如 <span class="math display">\[
@@ -613,7 +774,7 @@ g(x)&amp;=(1+x+x^2+\dots+x^{f_1})\dots(1+x+x^2+\dots+x^{f_n})\\
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6"><span class="nav-number">1.</span> <span class="nav-text">组合数学</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9A%84%E6%8E%92%E5%88%97%E6%8E%92%E5%88%97%E6%95%B0%E4%B8%8E%E7%BB%84%E5%90%88%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">基础的排列排列数与组合数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88"><span class="nav-number">1.1.1.</span> <span class="nav-text">排列组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86"><span class="nav-number">1.1.2.</span> <span class="nav-text">二项式定理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%BF%E4%B9%89%E4%BA%8C%E9%A1%B9%E5%BC%8F%E7%B3%BB%E6%95%B0%E5%92%8C%E5%B9%BF%E4%B9%89%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">广义二项式系数和广义二项式定理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E6%81%92%E7%AD%89%E5%BC%8F"><span class="nav-number">1.1.3.</span> <span class="nav-text">组合恒等式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E6%95%B0%E5%89%8D%E7%BC%80%E5%92%8C"><span class="nav-number">1.1.4.</span> <span class="nav-text">组合数前缀和</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E9%9B%86%E4%B8%8A%E7%9A%84%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88"><span class="nav-number">1.2.</span> <span class="nav-text">多重集上的排列与组合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86"><span class="nav-number">1.2.1.</span> <span class="nav-text">多项式定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E9%9B%86"><span class="nav-number">1.2.2.</span> <span class="nav-text">多重集</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E9%99%90%E5%A4%9A%E9%87%8D%E9%9B%86%E7%9A%84%E6%8E%92%E5%88%97"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">无限多重集的排列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E9%99%90%E5%A4%9A%E9%87%8D%E9%9B%86%E7%9A%84%E6%8E%92%E5%88%97"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">有限多重集的排列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E9%99%90%E5%A4%9A%E9%87%8D%E9%9B%86%E7%9A%84%E7%BB%84%E5%90%88"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">无限多重集的组合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E9%99%90%E5%A4%9A%E9%87%8D%E9%9B%86%E7%9A%84%E7%BB%84%E5%90%88"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">有限多重集的组合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%8A%E7%89%A9%E4%BD%93%E6%94%BE%E5%85%A5%E7%9B%92%E5%AD%90"><span class="nav-number">1.3.</span> <span class="nav-text">把物体放入盒子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E5%88%92%E5%88%86"><span class="nav-number">1.4.</span> <span class="nav-text">整数划分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%AF%E7%89%B9%E6%9E%97%E6%95%B0%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0"><span class="nav-number">1.5.</span> <span class="nav-text">斯特林数&#x2F;卡特兰数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%82%E8%A7%A3%E7%BA%BF%E6%80%A7%E9%80%92%E6%8E%A8%E5%85%B3%E7%B3%BB"><span class="nav-number">1.6.</span> <span class="nav-text">求解线性递推关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%B3%BB%E6%95%B0%E9%BD%90%E6%AC%A1"><span class="nav-number">1.6.1.</span> <span class="nav-text">常系数齐次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%B3%BB%E6%95%B0%E9%9D%9E%E9%BD%90%E6%AC%A1"><span class="nav-number">1.6.2.</span> <span class="nav-text">常系数非齐次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%90%E4%BA%9B%E9%9D%9E%E5%B8%B8%E7%B3%BB%E6%95%B0%E5%85%B6%E6%AC%A1%E6%96%B9%E7%A8%8B"><span class="nav-number">1.6.3.</span> <span class="nav-text">某些非常系数其次方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E6%8D%A2%E4%B8%BA%E7%BA%BF%E6%80%A7%E7%9A%84%E6%96%B9%E7%A8%8B"><span class="nav-number">1.6.4.</span> <span class="nav-text">可变换为线性的方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%B9%E7%A8%8B"><span class="nav-number">1.6.5.</span> <span class="nav-text">其他类型的方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%9C%E6%95%99bm%E7%AE%97%E6%B3%95"><span class="nav-number">1.6.6.</span> <span class="nav-text">杜教bm算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0"><span class="nav-number">1.7.</span> <span class="nav-text">生成函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-number">1.7.1.</span> <span class="nav-text">生成函数基本知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E5%A4%9A%E9%87%8D%E9%9B%86%E7%BB%84%E5%90%88"><span class="nav-number">1.7.2.</span> <span class="nav-text">普通生成函数与多重集组合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E6%84%8F%E4%B9%89%E4%B8%8B%E7%9A%84%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98"><span class="nav-number">1.8.</span> <span class="nav-text">对称意义下的计数问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E7%BE%A4%E7%9A%84%E7%90%86%E5%BF%B5"><span class="nav-number">1.8.1.</span> <span class="nav-text">利用群的理念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#burnside%E5%BC%95%E7%90%86"><span class="nav-number">1.8.2.</span> <span class="nav-text">Burnside引理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#polya%E8%AE%A1%E6%95%B0%E5%AE%9A%E7%90%86"><span class="nav-number">1.8.3.</span> <span class="nav-text">Polya计数定理</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6"><span class="nav-number">1.</span> <span class="nav-text">组合数学</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9A%84%E6%8E%92%E5%88%97%E6%8E%92%E5%88%97%E6%95%B0%E4%B8%8E%E7%BB%84%E5%90%88%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">基础的排列排列数与组合数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88"><span class="nav-number">1.1.1.</span> <span class="nav-text">排列组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86"><span class="nav-number">1.1.2.</span> <span class="nav-text">二项式定理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%BF%E4%B9%89%E4%BA%8C%E9%A1%B9%E5%BC%8F%E7%B3%BB%E6%95%B0%E5%92%8C%E5%B9%BF%E4%B9%89%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">广义二项式系数和广义二项式定理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E6%81%92%E7%AD%89%E5%BC%8F"><span class="nav-number">1.1.3.</span> <span class="nav-text">组合恒等式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E6%95%B0%E5%89%8D%E7%BC%80%E5%92%8C"><span class="nav-number">1.1.4.</span> <span class="nav-text">组合数前缀和</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E9%9B%86%E4%B8%8A%E7%9A%84%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88"><span class="nav-number">1.2.</span> <span class="nav-text">多重集上的排列与组合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86"><span class="nav-number">1.2.1.</span> <span class="nav-text">多项式定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E9%9B%86"><span class="nav-number">1.2.2.</span> <span class="nav-text">多重集</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E9%99%90%E5%A4%9A%E9%87%8D%E9%9B%86%E7%9A%84%E6%8E%92%E5%88%97"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">无限多重集的排列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E9%99%90%E5%A4%9A%E9%87%8D%E9%9B%86%E7%9A%84%E6%8E%92%E5%88%97"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">有限多重集的排列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E9%99%90%E5%A4%9A%E9%87%8D%E9%9B%86%E7%9A%84%E7%BB%84%E5%90%88"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">无限多重集的组合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E9%99%90%E5%A4%9A%E9%87%8D%E9%9B%86%E7%9A%84%E7%BB%84%E5%90%88"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">有限多重集的组合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%8A%E7%89%A9%E4%BD%93%E6%94%BE%E5%85%A5%E7%9B%92%E5%AD%90"><span class="nav-number">1.3.</span> <span class="nav-text">把物体放入盒子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E5%88%92%E5%88%86"><span class="nav-number">1.4.</span> <span class="nav-text">整数划分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E7%9A%84%E6%95%B0"><span class="nav-number">1.5.</span> <span class="nav-text">特殊的数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%AF%E7%89%B9%E6%9E%97%E6%95%B0"><span class="nav-number">1.5.1.</span> <span class="nav-text">斯特林数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%AF%E7%89%B9%E6%9E%97%E5%AD%90%E9%9B%86%E6%95%B0%E7%AC%AC%E4%BA%8C%E7%B1%BB%E6%96%AF%E7%89%B9%E6%9E%97%E6%95%B0"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">斯特林子集数（第二类斯特林数）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%AF%E7%89%B9%E6%9E%97%E8%BD%AE%E6%8D%A2%E6%95%B0%E7%AC%AC%E4%B8%80%E7%B1%BB%E6%96%AF%E7%89%B9%E6%9E%97%E6%95%B0"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">斯特林轮换数（第一类斯特林数）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0"><span class="nav-number">1.5.2.</span> <span class="nav-text">卡特兰数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%82%E8%A7%A3%E7%BA%BF%E6%80%A7%E9%80%92%E6%8E%A8%E5%85%B3%E7%B3%BB"><span class="nav-number">1.6.</span> <span class="nav-text">求解线性递推关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%B3%BB%E6%95%B0%E9%BD%90%E6%AC%A1"><span class="nav-number">1.6.1.</span> <span class="nav-text">常系数齐次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%B3%BB%E6%95%B0%E9%9D%9E%E9%BD%90%E6%AC%A1"><span class="nav-number">1.6.2.</span> <span class="nav-text">常系数非齐次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%90%E4%BA%9B%E9%9D%9E%E5%B8%B8%E7%B3%BB%E6%95%B0%E5%85%B6%E6%AC%A1%E6%96%B9%E7%A8%8B"><span class="nav-number">1.6.3.</span> <span class="nav-text">某些非常系数其次方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E6%8D%A2%E4%B8%BA%E7%BA%BF%E6%80%A7%E7%9A%84%E6%96%B9%E7%A8%8B"><span class="nav-number">1.6.4.</span> <span class="nav-text">可变换为线性的方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%B9%E7%A8%8B"><span class="nav-number">1.6.5.</span> <span class="nav-text">其他类型的方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%9C%E6%95%99bm%E7%AE%97%E6%B3%95"><span class="nav-number">1.6.6.</span> <span class="nav-text">杜教bm算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0"><span class="nav-number">1.7.</span> <span class="nav-text">生成函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-number">1.7.1.</span> <span class="nav-text">生成函数基本知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E5%A4%9A%E9%87%8D%E9%9B%86%E7%BB%84%E5%90%88"><span class="nav-number">1.7.2.</span> <span class="nav-text">普通生成函数与多重集组合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E6%84%8F%E4%B9%89%E4%B8%8B%E7%9A%84%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98"><span class="nav-number">1.8.</span> <span class="nav-text">对称意义下的计数问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E7%BE%A4%E7%9A%84%E7%90%86%E5%BF%B5"><span class="nav-number">1.8.1.</span> <span class="nav-text">利用群的理念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#burnside%E5%BC%95%E7%90%86"><span class="nav-number">1.8.2.</span> <span class="nav-text">Burnside引理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#polya%E8%AE%A1%E6%95%B0%E5%AE%9A%E7%90%86"><span class="nav-number">1.8.3.</span> <span class="nav-text">Polya计数定理</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
