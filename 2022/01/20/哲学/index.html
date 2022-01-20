@@ -20,21 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="p1122 最大子树和 子树问题 p1352 没有上司的舞会 p2014 选课 树上背包 p2015 二叉苹果树 树上背包 https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;blog&#x2F;stonejuice&#x2F;solution-p2015">
+  <meta name="description" content="想学一点哲学了，或者说，想学一点文科了。 直到上大学之前，我都怀抱着一种想法，类似于文科无用论？或者说也算不上文科无用论，我当然知道文科是有用的：一方面，文科确实有用；另一方面，如果不能应用于实际，就堪称无用的话，我说喜欢的数学和物理也有许多不能应用于实际的内容，秉持文科无用论就相当于认为它们也是无用的。但是实际上呢？我绝不认为它们是无用的。我可能更偏向于认为文科对我而言是无用的，就像一个学历史">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树形DP">
-<meta property="og:url" content="http://example.com/2021/05/04/%E6%A0%91%E5%BD%A2DP/index.html">
+<meta property="og:title" content="哲学">
+<meta property="og:url" content="http://example.com/2022/01/20/%E5%93%B2%E5%AD%A6/index.html">
 <meta property="og:site_name" content="Co27Ti22的博客">
-<meta property="og:description" content="p1122 最大子树和 子树问题 p1352 没有上司的舞会 p2014 选课 树上背包 p2015 二叉苹果树 树上背包 https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;blog&#x2F;stonejuice&#x2F;solution-p2015">
+<meta property="og:description" content="想学一点哲学了，或者说，想学一点文科了。 直到上大学之前，我都怀抱着一种想法，类似于文科无用论？或者说也算不上文科无用论，我当然知道文科是有用的：一方面，文科确实有用；另一方面，如果不能应用于实际，就堪称无用的话，我说喜欢的数学和物理也有许多不能应用于实际的内容，秉持文科无用论就相当于认为它们也是无用的。但是实际上呢？我绝不认为它们是无用的。我可能更偏向于认为文科对我而言是无用的，就像一个学历史">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-04T12:27:16.000Z">
-<meta property="article:modified_time" content="2021-08-06T03:42:48.304Z">
+<meta property="article:published_time" content="2022-01-20T14:44:17.000Z">
+<meta property="article:modified_time" content="2022-01-20T15:39:31.990Z">
 <meta property="article:author" content="Co27Ti22">
-<meta property="article:tag" content="算法">
-<meta property="article:tag" content="总结">
+<meta property="article:tag" content="感想">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/05/04/%E6%A0%91%E5%BD%A2DP/">
+<link rel="canonical" href="http://example.com/2022/01/20/%E5%93%B2%E5%AD%A6/">
 
 
 <script id="page-configurations">
@@ -47,7 +46,7 @@
   };
 </script>
 
-  <title>树形DP | Co27Ti22的博客</title>
+  <title>哲学 | Co27Ti22的博客</title>
   
 
 
@@ -159,7 +158,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/04/%E6%A0%91%E5%BD%A2DP/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/20/%E5%93%B2%E5%AD%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -172,7 +171,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          树形DP
+          哲学
         </h1>
 
         <div class="post-meta">
@@ -181,16 +180,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-05-04 20:27:16" itemprop="dateCreated datePublished" datetime="2021-05-04T20:27:16+08:00">2021-05-04</time>
+              <time title="创建时间：2022-01-20 22:44:17 / 修改时间：23:39:31" itemprop="dateCreated datePublished" datetime="2022-01-20T22:44:17+08:00">2022-01-20</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-06 11:42:48" itemprop="dateModified" datetime="2021-08-06T11:42:48+08:00">2021-08-06</time>
-              </span>
 
           
 
@@ -203,8 +196,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>p1122 最大子树和 子树问题</p>
-<p>p1352 没有上司的舞会 p2014 选课 树上背包 p2015 二叉苹果树 树上背包 https://www.luogu.com.cn/blog/stonejuice/solution-p2015</p>
+        <p>想学一点哲学了，或者说，想学一点文科了。</p>
+<p>直到上大学之前，我都怀抱着一种想法，类似于文科无用论？或者说也算不上文科无用论，我当然知道文科是有用的：一方面，文科确实有用；另一方面，如果不能应用于实际，就堪称无用的话，我说喜欢的数学和物理也有许多不能应用于实际的内容，秉持文科无用论就相当于认为它们也是无用的。但是实际上呢？我绝不认为它们是无用的。我可能更偏向于认为文科对我而言是无用的，就像一个学历史的人可能认为数论或者是量子力学对他而言是无用的（反正我是这么觉得的，很难想象一个历史学家会去关心费马大定理之类的问题）。</p>
+<p>但现在，该说是思想转变了吗？又或者是单纯羡慕我学历史的室友呢？总之，上了大学之后用大把的时间看书、看电影、听音乐、玩游戏、画画（好吧，没在这个上花太多时间），让我知道了有些东西是有门槛的。比如没有经过训练的人可能没那么能接受古典音乐，或者是不懂nihonn文化就不容易理解那边的一些作品。反过来，如果懂一些图形学，或许就能发现游戏作者尽最大努力在视觉效果和性能之间平衡的匠心；如果懂一些摄影，会不会对欣赏电影更有帮助呢？（那这方面我属实不太懂，不敢瞎说）。尤其是今年玩的一款视觉小说，里面有大量的哲学和心理学内容。虽然有一种可能，作者只是不懂装懂，塞这些东西来提升B格。但是作者懂不懂我不清楚，我属实是不懂了。主角作为一个（有点）不学无术的人，按照剧情，是听不太懂NPC们说的都是什么的。不过不懂的不光是剧情中的主角，剧情外的我也听不太懂（不过这样一来游戏的代入感倒是拉满了）</p>
+<p>总而言之，我想学哲学，并非因为我关心哲学家们研究的“终极关怀”；我想学政治，并非是想作为政治家为某个群体争取利益。我学文科，仅仅是因为我意识到了它对<strong>我自己</strong>并非是无用的。比如学历史，就能看懂姜文电影中8岁孩子的隐喻（当然，严谨的说，并不是学了就能看懂。但不学肯定看不懂）。引用我很……欣赏的一个人的一句话：</p>
+<blockquote>
+<p>我必须知道鉴赏这些东西的方式，否则我的生活会失去许多乐趣。</p>
+<p>（并非原话如此，但大概是这么个意思）</p>
+</blockquote>
+<p>就从西方哲学史开始学吧。</p>
 
     </div>
 
@@ -214,8 +214,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
-              <a href="/tags/%E6%80%BB%E7%BB%93/" rel="tag"># 总结</a>
+              <a href="/tags/%E6%84%9F%E6%83%B3/" rel="tag"># 感想</a>
           </div>
 
         
@@ -224,13 +223,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/05/03/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="prev" title="线段树求逆序对">
-      <i class="fa fa-chevron-left"></i> 线段树求逆序对
+    <a href="/2022/01/20/%E6%95%B0%E8%AE%BA%E5%87%BD%E6%95%B0%E5%8F%8A%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E4%B9%A0%E9%A2%98%E6%B1%87%E6%80%BB/" rel="prev" title="数论函数及莫比乌斯反演习题汇总">
+      <i class="fa fa-chevron-left"></i> 数论函数及莫比乌斯反演习题汇总
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/05/05/%E6%95%B0%E8%AE%BA-%E5%8F%AF%E5%81%9A%E4%B8%8E%E4%B8%8D%E5%8F%AF%E5%81%9A/" rel="next" title="数论-可做与不可做以及经验总结">
-      数论-可做与不可做以及经验总结 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
