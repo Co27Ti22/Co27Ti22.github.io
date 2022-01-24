@@ -177,7 +177,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-01-24 13:45:51 / 修改时间：13:47:32" itemprop="dateCreated datePublished" datetime="2022-01-24T13:45:51+08:00">2022-01-24</time>
+              <time title="创建时间：2022-01-24 13:45:51 / 修改时间：13:50:33" itemprop="dateCreated datePublished" datetime="2022-01-24T13:45:51+08:00">2022-01-24</time>
             </span>
 
           
@@ -191,49 +191,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
-<p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1535/problem/C">题面</a>：</p>
-<p>给定一个由0,1,?组成的字符串s。</p>
-<p>如果一个串由0,1组成，并且相邻两个字符不同，那么我们称之为不稳定字符串。</p>
-<p>如果一个串由0,1,?组成，并且你能通过将？替换成0或1（每个？都可以独立的替换成0或1），那么我们称之为美丽字符串。</p>
-<p>计算s的美丽连续子串的数量。</p>
-<p>I:</p>
-<p>第一行为数据组数<span class="math inline">\(1\leq t\leq1e4\)</span></p>
-<p>每组数据仅一行，包含字符串<span class="math inline">\(s\)</span>（<span class="math inline">\(1\leq |s|\leq 2e5\)</span>）。</p>
-<p>保证所有<span class="math inline">\(t\)</span>组数据的<span class="math inline">\(|s|\)</span>之和小于<span class="math inline">\(2e5\)</span>。</p>
-<p>O:</p>
-<p>输出s的美丽子串的数量。</p>
-</blockquote>
-<p>首先确认一下题意：题面最后一句原文是这样的：</p>
-<blockquote>
-<p>Calculate the number of beautiful contiguous substrings of the string <span class="math inline">\(s\)</span>.</p>
-</blockquote>
-<p>就是让你计算s的美丽连续子串的数量。</p>
-<p>而说美丽串的定义时，原文：</p>
-<blockquote>
-<p>Let's call a string <strong>beautiful</strong> if it consists of the characters 0, 1, and ?, and you can replace the characters ? to 0 or 1 (for each character, the choice is independent), so that the string becomes <strong>unstable</strong>.</p>
-</blockquote>
-<p>但你通过看样例就会发现，0?10的答案是8，那肯定是把1，0这样的也算上去了，也就是说<strong>答案中要求的美丽，不一定非要包含?</strong>。</p>
-<p>那么如果一个串是美丽的，那么它的任意连续子串都是一个美丽连续子串。因此对一个美丽串<span class="math inline">\(t\)</span>统计答案时就是<span class="math inline">\(|t|!\)</span>。只需要找出<span class="math inline">\(s\)</span>中有多少美丽串，并统计它们的长度。</p>
-<p>如何找<span class="math inline">\(s\)</span>中美丽串的个数</p>
-<ul>
-<li><p>在串中，两个挨着的1或两个挨着的0一定表示上一个美丽串结束了，可以统计它的答案了，下一个美丽串开始了。 <span class="math display">\[
- \overbrace{01010}^{美丽的}\underbrace{010}_{美丽的}
- \]</span></p></li>
-<li><p>如果出现了问号？，如果有偶数个问号，并且问号前后同为0或同为1；或者是有奇数个问号，问号前后不同。那么在问号的结尾处表示上一个不稳定串结束了，在问号开头处表示下一个不稳定串开始了。 <span class="math display">\[
- \begin{aligned}
- \rlap{\overbrace{\phantom{010???}}^{美丽的}}{010\underbrace{???101}_{美丽的}}
- \end{aligned}
- \]</span></p></li>
-<li><p>如果出现了?，如果有奇数个问号，并且问号前后同为0或同为1，那么问号分割的两部分就能合并到一起 <span class="math display">\[
- \overbrace{010???010}^{美丽的}
- \]</span></p></li>
-</ul>
-<p>然后统计所以美丽串的长度，求阶乘再相加即可。</p>
-<p>虽然话是这么说，不过我的队友用了一种更巧妙的方法，其实基本思路是一样的，只不过避免了计算阶乘。</p>
-<p>AC代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> t, ans, pos, cnt;</span><br><span class="line">string s;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin &gt;&gt; t;</span><br><span class="line">	<span class="keyword">while</span> (t--)</span><br><span class="line">	&#123;</span><br><span class="line">		ans = <span class="number">0</span>, cnt = <span class="number">0</span>, pos = <span class="number">0</span>;</span><br><span class="line">		cin &gt;&gt; s;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>(); ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (s[i] != <span class="string">&#x27;?&#x27;</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (i != <span class="number">0</span> &amp;&amp; s[i] == s[i - <span class="number">1</span>])</span><br><span class="line">					pos = cnt;</span><br><span class="line">				cnt = <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (i != <span class="number">0</span>) </span><br><span class="line">					<span class="keyword">if</span> (s[i - <span class="number">1</span>] == <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">						s[i] = <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">					<span class="keyword">else</span></span><br><span class="line">						s[i] = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">				cnt++;</span><br><span class="line">			&#125;</span><br><span class="line">			pos++;</span><br><span class="line">			ans += pos;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+          <p>充分证明了我代码功底不行。在思路明确的前提下写了半天没写出来，最后交给了队友。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/01/24/Unstable-String-%E9%A2%98%E8%A7%A3/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
