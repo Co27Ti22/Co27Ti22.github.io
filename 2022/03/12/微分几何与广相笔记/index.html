@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="学校不开广相所以只能自己学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微分几何与广相笔记">
+<meta property="og:url" content="http://example.com/2022/03/12/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E4%B8%8E%E5%B9%BF%E7%9B%B8%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Co27Ti22的博客">
+<meta property="og:description" content="学校不开广相所以只能自己学">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/03/12/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E4%B8%8E%E5%B9%BF%E7%9B%B8%E7%AC%94%E8%AE%B0/流形定义用图.jpg">
+<meta property="article:published_time" content="2022-03-12T04:40:49.000Z">
+<meta property="article:modified_time" content="2022-03-23T01:11:02.164Z">
+<meta property="article:author" content="Co27Ti22">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="物理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/03/12/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E4%B8%8E%E5%B9%BF%E7%9B%B8%E7%AC%94%E8%AE%B0/流形定义用图.jpg">
+
+<link rel="canonical" href="http://example.com/2022/03/12/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E4%B8%8E%E5%B9%BF%E7%9B%B8%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>微分几何与广相笔记 | Co27Ti22的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Co27Ti22的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">That's a question</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/12/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E4%B8%8E%E5%B9%BF%E7%9B%B8%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Co27Ti22">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Co27Ti22的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          微分几何与广相笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-12 12:40:49" itemprop="dateCreated datePublished" datetime="2022-03-12T12:40:49+08:00">2022-03-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-23 09:11:02" itemprop="dateModified" datetime="2022-03-23T09:11:02+08:00">2022-03-23</time>
+              </span>
+
+          
+            <div class="post-description">学校不开广相所以只能自己学</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>学校不开相对论的课，只有电动力学中会稍微讲一些狭义相对论。因此想学相对论还得自己学。</p>
+<p>主要采取了什么是什么的记法。因为前一半都是微分几何，有许多定义。如果连定义都搞不清楚就没法学了。</p>
+<h2 id="拓扑空间">拓扑空间</h2>
+<p><strong>什么是拓扑空间？</strong></p>
+<p>定义了开子集的集合叫拓扑空间。</p>
+<p>对于一个集合来说，空集合它本身是开子集，有限个开子集的交是开子集，任意个开子集的并是开子集。</p>
+<p><strong>为什么要引入拓扑？</strong></p>
+<p>对实数集R，可以通过距离，利用epsilon-delta语言来定义R到R映射的连续性。但对于一般的集合来说，未必定义了距离。引入拓扑就是为了在一般的集合间的映射上定义连续。</p>
+<p><strong>什么是拓扑结构？</strong></p>
+<p>就是开子集的指定方式。</p>
+<p>除了空集和本身以外，其他的开子集是人为指定的，这个指定为集合赋予了一种特殊结构，叫做拓扑结构。</p>
+<p><strong>什么叫拓扑？</strong></p>
+<p>一个集合的全体开子集构成的集合称为这个集合的拓扑。</p>
+<p><strong>如何用拓扑定义连续？</strong></p>
+<p>对一个映射<span class="math inline">\(f:X\rightarrow Y\)</span>，<span class="math inline">\((X,\mathscr T),(Y,\mathscr S)\)</span>。分别为花体T，花体S。</p>
+<p>对任意S中的开子集，其关于f的逆都是T的开子集，就称映射f是连续的。</p>
+<p><strong>什么是诱导拓扑？</strong></p>
+<p>诱导拓扑是为 已定义拓扑结构的集合 的子集 指定开子集的方式。</p>
+<p>首先考虑一个是拓扑空间的集合。我们想对其子集指定拓扑结构，使其成为拓扑空间。这种指定方式就叫做由原集合的拓扑结构诱导出的拓扑结构，称为诱导拓扑。</p>
+<p>诱导拓扑的指定方式是这样的：考虑原集合中所有的开子集，让开子集与要定义拓扑结构的集合求交。所有交构成的集合就是子集的诱导拓扑。</p>
+<p><strong>什么是同胚？</strong></p>
+<p><span class="math inline">\((X,\mathscr T),(Y,\mathscr S)\)</span>，如果存在映射<span class="math inline">\(f:X\rightarrow Y\)</span>，满足f是满射，并且连续。则两个拓扑空间同胚。</p>
+<p>注：有时同胚不止指两个拓扑空间的关系，也指同胚映射。</p>
+<p><strong>一个元素的邻域</strong> &amp;&amp; <strong>一个子集的邻域</strong></p>
+<p>对一个元素x，包含它的一个开子集的超集或是它本身就是x的一个邻域。</p>
+<p>对一个子集A，包含（注意不是真包含）它的一个开子集的超集或是它本身就是A的一个邻域。</p>
+<p><strong>什么是子集的开覆盖？</strong></p>
+<p>首先，开覆盖是一个开子集的集合。</p>
+<p>如果集合X的一个子集A包含于X所有开子集的并，那么X的开子集的集合就叫A的一个开覆盖。</p>
+<h2 id="微分流形">微分流形</h2>
+<p><strong>什么是n维微分流形？</strong></p>
+<center>
+<img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/2022/03/12/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E4%B8%8E%E5%B9%BF%E7%9B%B8%E7%AC%94%E8%AE%B0/流形定义用图.jpg" alt="图片替换文本" width="70%" height="70%" align="对齐"> <br>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">
+流形定义用图
+</div>
+</center>
+<p>能定义成流形的集合一定满足：</p>
+<p>能划分成多个开覆盖，每个开覆盖都跟<span class="math inline">\(\mathbb R^n\)</span>的开子集同胚。</p>
+<p>如果两个开覆盖有交集，那么复合映射<span class="math inline">\(\psi_{\beta}\cdot \psi_{\alpha}^{-1}\)</span>一定是光滑的。（相容性条件）</p>
+<p>比如R2，能用开覆盖R2划分，映射选择R2到R2的恒等映射。因此R2构成一个流形。称为2维平凡流形。</p>
+<p>又比如圆环，圆环与R不同胚，但是可以划分成4个开覆盖，通过映射映射到R的开子集上。并且交叠区域满足相容性条件，因此是一个1维流形。</p>
+<p><strong>什么是流形上的函数？</strong></p>
+<p><span class="math inline">\(f:M\rightarrow \mathbb R\)</span>称为M上的函数。若f是光滑的，则称为M上的光滑函数。</p>
+<p>M上全体光滑函数的集合记作<span class="math inline">\(\mathscr F_M\)</span>。</p>
+<p><strong>如何定义微分流形上的矢量？</strong></p>
+<p>映射<span class="math inline">\(v:\mathscr F_M\rightarrow \mathbb R\)</span>称为点<span class="math inline">\(p\in M\)</span>的一个矢量。</p>
+<p>根据定义，要指定p点的一个矢量只需指定一个从<span class="math inline">\(\mathscr F_M\)</span>到<span class="math inline">\(\mathbb R\)</span>的，满足线性性和莱布尼茨律的映射。因为这种映射很多，所以p点有无限多适量。</p>
+<p>注意：并不是一个流形上的全部矢量构成一个矢量空间，而是一个点p上的全部矢量就构成一个矢量空间。（证明？）</p>
+<p>矢量空间的基矢</p>
+<p>对流形M，设<span class="math inline">\((O,\psi)\)</span>为坐标系，其坐标为<span class="math inline">\(x^\mu\)</span>，则M上任意一光滑函数<span class="math inline">\(f\in \mathscr F_M\)</span>与<span class="math inline">\((O,\psi)\)</span>结合得n元函数<span class="math inline">\(F(x^1, \dots, x^n)\)</span>，借此可给O中任意一点p定义n个矢量。 <span class="math display">\[
+X_\mu:=\left.\dfrac{\part F(x^1,\dots, x^n)}{\part x^\mu}\right|_p, \ \ \forall f\in \mathscr F_M
+\]</span> 可简写为 <span class="math display">\[
+X_\mu:=\left.\dfrac{\part f(x)}{\part x^\mu}\right|_p, \ \ \forall f\in \mathscr F_M
+\]</span> 需要清楚理解：f只是一种简写，实际上指的是f与坐标系结合得到的n元函数<span class="math inline">\(F(x^1, \dots, x^n)\)</span>，而非标量场f。</p>
+<p>p点的坐标基矢<span class="math inline">\(X_\mu\)</span>常记作<span class="math inline">\(\part/\part x^\mu|_p\)</span></p>
+<p>有了基矢，p点的其他矢量就可以表示成基矢的线性组合。对于一个矢量v，用基矢线性表示的系数<span class="math inline">\(v^\mu\)</span>称为v的<strong>坐标分量</strong>。</p>
+<p>同时属于两个坐标系的点p，其上的矢量v同时有两套坐标分量<span class="math inline">\(v^\mu\)</span>和<span class="math inline">\(v^{&#39;\mu}\)</span>，二者的关系为： <span class="math display">\[
+v&#39;^\mu=\left.\dfrac{\part x&#39;^v(x^\sigma)}{\part x^\mu}\right|_pv^\mu
+\]</span> <span class="math inline">\(x&#39;^v(x^\sigma)\)</span>是两个坐标系之间的坐标变换函数。</p>
+<p>该式称为<strong>矢量的分量变换式</strong>。</p>
+<p><strong>如何定义流形上的曲线？</strong></p>
+<p><strong>什么是坐标线？</strong></p>
+<p>就是固定所有其他坐标，只改变某一个坐标得到的曲线。</p>
+<p>比如在笛卡尔坐标系中，固定y，移动x，得到x的坐标线。是平行于x轴的直线。y取另一常数即得另一条坐标线。</p>
+<p>在极坐标系中，固定r，移动<span class="math inline">\(\varphi\)</span>得到的坐标线，是以原点为圆心的无数同心圆。r取另一常数即得另一条坐标线。</p>
+<p><strong>什么是切矢？</strong></p>
+<p>切矢是由曲线和线上一点唯一确定的矢量。</p>
+<p>设曲线<span class="math inline">\(C(t)\)</span>，线上<span class="math inline">\(C(t_0)\)</span>点的切于<span class="math inline">\(C(t)\)</span>的<strong>切矢</strong>T是<span class="math inline">\(C(t_0)\)</span>点的矢量。对<span class="math inline">\(f\in \mathscr F_M\)</span>的作用定义为： <span class="math display">\[
+T(f) :=\left.\dfrac{\dd(f\circ C)}{\dd t}\right|_{t_0}, \ \ \forall f\in \mathscr F_M
+\]</span> <span class="math inline">\(f\circ C\)</span>是个一元函数，即<span class="math inline">\(f(C(t))\)</span>.</p>
+<p><span class="math inline">\(C(t_0)\)</span>点切于<span class="math inline">\(C(t)\)</span>的切矢T也常记作<span class="math inline">\(\part/\part t|_{C(t_0)}\)</span></p>
+<p>切矢的坐标基矢展开式： <span class="math display">\[
+\dfrac{\part}{\part t}=\dfrac{\dd x^\mu(t)}{\dd t} \dfrac{\part}{\part x^\mu}
+\]</span></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E7%89%A9%E7%90%86/" rel="tag"># 物理</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/05/Codeforces-774div2%E9%A2%98%E8%A7%A3/" rel="prev" title="Codeforces 774div2题解">
+      <i class="fa fa-chevron-left"></i> Codeforces 774div2题解
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/27/%E4%BD%BF%E7%94%A8%E6%8C%87%E6%A0%87%E8%BF%90%E7%AE%97%E6%8E%A8%E5%AF%BC%E7%94%B5%E5%8A%A8%E5%8A%9B%E5%AD%A6%E7%9F%A2%E9%87%8F%E5%BE%AE%E5%88%86%E8%BF%90%E7%AE%97%E5%85%AC%E5%BC%8F/" rel="next" title="使用指标运算推导电动力学矢量微分运算公式">
+      使用指标运算推导电动力学矢量微分运算公式 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%93%E6%89%91%E7%A9%BA%E9%97%B4"><span class="nav-number">1.</span> <span class="nav-text">拓扑空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E5%88%86%E6%B5%81%E5%BD%A2"><span class="nav-number">2.</span> <span class="nav-text">微分流形</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Co27Ti22"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Co27Ti22</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Co27Ti22</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
