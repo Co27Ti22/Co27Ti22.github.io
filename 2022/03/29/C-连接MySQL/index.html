@@ -27,15 +27,15 @@
 <meta property="og:site_name" content="Co27Ti22的博客">
 <meta property="og:description" content="C++连接MySQL">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2022/03/29/C-%E8%BF%9E%E6%8E%A5MySQL/Users/Dell/AppData/Roaming/Typora/typora-user-images/image-20220329154705254.png">
-<meta property="og:image" content="http://example.com/2022/03/29/C-%E8%BF%9E%E6%8E%A5MySQL/Users/Dell/AppData/Roaming/Typora/typora-user-images/image-20220329161406914.png">
-<meta property="og:image" content="http://example.com/2022/03/29/C-%E8%BF%9E%E6%8E%A5MySQL/Users/Dell/AppData/Roaming/Typora/typora-user-images/image-20220329184441933.png">
+<meta property="og:image" content="http://example.com/2022/03/29/C-%E8%BF%9E%E6%8E%A5MySQL/配置.png">
+<meta property="og:image" content="http://example.com/2022/03/29/C-%E8%BF%9E%E6%8E%A5MySQL/包含.png">
+<meta property="og:image" content="http://example.com/2022/03/29/C-%E8%BF%9E%E6%8E%A5MySQL/路径.png">
 <meta property="article:published_time" content="2022-03-29T11:02:47.000Z">
-<meta property="article:modified_time" content="2022-03-31T04:53:34.208Z">
+<meta property="article:modified_time" content="2022-03-31T04:58:02.993Z">
 <meta property="article:author" content="Co27Ti22">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/03/29/C-%E8%BF%9E%E6%8E%A5MySQL/Users/Dell/AppData/Roaming/Typora/typora-user-images/image-20220329154705254.png">
+<meta name="twitter:image" content="http://example.com/2022/03/29/C-%E8%BF%9E%E6%8E%A5MySQL/配置.png">
 
 <link rel="canonical" href="http://example.com/2022/03/29/C-%E8%BF%9E%E6%8E%A5MySQL/">
 
@@ -192,7 +192,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-31 12:53:34" itemprop="dateModified" datetime="2022-03-31T12:53:34+08:00">2022-03-31</time>
+                <time title="修改时间：2022-03-31 12:58:02" itemprop="dateModified" datetime="2022-03-31T12:58:02+08:00">2022-03-31</time>
               </span>
 
           
@@ -231,9 +231,9 @@
 <h3 id="第一步创建一个c-项目">第一步：创建一个C++ 项目</h3>
 <p>这个不用教吧？不过多少还是有些地方要注意的。</p>
 <p>主要在于创建完项目后：</p>
-<figure>
-<img src="/2022/03/29/C-%E8%BF%9E%E6%8E%A5MySQL/Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20220329154705254.png" alt="image-20220329154705254"><figcaption>image-20220329154705254</figcaption>
-</figure>
+<center>
+<p><img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/2022/03/29/C-%E8%BF%9E%E6%8E%A5MySQL/配置.png" alt="图片替换文本" width="尺寸" height="尺寸" align="对齐"></p>
 <p>首先是选x86还是x64呢？这个要根据你的MySQL决定。</p>
 <p>其次是选择Debug还是Release呢？这个要选Release。</p>
 <blockquote>
@@ -250,8 +250,10 @@
 <p>你安装的盘:C++ 8.0</p>
 <blockquote>
 <p>注意：添加时可以按那个编辑按钮，通过这种方法添加不易出错。</p>
-<p><img src="/2022/03/29/C-%E8%BF%9E%E6%8E%A5MySQL/Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20220329161406914.png"></p>
-</blockquote>
+<center>
+<p><img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/2022/03/29/C-%E8%BF%9E%E6%8E%A5MySQL/包含.png" alt="图片替换文本" width="尺寸" height="尺寸" align="对齐"></p>
+</center></blockquote>
 <p>点击<strong>应用</strong>（当然，也可以所有步骤都完成后一起应用）</p>
 <h3 id="第三步设置库路径">第三步：设置库路径</h3>
 <p>还是在<strong>项目</strong>的属性页，切换到<strong>配置属性</strong>下的<strong>链接器</strong>下的<strong>常规</strong>。</p>
@@ -265,12 +267,12 @@
 <p>最后的最后，需要将lib64下的dll文件复制到C:32或者是复制到项目的目录中（与你的exe文件同一个文件夹中）。</p>
 <blockquote>
 <p>冷知识：在Visual Studio中右键项目，在最后有<strong>在文件资源管理器中打开文件夹</strong>。可以快速定位项目。打开后进入x64文件夹（也有可能是x86，取决于你的设置），再打开Release。把lib64中的dll复制到这里面就可以了。</p>
-<figure>
-<img src="/2022/03/29/C-%E8%BF%9E%E6%8E%A5MySQL/Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20220329184441933.png" alt="image-20220329184441933"><figcaption>image-20220329184441933</figcaption>
-</figure>
-</blockquote>
+<center>
+<p><img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/2022/03/29/C-%E8%BF%9E%E6%8E%A5MySQL/路径.png" alt="图片替换文本" width="尺寸" height="尺寸" align="对齐"></p>
+</center></blockquote>
 <h2 id="测试">测试</h2>
-
+</center>
     </div>
 
     
