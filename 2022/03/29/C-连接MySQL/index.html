@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://example.com/2022/03/29/C-%E8%BF%9E%E6%8E%A5MySQL/Users/Dell/AppData/Roaming/Typora/typora-user-images/image-20220329161406914.png">
 <meta property="og:image" content="http://example.com/2022/03/29/C-%E8%BF%9E%E6%8E%A5MySQL/Users/Dell/AppData/Roaming/Typora/typora-user-images/image-20220329184441933.png">
 <meta property="article:published_time" content="2022-03-29T11:02:47.000Z">
-<meta property="article:modified_time" content="2022-03-31T04:51:35.083Z">
+<meta property="article:modified_time" content="2022-03-31T04:53:34.208Z">
 <meta property="article:author" content="Co27Ti22">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
@@ -192,7 +192,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-31 12:51:35" itemprop="dateModified" datetime="2022-03-31T12:51:35+08:00">2022-03-31</time>
+                <time title="修改时间：2022-03-31 12:53:34" itemprop="dateModified" datetime="2022-03-31T12:53:34+08:00">2022-03-31</time>
               </span>
 
           
@@ -207,8 +207,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="c连接mysql">C++连接MySQL</h1>
-<h2 id="前言">前言</h2>
+        <h2 id="前言">前言</h2>
 <p>首先给出官方的参考资料：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/connector-cpp/8.0/en/connector-cpp-introduction.html#connector-cpp-prerequisites">[传送门]</a></p>
 <blockquote>
 <p>你从我这条超链接进去之后是资料的前言，不过对配置真正有用的应该是<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/connector-cpp/8.0/en/connector-cpp-apps-platform-considerations.html">[传送门]</a>这个页面。然后根据你的系统选择页面就行。</p>
@@ -351,7 +350,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#c%E8%BF%9E%E6%8E%A5mysql"><span class="nav-number">1.</span> <span class="nav-text">C++连接MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-number">1.2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAc-%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.2.1.</span> <span class="nav-text">第一步：创建一个C++ 项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E8%AE%BE%E7%BD%AE%E5%8C%85%E5%90%AB%E8%B7%AF%E5%BE%84"><span class="nav-number">1.2.2.</span> <span class="nav-text">第二步：设置包含路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%E8%AE%BE%E7%BD%AE%E5%BA%93%E8%B7%AF%E5%BE%84"><span class="nav-number">1.2.3.</span> <span class="nav-text">第三步：设置库路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%E8%AE%BE%E7%BD%AE%E4%BD%BF%E7%94%A8%E7%9A%84%E5%BA%93"><span class="nav-number">1.2.4.</span> <span class="nav-text">第四步：设置使用的库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">1.3.</span> <span class="nav-text">测试</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAc-%E9%A1%B9%E7%9B%AE"><span class="nav-number">2.1.</span> <span class="nav-text">第一步：创建一个C++ 项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E8%AE%BE%E7%BD%AE%E5%8C%85%E5%90%AB%E8%B7%AF%E5%BE%84"><span class="nav-number">2.2.</span> <span class="nav-text">第二步：设置包含路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%E8%AE%BE%E7%BD%AE%E5%BA%93%E8%B7%AF%E5%BE%84"><span class="nav-number">2.3.</span> <span class="nav-text">第三步：设置库路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%E8%AE%BE%E7%BD%AE%E4%BD%BF%E7%94%A8%E7%9A%84%E5%BA%93"><span class="nav-number">2.4.</span> <span class="nav-text">第四步：设置使用的库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">3.</span> <span class="nav-text">测试</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
