@@ -152,6 +152,416 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%85%89%E5%AD%90%E5%8F%AA%E6%9C%89%E8%9E%BA%E6%97%8B%E5%BA%A6%E6%AD%A3%E8%B4%9F1%EF%BC%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Co27Ti22">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Co27Ti22的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/05/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%85%89%E5%AD%90%E5%8F%AA%E6%9C%89%E8%9E%BA%E6%97%8B%E5%BA%A6%E6%AD%A3%E8%B4%9F1%EF%BC%9F/" class="post-title-link" itemprop="url">为什么光子只有螺旋度正负1？</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-05-05 03:20:13 / 修改时间：03:29:45" itemprop="dateCreated datePublished" datetime="2025-05-05T03:20:13+08:00">2025-05-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><span class="math display">\[
+\newcommand{\oiint}{\,\bigcirc\kern{-13.5pt}\int\kern{-7.2pt}\int}
+\newcommand{\ii}{\mathrm i}
+\newcommand{\ee}{\mathrm e}
+\newcommand{\dd}{\mathrm d}
+\newcommand{\ud}{\mathop{}\negthinspace\mathrm{d}}
+\newcommand{\part}{\partial}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\bb}{\mathbb}
+\newcommand{\scr}{\mathscr}
+\newcommand{\ddx}{\dd x}
+\]</span></p>
+<h2 id="单粒子态在洛伦兹群下的表示为什么光子螺旋度只有pm-1">单粒子态在洛伦兹群下的表示——为什么光子螺旋度只有<span class="math inline">\(\pm 1\)</span>？</h2>
+<ul>
+<li><p>Q:
+从单粒子态在洛伦兹群下的变换对其分类，能分类到什么程度？我们知道标准模型中已经对（基本）粒子分得很详细了，用单粒子态在洛伦兹群下的变换做分类能分到这种程度吗？</p></li>
+<li><p>A:
+用单粒子态在洛伦兹群下的变换做分类，即若两个单粒子态在同一个洛伦兹变换下的变换规律不同，就认为这两个单粒子态不同类。从最后的结果，我们能看出我们只能把粒子分为两大类：有质量和无质量，有质量和无质量再根据自旋和螺旋度进行分类。没法做到标准模型那种程度。</p></li>
+<li><p>Notation：</p>
+<p>度规：我们这里用<span class="math inline">\(\eta=\rm{diag}(-1,1,1,1)\)</span>。</p>
+<p>洛伦兹变换：转动+boost。记号用<span class="math inline">\(\Lambda\)</span>或<span class="math inline">\(U(\Lambda)\)</span>。前者按<span class="math inline">\(\eta_{\mu\nu}{\Lambda^\mu}_\rho{\Lambda^\nu}_\sigma=\eta_{\rho\sigma}\)</span>定义，后者是洛伦兹群在希尔伯特空间的表示。前者作用在4-动量上，后者作用在单粒子态上。</p>
+<p>单粒子态：<span class="math inline">\(\Psi_{p,\sigma}\)</span>。<span class="math inline">\(p\)</span>指动量，<span class="math inline">\(\sigma\)</span>泛指其他相关自由度。一个粒子通过可以在洛伦兹变换下相互转化的单粒子态<span class="math inline">\(\{\ket{\Psi_{p,\sigma}}\}\)</span>来定义。</p></li>
+</ul>
+<h3 id="小群方法">小群方法</h3>
+<p>平移变换下，单粒子态的变换是比较简单的： <span class="math display">\[
+U(1,a)\Psi_{p,\sigma}=\mathrm{e}^{-\ii p\cdot a}\Psi_{p,a}
+\]</span> 我们现在想要知道一个单粒子态<span class="math inline">\(\Psi_{p,\sigma}\)</span>在齐次洛伦兹变换下如何变换：
+<span class="math display">\[
+U(\Lambda)\Psi_{p,\sigma}=\ ?
+\]</span> 首先由于<span class="math inline">\(\Psi_{p,\sigma}\)</span>是动量本征态<span class="math inline">\(P^\mu\Psi_{p,\sigma}=p^\mu\Psi_{p,\sigma}\)</span>。用任意齐次洛伦兹作用在单粒子态上，我们可以得到：
+<span class="math display">\[
+\begin{aligned}
+P^\mu U(\Lambda)\Psi_{p,\sigma}
+&amp;=U(\Lambda)\left[U^{-1}(\Lambda)P^\mu U(\Lambda)
+\right]\Psi_{p,\sigma}
+=U(\Lambda)
+(\Lambda^{-1\phantom{\mu a}\mu}_{\phantom{\rho\rho\rho}\rho} P^\rho)
+\Psi_{p,\sigma}\\
+&amp;={\Lambda^\mu}_\rho p^\rho U(\Lambda)\Psi_{p,\sigma}
+\end{aligned}
+\]</span> 即<span class="math inline">\(U(\Lambda)\Psi_{p,\sigma}\)</span>的动量为<span class="math inline">\({\Lambda^\mu}_\rho p^\rho\)</span>。也就说明<span class="math inline">\(U(\Lambda)\Psi_{p,\sigma}\)</span>是<span class="math inline">\(\Psi_{\Lambda p,\sigma&#39;}\)</span>的线性组合：
+<span class="math display">\[
+U(\Lambda)\Psi_{p,\sigma}=\sum_{\sigma&#39;}C_{\sigma&#39;\sigma}(\Lambda,p)\Psi_{\Lambda
+p,\sigma&#39;}\tag{1}
+\]</span> 我们想要得到的就是<span class="math inline">\(C_{\sigma&#39;\sigma}\)</span>。</p>
+<p>为了得到这个表示，我们先考虑一个齐次洛伦兹群的一个子群。其中的元素<span class="math inline">\(W\)</span>满足： <span class="math display">\[
+{W^\mu}_\nu k^\nu =k^\mu
+\]</span> 其中<span class="math inline">\(k\)</span>是我们选取的一个标准动量。这个洛伦兹群的子群称作小群。</p>
+<p>由于<span class="math inline">\(W\)</span>保<span class="math inline">\(k\)</span>不变，因此小群的表示应该满足： <span class="math display">\[
+U(W)\Psi_{k,\sigma}=\sum_{\sigma&#39;}D_{\sigma&#39;\sigma}(W)\Psi_{k,\sigma&#39;}\tag{2}
+\]</span></p>
+<blockquote>
+<p>为什么要先看小群的表示？</p>
+</blockquote>
+<p>为什么要先看小群的表示？略过一些推导（见Weinberg场论卷一<span class="math inline">\(\sect2.5\)</span>），我们可以得到一个重要关系：
+<span class="math display">\[
+U(\Lambda)\Psi_{p,\sigma}=N(p)U(L(\Lambda p))U(W)\Psi_{k,\sigma}
+\]</span> 将<span class="math inline">\((2)\)</span>带入，利用<span class="math inline">\(U(L(\Lambda p))\Psi_{k,\sigma&#39;}=\Psi_{\Lambda
+p,\sigma&#39;}\)</span>： <span class="math display">\[
+U(\Lambda)\Psi_{p,\sigma}=\left(\dfrac{N(p)}{N(\Lambda
+p)}\right)\sum_{\sigma&#39;}D_{\sigma&#39;\sigma}(W(\Lambda,p))\Psi_{\Lambda
+p,\sigma&#39;}
+\]</span> 对比<span class="math inline">\((1)\)</span>，除了归一化系数，表示<span class="math inline">\(C_{\sigma&#39;\sigma}\)</span>可以完全由小群表示<span class="math inline">\(D_{\sigma&#39;\sigma}\)</span>决定。因此下一步就是找小群的表示。</p>
+<blockquote>
+<p>此外我认为还有一点：洛伦兹群作为非紧致李群，没有有限维的幺正表示，也没有有限维的不可约表示做分解。但我们可以通过小群方法，将洛伦兹群的幺正表示分解为小群的不可约表示。</p>
+</blockquote>
+<h3 id="有质量与无质量">有质量与无质量</h3>
+<p>有质量粒子与无质量粒子的不同在这个时候就显现出来了。小群是保标准动量<span class="math inline">\(k\)</span>不变的洛伦兹群子群，而无质量粒子的动量必须类光，而有质量粒子的动量绝不能类光（只能类时）。因此我们可以这样选取标准动量：</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>标准<span class="math inline">\(k^\mu\)</span></th>
+<th>小群</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>有质量</td>
+<td><span class="math inline">\((M,0,0,0)\)</span></td>
+<td><span class="math inline">\(\rm{SO}(3)\)</span></td>
+</tr>
+<tr class="even">
+<td>无质量</td>
+<td><span class="math inline">\((\kappa,0,0,\kappa)\)</span></td>
+<td><span class="math inline">\(\rm{ISO}(2)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>我们主要关注其中无质量的部分。为了更简单，我们将标准动量选做<span class="math inline">\(k^\mu=(1,0,0,1)\)</span>。二者只差一个<span class="math inline">\(z\)</span>方向的boost。</p>
+<p>小群的元素保<span class="math inline">\(k^\mu\)</span>不变： <span class="math display">\[
+{W^\mu}_\nu k^\nu=k^\mu\\
+k_\mu=k_\nu{(W^{-1})^\nu}_\mu
+\]</span> 再考虑一个类时矢量<span class="math inline">\(t^\mu=(1,0,0,0)\)</span>。我们可以得到<span class="math inline">\(W\)</span>作用于<span class="math inline">\(t\)</span>得到的矢量<span class="math inline">\((Wt)^\mu\)</span>满足： <span class="math display">\[
+(Wt)^\mu k_\mu={W^\mu}_\nu t^\nu{(W^{-1})^\rho}_\mu
+k_\rho={\delta^\rho}_\nu t^\nu k_\rho=-1\\
+(Wt)^\mu(Wt)_\mu={W^\mu}_\nu t^\nu{(W^{-1})^\rho}_\mu
+t_\rho={\delta^\rho}_\nu t^\nu t_\rho=-1
+\]</span> 由第一条，<span class="math inline">\((Wt)^\mu
+k_\mu=-1\)</span>，我们可以设： <span class="math display">\[
+(Wt)^\mu=(1+\zeta,\alpha,\beta,\zeta)
+\]</span> 结合第二条，<span class="math inline">\(\zeta\)</span>必须满足： <span class="math display">\[
+\zeta=(\alpha^2+\beta^2)/2
+\]</span> 因此<span class="math inline">\(W\)</span>作用于<span class="math inline">\(t^\mu\)</span>等效于如下的洛伦兹变换作用于<span class="math inline">\(t^\mu\)</span>： <span class="math display">\[
+{S^\mu}_\nu(\alpha,\beta)=
+\left(
+\begin{array}{cccc}
+1+\zeta &amp; \alpha &amp; \beta &amp; -\zeta \\
+\alpha &amp; 1 &amp; 0 &amp; -\alpha \\
+\beta &amp; 0 &amp; 1 &amp; -\beta \\
+\zeta &amp; \alpha &amp; \beta &amp; 1-\zeta \\
+\end{array}
+\right)
+\]</span></p>
+<blockquote>
+<p>我认为这是比较有技巧性的一步。我们目前的目的是关于小群群元<span class="math inline">\(W\)</span>的信息。而我们目前唯一知道的只有<span class="math inline">\((Wt)^\mu=(1+\zeta,\alpha,\beta,\zeta)\)</span>。这确实给出<span class="math inline">\(W\)</span>作用于<span class="math inline">\(t^\mu\)</span>等效于某个洛伦兹变换<span class="math inline">\(S\)</span>作用于<span class="math inline">\(t^\mu\)</span>。但只知道<span class="math inline">\((Wt)^\mu\)</span>最多只能将<span class="math inline">\(S\)</span>确定到这种程度： <span class="math display">\[
+{S^\mu}_\nu(\alpha,\beta)=
+\left(
+\begin{array}{cccc}
+1+\zeta &amp; \cdot &amp; \cdot &amp; \cdot \\
+\alpha &amp; \cdot &amp; \cdot &amp; \cdot \\
+\beta &amp; \cdot &amp; \cdot &amp; \cdot \\
+\zeta &amp; \cdot &amp; \cdot &amp; \cdot \\
+\end{array}
+\right)
+\]</span> 我们选择的是构造一个具体的<span class="math inline">\(S\)</span>。我们要求<span class="math inline">\(S\)</span>还满足<span class="math inline">\({S^\mu}_\nu
+k^\nu=k^\mu\)</span>，结合这一条件，我们能将<span class="math inline">\(S\)</span>的第四列确定下了。最后，<span class="math inline">\(S\)</span>作为洛伦兹变换，必须满足保度规条件<span class="math inline">\(\eta=S^T\eta S\)</span>。由此可以解出整个矩阵<span class="math inline">\(S\)</span>。</p>
+<p>我们构造出的这样一个<span class="math inline">\(S\)</span>满足：</p>
+<ol type="1">
+<li><span class="math inline">\((Wt)^\mu=(St)^\mu\)</span>，即<span class="math inline">\(S^{-1}W\)</span>保类时矢量<span class="math inline">\(t^\mu\)</span>不变，是一个纯转动。</li>
+<li><span class="math inline">\({S^\mu}_\nu
+k^\nu=k^\mu\)</span>，两侧同左乘<span class="math inline">\({(S^{-1})^\rho}_\mu\)</span>，得<span class="math inline">\(k^\rho={(S^{-1})^\rho}_\mu
+k^\mu\)</span>。进一步有<span class="math inline">\((S^{-1}W)\)</span>也保<span class="math inline">\(k^\mu\)</span>不变。</li>
+</ol>
+<p>即<span class="math inline">\((S^{-1}W)\)</span>是一个保持<span class="math inline">\(k^\mu\)</span>不变的纯转动，那只能是绕<span class="math inline">\(z\)</span>轴的转动。 <span class="math display">\[
+S^{-1}(\alpha,\beta)W=R(\theta)
+\]</span></p>
+</blockquote>
+<p><span class="math display">\[
+S^{-1}(\alpha,\beta)W=R(\theta)
+\]</span></p>
+<p>其中： <span class="math display">\[
+{R^\mu}_\nu(\theta)\equiv
+\left(
+\begin{array}{cccc}
+1 &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; \cos\theta &amp; \sin\theta &amp; 0\\
+0 &amp; -\sin\theta &amp; \cos\theta &amp; 0\\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{array}
+\right)
+\]</span> 因此小群群元最普遍的形式是： <span class="math display">\[
+W(\alpha,\beta,\theta)=S(\alpha,\beta)R(\theta)
+\]</span> 对无限小的<span class="math inline">\(\theta,\alpha,\beta\)</span>： <span class="math display">\[
+{W^\mu}_\nu(\alpha,\beta,\theta)={\delta^\mu}_\nu+{\omega^\mu}_\nu
+\]</span> 此时： <span class="math display">\[
+{S^\mu}_\nu(\alpha,\beta)\overset{\alpha,\beta\to 0}{\longrightarrow}
+\left(
+\begin{array}{cccc}
+1 &amp; \alpha &amp; \beta &amp; 0 \\
+\alpha &amp; 1 &amp; 0 &amp; -\alpha \\
+\beta &amp; 0 &amp; 1 &amp; -\beta \\
+0 &amp; \alpha &amp; \beta &amp; 1 \\
+\end{array}
+\right),
+\quad
+{R^\mu}_\nu(\theta)\overset{\theta\to 0}{\longrightarrow}
+\left(
+\begin{array}{cccc}
+1 &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; \theta &amp; 0\\
+0 &amp; -\theta &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{array}
+\right)
+\]</span> 因此可以得到<span class="math inline">\({\omega^\mu}_\nu\)</span>： <span class="math display">\[
+W(\alpha,\beta,\theta)\overset{\alpha,\beta,\theta\to0}{\longrightarrow}
+\left(
+\begin{array}{cccc}
+1 &amp; \alpha &amp; \beta &amp; 0 \\
+\alpha &amp; 1 &amp; \theta &amp; -\alpha \\
+\beta &amp; -\theta &amp; 1 &amp; -\beta \\
+0 &amp; \alpha &amp; \beta &amp; 1 \\
+\end{array}
+\right)
+\]</span> 因此： <span class="math display">\[
+{\omega^\mu}_\nu=
+\left(
+\begin{array}{cccc}
+0 &amp; \alpha &amp; \beta &amp; 0 \\
+\alpha &amp; 0 &amp; \theta &amp; -\alpha \\
+\beta &amp; -\theta &amp; 0 &amp; -\beta \\
+0 &amp; \alpha &amp; \beta &amp; 0 \\
+\end{array}
+\right)
+\]</span> 降指标： <span class="math display">\[
+{\omega}_{\mu\nu}=
+\left(
+\begin{array}{cccc}
+0 &amp; -\alpha &amp; -\beta &amp; 0 \\
+\alpha &amp; 0 &amp; \theta &amp; -\alpha \\
+\beta &amp; -\theta &amp; 0 &amp; -\beta \\
+0 &amp; \alpha &amp; \beta &amp; 0 \\
+\end{array}
+\right)
+\]</span> 希尔伯特空间中的无穷小变换是： <span class="math display">\[
+\begin{aligned}
+U(W(\theta,\alpha,\beta))
+&amp;=1-\dfrac{\ii}{2}\omega_{\mu\nu}J^{\mu\nu}\\
+&amp;=1+\ii\alpha(J^{10}-J^{13})+\ii\beta(J^{20}-J^{23})+\ii\theta
+J^{12}\\
+&amp;=1+\ii\alpha A+\ii\beta B+\ii\theta J^3
+\end{aligned}
+\]</span> 其中： <span class="math display">\[
+A\equiv J^{10}-J^{13}=J^2+K^1,\quad B\equiv J^{20}-J^{23}=-J^1+K^2
+\]</span> 利用洛伦兹群生成元之间的对易关系，计算<span class="math inline">\(A,B,J^3\)</span>之间的对易关系，有： <span class="math display">\[
+[J^3,A]=+\ii B,\\
+[J^3,B]=-\ii A,\\
+[A,B]=0.
+\]</span> 由于<span class="math inline">\(A,B\)</span>是对易的厄米算符，因此可以同时对角化：
+<span class="math display">\[
+A\Psi_{k,a,b}=a\Psi_{k,a,b}\\
+B\Psi_{k,a,b}=b\Psi_{k,a,b}
+\]</span> 但是由于<span class="math inline">\(A,B\)</span>有性质（参考yzh 3.181-3.185）： <span class="math display">\[
+U[R(\theta)]AU^{-1}[R(\theta)]=A\cos\theta-B\sin\theta
+\\
+U[R(\theta)]BU^{-1}[R(\theta)]=A\sin\theta+B\cos\theta
+\]</span> 因此对任意<span class="math inline">\(\theta\)</span>： <span class="math display">\[
+A\Psi_{k,a,b}^\theta=(a\cos\theta-b\sin\theta)\Psi_{k,a,b}^\theta\\
+B\Psi_{k,a,b}^\theta=(a\sin\theta+b\cos\theta)\Psi_{k,a,b}^\theta
+\]</span> 其中<span class="math inline">\(\Psi_{k,a,b}^\theta\equiv
+U^{-1}(R(\theta))\Psi_{k,a,b}\)</span>。</p>
+<p>也就是说只要找到了<span class="math inline">\(A,B\)</span>的一组非零本征值，那么无质量粒子就会有用<span class="math inline">\(\theta\)</span>作为连续自由度的物理态。但是实验上并没有观测到这样的态，因此物理的态必须是<span class="math inline">\(A,B\)</span>的<span class="math inline">\(a=b=0\)</span>的本征矢。这样的本征矢最后只能用<span class="math inline">\(J_3\)</span>的本征值区分： <span class="math display">\[
+J^3\Psi_{k,\sigma}=\sigma\Psi_{k,\sigma}
+\]</span> 由于动量<span class="math inline">\(k\)</span>在<span class="math inline">\(z\)</span>方向上，<span class="math inline">\(\sigma\)</span>给出的是角动量在运动方向上的分量，即螺旋度。</p>
+<blockquote>
+<p>也就是说这里出现<span class="math inline">\(J^3\)</span>是由于标准<span class="math inline">\(k\)</span>取作<span class="math inline">\((\kappa,0,0,\kappa)\)</span>，如果取<span class="math inline">\((\kappa,\kappa,0,0)\)</span>，那么这里出现的就会是<span class="math inline">\(J^1\)</span>？</p>
+</blockquote>
+<p>因为螺旋度是洛伦兹不变的，因此我们可以用螺旋度对无质量粒子进行分类。</p>
+<blockquote>
+<p>为什么对无质量粒子，用螺旋度而不用自旋去分类？</p>
+<p><del>因为有自旋相同，但螺旋度不同的粒子。中微子与反中微子。</del></p>
+</blockquote>
+<h3 id="为什么光子只有两种螺旋度">为什么光子只有两种螺旋度</h3>
+<p>该部分参考arXiv:1403.2698v4</p>
+<p>考虑一个有质量粒子，选取标准动量<span class="math inline">\(k^\mu=(1,0,0,q)\)</span>。这是一个沿<span class="math inline">\(z\)</span>方向运动的粒子，其中<span class="math inline">\(0\le q\le 1\)</span>，当<span class="math inline">\(q=1\)</span>时<span class="math inline">\(k^\mu\)</span>类光。</p>
+<p>度规为<span class="math inline">\(\rm{diag}(-1,1,1,1)\)</span>。</p>
+<p>假设<span class="math inline">\({W^\mu}_\nu\)</span>保<span class="math inline">\(k^\mu=(1,0,0,q)\)</span>，引入类时4-矢<span class="math inline">\(t^\mu=(1,0,0,0)\)</span>。有： <span class="math display">\[
+({W^\mu}_\nu t^\nu)k_\mu={W^\mu}_\nu t^\nu{(W^{-1})^\rho}_\mu
+k_\rho={\delta^\rho}_\nu t^\nu k_\rho=-1\\
+(Wt)^\mu(Wt)_\mu={W^\mu}_\nu t^\nu{(W^{-1})^\rho}_\mu
+t_\rho={\delta^\rho}_\nu t^\nu t_\rho=-1
+\]</span> 根据第一条，可以设<span class="math inline">\((Wt)^\mu\)</span>为： <span class="math display">\[
+(Wt)^\mu=(1+q^2\zeta,q\alpha,q\beta,q\zeta)
+\]</span> 根据第二条，可以得到<span class="math inline">\(\zeta\)</span>满足： <span class="math display">\[
+(1-q^2)\zeta^2-2\zeta+\alpha^2+\beta^2=0
+\]</span> 由此可以解出<span class="math inline">\(\zeta\)</span>。</p>
+<p>像考虑无质量粒子时一样，构造一个矩阵<span class="math inline">\(S\)</span>：由<span class="math inline">\((Wt)^\mu=(1+q^2\zeta,q\alpha,q\beta,q\zeta)\)</span>以及<span class="math inline">\((Sk)^\mu=k^\mu\)</span>可得<span class="math inline">\(S\)</span>的一般形式为： <span class="math display">\[
+{S^\mu}_\nu(\alpha,\beta)=
+\left(\begin{array}{cccc}
+1+q^2\zeta &amp; z &amp; r &amp; -q\zeta\\
+q\alpha &amp; u &amp; v &amp; -\alpha\\
+q\beta &amp; w &amp; s &amp; -\beta\\
+q\zeta &amp; x &amp; y &amp; 1-\zeta
+\end{array}\right)
+\]</span> 利用保度规条件<span class="math inline">\(\eta=S^T\eta
+S\)</span>可以解出<span class="math inline">\(x,y,z,w,r,s,u,v\)</span>。</p>
+<blockquote>
+<p>文章中提到求得的解非唯一，我们仅从中选取一个（每个解对应一个<span class="math inline">\(S(\alpha,\beta)\)</span>，即对应一个群）。可以验证不同解对应的李代数彼此等价。</p>
+<p>上面这句话是文章中说的。我并没有解过，也不知道怎么验证李代数等价。</p>
+</blockquote>
+<p>此时对无限小的<span class="math inline">\(\alpha,\beta,\theta\)</span>，<span class="math inline">\(\omega\)</span>变为： <span class="math display">\[
+{\omega}_{\mu\nu}=
+\left(
+\begin{array}{cccc}
+0 &amp; -q\alpha &amp; -q\beta &amp; 0 \\
+q\alpha &amp; 0 &amp; \theta &amp; -\alpha \\
+q\beta &amp; -\theta &amp; 0 &amp; -\beta \\
+0 &amp; \alpha &amp; \beta &amp; 0 \\
+\end{array}
+\right)
+\]</span> 希尔伯特空间中的变换为： <span class="math display">\[
+U(W(\theta,\alpha,\beta))
+=1+\ii\alpha A+\ii\beta B+\ii\theta J^3
+\]</span> 其中<span class="math inline">\(A=J^2+qK^1,\
+B=-J^1+qK^2\)</span>。此时对易关系变为： <span class="math display">\[
+[J^3,A]=+\ii B,\\
+[J^3,B]=-\ii A,\\
+[A,B]=\ii(1-q^2)J^3.
+\]</span></p>
+<p>我们知道有质量粒子的小群是<span class="math inline">\(\rm{SO}(3)\)</span>，但从<span class="math inline">\(A,B,J^3\)</span>的对易关系中目前还看不出李代数<span class="math inline">\(\mathfrak{so}(3)\)</span>的结构。为此，做一个变换：
+<span class="math display">\[
+{J^1}&#39;=\dfrac{A}{\sqrt{1-q^2}},\quad
+{J^2}&#39;=\dfrac{B}{\sqrt{1-q^2}},\quad {J^3}&#39;=J^3
+\]</span> 它们之间的对易关系： <span class="math display">\[
+[{J^3}&#39;,{J^1}&#39;]=\ii {J^2}&#39;,\quad [{J^2}&#39;,{J^3}&#39;]=\ii
+{J^1}&#39;,\quad [{J^1}&#39;,{J^2}&#39;]=\ii {J^3}&#39;,\quad
+\]</span>
+这就是标准的角动量代数了。但是注意到，当我们取无质量极限时，<span class="math inline">\(q\to1\)</span>，<span class="math inline">\({J^1}&#39;,{J^2}&#39;\)</span>会发散掉。但这其实不是发散，正如我们之前在无质量粒子部分讨论的一样，无质量粒子只能有<span class="math inline">\(A,B\)</span>本征值为零的本征态，因此<span class="math inline">\({J^1}&#39;,{J^2}&#39;\)</span>的本征值也必须为零。</p>
+<blockquote>
+<p>这里其实与之前并不完全相同：在Weinberg书中，无质量粒子只能有<span class="math inline">\(A,B\)</span>本征值为零的本征态是因为我们在实验上看到的就是这样。但在这里，我们可以从<span class="math inline">\(J^{1&#39;},J^{2&#39;}\)</span>不应该发散推出。</p>
+</blockquote>
+<p>从这里就能看出无质量粒子的特别之处：对有质量粒子，我们可以利用<span class="math inline">\(J^1,J^2\)</span>来构造<span class="math inline">\(J^3\)</span>的升降算符。因此若有质量粒子自旋为<span class="math inline">\(s\)</span>，那么<span class="math inline">\(-s,-s+1,\dots,s\)</span>都是可能的<span class="math inline">\(S_z\)</span>分量。但无质量粒子是没办法做到的。</p>
+<blockquote>
+<p>也是由于这个原因，我们会认为自旋量子数<span class="math inline">\(s\)</span>相同而<span class="math inline">\(m\)</span>不同是同种粒子处于不同的态。而对于无质量粒子，我们可能会认为螺旋度为<span class="math inline">\(\pm\sigma\)</span>的是两种粒子。</p>
+<p>以下引自Weinberg：</p>
+<p>注意到螺旋度是 Lorentz
+不变的；螺旋度给定的无质量粒子在所有惯性系中（除了它的动量）看起来是相同的．事实上，我们有道理认为螺旋度不同的无质量粒子是不同种类的粒子．然而，我们将在下一节看到，螺旋度相反的粒子通过空间反演对称性相关联．因此，由于电磁力和引力是空间反演对称的，与电磁现象相联系的螺旋度为<span class="math inline">\(\pm
+1\)</span>的无质量粒子都被称为光子，而螺旋度为<span class="math inline">\(\pm
+2\)</span>的，被认为与引力相联系的无质量粒子都被称为引力子．另一方面,在核<span class="math inline">\(\beta^-\)</span>衰变中发射出的粒子中可能有螺旋度为<span class="math inline">\(\pm1/2\)</span>的无质量粒子，它们不参与具有空间反演对称性的相互作用（引力除外），所以这些粒子被赋予了不同的名字：螺旋度为<span class="math inline">\(+1/2\)</span>的粒子称为中微子，螺旋度为<span class="math inline">\(-1/2\)</span>的粒子称为反中微子。</p>
+</blockquote>
+<h4 id="当mto-0有质量的单粒子态如何收敛到无质量的单粒子态">当<span class="math inline">\(m\to
+0\)</span>，有质量的单粒子态如何收敛到无质量的单粒子态</h4>
+<p>以<span class="math inline">\(s=1\)</span>为例：</p>
+<ul>
+<li><p>有质量粒子：<span class="math inline">\(\Psi_{p,1},\Psi_{p,0},\Psi_{p,-1}\)</span></p>
+<p>取<span class="math inline">\(q\to0\)</span>的无质量极限时，我们说态需要满足<span class="math inline">\(A,B\)</span>的本征值是零。这一点也相当于是升降算符作用上去为零。</p></li>
+<li><p>无质量粒子：</p>
+<ol type="1">
+<li><span class="math inline">\(\Psi_{p,1},\Psi_{p,-1}\)</span></li>
+<li><span class="math inline">\(\Psi_{p,0}\)</span></li>
+</ol></li>
+</ul>
+<p>对于<span class="math inline">\(s=2\)</span>：</p>
+<ul>
+<li>有质量粒子：<span class="math inline">\(\Psi_{p,2},\Psi_{p,1},\Psi_{p,0},\Psi_{p,-1},\Psi_{p,-2}\)</span></li>
+<li>无质量粒子：
+<ol type="1">
+<li><span class="math inline">\(\Psi_{p,2},\Psi_{p,-2}\)</span></li>
+<li><span class="math inline">\(\Psi_{p,1},\Psi_{p,-1}\)</span></li>
+<li><span class="math inline">\(\Psi_{p,0}\)</span></li>
+<li><span class="math inline">\(\Psi_{p,2},\Psi_{p,0},\Psi_{p,-2}\)</span></li>
+</ol></li>
+</ul>
+<hr>
+<p>对于有质量粒子： <span class="math display">\[
+U(\Lambda)\Psi_{p,\sigma}=\sqrt{\dfrac{(\Lambda
+p)^0}{p^0}}\sum_{\sigma&#39;}D^{(j)}_{\sigma&#39;\sigma}(W(\Lambda,p))\Psi_{\Lambda
+p,\sigma&#39;}
+\]</span> 对无质量粒子： <span class="math display">\[
+U(\Lambda)\Psi_{p,\sigma}=\sqrt{\dfrac{(\Lambda
+p)^0}{p^0}}\exp(\ii\sigma\theta(\Lambda,p))\Psi_{\Lambda p,\sigma}
+\]</span></p>
+<p>ref：</p>
+<p>Weinberg vol1 2.5节</p>
+<p>yzh讲义</p>
+<p>arXiv:1403.2698v4</p>
+<p>https://www.zhihu.com/question/50860514</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/05/%E4%BB%BB%E6%84%8F%E7%BB%B4%E6%95%B0gamma%E7%9F%A9%E9%98%B5%E7%9A%84%E8%A1%A8%E7%A4%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -777,78 +1187,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/12/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E4%B8%8E%E5%B9%BF%E7%9B%B8%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Co27Ti22">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Co27Ti22的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/12/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E4%B8%8E%E5%B9%BF%E7%9B%B8%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">微分几何与广相笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-03-12 12:40:49" itemprop="dateCreated datePublished" datetime="2022-03-12T12:40:49+08:00">2022-03-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-30 17:51:08" itemprop="dateModified" datetime="2022-06-30T17:51:08+08:00">2022-06-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>学校不开广相所以只能自己学</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/03/12/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E4%B8%8E%E5%B9%BF%E7%9B%B8%E7%AC%94%E8%AE%B0/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -920,7 +1258,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
