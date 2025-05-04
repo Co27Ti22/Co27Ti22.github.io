@@ -20,14 +20,17 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="该系列的此部分翻译自一篇不知名的讲义。这篇讲义是我见过的关于KK紧化这一主题最亲民的入门材料。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Kaluza-Klein紧致化（3）">
 <meta property="og:url" content="http://example.com/2025/05/05/Kaluza-Klein%E7%B4%A7%E8%87%B4%E5%8C%96%EF%BC%883%EF%BC%89/index.html">
 <meta property="og:site_name" content="Co27Ti22的博客">
+<meta property="og:description" content="该系列的此部分翻译自一篇不知名的讲义。这篇讲义是我见过的关于KK紧化这一主题最亲民的入门材料。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-04T20:42:54.000Z">
-<meta property="article:modified_time" content="2025-05-04T20:42:54.639Z">
+<meta property="article:modified_time" content="2025-05-04T20:46:11.361Z">
 <meta property="article:author" content="Co27Ti22">
+<meta property="article:tag" content="物理">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/2025/05/05/Kaluza-Klein%E7%B4%A7%E8%87%B4%E5%8C%96%EF%BC%883%EF%BC%89/">
@@ -177,11 +180,13 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2025-05-05 04:42:54" itemprop="dateCreated datePublished" datetime="2025-05-05T04:42:54+08:00">2025-05-05</time>
+              <time title="创建时间：2025-05-05 04:42:54 / 修改时间：04:46:11" itemprop="dateCreated datePublished" datetime="2025-05-05T04:42:54+08:00">2025-05-05</time>
             </span>
 
           
+            <div class="post-description">该系列的此部分翻译自一篇不知名的讲义。这篇讲义是我见过的关于KK紧化这一主题最亲民的入门材料。</div>
 
         </div>
       </header>
@@ -192,7 +197,89 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h2 id="规范不变性的起源">44.3 规范不变性的起源</h2>
+<p>至少在物理中，奇迹需要一个合理的解释。那么让我们尝试基于先验的理由去理解为什么会出现
+Kaluza-Klein 奇迹。对此，让我们回想 Kaluza 对于线元的拟设<span class="math inline">\((44.4)\)</span>： <span class="math display">\[
+\begin{aligned}
+\dd{\hat s}^2_{KK}=g_{\mu\nu}(x^\lambda)\dd x^\mu\dd x^\nu+(\dd
+x^5+A_\mu(x^\lambda)\dd x^\mu)^2
+\end{aligned}
+\tag{44.17}
+\]</span> 并将其与五维线元的最一般形式对比，即 <span class="math display">\[
+\begin{aligned}
+\dd{\hat s}^2
+&amp;\ \ =\ \ \hat g_{MN}(x^L)\dd x^M\dd x^N\\
+&amp;\ \ =\ \ \hat g_{\mu\nu}(x^\lambda,x^5)\dd x^\mu\dd x^\nu+2\hat
+g_{\mu5}(x^\lambda,x^5)\dd x^\mu\dd x^5+\hat g_{55}(x^\mu,x^5)(\dd
+x^5)^2
+\end{aligned}
+\tag{44.18}
+\]</span> 很明显，一般的五维线元<span class="math inline">\((44.18)\)</span>在任意五维坐标变换<span class="math inline">\(x^M\to\xi^{M&#39;}(x^N)\)</span>下是不变的。然而，这对于
+Kaluza-Klein 的拟设<span class="math inline">\((44.17)\)</span>​不成立。</p>
+<p>然而，Kaluza-Klein线元的形式在以下两类坐标变换下是不变的：</p>
+<ol type="1">
+<li><p>一种是四维的坐标变换 <span class="math display">\[
+\begin{aligned}
+x^5&amp;\ \ \to\ \  x^5\\
+x^\mu&amp;\ \ \to\ \  \xi^{\nu&#39;}(x^\mu)
+\end{aligned}
+\tag{44.19}
+\]</span> 正如我们所知道的，在这种变换下，<span class="math inline">\(g_{\mu\nu}\)</span>以保持<span class="math inline">\(g_{\mu\nu}\mathrm dx^\mu\mathrm
+dx^\nu\)</span>不变的方式变换，<span class="math inline">\(A_\mu=\hat
+g_{\mu5}\)</span>像一个四维对偶矢量一样变换，因此<span class="math inline">\(A_\mu\mathrm
+dx^\mu\)</span>​是不变的，并且因此整个度规是不变的。</p></li>
+<li><p>还剩一种是五维的坐标变换 <span class="math display">\[
+\begin{aligned}
+x^5 &amp; \ \ \to\ \ \xi^5(x^\mu,x^5)=x^5+f(x^\mu)\\
+x^\mu &amp; \ \ \to\ \ \xi^\mu(x^\nu)=x^\mu
+\end{aligned}
+\]</span> 在这个变换下，<span class="math inline">\(g_{\mu\nu}\)</span>和<span class="math inline">\(g_{55}\)</span>都是不变的，但<span class="math inline">\(A_\mu=g_{\mu5}\)</span>变成： <span class="math display">\[
+\begin{aligned}
+     A_{\mu}^{\prime}&amp;=\hat{g}_{\mu 5}^{\prime}=\frac{\partial \xi
+^M}{\partial x^{\mu}}\frac{\partial \xi ^N}{\partial x^5}\hat{g}_{MN}\\
+     &amp;=\frac{\partial \xi ^N}{\partial x^5}\left( \frac{\partial \xi
+^{\rho}}{\partial x^{\mu}}\hat{g}_{N\rho}+\frac{\partial \xi
+^5}{\partial x^{\mu}}\hat{g}_{N5} \right) =\frac{\partial \xi
+^N}{\partial x^5}\left( {\delta
+^{\rho}}_{\mu}\hat{g}_{N\rho}+\frac{\partial f}{\partial
+x^{\mu}}\hat{g}_{N5} \right)\\
+     &amp;=\frac{\partial \xi ^N}{\partial
+x^5}\hat{g}_{N\mu}+\frac{\partial f}{\partial x^{\mu}}\frac{\partial \xi
+^N}{\partial x^5}\hat{g}_{N5}\\
+     &amp;=\left( \frac{\partial \xi ^{\sigma}}{\partial
+x^5}\hat{g}_{\sigma \mu}+\frac{\partial \xi ^5}{\partial
+x^5}\hat{g}_{\mu 5} \right) +\frac{\partial f}{\partial x^{\mu}}\left(
+\frac{\partial \xi ^{\sigma}}{\partial x^5}\hat{g}_{\sigma
+5}+\frac{\partial \xi ^5}{\partial x^5}\hat{g}_{55} \right)\\
+     &amp;=A_{\mu}+\partial _{\mu}f\\
+\end{aligned}
+\]</span> 换句话说，Kaluza-Klein线元在平移<span class="math inline">\(x^5\to x^5+f(x^\mu)\)</span>配上<span class="math inline">\(A_\mu\to A_\mu-\partial_\mu
+f\)</span>的变换下是不变的（并且这当然也能直接从度规中读出）。</p></li>
+</ol>
+<p>这恰好就是矢势<span class="math inline">\(A_\mu\)</span>​的规范变换，并且在当前的语境下，我们发现规范变换作为五维广义协变的产物而出现。</p>
+<p>现在已经很清楚我们一定会得到四维的爱因斯坦-麦克斯韦作用量了：首先，由于对<span class="math inline">\(x^5\)</span>的积分，<span class="math inline">\(x^5\)</span>的平移是无关紧要的。并且从五维爱因斯坦-希尔伯特作用量出发，我们最终必定能得到一个依赖于<span class="math inline">\(g_{\mu\nu}\)</span>和<span class="math inline">\(A_\mu\)</span>的四维作用量，其：</p>
+<ol type="1">
+<li>广义协变（在四维意义下），</li>
+<li>包含到二阶导数，</li>
+<li>并且在<span class="math inline">\(A_\mu\)</span>的规范变换下不变。</li>
+</ol>
+<p>那么唯一的可能就是爱因斯坦-麦克斯韦作用量。</p>
+<p>一个考察规范对称性的起源的富有成效的方法，是将其作为“在<span class="math inline">\(x^5\)</span>上移动一个常数（我想这里的constant作者是指不依赖于<span class="math inline">\(x^5\)</span>？）是等度规”的一个结果，即<span class="math inline">\(\partial/\partial x^5\)</span>是度规<span class="math inline">\((44.17)\)</span>的一个Killing矢量场。<span class="math inline">\(x^5\)</span>方向上的“内部的”圆周的等度规群即<span class="math inline">\(SO(2)\)</span>变成了四维理论的规范群<span class="math inline">\(U(1)=SO(2)\)</span>。</p>
+<p>从这个视角来看，矢势的规范变换起源于<span class="math inline">\(\hat
+g_{\mu5}\)</span>沿矢量场<span class="math inline">\(f(x^\mu)\partial_5\)</span>的李导数： <span class="math display">\[
+\begin{aligned}
+Y=f(x^\mu)\partial_5\ &amp;\implies\ Y^\mu=0\\
+&amp;\ \ \ \ \ \ \ \ \ \ \ Y^5=f\\
+&amp;\implies\ Y_\mu=A_\mu f\\
+&amp;\ \ \ \ \ \ \ \ \ \ \ Y_5=f\\
+(L_Y\hat g)_{\mu5}\ &amp;= \ \hat\nabla_\mu Y_5+\hat\nabla_5Y_\mu\\
+&amp;= \ \partial_\mu Y_5-2\hat\Gamma^\mu_{5M}Y^M\\
+&amp;= \ \partial_\mu f+{F^\nu}_\mu Y_\nu+F_{\mu\nu}A^\nu Y_5\\
+&amp;= \ \partial_\mu f\\
+&amp;\iff \delta A_\mu=-\partial_\mu f
+\end{aligned}
+\]</span>
+这个观点在人们想要通过这个方式得到非阿贝尔规范对称性的时候变得尤为重要：人们从带有等度规群<span class="math inline">\(G\)</span>的更高维内部空间出发，并为度规做类似的拟设。那么在更高维的一般的坐标变换中，仍有依赖于<span class="math inline">\(x^\mu\)</span>的内部空间的等度规。这些作用类似于度规的非分块对角部分的非阿贝尔规范变换，并且在内部空间积分时，可以保证得到（也许还有其他东西）四维爱因斯坦-希尔伯特以及杨-米尔斯作用量。</p>
 
     </div>
 
@@ -201,6 +288,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%89%A9%E7%90%86/" rel="tag"># 物理</a>
+          </div>
 
         
 
@@ -270,6 +360,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%84%E8%8C%83%E4%B8%8D%E5%8F%98%E6%80%A7%E7%9A%84%E8%B5%B7%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text">44.3 规范不变性的起源</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
