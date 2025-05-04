@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="\[ \newcommand{\dd}{\mathrm d} \newcommand{\im}{\mathrm{im}\ } \] 预备：形式在单形上的积分 我的一点理解：定义上同调的关键是上同调与同调对偶。对于de Rham上同调来说，内积： \[ (\cdot,\cdot):C_r(M)\times\Omega^r(M)\to\mathbb R \\ c,\omega\map">
+<meta property="og:type" content="article">
+<meta property="og:title" content="de Rham上同调">
+<meta property="og:url" content="http://example.com/2025/05/05/de-Rham%E4%B8%8A%E5%90%8C%E8%B0%83/index.html">
+<meta property="og:site_name" content="Co27Ti22的博客">
+<meta property="og:description" content="\[ \newcommand{\dd}{\mathrm d} \newcommand{\im}{\mathrm{im}\ } \] 预备：形式在单形上的积分 我的一点理解：定义上同调的关键是上同调与同调对偶。对于de Rham上同调来说，内积： \[ (\cdot,\cdot):C_r(M)\times\Omega^r(M)\to\mathbb R \\ c,\omega\map">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-04T19:45:41.000Z">
+<meta property="article:modified_time" content="2025-05-04T19:48:12.136Z">
+<meta property="article:author" content="Co27Ti22">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="待补完">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2025/05/05/de-Rham%E4%B8%8A%E5%90%8C%E8%B0%83/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>de Rham上同调 | Co27Ti22的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Co27Ti22的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">That's a question</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/05/de-Rham%E4%B8%8A%E5%90%8C%E8%B0%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Co27Ti22">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Co27Ti22的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          de Rham上同调
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-05-05 03:45:41 / 修改时间：03:48:12" itemprop="dateCreated datePublished" datetime="2025-05-05T03:45:41+08:00">2025-05-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span class="math display">\[
+\newcommand{\dd}{\mathrm d}
+\newcommand{\im}{\mathrm{im}\ }
+\]</span></p>
+<h2 id="预备形式在单形上的积分">预备：形式在单形上的积分</h2>
+<p>我的一点理解：定义上同调的关键是上同调与同调对偶。对于de
+Rham上同调来说，内积： <span class="math display">\[
+(\cdot,\cdot):C_r(M)\times\Omega^r(M)\to\mathbb R
+\\
+c,\omega\mapsto(c,\omega)\equiv\int_c\omega
+\]</span> 建立起了同调群<span class="math inline">\(H_r(M)\)</span>和上同调群<span class="math inline">\(H^r(M)\)</span>之间的对偶。那为什么是积分？别的上同调理论通过别的方式也能建立起与同调群之间的对偶，那么为什么一定是积分？或许是因为对于形式，我们早已熟知其具有诸如Stocks定理这样的好的与积分相关的性质。无论如何，这样定义的de
+Rham上同调具有好的性质，因此我们的起点是形式在单形上的积分。</p>
+<hr>
+<p>首先定义在标准<span class="math inline">\(r\)</span>单形上的积分：
+<span class="math display">\[
+\int_{\bar{\sigma}_r}\omega\equiv\int_{\bar{\sigma}_r}a(x)\dd
+x^1\dots\dd x^r
+\]</span>
+如果流形可三角剖分，那么只要对流形三角剖分，就能在流形中的各个单形上做积分了。但相反，为了那些不可三角剖分的流形，我们需要引入奇异单形。定义一个光滑映射<span class="math inline">\(f\)</span>： <span class="math display">\[
+f:\bar\sigma_r\to s_r\subset M
+\]</span> 我们将<span class="math inline">\(\bar\sigma_r\)</span>的像<span class="math inline">\(s_r\)</span>称作<span class="math inline">\(M\)</span>中的奇异单形。</p>
+<p>完全仿照单纯同调的做法，可以定义：</p>
+<ul>
+<li>r-chain，以及链群<span class="math inline">\(C_r(M)\)</span>。</li>
+<li>r-boundary，以及边群<span class="math inline">\(B_r(M)\)</span>。</li>
+<li>r-cycle，以及闭链群<span class="math inline">\(Z_r(M)\)</span>。</li>
+<li>同调群<span class="math inline">\(H_r(M)\equiv
+Z_r(M)/B_r(M)\)</span>。</li>
+</ul>
+<p>在奇异同调这个背景下，定义形式在奇异单形上的积分。利用映射<span class="math inline">\(f:\bar\sigma_r\to s_r\subset
+M\)</span>，将形式拉回到标准单形上来定义积分： <span class="math display">\[
+\int_{s_r}\omega=\int_{\bar\sigma_r}f^*\omega
+\]</span> 进一步，r-chain<span class="math inline">\(c=\sum_i a_i
+s_r\)</span>上的积分定义为： <span class="math display">\[
+\int_c\omega=\sum_i a_i\int_{s_{r,i}}\omega
+\]</span> 不加证明的给出Stokes定理（证明见Nakahara 6.1.2）： <span class="math display">\[
+\int_c\dd\omega=\int_{\partial c}\omega
+\]</span></p>
+<h2 id="de-rham上同调群">de Rham上同调群</h2>
+<p>令<span class="math inline">\(M\)</span>是<span class="math inline">\(m\)</span>维流形，<span class="math inline">\(M\)</span>上闭 r 形式的集合称为上闭链群<span class="math inline">\(Z^r(M)\)</span>，恰当 r 形式的集合称为上边群<span class="math inline">\(B^r(M)\)</span>。上同调群定义为： <span class="math display">\[
+H^r(M)\equiv Z^r(M)/B^r(M)
+\]</span> 令<span class="math inline">\(\omega\in
+Z^r(M)\)</span>，记号<span class="math inline">\([\omega]\)</span>表示等价类<span class="math inline">\(\{\omega&#39;\in
+Z^r(M)|\omega&#39;=\omega+\dd\psi,\psi\in\Omega^{r-1}(M)
+\}\)</span>。若两个形式之间相差一个恰当形式，则称这两个形式之间上同调。</p>
+<hr>
+<p>例1：当<span class="math inline">\(r=0\)</span>时，无法定义所谓的恰当0形式，因此约定<span class="math inline">\(B^0(M)=0\)</span>。因此： <span class="math display">\[
+H^0(M)=Z^0(M)=\{f\in\Omega^0(M)|\dd f=0 \}
+\]</span> <span class="math inline">\(\dd f=0\)</span>只在<span class="math inline">\(f\)</span>为常函数的情况下满足。若<span class="math inline">\(M\)</span>单连通，那么： <span class="math display">\[
+H^0(M)\cong \mathbb R
+\]</span> 如果<span class="math inline">\(M\)</span>有<span class="math inline">\(n\)</span>个连通分量，则： <span class="math display">\[
+H^0(M)\cong\underbrace{\mathbb R\oplus\mathbb R\oplus\dots\oplus\mathbb
+R}_{n}
+\]</span></p>
+<p>例2：令<span class="math inline">\(M=\mathbb
+R\)</span>。由例1可知<span class="math inline">\(H^0(\R)=\R\)</span>。接下来求<span class="math inline">\(H^1(\R)\)</span>。由于<span class="math inline">\(\R\)</span>是一维流形，所有 1
+形式均为闭形式。令<span class="math inline">\(\omega=f\dd
+x\)</span>，可以发现： <span class="math display">\[
+F(x)=\int_0^x f(s)\dd s\in \Omega^0(\R)
+\\
+\omega=f\dd x=\dv{F(x)}{x}\dd x=\dd F
+\]</span> 因此对任意<span class="math inline">\(f(x)\)</span>，<span class="math inline">\(\omega\)</span>均恰当，也就是说任意 1
+形式均恰当。因此： <span class="math display">\[
+H^1(\R)=\{0\}
+\]</span></p>
+<p>例3：令<span class="math inline">\(M=S^1\)</span>。由例1可知<span class="math inline">\(H^0(S^1)=\R\)</span>。接下来求<span class="math inline">\(H^1(S^1)\)</span>。仿照上例：<span class="math inline">\(S^1\)</span>上的任意 1形式<span class="math inline">\(\omega=f(\theta)\dd
+\theta\)</span>均为闭形式。注意其中的<span class="math inline">\(f(\theta)\)</span>满足周期性边界条件<span class="math inline">\(f(0)=f(2\pi)\)</span>。</p>
+<p>若其为恰当形式<span class="math inline">\(\omega=\dd F\)</span>。则：
+<span class="math display">\[
+F(\theta)=\int_0^{\theta}f(\theta&#39;)\dd \theta&#39;
+\]</span> 因此有<span class="math inline">\(\dd F=f(\theta)\dd
+\theta=\omega\)</span>。</p>
+<p>然而<span class="math inline">\(F(\theta)\)</span>定义在<span class="math inline">\(S^1\)</span>上，需满足周期边界条件<span class="math inline">\(F(2\pi)=F(0)=\int_0^0 f(\theta&#39;)\dd
+\theta&#39;=0\)</span>。这要求了<span class="math inline">\(\omega=f(\theta)\dd\theta\)</span>中的<span class="math inline">\(f(\theta)\)</span>满足<span class="math inline">\(\int_0^{2\pi}f(\theta&#39;)\dd\theta&#39;=0\)</span>。</p>
+<p>因此，商群<span class="math inline">\(H^1\)</span>为： <span class="math display">\[
+H^1\cong\dfrac{\{f(\theta)|f(\theta)周期为2\pi
+\}}{\{f(\theta)|f(\theta)周期为2\pi且在[0,2\pi]上积分为0 \}}
+\]</span> 可以构造映射<span class="math inline">\(\lambda\)</span>：
+<span class="math display">\[
+\lambda:\Omega^1(S^1)\to\mathbb R
+\\
+\lambda:\omega=f\dd\theta\to \int_0^{2\pi}f(\theta&#39;)\dd\theta&#39;
+\]</span> 显然<span class="math inline">\(\ker\lambda=B^1\)</span>并且<span class="math inline">\(\Im\ \lambda=\mathbb R\)</span>。因此： <span class="math display">\[
+H^1(S^1)\cong\mathbb R
+\]</span></p>
+<p>习题6.3：令<span class="math inline">\(M=\R-\{0\}\)</span>，定义：
+<span class="math display">\[
+\omega=\dfrac{-y}{x^2+y^2}\dd x+\dfrac{x}{x^2+y^2}\dd y
+\]</span></p>
+<ol type="1">
+<li>证明<span class="math inline">\(\omega\)</span>是闭的。</li>
+<li>定义<span class="math inline">\(F(x,y)=\tan^{-1}(y/x)\)</span>。证明<span class="math inline">\(\omega=\dd F\)</span>。<span class="math inline">\(\omega\)</span>是否恰当？</li>
+</ol>
+<h2 id="h_rm和hrm的对偶de-rham定理"><span class="math inline">\(H_r(M)\)</span>和<span class="math inline">\(H^r(M)\)</span>的对偶；de Rham定理</h2>
+<p>利用形式在链上的积分可以自然的构造出<span class="math inline">\(C_r(M)\)</span>与<span class="math inline">\(\Omega^r(M)\)</span>之间的内积： <span class="math display">\[
+(\cdot,\cdot):C_r(M)\times\Omega^r(M)\to\mathbb R
+\\
+c,\omega\mapsto(c,\omega)\equiv\int_c\omega
+\]</span> <span class="math inline">\(H_r(M)\)</span>中的元素是r-chain，而<span class="math inline">\(H^r(M)\)</span>中的元素是 r
+形式，这个内积自然诱导出<span class="math inline">\(H^r(M)\)</span>与<span class="math inline">\(H_r(M)\)</span>之间的内积： <span class="math display">\[
+\Lambda:H_r(M)\times H^r(M)\to\R\\
+\Lambda([c],[\omega])\equiv(c,\omega)=\int_c\omega
+\]</span> 虽然挺显然的，但还是顺带一提。<span class="math inline">\(H_r,H^r\)</span>中每个元素都是一个等价类，内积并不依赖于等价类代表元的选取。
+<span class="math display">\[
+(c+\partial c&#39;,\omega)=(c,\omega)+(c&#39;,\dd \omega)=(c,\omega)\\
+(c,\omega+\dd\psi)=(c,\omega)+(\partial c,\psi)=(c,\omega)
+\]</span> 为了证明<span class="math inline">\(H^r(M)\)</span>与<span class="math inline">\(H_r(M)\)</span>之间对偶，实际上还需要一个高度非平凡的证明（<span class="math inline">\(\dim H_r(M)=\dim
+H^r(M)\)</span>），这里略去证明，直接看de Rham给出的证明结果：</p>
+<p>定理（de Rham定理）：如果<span class="math inline">\(M\)</span>是个紧流形，那么<span class="math inline">\(H_r(M),H^r(M)\)</span>都是有限维的，并且内积 <span class="math display">\[
+\Lambda:H_r(M)\times H^r(M)\to\R
+\]</span> 是双线性且非退化的。因此<span class="math inline">\(H^r(M)\)</span>与<span class="math inline">\(H_r(M)\)</span>之间对偶。</p>
+<p>习题6.4：令<span class="math inline">\(c\in B_r(M),\omega\in
+Z^r(M)\)</span>或<span class="math inline">\(c\in Z_r(M),\omega\in
+B^r(M)\)</span>。证明在两种情况下均有<span class="math inline">\((c,\omega)=0\)</span>。</p>
+<hr>
+<p>接下来书中定义了一个意义不明的概念（period）又证了一个意义不明的推论（推论6.1），不打算写这部分了。唯一有问题的一点是有点想不通定理part
+b证明那里，为什么一定能找到一组正交归一基？还是说线性空间和他的对偶空间就是能找到？</p>
+<hr>
+<p>由于<span class="math inline">\(H^r(M)\)</span>同构于<span class="math inline">\(H_r(M)\)</span>，有： <span class="math display">\[
+b^r(M)\equiv\dim H^r(M)=\dim H_r(M)=b_r(M)
+\]</span> 其中<span class="math inline">\(b_r(M)\)</span>是<span class="math inline">\(M\)</span>的 Betti 数。欧拉数可以写成： <span class="math display">\[
+\chi(M)=\sum_{r=1}^m(-1)^r b^r(M)
+\]</span>
+这体现了拓扑与分析之间的联系。这种联系在后面多AS指标定理中也会看到。</p>
+<hr>
+<p>总结：我们有链复形<span class="math inline">\(C(M)\)</span>和de
+Rham复形<span class="math inline">\(\Omega^*(M)\)</span>： <span class="math display">\[
+\longleftarrow C_{r-1}(M)\overset{\partial_r}{\longleftarrow}
+C_r(M)\overset{\partial_{r+1}}{\longleftarrow} C_{r+1}(M)\longleftarrow
+\\
+\longrightarrow \Omega^{r-1}(M)\overset{d_r}{\longrightarrow}
+\Omega^r(M)\overset{d_{r+1}}{\longrightarrow}
+\Omega^{r+1}(M)\longrightarrow
+\]</span> 同调群和de Rham上同调群定义为： <span class="math display">\[
+H_r(M)=Z_r(M)/B_r(M)=\ker \partial_r/{\im \partial_{r+1}}\\
+H^r(M)=Z^r(M)/B^r(M)=\ker \dd_{r+1}/\im \dd_r
+\]</span></p>
+<h2 id="庞加莱引理">庞加莱引理</h2>
+<p>恰当形式当然总是闭的，我们也知道闭形式不总是恰当的。那么满足何种条件时闭形式是恰当的？</p>
+<p>定理（庞加莱引理）：如果流形<span class="math inline">\(M\)</span>上的一个坐标邻域<span class="math inline">\(U\)</span>是可缩于一点<span class="math inline">\(p_0\in M\)</span>的，那么任何<span class="math inline">\(U\)</span>上的闭形式都是恰当的。</p>
+<p>证明：</p>
+<p>证毕</p>
+<hr>
+<p>任意闭形式至少是局域恰当的。de
+Rham上同调群可以看作是闭形式全局恰当性的一种障碍。</p>
+<p>例6.4：由于<span class="math inline">\(\R^n\)</span>是可缩的，我们有
+<span class="math display">\[
+H^r(\R^n)=0,\quad 1\le r\le n
+\]</span> 注意<span class="math inline">\(H^0(\R^n)=\R\)</span>。</p>
+<h2 id="de-rham上同调群的结构">de Rham上同调群的结构</h2>
+<h3 id="庞加莱对偶">庞加莱对偶</h3>
+<p>令<span class="math inline">\(M\)</span>是一个<span class="math inline">\(m\)</span>维流形，<span class="math inline">\(\omega\in H^r(M),\ \eta\in
+H^{m-r}(M)\)</span>。由于<span class="math inline">\(\omega\wedge\eta\)</span>是一个体元，因此可以定义内积：
+<span class="math display">\[
+\langle\cdot,\cdot\rangle:H^r(M)\times H^{m-r}(M)\to \R\\
+\langle\omega,\eta\rangle\equiv\int_M\omega\wedge\eta
+\]</span> 该内积双线性，非退化。因此定义了<span class="math inline">\(H^r(M)\)</span>和<span class="math inline">\(H^{m-r}(M)\)</span>之间的对偶。 <span class="math display">\[
+H^r(M)\cong H^{m-r}(M)
+\]</span> 由此，Betti数满足<span class="math inline">\(b_r=b_{m-r}\)</span>。进一步，在奇数维的流形上，必有欧拉数<span class="math inline">\(\chi(M)=0\)</span>。</p>
+<h3 id="上同调环">上同调环</h3>
+<h2 id="whats-next">What's next?</h2>
+<ol type="1">
+<li>The Kunneth formula</li>
+<li>de Rham上同调群上的拉回映射</li>
+<li>同伦与<span class="math inline">\(H^1(M)\)</span></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E5%BE%85%E8%A1%A5%E5%AE%8C/" rel="tag"># 待补完</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/05/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%85%89%E5%AD%90%E5%8F%AA%E6%9C%89%E8%9E%BA%E6%97%8B%E5%BA%A6%E6%AD%A3%E8%B4%9F1%EF%BC%9F/" rel="prev" title="为什么光子只有螺旋度正负1？">
+      <i class="fa fa-chevron-left"></i> 为什么光子只有螺旋度正负1？
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E5%BD%A2%E5%BC%8F%E5%9C%A8%E5%8D%95%E5%BD%A2%E4%B8%8A%E7%9A%84%E7%A7%AF%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">预备：形式在单形上的积分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#de-rham%E4%B8%8A%E5%90%8C%E8%B0%83%E7%BE%A4"><span class="nav-number">2.</span> <span class="nav-text">de Rham上同调群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#h_rm%E5%92%8Chrm%E7%9A%84%E5%AF%B9%E5%81%B6de-rham%E5%AE%9A%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">\(H_r(M)\)和\(H^r(M)\)的对偶；de Rham定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%9E%E5%8A%A0%E8%8E%B1%E5%BC%95%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">庞加莱引理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#de-rham%E4%B8%8A%E5%90%8C%E8%B0%83%E7%BE%A4%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-number">5.</span> <span class="nav-text">de Rham上同调群的结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%9E%E5%8A%A0%E8%8E%B1%E5%AF%B9%E5%81%B6"><span class="nav-number">5.1.</span> <span class="nav-text">庞加莱对偶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E5%90%8C%E8%B0%83%E7%8E%AF"><span class="nav-number">5.2.</span> <span class="nav-text">上同调环</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#whats-next"><span class="nav-number">6.</span> <span class="nav-text">What&#39;s next?</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Co27Ti22"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Co27Ti22</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Co27Ti22</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
