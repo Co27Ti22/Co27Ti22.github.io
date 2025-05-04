@@ -20,14 +20,17 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="该系列的此部分翻译自一篇不知名的讲义。这篇讲义是我见过的关于KK紧化这一主题最亲民的入门材料。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Kaluza-Klein紧致化（1）">
 <meta property="og:url" content="http://example.com/2025/05/05/Kaluza-Klein%E7%B4%A7%E8%87%B4%E5%8C%96%EF%BC%881%EF%BC%89/index.html">
 <meta property="og:site_name" content="Co27Ti22的博客">
+<meta property="og:description" content="该系列的此部分翻译自一篇不知名的讲义。这篇讲义是我见过的关于KK紧化这一主题最亲民的入门材料。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-04T20:34:38.000Z">
-<meta property="article:modified_time" content="2025-05-04T20:34:38.630Z">
+<meta property="article:modified_time" content="2025-05-04T20:39:13.645Z">
 <meta property="article:author" content="Co27Ti22">
+<meta property="article:tag" content="物理">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/2025/05/05/Kaluza-Klein%E7%B4%A7%E8%87%B4%E5%8C%96%EF%BC%881%EF%BC%89/">
@@ -177,11 +180,13 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2025-05-05 04:34:38" itemprop="dateCreated datePublished" datetime="2025-05-05T04:34:38+08:00">2025-05-05</time>
+              <time title="创建时间：2025-05-05 04:34:38 / 修改时间：04:39:13" itemprop="dateCreated datePublished" datetime="2025-05-05T04:34:38+08:00">2025-05-05</time>
             </span>
 
           
+            <div class="post-description">该系列的此部分翻译自一篇不知名的讲义。这篇讲义是我见过的关于KK紧化这一主题最亲民的入门材料。</div>
 
         </div>
       </header>
@@ -192,7 +197,35 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>本部分内容翻译自一篇不知名讲义（导师掐头去尾把中间关于kk紧化的这一章发给了我，没有搜索到原讲义）。这是我见过的讲kk紧化的材料中相当亲民的，故翻译出来供大家参考。</p>
+<p>本人是物理系学生，对英语翻译的专业知识可以说一窍不通。若译文中夹杂着词不达意甚至是错译还请谅解。</p>
+<h2 id="第44章-kaluza-klein理论">第44章 Kaluza-Klein理论</h2>
+<p>【注意：我已经不再教这方面了，因此该部分已经不再更新/更正/改进，这份材料的时间已经很长了，我对其目前的内容不是很满意】</p>
+<h3 id="动机引力和规范理论">44.1 动机：引力和规范理论</h3>
+<p>观察爱因斯坦方程和变分原理，我们发现虽然必须手动添加向方程中物质部分，并且这部分是完全非几何的，但引力还是被很好的几何化了。对于基于拉格朗日量的唯象理论来说这是完全可以接受的（就像宇宙学中的理想流体），但对于把自然界中的基本力做统一描述来说，这明显是不可取的。</p>
+<p>目前，自然界的基本力由两种不同概念描述。一方面，正如我们在引力的例子中所看到的，力的地位被几何所取代，而另一方面，我们有电弱和强相互作用的规范理论（标准模型）或他们的（大一统，…）推广。</p>
+<p>因此，如果一个人想把这些力与引力统一起来，有两种可能路径：</p>
+<ol type="1">
+<li>可以尝试去发掘引力作为规范理论的可能性（因此几何将作为规范原理的一个结果）</li>
+<li>或者可以尝试像引力一样去理解规范理论（因此使规范理论变成几何）</li>
+</ol>
+<p>第一条是个很有吸引力的想法，并且已经引起了广泛关注。它也是相当自然的，因为广义上来讲，由于引力具有的局域不变性（在广义坐标变换下，或者，采用主动观点，微分同胚下），引力已经是一个规范理论了。并且，克氏符在广义坐标变换下的表现，与在规范变换下非阿贝尔规范场的表现类似。并且协变导数和曲率的整套理论都在暗示引力是一种非阿贝尔规范理论。</p>
+<p>在第一种观点中，把克氏符和规范场（规范势）等同起来显得有点迷惑，因为我们最初引入度规对应引力场的势，引入克氏符对应场强（表示引力）。然而，正如我们所知道的，广义相对论中力的概念本身是依赖规范（坐标）的，因此场强表现得更像规范势，其曲率，黎曼曲率张量包含引力场规范不变的信息。这个反映了引力和其他理论不同的深刻性质事实，只是众多表明把引力作为真正的规范理论引入很难成功的迹象之一。然而，无论如何，让我们再沿着这个方向前进一会。</p>
+<p>很明显，规范群现在不应该作为类似<span class="math inline">\(U(1)\)</span>或<span class="math inline">\(SU(3)\)</span>之类的“内部”对称群，而是应该作为一个时空对称群。在这个上下文中的规范群中，一个人发现：</p>
+<ol type="1">
+<li>平移群（正如我们所看见的，这是自然的，因为坐标变换的生成元是无穷小平移）</li>
+<li>洛伦兹群（如果把克氏符看作类似引力的规范场的类似物，那么这是自然的）</li>
+<li>庞加莱群（上述二者的结合）</li>
+</ol>
+<p>然而，大体上讲，这些研究所告诉我们的就是，我们越让一个规范理论看起来像是爱因斯坦引力，它就越不像一个标准的规范理论，反之亦然。</p>
+<p>规范理论和引力的不同的主要来源是，在杨-米尔斯理论中内部指标与时空指标无关，然而在引力理论中二者是相同的
+- 对比<span class="math inline">\(F^a_{\mu\nu}\)</span>与<span class="math inline">\((F^\lambda_\sigma)_{\mu\nu}={R^\lambda}_{\sigma\mu\nu}\)</span>​.</p>
+<p>尤其是在引力中，人们可以把内部指标与时空指标缩并来获得一个标量拉氏量<span class="math inline">\(R\)</span>，即曲率张量的线性部分。这是很幸运的，因为从度规的角度讲，曲率标量已经是度规的二阶导数了。</p>
+<p>另一方面，对于Yang-Mills理论来说，这是不可能的。为了构建一个在规范群下是单态的拉氏量，人们需要分别去缩并时空指标和内部指标，即人们会得到场强中的拉氏量平方项（这句话是不是写反了，应该是拉氏量包含场强的二次项）。这给出了通常的包含规范势的二阶导数的作用量。</p>
+<p>尽管有这样以及其他的困难，但这个方法还没有完全被抛弃，并且规范理论的观点仍然是非常富有成果和有用的，前提是人们认识到将引力与标准规范理论区分开来的关键特征。</p>
+<p>上面提及的第二种可能性：把规范理论实现为引力，是更根本的想法，但究竟应该如何实现。关键的思想自从
+1919/20 (T.Kaluza) 就为人所知了，O.Klein
+也做出了重要贡献，那么这个思想是什么呢？</p>
 
     </div>
 
@@ -201,6 +234,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%89%A9%E7%90%86/" rel="tag"># 物理</a>
+          </div>
 
         
 
@@ -270,6 +306,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC44%E7%AB%A0-kaluza-klein%E7%90%86%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">第44章 Kaluza-Klein理论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%9C%BA%E5%BC%95%E5%8A%9B%E5%92%8C%E8%A7%84%E8%8C%83%E7%90%86%E8%AE%BA"><span class="nav-number">1.1.</span> <span class="nav-text">44.1 动机：引力和规范理论</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
