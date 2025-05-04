@@ -28,7 +28,7 @@
 <meta property="og:description" content="该系列的此部分翻译自一篇不知名的讲义。这篇讲义是我见过的关于KK紧化这一主题最亲民的入门材料。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-04T20:42:54.000Z">
-<meta property="article:modified_time" content="2025-05-04T20:46:11.361Z">
+<meta property="article:modified_time" content="2025-05-04T20:50:19.291Z">
 <meta property="article:author" content="Co27Ti22">
 <meta property="article:tag" content="物理">
 <meta name="twitter:card" content="summary">
@@ -182,7 +182,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2025-05-05 04:42:54 / 修改时间：04:46:11" itemprop="dateCreated datePublished" datetime="2025-05-05T04:42:54+08:00">2025-05-05</time>
+              <time title="创建时间：2025-05-05 04:42:54 / 修改时间：04:50:19" itemprop="dateCreated datePublished" datetime="2025-05-05T04:42:54+08:00">2025-05-05</time>
             </span>
 
           
@@ -197,7 +197,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="规范不变性的起源">44.3 规范不变性的起源</h2>
+        <p><span class="math display">\[
+\newcommand{\dd}{\mathrm d}
+\]</span></p>
+<h2 id="规范不变性的起源">44.3 规范不变性的起源</h2>
 <p>至少在物理中，奇迹需要一个合理的解释。那么让我们尝试基于先验的理由去理解为什么会出现
 Kaluza-Klein 奇迹。对此，让我们回想 Kaluza 对于线元的拟设<span class="math inline">\((44.4)\)</span>： <span class="math display">\[
 \begin{aligned}
@@ -234,25 +237,11 @@ x^5 &amp; \ \ \to\ \ \xi^5(x^\mu,x^5)=x^5+f(x^\mu)\\
 x^\mu &amp; \ \ \to\ \ \xi^\mu(x^\nu)=x^\mu
 \end{aligned}
 \]</span> 在这个变换下，<span class="math inline">\(g_{\mu\nu}\)</span>和<span class="math inline">\(g_{55}\)</span>都是不变的，但<span class="math inline">\(A_\mu=g_{\mu5}\)</span>变成： <span class="math display">\[
-\begin{aligned}
-     A_{\mu}^{\prime}&amp;=\hat{g}_{\mu 5}^{\prime}=\frac{\partial \xi
-^M}{\partial x^{\mu}}\frac{\partial \xi ^N}{\partial x^5}\hat{g}_{MN}\\
-     &amp;=\frac{\partial \xi ^N}{\partial x^5}\left( \frac{\partial \xi
-^{\rho}}{\partial x^{\mu}}\hat{g}_{N\rho}+\frac{\partial \xi
-^5}{\partial x^{\mu}}\hat{g}_{N5} \right) =\frac{\partial \xi
-^N}{\partial x^5}\left( {\delta
-^{\rho}}_{\mu}\hat{g}_{N\rho}+\frac{\partial f}{\partial
-x^{\mu}}\hat{g}_{N5} \right)\\
-     &amp;=\frac{\partial \xi ^N}{\partial
-x^5}\hat{g}_{N\mu}+\frac{\partial f}{\partial x^{\mu}}\frac{\partial \xi
-^N}{\partial x^5}\hat{g}_{N5}\\
-     &amp;=\left( \frac{\partial \xi ^{\sigma}}{\partial
-x^5}\hat{g}_{\sigma \mu}+\frac{\partial \xi ^5}{\partial
-x^5}\hat{g}_{\mu 5} \right) +\frac{\partial f}{\partial x^{\mu}}\left(
-\frac{\partial \xi ^{\sigma}}{\partial x^5}\hat{g}_{\sigma
-5}+\frac{\partial \xi ^5}{\partial x^5}\hat{g}_{55} \right)\\
-     &amp;=A_{\mu}+\partial _{\mu}f\\
-\end{aligned}
+\begin{aligned} A&#39;_\mu &amp;=\hat g&#39;_{\mu 5}=\dfrac{\partial
+x^M}{\partial \xi^\mu}\dfrac{\partial x^N}{\partial \xi^5}\hat g_{MN} \\
+&amp;=\dfrac{\partial x^M}{\partial x^\mu}g_{\mu5}\\ &amp;=g_{\mu
+5}-\dfrac{\partial f}{\partial x^\mu}g_{55}\\ &amp;=A_\mu-\partial_\mu f
+\end{aligned} \tag{44.21}
 \]</span> 换句话说，Kaluza-Klein线元在平移<span class="math inline">\(x^5\to x^5+f(x^\mu)\)</span>配上<span class="math inline">\(A_\mu\to A_\mu-\partial_\mu
 f\)</span>的变换下是不变的（并且这当然也能直接从度规中读出）。</p></li>
 </ol>
