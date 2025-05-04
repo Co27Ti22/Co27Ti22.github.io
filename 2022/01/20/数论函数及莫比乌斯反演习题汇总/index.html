@@ -28,11 +28,11 @@
 <meta property="og:description" content="此为ACMer的数论函数笔记，不是给学数学的人看的。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-20T13:58:45.000Z">
-<meta property="article:modified_time" content="2022-01-20T14:40:39.259Z">
+<meta property="article:modified_time" content="2022-04-16T17:52:11.158Z">
 <meta property="article:author" content="Co27Ti22">
+<meta property="article:tag" content="笔记">
 <meta property="article:tag" content="题解">
 <meta property="article:tag" content="数学">
-<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/2022/01/20/%E6%95%B0%E8%AE%BA%E5%87%BD%E6%95%B0%E5%8F%8A%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E4%B9%A0%E9%A2%98%E6%B1%87%E6%80%BB/">
@@ -182,10 +182,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-01-20 21:58:45 / 修改时间：22:40:39" itemprop="dateCreated datePublished" datetime="2022-01-20T21:58:45+08:00">2022-01-20</time>
+              <time title="创建时间：2022-01-20 21:58:45" itemprop="dateCreated datePublished" datetime="2022-01-20T21:58:45+08:00">2022-01-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-17 01:52:11" itemprop="dateModified" datetime="2022-04-17T01:52:11+08:00">2022-04-17</time>
+              </span>
 
           
             <div class="post-description">此为ACMer的数论函数笔记，不是给学数学的人看的。</div>
@@ -206,9 +212,11 @@
 <h2 id="取整">取整</h2>
 <p><span class="math inline">\([x]\)</span>表示不超过<span class="math inline">\(x\)</span>的最大整数。</p>
 <p>整除式之间的相等</p>
-<p>证明重要的等式<span class="math inline">\(\lfloor\frac{\lfloor\frac{n}{d}\rfloor}{k}\rfloor = \lfloor\frac{n}{kd}\rfloor\)</span>，会在莫比乌斯反演中用到。</p>
+<p>证明重要的等式<span class="math inline">\(\lfloor\frac{\lfloor\frac{n}{d}\rfloor}{k}\rfloor
+= \lfloor\frac{n}{kd}\rfloor\)</span>，会在莫比乌斯反演中用到。</p>
 <h3 id="整除分块">整除分块</h3>
-<p>整除分块用来对形如<span class="math inline">\(\displaystyle \sum\limits_{i=1}^n\lfloor\frac{n}{i}\rfloor\)</span>的和式快速求值。</p>
+<p>整除分块用来对形如<span class="math inline">\(\displaystyle
+\sum\limits_{i=1}^n\lfloor\frac{n}{i}\rfloor\)</span>的和式快速求值。</p>
 <p>对这样的式子，显然有<span class="math inline">\(O(n)\)</span>的算法，但通过打表，我们可以发现如下性质：</p>
 <ol type="1">
 <li>多个<span class="math inline">\([\frac{n}{i}]\)</span>的值可能是相同的，并且相同的值都连续分布。</li>
@@ -219,24 +227,34 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">1</span>,r;l&lt;=n;l=r+<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">	r=n/(n/l);</span><br><span class="line">	ans+=(r-l+<span class="number">1</span>)*(n/l);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>整除分块应用</strong></p>
 <p>许多带有取整的求和都可以通过整除分块来处理。</p>
-<p><span class="math inline">\(\displaystyle \sum_{T=1}^{N}\lfloor\dfrac N T\rfloor\lfloor\dfrac M T\rfloor\)</span>，N、M为常数</p>
+<p><span class="math inline">\(\displaystyle \sum_{T=1}^{N}\lfloor\dfrac
+N T\rfloor\lfloor\dfrac M T\rfloor\)</span>，N、M为常数</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">1</span>,r;l&lt;=n;l=r+<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">	r=<span class="built_in">min</span>(n/(n/l), m/(m/l));</span><br><span class="line">	ans+=(r-l+<span class="number">1</span>)*(n/l)*(m/l);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><span class="math inline">\(\displaystyle \sum_{T=1}^{N}\lfloor\dfrac N T\rfloor\lfloor\dfrac M T\rfloor f(T)\)</span>，N、M为常数</p>
+<p><span class="math inline">\(\displaystyle \sum_{T=1}^{N}\lfloor\dfrac
+N T\rfloor\lfloor\dfrac M T\rfloor f(T)\)</span>，N、M为常数</p>
 <p>先预处理求出<span class="math inline">\(f(T)\)</span>的前缀和，然后每一段的区间长度变为<span class="math inline">\(f(T)\)</span>的区间和。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">1</span>,r;l&lt;=n;l=r+<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">	r=<span class="built_in">min</span>(n/(n/l), m/(m/l));</span><br><span class="line">	ans+=(sum[r]-sum[l<span class="number">-1</span>])*(n/l)*(m/l);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><span class="math inline">\(\displaystyle \sum_{x=1}^{\lfloor\frac n d\rfloor}\sum_{y=1}^{\lfloor\frac m d\rfloor}{\lfloor\frac n {xd}\rfloor}{\lfloor\frac m {yd}\rfloor}\)</span>，<span class="math inline">\(n,m,d\)</span>为常数</p>
+<p><span class="math inline">\(\displaystyle \sum_{x=1}^{\lfloor\frac n
+d\rfloor}\sum_{y=1}^{\lfloor\frac m d\rfloor}{\lfloor\frac n
+{xd}\rfloor}{\lfloor\frac m {yd}\rfloor}\)</span>，<span class="math inline">\(n,m,d\)</span>为常数</p>
 <p>这个式子与第一个不同（没什么特别的意思，只是我第一次见这个式子时当成了第一个式子去处理，所以提醒一下不要犯这样的错误），整理一下就是两个整除分块的乘积。</p>
-<p><span class="math inline">\(\displaystyle\sum_{d=1}^n\mu(d)\displaystyle \sum_{x=1}^{\lfloor\frac n {d}\rfloor}\sum_{y=1}^{\lfloor\frac m {d}\rfloor}\lfloor\dfrac n {xd}\rfloor\lfloor\dfrac m {yd}\rfloor\)</span></p>
-<p>设<span class="math inline">\(f(x)=\sum_{i=1}^x\lfloor\dfrac{x}{i}\rfloor\)</span>，就可以化成<span class="math inline">\(\displaystyle \sum_{d=1}^n\mu(d)f(\lfloor\dfrac{n}{d}\rfloor)f(\lfloor\dfrac{m}{d}\rfloor)\)</span></p>
+<p><span class="math inline">\(\displaystyle\sum_{d=1}^n\mu(d)\displaystyle
+\sum_{x=1}^{\lfloor\frac n {d}\rfloor}\sum_{y=1}^{\lfloor\frac m
+{d}\rfloor}\lfloor\dfrac n {xd}\rfloor\lfloor\dfrac m
+{yd}\rfloor\)</span></p>
+<p>设<span class="math inline">\(f(x)=\sum_{i=1}^x\lfloor\dfrac{x}{i}\rfloor\)</span>，就可以化成<span class="math inline">\(\displaystyle
+\sum_{d=1}^n\mu(d)f(\lfloor\dfrac{n}{d}\rfloor)f(\lfloor\dfrac{m}{d}\rfloor)\)</span></p>
 <p><span class="math inline">\(\lfloor\dfrac{n}{d}\rfloor\)</span>的值是分块的，所以<span class="math inline">\(f(\lfloor\dfrac{n}{d}\rfloor)\)</span>的值也是分块的，预处理出f的值和<span class="math inline">\(\mu\)</span>的前缀和即可。</p>
 <p><span class="math inline">\(\displaystyle\sum_{i=1}^n\lfloor\frac{n}{i}\rfloor\)</span>，求<span class="math inline">\(n=1,2,3,\dots,k\)</span>时的值</p>
-<p>设<span class="math inline">\(f(n)=\sum_{i=1}^n\lfloor\frac{n}{i}\rfloor\)</span>，实际上就是求<span class="math inline">\(f(1)\)</span>到<span class="math inline">\(f(k)\)</span>。一般来讲就是用k次整除分块。但是有<span class="math inline">\(\displaystyle \sum_{i=1}^n\lfloor\dfrac n i\rfloor = \sum_{i=1}^nd(i)\)</span>，也就是说，<span class="math inline">\(f(n)\)</span>就是<span class="math inline">\(d\)</span>的前缀和。因此，可以用线性筛。<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3327">[P3327]约数个数和</a></p>
+<p>设<span class="math inline">\(f(n)=\sum_{i=1}^n\lfloor\frac{n}{i}\rfloor\)</span>，实际上就是求<span class="math inline">\(f(1)\)</span>到<span class="math inline">\(f(k)\)</span>。一般来讲就是用k次整除分块。但是有<span class="math inline">\(\displaystyle \sum_{i=1}^n\lfloor\dfrac n i\rfloor
+= \sum_{i=1}^nd(i)\)</span>，也就是说，<span class="math inline">\(f(n)\)</span>就是<span class="math inline">\(d\)</span>的前缀和。因此，可以用线性筛。<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3327">[P3327]约数个数和</a></p>
 <h2 id="积性函数">积性函数</h2>
 <p>满足对任意一对互质的数<span class="math inline">\(p_1,p_2\)</span>，都有<span class="math inline">\(f(p_1)f(p_2)=f(p_1p_2)\)</span>的函数叫做积性函数。</p>
 <p>所有积性函数都可以用线性筛求出前缀和。（大概）</p>
 <h3 id="各种积性函数">各种积性函数</h3>
 <p><span class="math inline">\(\varphi(n)\)</span></p>
-<p><span class="math inline">\(n=p_1^{\alpha_1}\cdot\cdot\cdot p_k^{\alpha_k}\)</span>， 则<span class="math inline">\(\varphi(n)=n(1-\frac{1}{p_1})(1-\frac{1}{p_2})...(1-\frac{1}{p_k})\)</span>。</p>
+<p><span class="math inline">\(n=p_1^{\alpha_1}\cdot\cdot\cdot
+p_k^{\alpha_k}\)</span>， 则<span class="math inline">\(\varphi(n)=n(1-\frac{1}{p_1})(1-\frac{1}{p_2})...(1-\frac{1}{p_k})\)</span>。</p>
 <p>素数幂处的取值：由表达式得，<span class="math inline">\(\varphi(p^{\alpha+1})=p\varphi(p^{\alpha})\)</span></p>
 <p>所以，<span class="math inline">\(\varphi(p^{\alpha})=p^{\alpha-1}(p-1)\)</span></p>
 <p>p4240 毒瘤之神的考验 <span class="math display">\[
@@ -251,18 +269,23 @@
 <p><span class="math inline">\(\mu(n)\)</span> <span class="math display">\[
 \sum_{d\mid n}\mu(d)=[n=1]
 \]</span></p>
-<p><span class="math inline">\(d(n)\)</span> 因子数函数 由于和整除分块之间的联系，可以根号时间内求值。</p>
+<p><span class="math inline">\(d(n)\)</span> 因子数函数
+由于和整除分块之间的联系，可以根号时间内求值。</p>
 <p>p3327 约数个数和 <span class="math display">\[
 d(ij)=\sum_{x\mid i}\sum_{y\mid j}\gcd(x,y)
 \]</span></p>
-<p><span class="math inline">\(\sigma_k(n)=\sum_{d\mid n} d^k\)</span> 除数函数，当k=1时称为因子和函数，k=1时就是因子数函数d。</p>
-<p><span class="math inline">\({\rm Id_k}(n)=n^k\)</span> 幂函数，当k=1时是恒等函数。</p>
+<p><span class="math inline">\(\sigma_k(n)=\sum_{d\mid n} d^k\)</span>
+除数函数，当k=1时称为因子和函数，k=1时就是因子数函数d。</p>
+<p><span class="math inline">\({\rm Id_k}(n)=n^k\)</span>
+幂函数，当k=1时是恒等函数。</p>
 <h3 id="证明是积性函数">证明是积性函数</h3>
 <p>一般遇到的都是求和，求因子和，各种数论函数的组合。</p>
 <p>积性函数的积是积性函数</p>
 <p>积性函数的莫比乌斯变换是积性函数</p>
 <p>积性函数的迪利克雷卷积是积性函数</p>
-<p>因此，<span class="math inline">\(\displaystyle f(T)=\sum_{d\mid T}d\mu(\dfrac T d)\)</span>，<span class="math inline">\(\displaystyle f(n)=\sum_{d\mid n}\mu(d)d^k(\dfrac{n}{d})^i\)</span>都是积性函数。</p>
+<p>因此，<span class="math inline">\(\displaystyle f(T)=\sum_{d\mid
+T}d\mu(\dfrac T d)\)</span>，<span class="math inline">\(\displaystyle
+f(n)=\sum_{d\mid n}\mu(d)d^k(\dfrac{n}{d})^i\)</span>都是积性函数。</p>
 <h3 id="求积性函数">求积性函数</h3>
 <h4 id="质因数分解">质因数分解</h4>
 <p>需要单点求值，或者是数过大，只能用质因数分解来表示时使用。</p>
@@ -274,7 +297,8 @@ d(ij)=\sum_{x\mid i}\sum_{y\mid j}\gcd(x,y)
 <li><span class="math inline">\(n\)</span>是质数，一般这种情况是很好计算的，比如<span class="math inline">\(\mu(p)=-1,\varphi(p)=p-1\)</span>等等。</li>
 <li><span class="math inline">\(n\)</span>是个合数，那么在线性筛中一定是像这样被遍历到的：<span class="math inline">\(n=i\times p_j\)</span>，<span class="math inline">\(p_j\)</span>表示n的最小的质因子。
 <ul>
-<li>那么如果<span class="math inline">\(i \mod p_j\not= 0\)</span>，说明<span class="math inline">\(n\)</span>的两部分，<span class="math inline">\(i,p_j\)</span>是互质的，所以<span class="math inline">\(f(n)=f(i)\times f(p_j)\)</span></li>
+<li>那么如果<span class="math inline">\(i \mod p_j\not=
+0\)</span>，说明<span class="math inline">\(n\)</span>的两部分，<span class="math inline">\(i,p_j\)</span>是互质的，所以<span class="math inline">\(f(n)=f(i)\times f(p_j)\)</span></li>
 <li>如果<span class="math inline">\(i \mod p_j =0\)</span>，说明<span class="math inline">\(n\)</span>的最小质因子的次数不是一次，那么需要一个数组cnt记录最小质因子的次数。假设<span class="math inline">\(i\)</span>的质因数分解中<span class="math inline">\(p_j\)</span>是<span class="math inline">\(\alpha\)</span>次，那么<span class="math inline">\(n\)</span>一定是<span class="math inline">\(\alpha+1\)</span>次。<span class="math inline">\(f(n)=f(i)\times\dfrac{f(p_j^{\alpha+1})}{f(p_j^\alpha)}\)</span></li>
 </ul></li>
 </ol>
@@ -289,48 +313,61 @@ d(ij)=\sum_{x\mid i}\sum_{y\mid j}\gcd(x,y)
 <p>min_25筛</p>
 <p>洲阁筛</p>
 <h3 id="狄利克雷卷积应用">狄利克雷卷积、应用</h3>
-<p>  <strong>定义</strong>：两个数论函数<span class="math inline">\(f(n)\)</span>和<span class="math inline">\(g(n)\)</span>的狄利克雷卷积<span class="math inline">\(h(n)\)</span>也是一个数论函数，<span class="math inline">\(\displaystyle h(n)=\sum_{d\mid n}f(d)g(\frac{n}{d})\)</span>，简记为<span class="math inline">\(h(n)=f(n)*g(n)\)</span></p>
+<p>  <strong>定义</strong>：两个数论函数<span class="math inline">\(f(n)\)</span>和<span class="math inline">\(g(n)\)</span>的狄利克雷卷积<span class="math inline">\(h(n)\)</span>也是一个数论函数，<span class="math inline">\(\displaystyle h(n)=\sum_{d\mid
+n}f(d)g(\frac{n}{d})\)</span>，简记为<span class="math inline">\(h(n)=f(n)*g(n)\)</span></p>
 <p>许多数论函数都可以写成狄利克雷卷积的形式：</p>
 <p>因子个数：<span class="math inline">\(d=1*1\)</span> <span class="math display">\[
 d(n)=\sum_{d\mid n}1
 \]</span> 因子和：<span class="math inline">\(\sigma=d*1\)</span> <span class="math display">\[
 \sigma(n)=\sum_{d\mid n}d
-\]</span> 欧拉函数：<span class="math inline">\(\varphi=\mu*{\rm Id}\)</span> <span class="math display">\[
+\]</span> 欧拉函数：<span class="math inline">\(\varphi=\mu*{\rm
+Id}\)</span> <span class="math display">\[
 \varphi(n)=\sum_{d\mid n}\mu(d)\dfrac n d
 \]</span></p>
 <p>狄利克雷卷积有以下性质：</p>
 <ol type="1">
 <li>满足交换律</li>
 <li>满足结合律</li>
-<li>对任意数论函数<span class="math inline">\(f(n)\)</span>，存在单位元<span class="math inline">\(I(n)=\lfloor \dfrac 1 n\rfloor=[n=1]=\begin{cases}1 &amp;n=1\\0 &amp;n&gt;1\end{cases}\)</span>，<span class="math inline">\(f(n)I(n)=f(n)\)</span>。</li>
-<li>对满足<span class="math inline">\(f(1)\not =0\)</span>的数论函数<span class="math inline">\(f(n)\)</span>，存在逆元<span class="math inline">\(f^{-1}(n)\)</span>，使得<span class="math inline">\(f(n)*f^{-1}(n)=I(n)\)</span>。</li>
+<li>对任意数论函数<span class="math inline">\(f(n)\)</span>，存在单位元<span class="math inline">\(I(n)=\lfloor \dfrac 1
+n\rfloor=[n=1]=\begin{cases}1 &amp;n=1\\0
+&amp;n&gt;1\end{cases}\)</span>，<span class="math inline">\(f(n)I(n)=f(n)\)</span>。</li>
+<li>对满足<span class="math inline">\(f(1)\not
+=0\)</span>的数论函数<span class="math inline">\(f(n)\)</span>，存在逆元<span class="math inline">\(f^{-1}(n)\)</span>，使得<span class="math inline">\(f(n)*f^{-1}(n)=I(n)\)</span>。</li>
 </ol>
 <blockquote>
 <p>所以，对于狄利克雷卷积，全体<span class="math inline">\(f(1)\neq0\)</span>的数论函数构成一个阿贝尔群。</p>
-<p>简单来讲就是只要参与狄利克雷卷积运算的函数都满足<span class="math inline">\(f(1)\not =0\)</span>，那么狄利克雷卷积就满足交换律，满足结合律，存在逆元，存在幺元。</p>
+<p>简单来讲就是只要参与狄利克雷卷积运算的函数都满足<span class="math inline">\(f(1)\not
+=0\)</span>，那么狄利克雷卷积就满足交换律，满足结合律，存在逆元，存在幺元。</p>
 </blockquote>
 <p>那这个东西有什么用呢？</p>
 <ol type="1">
 <li><p>证明某个函数是积性函数</p>
-<p>比如直接得到<span class="math inline">\(\displaystyle f(T)=\sum_{d\mid T}d\mu(\dfrac T d)\)</span>是积性函数。</p></li>
+<p>比如直接得到<span class="math inline">\(\displaystyle
+f(T)=\sum_{d\mid T}d\mu(\dfrac T d)\)</span>是积性函数。</p></li>
 <li><p>给出数论函数（积性函数）之间的等式，然后可以用于莫比乌斯反演中的化简。</p>
-<p>比如欧拉函数除了上面的<span class="math inline">\(\varphi=\mu*{\rm Id}\)</span>以外还有一种形式：<span class="math inline">\(\varphi=\varphi*I=\varphi*\mu*1\)</span>。</p>
-<p>因为<span class="math inline">\(I(n)=[n=1]=\sum_{d\mid n}\mu(d)=\mu*1\)</span></p>
+<p>比如欧拉函数除了上面的<span class="math inline">\(\varphi=\mu*{\rm
+Id}\)</span>以外还有一种形式：<span class="math inline">\(\varphi=\varphi*I=\varphi*\mu*1\)</span>。</p>
+<p>因为<span class="math inline">\(I(n)=[n=1]=\sum_{d\mid
+n}\mu(d)=\mu*1\)</span></p>
 <blockquote>
 <p>使用例：hdu6428 Calculate</p>
-<p>计算<span class="math inline">\(\displaystyle \sum_{i=1}^A\sum_{j=1}^B\sum_{k=1}^C\varphi(\gcd(i,j^2,k^3))\)</span>， <span class="math inline">\(A,B,C\leq 1e7\)</span></p>
+<p>计算<span class="math inline">\(\displaystyle
+\sum_{i=1}^A\sum_{j=1}^B\sum_{k=1}^C\varphi(\gcd(i,j^2,k^3))\)</span>，
+<span class="math inline">\(A,B,C\leq 1e7\)</span></p>
 </blockquote>
 <p>底下有详解（到时候在下面插一个锚点）</p></li>
 </ol>
 <p>（可能会有）狄利克雷生成函数</p>
 <h1 id="莫比乌斯反演题目">莫比乌斯反演题目</h1>
-<p>从简单到复杂（以下均假设<span class="math inline">\(n\leq m\)</span>, <span class="math inline">\(A\leq B\leq C\)</span>）</p>
+<p>从简单到复杂（以下均假设<span class="math inline">\(n\leq m\)</span>,
+<span class="math inline">\(A\leq B\leq C\)</span>）</p>
 <h2 id="p2158-仪仗队">P2158 仪仗队</h2>
 <p><span class="math display">\[
 \begin{aligned}
 &amp;\sum_{i=1}^n\sum_{j=1}^m[\gcd(i,j)=1]\\
 =&amp;\sum_{i=1}^n\sum_{j=1}^m\sum_{d\mid \gcd(i,j)}\mu(d)\\
-=&amp;\sum_{d=1}^n\mu(d)\sum_{i=1}^{\lfloor\frac n d\rfloor}\sum_{j=1}^{\lfloor\frac m d\rfloor}\\
+=&amp;\sum_{d=1}^n\mu(d)\sum_{i=1}^{\lfloor\frac n
+d\rfloor}\sum_{j=1}^{\lfloor\frac m d\rfloor}\\
 =&amp;\sum_{d=1}^n\mu(d)\lfloor\frac n d\rfloor\lfloor\frac m d\rfloor
 \end{aligned}
 \]</span></p>
@@ -338,10 +375,14 @@ d(n)=\sum_{d\mid n}1
 <p><span class="math display">\[
 \begin{aligned}
 &amp;\sum_{i=1}^n\sum_{j=1}^m[\gcd(i,j)=k]\\
-=&amp;\sum_{i=1}^{\lfloor\frac n k\rfloor}\sum_{j=1}^{\lfloor\frac m k\rfloor}[\gcd(i,j)=1]\\
-=&amp;\sum_{i=1}^{\lfloor\frac n k\rfloor}\sum_{j=1}^{\lfloor\frac m k\rfloor}\sum_{d\mid \gcd(i,j)}\mu(d)\\
-=&amp;\sum_{d=1}^{\lfloor\frac n k\rfloor}\mu(d)\sum_{i=1}^{\lfloor\frac n {kd}\rfloor}\sum_{j=1}^{\lfloor\frac m {kd}\rfloor}\\
-=&amp;\sum_{d=1}^n\mu(d)\lfloor\frac n {kd}\rfloor\lfloor\frac m {kd}\rfloor
+=&amp;\sum_{i=1}^{\lfloor\frac n k\rfloor}\sum_{j=1}^{\lfloor\frac m
+k\rfloor}[\gcd(i,j)=1]\\
+=&amp;\sum_{i=1}^{\lfloor\frac n k\rfloor}\sum_{j=1}^{\lfloor\frac m
+k\rfloor}\sum_{d\mid \gcd(i,j)}\mu(d)\\
+=&amp;\sum_{d=1}^{\lfloor\frac n k\rfloor}\mu(d)\sum_{i=1}^{\lfloor\frac
+n {kd}\rfloor}\sum_{j=1}^{\lfloor\frac m {kd}\rfloor}\\
+=&amp;\sum_{d=1}^n\mu(d)\lfloor\frac n {kd}\rfloor\lfloor\frac m
+{kd}\rfloor
 \end{aligned}
 \]</span></p>
 <h2 id="p1447-能量采集">2 P1447 能量采集</h2>
@@ -360,33 +401,55 @@ d(n)=\sum_{d\mid n}1
 <p><span class="math display">\[
 \begin{aligned}
 &amp;\sum_{i=1}^n\sum_{j=1}^mij[\gcd(i,j)=k]\\
-=&amp;\sum_{i=1}^{\lfloor\frac n k\rfloor}\sum_{j=1}^{\lfloor\frac m k\rfloor}ijk^2[\gcd(i,j)=1]\\
-=&amp;\sum_{i=1}^{\lfloor\frac n k\rfloor}\sum_{j=1}^{\lfloor\frac m k\rfloor}ijk^2\sum_{d\mid \gcd(i,j)}\mu(d)\\
-=&amp;k^2\sum_{d=1}^{\lfloor\frac n k\rfloor}d^2\mu(d)\sum_{i=1}^{\lfloor\frac n {kd}\rfloor}i\sum_{j=1}^{\lfloor\frac m {kd}\rfloor}j\\
+=&amp;\sum_{i=1}^{\lfloor\frac n k\rfloor}\sum_{j=1}^{\lfloor\frac m
+k\rfloor}ijk^2[\gcd(i,j)=1]\\
+=&amp;\sum_{i=1}^{\lfloor\frac n k\rfloor}\sum_{j=1}^{\lfloor\frac m
+k\rfloor}ijk^2\sum_{d\mid \gcd(i,j)}\mu(d)\\
+=&amp;k^2\sum_{d=1}^{\lfloor\frac n
+k\rfloor}d^2\mu(d)\sum_{i=1}^{\lfloor\frac n
+{kd}\rfloor}i\sum_{j=1}^{\lfloor\frac m {kd}\rfloor}j\\
 \end{aligned}
 \]</span></p>
 <p>设<span class="math inline">\(f(n)=\sum_{i=1}^n i\)</span> <span class="math display">\[
 \begin{aligned}
-&amp;k^2\sum_{d=1}^{\lfloor\frac n k\rfloor}d^2\mu(d)\sum_{i=1}^{\lfloor\frac n {kd}\rfloor}i\sum_{j=1}^{\lfloor\frac m {kd}\rfloor}j\\
-=&amp;k^2\sum_{d=1}^{\lfloor\frac n k\rfloor}d^2\mu(d)f\left({\lfloor\frac n {kd}\rfloor}\right)f\left({\lfloor\frac m {kd}\rfloor}\right)
+&amp;k^2\sum_{d=1}^{\lfloor\frac n
+k\rfloor}d^2\mu(d)\sum_{i=1}^{\lfloor\frac n
+{kd}\rfloor}i\sum_{j=1}^{\lfloor\frac m {kd}\rfloor}j\\
+=&amp;k^2\sum_{d=1}^{\lfloor\frac n
+k\rfloor}d^2\mu(d)f\left({\lfloor\frac n
+{kd}\rfloor}\right)f\left({\lfloor\frac m {kd}\rfloor}\right)
 \end{aligned}
 \]</span> <span class="math inline">\(f(n)\)</span>就是等差数列求和，可以O(1)求。并且是分块的。先线性筛出<span class="math inline">\(d^2\mu(d)\)</span>的前缀和，然后整除分块即可。</p>
-<h2 id="nowcode-22769e-sum-of-gcd-of-tuples-hard">4 nowcode 22769/E Sum of gcd of Tuples (Hard)</h2>
+<h2 id="nowcode-22769e-sum-of-gcd-of-tuples-hard">4 nowcode 22769/E Sum
+of gcd of Tuples (Hard)</h2>
 <p>原题中的k是这里的n，原题中的n是这里的m <span class="math display">\[
 \begin{aligned}
-&amp;\sum_{a_1=1}^n\sum_{a_2=1}^n\dots\sum_{a_m=1}^n\gcd(a_1,a_2,\dots,a_m)\mod 10^9+1\\
-&amp;\sum_{d=1}^n\sum_{a_1=1}^n\sum_{a_2=1}^n\dots\sum_{a_m=1}^n d[\gcd(a_1,a_2,\dots,a_m)=d]\\
-&amp;\sum_{d=1}^n\sum_{a_1=1}^{\lfloor\frac {n}{d}\rfloor}\sum_{a_2=1}^{\lfloor\frac {n}{d}\rfloor}\dots\sum_{a_m=1}^{\lfloor\frac {n}{d}\rfloor} d[\gcd(a_1,a_2,\dots,a_m)=1]\\
-&amp;\sum_{d=1}^n\sum_{a_1=1}^{\lfloor\frac {n}{d}\rfloor}\sum_{a_2=1}^{\lfloor\frac {n}{d}\rfloor}\dots\sum_{a_m=1}^{\lfloor\frac {n}{d}\rfloor} d\sum_{k\mid \gcd(a_1,a_2,\dots,a_m)}\mu(k)\\
-&amp;\sum_{d=1}^n d\sum_{k=1}^{\lfloor\frac {n}{d}\rfloor} \mu(k) \sum_{a_1=1}^{\lfloor\frac {n}{kd}\rfloor}\sum_{a_2=1}^{\lfloor\frac {n}{kd}\rfloor}\dots\sum_{a_m=1}^{\lfloor\frac {n}{kd}\rfloor}\\
-&amp;\sum_{d=1}^n d\sum_{k=1}^{\lfloor\frac {n}{d}\rfloor} \mu(k) ({\lfloor\frac {n}{kd}\rfloor})^m\\
+&amp;\sum_{a_1=1}^n\sum_{a_2=1}^n\dots\sum_{a_m=1}^n\gcd(a_1,a_2,\dots,a_m)\mod
+10^9+1\\
+&amp;\sum_{d=1}^n\sum_{a_1=1}^n\sum_{a_2=1}^n\dots\sum_{a_m=1}^n
+d[\gcd(a_1,a_2,\dots,a_m)=d]\\
+&amp;\sum_{d=1}^n\sum_{a_1=1}^{\lfloor\frac
+{n}{d}\rfloor}\sum_{a_2=1}^{\lfloor\frac
+{n}{d}\rfloor}\dots\sum_{a_m=1}^{\lfloor\frac {n}{d}\rfloor}
+d[\gcd(a_1,a_2,\dots,a_m)=1]\\
+&amp;\sum_{d=1}^n\sum_{a_1=1}^{\lfloor\frac
+{n}{d}\rfloor}\sum_{a_2=1}^{\lfloor\frac
+{n}{d}\rfloor}\dots\sum_{a_m=1}^{\lfloor\frac {n}{d}\rfloor}
+d\sum_{k\mid \gcd(a_1,a_2,\dots,a_m)}\mu(k)\\
+&amp;\sum_{d=1}^n d\sum_{k=1}^{\lfloor\frac {n}{d}\rfloor} \mu(k)
+\sum_{a_1=1}^{\lfloor\frac {n}{kd}\rfloor}\sum_{a_2=1}^{\lfloor\frac
+{n}{kd}\rfloor}\dots\sum_{a_m=1}^{\lfloor\frac {n}{kd}\rfloor}\\
+&amp;\sum_{d=1}^n d\sum_{k=1}^{\lfloor\frac {n}{d}\rfloor} \mu(k)
+({\lfloor\frac {n}{kd}\rfloor})^m\\
 \end{aligned}
 \]</span></p>
 <p><span class="math display">\[
 \begin{aligned}
-&amp;\sum_{d=1}^n d\sum_{k=1}^{\lfloor\frac {n}{d}\rfloor} \mu(k) ({\lfloor\frac {n}{kd}\rfloor})^m\\
+&amp;\sum_{d=1}^n d\sum_{k=1}^{\lfloor\frac {n}{d}\rfloor} \mu(k)
+({\lfloor\frac {n}{kd}\rfloor})^m\\
 &amp;[1\leq d\leq n][1\leq k\leq {\lfloor\frac {n}{d}\rfloor}]\\
-&amp;\sum_{T=1}^n\sum_{d\mid T}d\mu(\frac T d)({\lfloor\frac {n}{T}\rfloor})^m\\
+&amp;\sum_{T=1}^n\sum_{d\mid T}d\mu(\frac T d)({\lfloor\frac
+{n}{T}\rfloor})^m\\
 &amp;\sum_{T=1}^n\varphi(T)({\lfloor\frac {n}{T}\rfloor})^m\\
 &amp;\sum_{T=1}^n\varphi(T)g({\lfloor\frac {n}{T}\rfloor})
 \end{aligned}
@@ -397,37 +460,58 @@ d(n)=\sum_{d\mid n}1
 \begin{aligned}
 &amp;\sum_{i=1}^n\sum_{j=1}^m{\rm lcm}(i,j)\\
 =&amp;\sum_{d=1}^n\sum_{i=1}^n\sum_{j=1}^m\dfrac{ij}d[\gcd(i,j)=d]\\
-=&amp;\sum_{d=1}^n\sum_{i=1}^{\lfloor\frac n d\rfloor}\sum_{j=1}^{\lfloor\frac m d\rfloor}{ij}d[\gcd(i,j)=1]\\
-=&amp;\sum_{d=1}^n\sum_{i=1}^{\lfloor\frac n d\rfloor}\sum_{j=1}^{\lfloor\frac m d\rfloor}{ij}d\sum_{k\mid \gcd(i,j)}\mu(k)\\
-=&amp;\sum_{d=1}^n d\sum_{k=1}^{\lfloor\frac n d\rfloor}k^2\mu(k)\sum_{i=1}^{\lfloor\frac n {kd}\rfloor}i\sum_{j=1}^{\lfloor\frac m {kd}\rfloor}j\\
+=&amp;\sum_{d=1}^n\sum_{i=1}^{\lfloor\frac n
+d\rfloor}\sum_{j=1}^{\lfloor\frac m d\rfloor}{ij}d[\gcd(i,j)=1]\\
+=&amp;\sum_{d=1}^n\sum_{i=1}^{\lfloor\frac n
+d\rfloor}\sum_{j=1}^{\lfloor\frac m d\rfloor}{ij}d\sum_{k\mid
+\gcd(i,j)}\mu(k)\\
+=&amp;\sum_{d=1}^n d\sum_{k=1}^{\lfloor\frac n
+d\rfloor}k^2\mu(k)\sum_{i=1}^{\lfloor\frac n
+{kd}\rfloor}i\sum_{j=1}^{\lfloor\frac m {kd}\rfloor}j\\
 \end{aligned}
 \]</span></p>
 <p>令<span class="math inline">\(T=kd\)</span>，<span class="math inline">\(f(n)=\sum_{i=1}^n i\)</span> <span class="math display">\[
 \begin{aligned}
-&amp;\sum_{d=1}^n d\sum_{k=1}^{\lfloor\frac n d\rfloor}k^2\mu(k)\sum_{i=1}^{\lfloor\frac n {kd}\rfloor}i\sum_{j=1}^{\lfloor\frac m {kd}\rfloor}j\\
-=&amp;\sum_{T=1}^nf\left({\lfloor\frac n {T}\rfloor}\right)f\left({\lfloor\frac m {T}\rfloor}\right)\sum_{d\mid T}d\mu({\lfloor\frac T {d}\rfloor})({\lfloor\frac T {d}\rfloor})^2\\
-&amp;\sum_{T=1}^nf\left({\lfloor\frac n {T}\rfloor}\right)f\left({\lfloor\frac m {T}\rfloor}\right)\sum_{d\mid T}d\mu(d)T\\
+&amp;\sum_{d=1}^n d\sum_{k=1}^{\lfloor\frac n
+d\rfloor}k^2\mu(k)\sum_{i=1}^{\lfloor\frac n
+{kd}\rfloor}i\sum_{j=1}^{\lfloor\frac m {kd}\rfloor}j\\
+=&amp;\sum_{T=1}^nf\left({\lfloor\frac n
+{T}\rfloor}\right)f\left({\lfloor\frac m {T}\rfloor}\right)\sum_{d\mid
+T}d\mu({\lfloor\frac T {d}\rfloor})({\lfloor\frac T {d}\rfloor})^2\\
+&amp;\sum_{T=1}^nf\left({\lfloor\frac n
+{T}\rfloor}\right)f\left({\lfloor\frac m {T}\rfloor}\right)\sum_{d\mid
+T}d\mu(d)T\\
 \end{aligned}
 \]</span></p>
 <h2 id="nowcode-22769c-序列">nowcode 22769/C 序列</h2>
 <p>有两个序列a、b，求有多少有序对<span class="math inline">\(&lt;x,y&gt;\)</span>满足<span class="math inline">\(\gcd(x,y)=1,a_{b_x}=b_{a_y}\)</span>。</p>
-<p><span class="math inline">\(1\leq n\leq 1e5,1\leq a_i\leq n,1\leq b_i\leq n\)</span> <span class="math display">\[
+<p><span class="math inline">\(1\leq n\leq 1e5,1\leq a_i\leq n,1\leq
+b_i\leq n\)</span> <span class="math display">\[
 \begin{aligned}
 &amp;\sum_{x=1}^n\sum_{y=1}^n[\gcd(x,y)=1][a_{b_x}=b_{a_y}]\\
-=&amp;\sum_{x=1}^n\sum_{y=1}^n\sum_{d\mid \gcd(x,y)}\mu(d)[a_{b_x}=b_{a_y}]\\
-=&amp;\sum_{d=1}^n\mu(d)\sum_{x=1}^{\lfloor\frac n d\rfloor}\sum_{y=1}^{\lfloor\frac n d\rfloor}[a_{b_x}=b_{a_y}]\\
-=&amp;\sum_{d=1}^n\mu(d)\sum_{k=1}^n(\sum_{x=1}^{\lfloor\frac n d\rfloor}[a_{b_x}=k]\sum_{y=1}^{\lfloor\frac n d\rfloor}[b_{a_y}=k])
+=&amp;\sum_{x=1}^n\sum_{y=1}^n\sum_{d\mid
+\gcd(x,y)}\mu(d)[a_{b_x}=b_{a_y}]\\
+=&amp;\sum_{d=1}^n\mu(d)\sum_{x=1}^{\lfloor\frac n
+d\rfloor}\sum_{y=1}^{\lfloor\frac n d\rfloor}[a_{b_x}=b_{a_y}]\\
+=&amp;\sum_{d=1}^n\mu(d)\sum_{k=1}^n(\sum_{x=1}^{\lfloor\frac n
+d\rfloor}[a_{b_x}=k]\sum_{y=1}^{\lfloor\frac n d\rfloor}[b_{a_y}=k])
 \end{aligned}
 \]</span></p>
 <h2 id="p3327-约数个数和">P3327 约数个数和</h2>
 <p><span class="math display">\[
 \begin{aligned}
 &amp;\sum_{i=1}^n\sum_{j=1}^m d(ij)\\
-=&amp;\sum_{i=1}^n\sum_{j=1}^m\sum_{x\mid i}\sum_{y\mid j}[\gcd(x, y)=1]\\
-=&amp;\sum_{x=1}^n\sum_{y=1}^m\lfloor \frac n x\rfloor\lfloor \frac m y\rfloor[\gcd(x, y)=1]\\
-=&amp;\sum_{i=1}^n\sum_{j=1}^m\lfloor \frac n i\rfloor\lfloor \frac m j\rfloor[\gcd(i,j)=1]\\
-=&amp;\sum_{i=1}^n\sum_{j=1}^m\lfloor \frac n i\rfloor\lfloor \frac m j\rfloor\sum_{d\mid \gcd(i,j)}\mu(d)\\
-=&amp;\sum_{d=1}^n\mu(d)\sum_{i=1}^{\lfloor\frac n{d} \rfloor}\sum_{j=1}^{\lfloor\frac m{d} \rfloor}{\lfloor\frac n{id} \rfloor}{\lfloor\frac m{jd} \rfloor}
+=&amp;\sum_{i=1}^n\sum_{j=1}^m\sum_{x\mid i}\sum_{y\mid j}[\gcd(x,
+y)=1]\\
+=&amp;\sum_{x=1}^n\sum_{y=1}^m\lfloor \frac n x\rfloor\lfloor \frac m
+y\rfloor[\gcd(x, y)=1]\\
+=&amp;\sum_{i=1}^n\sum_{j=1}^m\lfloor \frac n i\rfloor\lfloor \frac m
+j\rfloor[\gcd(i,j)=1]\\
+=&amp;\sum_{i=1}^n\sum_{j=1}^m\lfloor \frac n i\rfloor\lfloor \frac m
+j\rfloor\sum_{d\mid \gcd(i,j)}\mu(d)\\
+=&amp;\sum_{d=1}^n\mu(d)\sum_{i=1}^{\lfloor\frac n{d}
+\rfloor}\sum_{j=1}^{\lfloor\frac m{d} \rfloor}{\lfloor\frac n{id}
+\rfloor}{\lfloor\frac m{jd} \rfloor}
 \end{aligned}
 \]</span></p>
 <h2 id="section-1">6</h2>
@@ -440,24 +524,37 @@ d(n)=\sum_{d\mid n}1
 \begin{aligned}
 &amp;\prod_{i=1}^n\prod_{j=1}^m f[\gcd(i,j)]\\
 =&amp;\prod_{d=1}^nf[d]^{\sum_{i=1}^n\sum_{j=1}^m[\gcd(i,j)=d]}\\
-=&amp;\prod_{d=1}^nf[d]^{\sum_{i=1}^{\lfloor\frac n d\rfloor}\sum_{j=1}^{\lfloor\frac m d\rfloor}[\gcd(i,j)=1]}\\
-=&amp;\prod_{d=1}^nf[d]^{\sum_{k=1}^{\lfloor\frac n {d}\rfloor}\mu(k){\lfloor\frac n {kd}\rfloor}{\lfloor\frac m {kd}\rfloor}}
+=&amp;\prod_{d=1}^nf[d]^{\sum_{i=1}^{\lfloor\frac n
+d\rfloor}\sum_{j=1}^{\lfloor\frac m d\rfloor}[\gcd(i,j)=1]}\\
+=&amp;\prod_{d=1}^nf[d]^{\sum_{k=1}^{\lfloor\frac n
+{d}\rfloor}\mu(k){\lfloor\frac n {kd}\rfloor}{\lfloor\frac m
+{kd}\rfloor}}
 \end{aligned}
 \]</span> 令T=kd <span class="math display">\[
 \begin{aligned}
-&amp;\prod_{d=1}^nf[d]^{\sum_{k=1}^{\lfloor\frac n {d}\rfloor}\mu(k){\lfloor\frac n {kd}\rfloor}{\lfloor\frac m{kd}\rfloor}}=\prod_{T=1}^n\prod_{d\mid T}f[d]^{\mu(\frac T d)\lfloor\frac n T\rfloor\lfloor\frac m T\rfloor}
+&amp;\prod_{d=1}^nf[d]^{\sum_{k=1}^{\lfloor\frac n
+{d}\rfloor}\mu(k){\lfloor\frac n {kd}\rfloor}{\lfloor\frac
+m{kd}\rfloor}}=\prod_{T=1}^n\prod_{d\mid T}f[d]^{\mu(\frac T
+d)\lfloor\frac n T\rfloor\lfloor\frac m T\rfloor}
 \end{aligned}
 \]</span> 如何得到这个式子呢？可以取个对数 <span class="math display">\[
 \begin{aligned}
-&amp;\lg\prod_{d=1}^nf[d]^{\sum_{k=1}^{\lfloor\frac n {d}\rfloor}\mu(k){\lfloor\frac n {kd}\rfloor}{\lfloor\frac m {kd}\rfloor}}\\
-=&amp;\sum_{d=1}^n\sum_{k=1}^{\lfloor\frac{n}{d}\rfloor}\mu(k){\lfloor\frac n {kd}\rfloor}{\lfloor\frac m {kd}\rfloor}\lg(f[d])\\
-=&amp;\sum_{T=1}^n\sum_{d\mid T}\mu(\frac T d){\lfloor\frac n {T}\rfloor}{\lfloor\frac m {T}\rfloor}\lg(f[d])\\
-=&amp;\sum_{T=1}^n\sum_{d\mid T}\lg(f[d]^{\mu(\frac T d){\lfloor\frac n {T}\rfloor}{\lfloor\frac m {T}\rfloor}})\\
-=&amp;\lg\prod_{T=1}^n\prod_{d\mid T}f[d]^{\mu(\frac T d)\lfloor\frac n T\rfloor\lfloor\frac m T\rfloor}\\
+&amp;\lg\prod_{d=1}^nf[d]^{\sum_{k=1}^{\lfloor\frac n
+{d}\rfloor}\mu(k){\lfloor\frac n {kd}\rfloor}{\lfloor\frac m
+{kd}\rfloor}}\\
+=&amp;\sum_{d=1}^n\sum_{k=1}^{\lfloor\frac{n}{d}\rfloor}\mu(k){\lfloor\frac
+n {kd}\rfloor}{\lfloor\frac m {kd}\rfloor}\lg(f[d])\\
+=&amp;\sum_{T=1}^n\sum_{d\mid T}\mu(\frac T d){\lfloor\frac n
+{T}\rfloor}{\lfloor\frac m {T}\rfloor}\lg(f[d])\\
+=&amp;\sum_{T=1}^n\sum_{d\mid T}\lg(f[d]^{\mu(\frac T d){\lfloor\frac n
+{T}\rfloor}{\lfloor\frac m {T}\rfloor}})\\
+=&amp;\lg\prod_{T=1}^n\prod_{d\mid T}f[d]^{\mu(\frac T d)\lfloor\frac n
+T\rfloor\lfloor\frac m T\rfloor}\\
 \end{aligned}
 \]</span></p>
 <p><span class="math display">\[
-\prod_{T=1}^n(\prod_{d\mid T}f[d]^{\mu(\frac T d)})^{\lfloor\frac n T\rfloor\lfloor\frac m T\rfloor}
+\prod_{T=1}^n(\prod_{d\mid T}f[d]^{\mu(\frac T d)})^{\lfloor\frac n
+T\rfloor\lfloor\frac m T\rfloor}
 \]</span></p>
 <p>里面暴力维护求前缀，然后整除分块。</p>
 <p>https://www.luogu.com.cn/blog/xgzc/solution-p3704</p>
@@ -467,7 +564,8 @@ d(n)=\sum_{d\mid n}1
 \sum_{i=1}^n\sum_{j=1}^m[\gcd(i,j)]^k
 \end{aligned}
 \]</span></p>
-<h2 id="p3911-最小公倍数之和at5200-lcms">8 P3911 最小公倍数之和/AT5200 LCMs</h2>
+<h2 id="p3911-最小公倍数之和at5200-lcms">8 P3911 最小公倍数之和/AT5200
+LCMs</h2>
 <p>对<span class="math inline">\(A_1,A_2,\dots,A_N\)</span> <span class="math display">\[
 \begin{aligned}
 \sum_{i=1}^N\sum_{j=1}^N{\rm lcm}(A_i,A_j)
@@ -477,38 +575,67 @@ d(n)=\sum_{d\mid n}1
 &amp;\sum_{i=1}^n\sum_{j=1}^n{\rm lcm}(A_i,A_j)\\
 =&amp;\sum_{i=1}^n\sum_{j=1}^nc_ic_j\times{\rm lcm}(A_i, A_j)\\
 =&amp;\sum_{i=1}^n\sum_{j=1}^n\dfrac{ijc_ic_j}{\gcd(i,j)}\\
-=&amp;\sum_{d=1}^n\sum_{i=1}^{\lfloor \frac nd\rfloor}\sum_{j=1}^{\lfloor \frac nd\rfloor}[\gcd(i,j)=1]dijc_{id}c_{jd}\\
-=&amp;\sum_{d=1}^n\sum_{i=1}^{\lfloor \frac nd\rfloor}\sum_{j=1}^{\lfloor \frac nd\rfloor}\sum_{k\mid \gcd(i,j)}\mu(k)dijc_{id}c_{jd}\\
-=&amp;\sum_{d=1}^n\sum_{k=1}^{\lfloor \frac nd\rfloor}\sum_{i=1}^{\lfloor \frac n{kd}\rfloor}\sum_{j=1}^{\lfloor \frac n{kd}\rfloor}\mu(k)dijk^2c_{idk}c_{jdk}\\
-=&amp;\sum_{T=1}^n T(\sum_{i=1}^{\lfloor \frac n T\rfloor}ic_{iT})^2\sum_{k\mid T}\mu(k)k
+=&amp;\sum_{d=1}^n\sum_{i=1}^{\lfloor \frac
+nd\rfloor}\sum_{j=1}^{\lfloor \frac
+nd\rfloor}[\gcd(i,j)=1]dijc_{id}c_{jd}\\
+=&amp;\sum_{d=1}^n\sum_{i=1}^{\lfloor \frac
+nd\rfloor}\sum_{j=1}^{\lfloor \frac nd\rfloor}\sum_{k\mid
+\gcd(i,j)}\mu(k)dijc_{id}c_{jd}\\
+=&amp;\sum_{d=1}^n\sum_{k=1}^{\lfloor \frac
+nd\rfloor}\sum_{i=1}^{\lfloor \frac n{kd}\rfloor}\sum_{j=1}^{\lfloor
+\frac n{kd}\rfloor}\mu(k)dijk^2c_{idk}c_{jdk}\\
+=&amp;\sum_{T=1}^n T(\sum_{i=1}^{\lfloor \frac n
+T\rfloor}ic_{iT})^2\sum_{k\mid T}\mu(k)k
 \end{aligned}
-\]</span> <span class="math inline">\(f(T)=(\sum_{i=1}^{\lfloor \frac n T\rfloor}ic_{iT})^2\)</span> <span class="math inline">\(O(n\log(n))\)</span>暴力求<span class="math inline">\(T=1,\dots,n\)</span>.</p>
+\]</span> <span class="math inline">\(f(T)=(\sum_{i=1}^{\lfloor \frac n
+T\rfloor}ic_{iT})^2\)</span> <span class="math inline">\(O(n\log(n))\)</span>暴力求<span class="math inline">\(T=1,\dots,n\)</span>.</p>
 <p><span class="math inline">\(g(T)=\sum_{k\mid T}\mu(k)k\)</span></p>
 <p>预处理g的两种写法</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt;= n; j += i)</span><br><span class="line">		f[j] += i * mu[i];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) </span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; i * j &lt;= n; j++) </span><br><span class="line">		f[i * j] += i * mu[i];</span><br></pre></td></tr></table></figure>
 <p>稍微改变一下推导方式，可以得到等价的式子 <span class="math display">\[
-\sum_{T=1}^n\sum_{k=1}^{\lfloor\frac n T\rfloor}\frac{\mu(k)}T(\sum_{kT\mid i}^{n}ic_i)^2
-\]</span> 使用狄利克雷前缀和可以<span class="math inline">\(O(n\log\log n)\)</span>的计算<span class="math inline">\((\sum_{kT\mid i}^{n}ic_i)^2\)</span>。</p>
+\sum_{T=1}^n\sum_{k=1}^{\lfloor\frac n
+T\rfloor}\frac{\mu(k)}T(\sum_{kT\mid i}^{n}ic_i)^2
+\]</span> 使用狄利克雷前缀和可以<span class="math inline">\(O(n\log\log
+n)\)</span>的计算<span class="math inline">\((\sum_{kT\mid
+i}^{n}ic_i)^2\)</span>。</p>
 <p>https://www.luogu.com.cn/problem/solution/AT5200 里有<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/37839"><strong>紫钦</strong></a>的使用狄利克雷卷积优化的式子（但复杂度是一样的）</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5495">P5495 Dirichlet 前缀和</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yijan/p/12356665.html">Dirichlet 前缀和的几种版本</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5495">P5495 Dirichlet
+前缀和</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yijan/p/12356665.html">Dirichlet
+前缀和的几种版本</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45697774/article/details/111052242">Dirichlet前缀和及其拓展</a></p>
 <h2 id="hdu6428-calculate">9 hdu6428 Calculate</h2>
 <p><span class="math display">\[
 \begin{aligned}
 &amp;\sum_{i=1}^A\sum_{j=1}^B\sum_{k=1}^C\varphi(\gcd(i,j^2,k^3))\\
 =&amp;\sum_{i=1}^A\sum_{j=1}^B\sum_{k=1}^C(\varphi*\mu*1)(\gcd(i,j^2,k^3))\\
-=&amp;\sum_{i=1}^A\sum_{j=1}^B\sum_{k=1}^C\sum_{d\mid \gcd(i,j^2,k^3)}(\varphi*\mu)(d)\\
-=&amp;\sum_{i=1}^A\sum_{j=1}^B\sum_{k=1}^C\sum_{d\mid i,d\mid j^2,d\mid k^3}(\varphi*\mu)(d) \\
-=&amp;\sum_{d=1}^A(\varphi*\mu)(d)\sum_{i=1}^A[d\mid i]\sum_{j=1}^B[d\mid j^2]\sum_{k=1}^C[d\mid k^3]
+=&amp;\sum_{i=1}^A\sum_{j=1}^B\sum_{k=1}^C\sum_{d\mid
+\gcd(i,j^2,k^3)}(\varphi*\mu)(d)\\
+=&amp;\sum_{i=1}^A\sum_{j=1}^B\sum_{k=1}^C\sum_{d\mid i,d\mid j^2,d\mid
+k^3}(\varphi*\mu)(d) \\
+=&amp;\sum_{d=1}^A(\varphi*\mu)(d)\sum_{i=1}^A[d\mid
+i]\sum_{j=1}^B[d\mid j^2]\sum_{k=1}^C[d\mid k^3]
 \end{aligned}
 \]</span></p>
-<p>对于<span class="math inline">\(\displaystyle \sum_{i=1}^A[d\mid i]\)</span>，实际上就是<span class="math inline">\(i\)</span>是<span class="math inline">\(d\)</span>的倍数，在<span class="math inline">\(1\)</span>到<span class="math inline">\(A\)</span>之间，<span class="math inline">\(d\)</span>的倍数共有<span class="math inline">\(\lfloor\dfrac Ad\rfloor\)</span>个。</p>
-<p>对于<span class="math inline">\(\displaystyle\sum_{j=1}^B[d\mid j^2],\sum_{k=1}^C[d\mid k^3]\)</span>也一样，只不过现在<span class="math inline">\(j,k\)</span>应该分别是<span class="math inline">\(p_1^{\lceil\frac{\alpha_{1}}{2}\rceil}p_2^{\lceil\frac{\alpha_{2}}{2}\rceil}\dots p_k^{\lceil\frac{\alpha_{k}}{2}\rceil},p_1^{\lceil\frac{\alpha_{1}}{3}\rceil}p_2^{\lceil\frac{\alpha_{2}}{3}\rceil}\dots p_k^{\lceil\frac{\alpha_{k}}{3}\rceil}\)</span>的倍数。（对<span class="math inline">\(d\)</span>做质因数分解，<span class="math inline">\(d=p_1^{\alpha_1}p_2^{\alpha_2}\dots p_k^{\alpha_k}\)</span>, 如果<span class="math inline">\(d\mid j^2\)</span>，那么<span class="math inline">\(p_1^{\lceil\frac{\alpha_{1}}{2}\rceil}p_2^{\lceil\frac{\alpha_{2}}{2}\rceil}\dots p_k^{\lceil\frac{\alpha_{k}}{2}\rceil}\mid j\)</span>），在<span class="math inline">\(1\)</span>到<span class="math inline">\(B\)</span>之间，<span class="math inline">\(d\)</span>的倍数共有<span class="math inline">\(\lfloor\dfrac B{p_1^{\lceil\frac{\alpha_{1}}{2}\rceil}p_2^{\lceil\frac{\alpha_{2}}{2}\rceil}\dots p_k^{\lceil\frac{\alpha_{k}}{2}\rceil}}\rfloor\)</span>个。</p>
-<p>设<span class="math inline">\(\displaystyle f_t(n)=\prod_i p_i^{\lceil\frac {\alpha_i} t\rceil}\)</span>，公式可以化简成<span class="math inline">\(\lfloor\dfrac B{f_2(d)}\rfloor\)</span> <span class="math display">\[
+<p>对于<span class="math inline">\(\displaystyle \sum_{i=1}^A[d\mid
+i]\)</span>，实际上就是<span class="math inline">\(i\)</span>是<span class="math inline">\(d\)</span>的倍数，在<span class="math inline">\(1\)</span>到<span class="math inline">\(A\)</span>之间，<span class="math inline">\(d\)</span>的倍数共有<span class="math inline">\(\lfloor\dfrac Ad\rfloor\)</span>个。</p>
+<p>对于<span class="math inline">\(\displaystyle\sum_{j=1}^B[d\mid
+j^2],\sum_{k=1}^C[d\mid k^3]\)</span>也一样，只不过现在<span class="math inline">\(j,k\)</span>应该分别是<span class="math inline">\(p_1^{\lceil\frac{\alpha_{1}}{2}\rceil}p_2^{\lceil\frac{\alpha_{2}}{2}\rceil}\dots
+p_k^{\lceil\frac{\alpha_{k}}{2}\rceil},p_1^{\lceil\frac{\alpha_{1}}{3}\rceil}p_2^{\lceil\frac{\alpha_{2}}{3}\rceil}\dots
+p_k^{\lceil\frac{\alpha_{k}}{3}\rceil}\)</span>的倍数。（对<span class="math inline">\(d\)</span>做质因数分解，<span class="math inline">\(d=p_1^{\alpha_1}p_2^{\alpha_2}\dots
+p_k^{\alpha_k}\)</span>, 如果<span class="math inline">\(d\mid
+j^2\)</span>，那么<span class="math inline">\(p_1^{\lceil\frac{\alpha_{1}}{2}\rceil}p_2^{\lceil\frac{\alpha_{2}}{2}\rceil}\dots
+p_k^{\lceil\frac{\alpha_{k}}{2}\rceil}\mid j\)</span>），在<span class="math inline">\(1\)</span>到<span class="math inline">\(B\)</span>之间，<span class="math inline">\(d\)</span>的倍数共有<span class="math inline">\(\lfloor\dfrac
+B{p_1^{\lceil\frac{\alpha_{1}}{2}\rceil}p_2^{\lceil\frac{\alpha_{2}}{2}\rceil}\dots
+p_k^{\lceil\frac{\alpha_{k}}{2}\rceil}}\rfloor\)</span>个。</p>
+<p>设<span class="math inline">\(\displaystyle f_t(n)=\prod_i
+p_i^{\lceil\frac {\alpha_i} t\rceil}\)</span>，公式可以化简成<span class="math inline">\(\lfloor\dfrac B{f_2(d)}\rfloor\)</span> <span class="math display">\[
 \begin{aligned}
-&amp;\sum_{d=1}^A(\varphi*\mu)(d)\sum_{i=1}^A[d\mid i]\sum_{j=1}^B[d\mid j^2]\sum_{k=1}^C[d\mid k^3]\\
-=&amp;\sum_{d=1}^A(\varphi*\mu)(d)\lfloor \dfrac A{f_1(d)}\rfloor\lfloor\dfrac B{f_2(d)}\rfloor\lfloor\dfrac C{f_3(d)}\rfloor
+&amp;\sum_{d=1}^A(\varphi*\mu)(d)\sum_{i=1}^A[d\mid i]\sum_{j=1}^B[d\mid
+j^2]\sum_{k=1}^C[d\mid k^3]\\
+=&amp;\sum_{d=1}^A(\varphi*\mu)(d)\lfloor \dfrac
+A{f_1(d)}\rfloor\lfloor\dfrac B{f_2(d)}\rfloor\lfloor\dfrac
+C{f_3(d)}\rfloor
 \end{aligned}
 \]</span> <span class="math inline">\(f_t\)</span>和<span class="math inline">\(\varphi*\mu\)</span>都是积性函数，可以线性筛预处理。</p>
 <h2 id="其他偏序关系上的莫反">其他偏序关系上的莫反</h2>
@@ -524,9 +651,9 @@ d(n)=\sum_{d\mid n}1
 
       <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
               <a href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag"># 题解</a>
               <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
-              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
           </div>
 
         
@@ -600,7 +727,9 @@ d(n)=\sum_{d\mid n}1
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E8%AE%BA%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">数论函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%96%E6%95%B4"><span class="nav-number">1.1.</span> <span class="nav-text">取整</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E9%99%A4%E5%88%86%E5%9D%97"><span class="nav-number">1.1.1.</span> <span class="nav-text">整除分块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">积性函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%84%E7%A7%8D%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.1.</span> <span class="nav-text">各种积性函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%81%E6%98%8E%E6%98%AF%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.2.</span> <span class="nav-text">证明是积性函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.3.</span> <span class="nav-text">求积性函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">质因数分解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%AD%9B%E7%AD%9B%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">线性筛筛积性函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%9A%E7%BA%BF%E6%80%A7%E7%AD%9B"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">亚线性筛</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8B%84%E5%88%A9%E5%85%8B%E9%9B%B7%E5%8D%B7%E7%A7%AF%E5%BA%94%E7%94%A8"><span class="nav-number">1.2.4.</span> <span class="nav-text">狄利克雷卷积、应用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E9%A2%98%E7%9B%AE"><span class="nav-number">2.</span> <span class="nav-text">莫比乌斯反演题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p2158-%E4%BB%AA%E4%BB%97%E9%98%9F"><span class="nav-number">2.1.</span> <span class="nav-text">P2158 仪仗队</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4450-%E5%8F%8C%E4%BA%B2%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">2 P4450 双亲数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1447-%E8%83%BD%E9%87%8F%E9%87%87%E9%9B%86"><span class="nav-number">2.3.</span> <span class="nav-text">2 P1447 能量采集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1390-%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E5%92%8C"><span class="nav-number">2.4.</span> <span class="nav-text">3 P1390 公约数的和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#section"><span class="nav-number">2.5.</span> <span class="nav-text">3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nowcode-22769e-sum-of-gcd-of-tuples-hard"><span class="nav-number">2.6.</span> <span class="nav-text">4 nowcode 22769&#x2F;E Sum of gcd of Tuples (Hard)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3911-%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="nav-number">2.7.</span> <span class="nav-text">4 P3911 最小公倍数之和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nowcode-22769c-%E5%BA%8F%E5%88%97"><span class="nav-number">2.8.</span> <span class="nav-text">nowcode 22769&#x2F;C 序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3327-%E7%BA%A6%E6%95%B0%E4%B8%AA%E6%95%B0%E5%92%8C"><span class="nav-number">2.9.</span> <span class="nav-text">P3327 约数个数和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#section-1"><span class="nav-number">2.10.</span> <span class="nav-text">6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#section-2"><span class="nav-number">2.11.</span> <span class="nav-text">7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3911-%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E4%B9%8B%E5%92%8Cat5200-lcms"><span class="nav-number">2.12.</span> <span class="nav-text">8 P3911 最小公倍数之和&#x2F;AT5200 LCMs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hdu6428-calculate"><span class="nav-number">2.13.</span> <span class="nav-text">9 hdu6428 Calculate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%81%8F%E5%BA%8F%E5%85%B3%E7%B3%BB%E4%B8%8A%E7%9A%84%E8%8E%AB%E5%8F%8D"><span class="nav-number">2.14.</span> <span class="nav-text">其他偏序关系上的莫反</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E8%AE%BA%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">数论函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%96%E6%95%B4"><span class="nav-number">1.1.</span> <span class="nav-text">取整</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E9%99%A4%E5%88%86%E5%9D%97"><span class="nav-number">1.1.1.</span> <span class="nav-text">整除分块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">积性函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%84%E7%A7%8D%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.1.</span> <span class="nav-text">各种积性函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%81%E6%98%8E%E6%98%AF%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.2.</span> <span class="nav-text">证明是积性函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.3.</span> <span class="nav-text">求积性函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">质因数分解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%AD%9B%E7%AD%9B%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">线性筛筛积性函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%9A%E7%BA%BF%E6%80%A7%E7%AD%9B"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">亚线性筛</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8B%84%E5%88%A9%E5%85%8B%E9%9B%B7%E5%8D%B7%E7%A7%AF%E5%BA%94%E7%94%A8"><span class="nav-number">1.2.4.</span> <span class="nav-text">狄利克雷卷积、应用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E9%A2%98%E7%9B%AE"><span class="nav-number">2.</span> <span class="nav-text">莫比乌斯反演题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p2158-%E4%BB%AA%E4%BB%97%E9%98%9F"><span class="nav-number">2.1.</span> <span class="nav-text">P2158 仪仗队</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4450-%E5%8F%8C%E4%BA%B2%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">2 P4450 双亲数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1447-%E8%83%BD%E9%87%8F%E9%87%87%E9%9B%86"><span class="nav-number">2.3.</span> <span class="nav-text">2 P1447 能量采集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1390-%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E5%92%8C"><span class="nav-number">2.4.</span> <span class="nav-text">3 P1390 公约数的和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#section"><span class="nav-number">2.5.</span> <span class="nav-text">3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nowcode-22769e-sum-of-gcd-of-tuples-hard"><span class="nav-number">2.6.</span> <span class="nav-text">4 nowcode 22769&#x2F;E Sum
+of gcd of Tuples (Hard)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3911-%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="nav-number">2.7.</span> <span class="nav-text">4 P3911 最小公倍数之和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nowcode-22769c-%E5%BA%8F%E5%88%97"><span class="nav-number">2.8.</span> <span class="nav-text">nowcode 22769&#x2F;C 序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3327-%E7%BA%A6%E6%95%B0%E4%B8%AA%E6%95%B0%E5%92%8C"><span class="nav-number">2.9.</span> <span class="nav-text">P3327 约数个数和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#section-1"><span class="nav-number">2.10.</span> <span class="nav-text">6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#section-2"><span class="nav-number">2.11.</span> <span class="nav-text">7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3911-%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E4%B9%8B%E5%92%8Cat5200-lcms"><span class="nav-number">2.12.</span> <span class="nav-text">8 P3911 最小公倍数之和&#x2F;AT5200
+LCMs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hdu6428-calculate"><span class="nav-number">2.13.</span> <span class="nav-text">9 hdu6428 Calculate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%81%8F%E5%BA%8F%E5%85%B3%E7%B3%BB%E4%B8%8A%E7%9A%84%E8%8E%AB%E5%8F%8D"><span class="nav-number">2.14.</span> <span class="nav-text">其他偏序关系上的莫反</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -654,7 +783,7 @@ d(n)=\sum_{d\mid n}1
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -221,10 +221,14 @@
 f(x)=a_dx^d+a_{d-1}x^{d-1}+\dots+a_1x^1+a_0x^0
 \]</span> 是任意一个d次多项式。</p>
 <p>因为通常幂可以表示为下降幂的和，所以<span class="math inline">\(f(x)\)</span>可以写成： <span class="math display">\[
-f(x)=b_dx^\underline d+b_{d-1}x^\underline{d-1}+\dots+b_1x^\underline1+b_0x^\underline0
-\]</span> 对于<span class="math inline">\(0\leq k\leq d\)</span>，设<span class="math inline">\(c_k=k!b_k\)</span>。那么： <span class="math display">\[
+f(x)=b_dx^\underline
+d+b_{d-1}x^\underline{d-1}+\dots+b_1x^\underline1+b_0x^\underline0
+\]</span> 对于<span class="math inline">\(0\leq k\leq
+d\)</span>，设<span class="math inline">\(c_k=k!b_k\)</span>。那么：
+<span class="math display">\[
 f(x)=c_d\binom{x}{d}+c_{d-1}\binom{x}{d-1}+\dots+c_1\binom{x}{1}+c_0\binom{x}{0}
-\]</span> 从而，任意多项式都可以表示成二项式系数的倍数和。这样的展开称为<span class="math inline">\(f(x)\)</span>的<strong>牛顿级数</strong>。</p>
+\]</span>
+从而，任意多项式都可以表示成二项式系数的倍数和。这样的展开称为<span class="math inline">\(f(x)\)</span>的<strong>牛顿级数</strong>。</p>
 <p>现在的问题就是，如何求出牛顿级数中的系数<span class="math inline">\(c_d,\dots,c_0\)</span>?</p>
 <p>对<span class="math inline">\(f(x)\)</span>的牛顿级数做<span class="math inline">\(n\)</span>次差分。 <span class="math display">\[
 \Delta^nf(x)=c_d\binom{x}{d-n}+c_{d-1-n}\binom{x}{d-1}+\dots+c_1\binom{x}{1-n}+c_0\binom{x}{-n}
@@ -236,34 +240,43 @@ c_n,&amp;n\leq d\\
 \end{cases}
 \]</span> 反过来讲，也就是<span class="math inline">\(c_n=\Delta^nf(0)\)</span>。</p>
 <p>于是，<span class="math inline">\(f(x)\)</span>的牛顿级数是 <span class="math display">\[
-f(x)=\Delta^{d}f(0)\binom{x}{d}+\Delta^{d-1}f(0)\binom{x}{d-1}+\dots+\Delta f(0)\binom{x}{1}+f(0)\binom{x}{0}
+f(x)=\Delta^{d}f(0)\binom{x}{d}+\Delta^{d-1}f(0)\binom{x}{d-1}+\dots+\Delta
+f(0)\binom{x}{1}+f(0)\binom{x}{0}
 \]</span></p>
 <hr>
 <p>有限微积分中的牛顿级数对应无限微积分中的泰勒级数。 <span class="math display">\[
 \begin{aligned}
 &amp;g(a+x)=\dfrac{g(a)}{0!}x^0+\dfrac{g&#39;(a)}{1!}x^1+\dfrac{g&#39;&#39;(a)}{2!}x^2+\dots\\
-&amp;g(a+x)=\dfrac{g(a)}{0!}x^\underline0+\dfrac{\Delta g(a)}{1!}x^\underline1+\dfrac{\Delta^2g(a)}{2!}x^\underline2+\dots\\
+&amp;g(a+x)=\dfrac{g(a)}{0!}x^\underline0+\dfrac{\Delta
+g(a)}{1!}x^\underline1+\dfrac{\Delta^2g(a)}{2!}x^\underline2+\dots\\
 \end{aligned}
 \]</span></p>
 <blockquote>
-<p><span class="math inline">\(E=(1+\Delta)\)</span>，<span class="math inline">\(\displaystyle E^x=\sum_k\binom xk\Delta^k=\sum_k\dfrac{x^{\underline{k}}}{k!}\Delta^k\)</span></p>
+<p><span class="math inline">\(E=(1+\Delta)\)</span>，<span class="math inline">\(\displaystyle E^x=\sum_k\binom
+xk\Delta^k=\sum_k\dfrac{x^{\underline{k}}}{k!}\Delta^k\)</span></p>
 </blockquote>
 <p>需要注意的是牛顿级数的收敛性问题。当<span class="math inline">\(x=0\)</span>或是正整数的情况下，牛顿级数都是有限的，自然不用考虑收敛性的问题，但是在其他情况下，牛顿级数可能并不收敛。而且当x不是非负整数时，即便牛顿级数收敛，也有可能并不收敛到<span class="math inline">\(g(a+x)\)</span>。</p>
 <h2 id="应用">应用</h2>
 <h3 id="应用1">应用1</h3>
-<p>对1/x做n阶差分。因为<span class="math inline">\(\dfrac{1}{x}=(x-1)^{\underline{-1}}\)</span>。所以高阶差分很容易求。 <span class="math display">\[
-\sum_k\binom nk\dfrac{(-1)^k}{x+k}=\dfrac{n!}{x(x+1)\dots(x+n)}=x^{-1}\binom{x+n}{n}^{-1}
+<p>对1/x做n阶差分。因为<span class="math inline">\(\dfrac{1}{x}=(x-1)^{\underline{-1}}\)</span>。所以高阶差分很容易求。
+<span class="math display">\[
+\sum_k\binom
+nk\dfrac{(-1)^k}{x+k}=\dfrac{n!}{x(x+1)\dots(x+n)}=x^{-1}\binom{x+n}{n}^{-1}
 \]</span> 作用？……可能是给出了<span class="math inline">\(\dfrac{a}{x(x+1)\dots(x+n)}\)</span>的部分分式展开吧。</p>
 <h3 id="应用2">应用2</h3>
-<p>对牛顿级数的系数<span class="math inline">\(c_n=\Delta^nf(0)\)</span>使用<span class="math inline">\(\Delta^nf(x)=\sum_k\binom nk(-1)^{n-k}f(x+k)\)</span>可以得到重要的恒等式： <span class="math display">\[
+<p>对牛顿级数的系数<span class="math inline">\(c_n=\Delta^nf(0)\)</span>使用<span class="math inline">\(\Delta^nf(x)=\sum_k\binom
+nk(-1)^{n-k}f(x+k)\)</span>可以得到重要的恒等式： <span class="math display">\[
 \begin{aligned}
 c_n=&amp;\Delta^nf(0)=\sum_k\binom nk(-1)^{n-k}f(k)\\
-=&amp;\sum_k\binom nk(-1)^{n-k}\left( c_0\binom k0+c_1\binom k 1+\dots+c_n\binom k n\right)\\
+=&amp;\sum_k\binom nk(-1)^{n-k}\left( c_0\binom k0+c_1\binom k
+1+\dots+c_n\binom k n\right)\\
 &amp;\\
-\implies\sum_k&amp;\binom nk(-1)^{k}\left( c_0\binom k0+c_1\binom k 1+\dots+c_n\binom k n\right)=(-1)^nc_n
+\implies\sum_k&amp;\binom nk(-1)^{k}\left( c_0\binom k0+c_1\binom k
+1+\dots+c_n\binom k n\right)=(-1)^nc_n
 \end{aligned}
 \]</span> 也可以将最后的结果写成这样使它更具有迷惑性(因为<span class="math inline">\(\displaystyle \binom nk\)</span>后面的都为<span class="math inline">\(0\)</span>)： <span class="math display">\[
-\sum_k\binom nk(-1)^{k}\left( c_0\binom k0+c_1\binom k 1+\dots\right)=(-1)^nc_n
+\sum_k\binom nk(-1)^{k}\left( c_0\binom k0+c_1\binom k
+1+\dots\right)=(-1)^nc_n
 \]</span></p>
 <p>因为多项式<span class="math inline">\(a_0+a_1k+\dots+a_nk^n\)</span>总可以写成牛顿级数，<span class="math inline">\(c_n=n!a_n\)</span>。</p>
 <p>所以 <span class="math display">\[
@@ -410,7 +423,7 @@ c_n=&amp;\Delta^nf(0)=\sum_k\binom nk(-1)^{n-k}f(k)\\
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

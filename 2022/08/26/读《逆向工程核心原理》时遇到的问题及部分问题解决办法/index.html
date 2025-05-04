@@ -215,8 +215,9 @@
 <p>据说PEView对64位支持很不好，因此你也可以抱着吃不着葡萄说葡萄酸的思想放弃PE_View。:D</p>
 <p>PEView并非是不可替代的（我觉得）。可以考虑用书中第18章介绍的工具Stud_PE。可以在<a target="_blank" rel="noopener" href="https://down.52pojie.cn/Tools/">[传送门]</a>处下载。</p>
 </blockquote></li>
-<li>Q：UPack哪里下载？</li>
-<li><p>A：可以去看作者本人发在<a target="_blank" rel="noopener" href="https://bbs.pediy.com/thread-19493-1.htm">看雪论坛</a>上的帖子，那里有下载链接。如果点击链接没法下载可以试试 右键-复制链接地址 然后粘贴到一些下载器中下载。</p></li>
+<li><p>Q：UPack哪里下载？</p></li>
+<li><p>A：可以去看作者本人发在<a target="_blank" rel="noopener" href="https://bbs.pediy.com/thread-19493-1.htm">看雪论坛</a>上的帖子，那里有下载链接。如果点击链接没法下载可以试试
+右键-复制链接地址 然后粘贴到一些下载器中下载。</p></li>
 </ul>
 <h1 id="第三部分-dll注入">第三部分 DLL注入</h1>
 <p>先说结论，以下大部分问题都是由64位操作系统以及管理员权限引起的。</p>
@@ -226,7 +227,7 @@
 <blockquote>
 <p>主要问题在于32位DLL不能注入64位进程，64位系统大多数进程都是64位的，因此下面的问题。</p>
 </blockquote></li>
-<li>Q：无法在Ollydbg的Attach列表中找到记事本</li>
+<li><p>Q：无法在Ollydbg的Attach列表中找到记事本</p></li>
 <li><p>A：我也不知道为啥。如果有好心人知道请告诉我。</p></li>
 <li><p>Q：打开HookMain.exe之后，各种程序总是不明卡死。</p></li>
 <li><p>A：书上的原理介绍：“安装好键盘‘钩子’之后，无论哪个进程，只要发生键盘输入事件，OS就会强制将KeyHook.dll注入相应进程……”。因此，使用64位系统运行HookMain.exe时不能贸然动键盘，得是32位的进程窗口才不会卡死。</p>
@@ -238,8 +239,10 @@
 <blockquote>
 <p>虽然不明白原理，不过经我测试，在管理员权限下运行HookMain.exe，无论目标进程是否是以管理员权限运行都可以Hook键盘消息，也都可以注入DLL。但是不以管理员权限运行时只能向同样没有以管理员权限运行的进程中注入DLL。</p>
 </blockquote></li>
-<li>Q：在Process Explorer中查看Ollydbg（及其打开的记事本）显示拒绝访问，也没法看见进程的DLL。</li>
-<li><p>A：是否是在用管理员权限运行Ollydbg？尝试用管理员权限运行Process Explorer。</p></li>
+<li><p>Q：在Process
+Explorer中查看Ollydbg（及其打开的记事本）显示拒绝访问，也没法看见进程的DLL。</p></li>
+<li><p>A：是否是在用管理员权限运行Ollydbg？尝试用管理员权限运行Process
+Explorer。</p></li>
 </ul>
 <p><img src="/2022/08/26/%E8%AF%BB%E3%80%8A%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E3%80%8B%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/Process%20Explorer无管理员权限.jpg"></p>
 
@@ -377,7 +380,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

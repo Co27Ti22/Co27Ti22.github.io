@@ -207,11 +207,14 @@
 
       
         <blockquote>
-<p>给定一个<span class="math inline">\(n\)</span>​个点的有向完全图,假设有人在<span class="math inline">\(t=1\)</span>​时刻在节点<span class="math inline">\(S\)</span>​.接下来每时刻,他都有概率<span class="math inline">\(p_{ij}\)</span>​从点<span class="math inline">\(i\)</span>​到点<span class="math inline">\(j\)</span>​​.<span class="math inline">\(p_{i,j}=\dfrac{w_{i,j}}{\sum_{k=1}^n w_{i,k}}\)</span>​.</p>
+<p>给定一个<span class="math inline">\(n\)</span>​个点的有向完全图,假设有人在<span class="math inline">\(t=1\)</span>​时刻在节点<span class="math inline">\(S\)</span>​.接下来每时刻,他都有概率<span class="math inline">\(p_{ij}\)</span>​从点<span class="math inline">\(i\)</span>​到点<span class="math inline">\(j\)</span>​​.<span class="math inline">\(p_{i,j}=\dfrac{w_{i,j}}{\sum_{k=1}^n
+w_{i,k}}\)</span>​.</p>
 <p>如果他在<span class="math inline">\(t\)</span>时刻在点<span class="math inline">\(i\)</span>,<span class="math inline">\(k+1\)</span>时刻还在点<span class="math inline">\(i\)</span>.那么他将一直停留在点<span class="math inline">\(i\)</span>.</p>
-<p><span class="math inline">\(A_{i,j}\)</span>表示从<span class="math inline">\(i\)</span>点出发,并停留在<span class="math inline">\(j\)</span>点的概率.求<span class="math inline">\(A_{i,j} \mod 998244353\)</span>.并将取模后的矩阵输出.</p>
+<p><span class="math inline">\(A_{i,j}\)</span>表示从<span class="math inline">\(i\)</span>点出发,并停留在<span class="math inline">\(j\)</span>点的概率.求<span class="math inline">\(A_{i,j} \mod
+998244353\)</span>.并将取模后的矩阵输出.</p>
 </blockquote>
-<p>首先,我们可以通过分析得到<span class="math inline">\(A_{i,j}=\sum_{k=1}^n p_{i,k}A_{k,j}\)</span>​​. <span class="math display">\[
+<p>首先,我们可以通过分析得到<span class="math inline">\(A_{i,j}=\sum_{k=1}^n p_{i,k}A_{k,j}\)</span>​​.
+<span class="math display">\[
 \begin{aligned}
 &amp;A_{i,j}=\sum\limits_{k=1,k\not =i}^n p_{i,k}A_{k,j} &amp; 1\\
 &amp;A_{i,i}=\sum\limits_{k=1,k\not =i}^n p_{i,k}A_{k,i}+p_{i,i} &amp; 2
@@ -220,11 +223,15 @@
 <p>对式1,<span class="math inline">\(p_{i,i}A_{i,j}\)</span>​​​​​​​这一项表示已经停在点<span class="math inline">\(i\)</span>​​​​​​​了,没法到达点<span class="math inline">\(j\)</span>​​​​​​​​,因此需要去掉.</p>
 <p>对式2,后面加的<span class="math inline">\(p_{i,i}\)</span>一项就是<span class="math inline">\(k=i\)</span>时的情况.</p>
 <p>这个很重要.</p>
-<p>观察求和式<span class="math inline">\(\sum\limits_{k=1,k\not =i}^n p_{i,k}A_{k,j}\)</span>的形式,其与我们学过的矩阵乘法<span class="math inline">\(c_{i,j}=\sum\limits_ka_{i,k}b_{k,j}\)</span>​十分类似.因此我们可以尝试把这个求和写成两个矩阵相乘.</p>
+<p>观察求和式<span class="math inline">\(\sum\limits_{k=1,k\not =i}^n
+p_{i,k}A_{k,j}\)</span>的形式,其与我们学过的矩阵乘法<span class="math inline">\(c_{i,j}=\sum\limits_ka_{i,k}b_{k,j}\)</span>​十分类似.因此我们可以尝试把这个求和写成两个矩阵相乘.</p>
 <p>但是注意我们求和中的<span class="math inline">\(k\)</span>和<span class="math inline">\(i\)</span>不能取等.这时通常有两个解决办法.</p>
 <ol type="1">
-<li>容斥,<span class="math inline">\(\sum\limits_{k=1,k\not =i}^n p_{i,k}A_{k,j}=\sum\limits_{k=1}^n p_{i,k}A_{k,j}-p_{i,i}A_{i,j}\)</span>.然后把前一项写成矩阵相乘.</li>
-<li>我们不妨把这个求和看作两个特殊的矩阵相乘.特殊就特殊在相乘后使得<span class="math inline">\(p_{i,i}A_{i,j}\)</span>自然为<span class="math inline">\(0\)</span>,这样<span class="math inline">\(\sum\limits_{k=1,k\not =i}^n p_{i,k}A_{k,j}=\sum\limits_{k=1}^n p_{i,k}A_{k,j}\)</span>​自然相等.</li>
+<li>容斥,<span class="math inline">\(\sum\limits_{k=1,k\not =i}^n
+p_{i,k}A_{k,j}=\sum\limits_{k=1}^n
+p_{i,k}A_{k,j}-p_{i,i}A_{i,j}\)</span>.然后把前一项写成矩阵相乘.</li>
+<li>我们不妨把这个求和看作两个特殊的矩阵相乘.特殊就特殊在相乘后使得<span class="math inline">\(p_{i,i}A_{i,j}\)</span>自然为<span class="math inline">\(0\)</span>,这样<span class="math inline">\(\sum\limits_{k=1,k\not =i}^n
+p_{i,k}A_{k,j}=\sum\limits_{k=1}^n p_{i,k}A_{k,j}\)</span>​自然相等.</li>
 </ol>
 <p>官方题解中使用的是第二种办法.可能第一种办法也好使?反正我是没试过,不过多少是个思路.</p>
 <p>这也就是官方题解中的</p>
@@ -243,14 +250,19 @@
 </div>
 </center>
 <p>也因此,<strong>需要注意下面的<span class="math inline">\(W\)</span>​​表示可能是题目中给出的<span class="math inline">\(W\)</span>​​矩阵,也可能是无自环矩阵<span class="math inline">\(W\)</span>​</strong>​​​.下面用到<span class="math inline">\(W\)</span>的地方我都会我会相应地注明.</p>
-<p>接下来我们规定一下使用的记号<span class="math inline">\(\lambda_i = w_{i,i}, \ \ d_i=\sum\limits_{j=1,j\not=i}^nw_{i,j}\)</span>​​​.​即<span class="math inline">\(\lambda_i\)</span>​为矩阵<span class="math inline">\(W\)</span>​的第<span class="math inline">\(i\)</span>​个对角元.<span class="math inline">\(d_i\)</span>​为矩阵<span class="math inline">\(W\)</span>​第<span class="math inline">\(i\)</span>​​行除对角元以外其他元素的和.<strong>这里的<span class="math inline">\(W\)</span>是题目中给的<span class="math inline">\(W\)</span>而不是我们上面提到的<span class="math inline">\(W\)</span>​​.</strong><del>毕竟我没必要给0起个名</del></p>
+<p>接下来我们规定一下使用的记号<span class="math inline">\(\lambda_i =
+w_{i,i}, \ \ d_i=\sum\limits_{j=1,j\not=i}^nw_{i,j}\)</span>​​​.​即<span class="math inline">\(\lambda_i\)</span>​为矩阵<span class="math inline">\(W\)</span>​的第<span class="math inline">\(i\)</span>​个对角元.<span class="math inline">\(d_i\)</span>​为矩阵<span class="math inline">\(W\)</span>​第<span class="math inline">\(i\)</span>​​行除对角元以外其他元素的和.<strong>这里的<span class="math inline">\(W\)</span>是题目中给的<span class="math inline">\(W\)</span>而不是我们上面提到的<span class="math inline">\(W\)</span>​​.</strong><del>毕竟我没必要给0起个名</del></p>
 <p>我们使用刚才的记号来重写式子1,2: <span class="math display">\[
 \begin{aligned}
-&amp;A_{i,j}=\sum\limits_{k=1}^n \dfrac{w_{i,k}}{\lambda_i+d_i}A_{k,j} &amp; 3\\
-&amp;A_{i,i}=\sum\limits_{k=1}^n \dfrac{w_{i,k}}{\lambda_i+d_i}A_{k,i}+\dfrac{\lambda_i}{\lambda_i+d_i} &amp; 4
+&amp;A_{i,j}=\sum\limits_{k=1}^n \dfrac{w_{i,k}}{\lambda_i+d_i}A_{k,j}
+&amp; 3\\
+&amp;A_{i,i}=\sum\limits_{k=1}^n
+\dfrac{w_{i,k}}{\lambda_i+d_i}A_{k,i}+\dfrac{\lambda_i}{\lambda_i+d_i}
+&amp; 4
 \end{aligned}
 \]</span> <strong>(这里的<span class="math inline">\(W\)</span>是我们之前构造的无自环矩阵<span class="math inline">\(W\)</span>,因此这里的求和没有<span class="math inline">\(k\not= i\)</span>​​的条件)</strong></p>
-<p>在刚才,我们已经说明了<span class="math inline">\(\sum\limits_{k=1}^n \dfrac{w_{i,k}}{\lambda_i+d_i}A_{k,j}\)</span>可以看成两个矩阵相乘.根据式3,4,我们发现矩阵<span class="math inline">\(A\)</span>大概能写成这个样子: <span class="math display">\[
+<p>在刚才,我们已经说明了<span class="math inline">\(\sum\limits_{k=1}^n
+\dfrac{w_{i,k}}{\lambda_i+d_i}A_{k,j}\)</span>可以看成两个矩阵相乘.根据式3,4,我们发现矩阵<span class="math inline">\(A\)</span>大概能写成这个样子: <span class="math display">\[
 A = M_1A+M_2
 \]</span> 而从式3,4中可以看出,只有当<span class="math inline">\(i=j\)</span>​时<span class="math inline">\(M_2\)</span>的值不为<span class="math inline">\(0\)</span>,<strong>因此<span class="math inline">\(M_2\)</span>​是一个对角阵.</strong></p>
 <p>那么<span class="math inline">\(M_2\)</span>这个对角阵具体是什么呢?</p>
@@ -262,7 +274,7 @@ A = M_1A+M_2
     &amp; &amp; \lambda_n
   \end{array}
 \right)
-,\ 
+,\
 D = \left(                
   \begin{array}{ccc}   
     d_1 &amp;  &amp; \\  
@@ -420,7 +432,7 @@ A=[(\Lambda+D)-W]^{-1}\Lambda
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

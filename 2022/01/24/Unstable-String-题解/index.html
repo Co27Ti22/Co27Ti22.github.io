@@ -204,36 +204,46 @@
 <p>如果一个串由0,1,?组成，并且你能通过将？替换成0或1（每个？都可以独立的替换成0或1），那么我们称之为美丽字符串。</p>
 <p>计算s的美丽连续子串的数量。</p>
 <p>I:</p>
-<p>第一行为数据组数<span class="math inline">\(1\leq t\leq1e4\)</span></p>
-<p>每组数据仅一行，包含字符串<span class="math inline">\(s\)</span>（<span class="math inline">\(1\leq |s|\leq 2e5\)</span>）。</p>
+<p>第一行为数据组数<span class="math inline">\(1\leq
+t\leq1e4\)</span></p>
+<p>每组数据仅一行，包含字符串<span class="math inline">\(s\)</span>（<span class="math inline">\(1\leq
+|s|\leq 2e5\)</span>）。</p>
 <p>保证所有<span class="math inline">\(t\)</span>组数据的<span class="math inline">\(|s|\)</span>之和小于<span class="math inline">\(2e5\)</span>。</p>
 <p>O:</p>
 <p>输出s的美丽子串的数量。</p>
 </blockquote>
 <p>首先确认一下题意：题面最后一句原文是这样的：</p>
 <blockquote>
-<p>Calculate the number of beautiful contiguous substrings of the string <span class="math inline">\(s\)</span>.</p>
+<p>Calculate the number of beautiful contiguous substrings of the string
+<span class="math inline">\(s\)</span>.</p>
 </blockquote>
 <p>就是让你计算s的美丽连续子串的数量。</p>
 <p>而说美丽串的定义时，原文：</p>
 <blockquote>
-<p>Let's call a string <strong>beautiful</strong> if it consists of the characters 0, 1, and ?, and you can replace the characters ? to 0 or 1 (for each character, the choice is independent), so that the string becomes <strong>unstable</strong>.</p>
+<p>Let's call a string <strong>beautiful</strong> if it consists of the
+characters 0, 1, and ?, and you can replace the characters ? to 0 or 1
+(for each character, the choice is independent), so that the string
+becomes <strong>unstable</strong>.</p>
 </blockquote>
 <p>但你通过看样例就会发现，0?10的答案是8，那肯定是把1，0这样的也算上去了，也就是说<strong>答案中要求的美丽，不一定非要包含?</strong>。</p>
 <p>那么如果一个串是美丽的，那么它的任意连续子串都是一个美丽连续子串。因此对一个美丽串<span class="math inline">\(t\)</span>统计答案时就是<span class="math inline">\(|t|!\)</span>。只需要找出<span class="math inline">\(s\)</span>中有多少美丽串，并统计它们的长度。</p>
 <p>如何找<span class="math inline">\(s\)</span>中美丽串的个数</p>
 <ul>
-<li><p>在串中，两个挨着的1或两个挨着的0一定表示上一个美丽串结束了，可以统计它的答案了，下一个美丽串开始了。 <span class="math display">\[
- \overbrace{01010}^{\rm 美丽的}\underbrace{010}_{\rm 美丽的}
- \]</span></p></li>
-<li><p>如果出现了问号？，如果有偶数个问号，并且问号前后同为0或同为1；或者是有奇数个问号，问号前后不同。那么在问号的结尾处表示上一个不稳定串结束了，在问号开头处表示下一个不稳定串开始了。 <span class="math display">\[
- \begin{aligned}
- \rlap{\overbrace{\phantom{010???}}^{\rm 美丽的}}{010\underbrace{???101}_{\rm 美丽的}}
- \end{aligned}
- \]</span></p></li>
-<li><p>如果出现了?，如果有奇数个问号，并且问号前后同为0或同为1，那么问号分割的两部分就能合并到一起 <span class="math display">\[
- \overbrace{010???010}^{\rm 美丽的}
- \]</span></p></li>
+<li><p>在串中，两个挨着的1或两个挨着的0一定表示上一个美丽串结束了，可以统计它的答案了，下一个美丽串开始了。
+<span class="math display">\[
+\overbrace{01010}^{\rm 美丽的}\underbrace{010}_{\rm 美丽的}
+\]</span></p></li>
+<li><p>如果出现了问号？，如果有偶数个问号，并且问号前后同为0或同为1；或者是有奇数个问号，问号前后不同。那么在问号的结尾处表示上一个不稳定串结束了，在问号开头处表示下一个不稳定串开始了。
+<span class="math display">\[
+\begin{aligned}
+\rlap{\overbrace{\phantom{010???}}^{\rm
+美丽的}}{010\underbrace{???101}_{\rm 美丽的}}
+\end{aligned}
+\]</span></p></li>
+<li><p>如果出现了?，如果有奇数个问号，并且问号前后同为0或同为1，那么问号分割的两部分就能合并到一起
+<span class="math display">\[
+\overbrace{010???010}^{\rm 美丽的}
+\]</span></p></li>
 </ul>
 <p>然后统计所以美丽串的长度，求阶乘再相加即可。</p>
 <p>虽然话是这么说，不过我的队友用了一种更巧妙的方法，其实基本思路是一样的，只不过避免了计算阶乘。</p>
@@ -375,7 +385,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

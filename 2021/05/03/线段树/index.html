@@ -207,8 +207,10 @@
 
       
         <h2 id="权值线段树">权值线段树</h2>
-<p>普通线段树维护的是数组<span class="math inline">\(a\)</span>，以便可以高效的进行区间修改和查询。 权值线段树维护的是数组<span class="math inline">\(a\)</span>的桶，可以用来求全局<span class="math inline">\(k\)</span>大，求<span class="math inline">\(a\)</span>中值在区间<span class="math inline">\([l,r]\)</span>中的数的个数。</p>
-<p>以数组<span class="math inline">\(a=[2,3,3,4,5,6,6]\)</span>,为例,建立起来的权值线段树为: <img src="https://img-blog.csdnimg.cn/20210302111653588.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MzA0Njk5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"> 本质上就是在数组<span class="math inline">\(a\)</span>的桶上建立的线段树.</p>
+<p>普通线段树维护的是数组<span class="math inline">\(a\)</span>，以便可以高效的进行区间修改和查询。
+权值线段树维护的是数组<span class="math inline">\(a\)</span>的桶，可以用来求全局<span class="math inline">\(k\)</span>大，求<span class="math inline">\(a\)</span>中值在区间<span class="math inline">\([l,r]\)</span>中的数的个数。</p>
+<p>以数组<span class="math inline">\(a=[2,3,3,4,5,6,6]\)</span>,为例,建立起来的权值线段树为:
+<img src="https://img-blog.csdnimg.cn/20210302111653588.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MzA0Njk5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"> 本质上就是在数组<span class="math inline">\(a\)</span>的桶上建立的线段树.</p>
 <h3 id="线段树求三元逆序对">线段树求三元逆序对</h3>
 <blockquote>
 <p>给定一个数组a，求满足<span class="math inline">\(i&lt;j&lt;k，a[i]&gt;a[j]&gt;a[k]\)</span>的<span class="math inline">\((i,j,k)\)</span>三元组个数。</p>
@@ -216,7 +218,8 @@
 <p>思路：我们可以枚举<span class="math inline">\(j\)</span>，然后找下标<span class="math inline">\(j\)</span>的左侧有几个大于<span class="math inline">\(a[j]\)</span>的数，右侧有几个小于<span class="math inline">\(a[j]\)</span>的数。然后两者相乘就是<span class="math inline">\(j\)</span>在当前位置时逆序对的个数，枚举所有的<span class="math inline">\(j\)</span>然后求和即可。</p>
 <p>那么用线段树做这道题就是要维护一个数<span class="math inline">\(a[j]\)</span>的左侧有多少大于它的数（右侧同理）。</p>
 <p>首先看线段树如何维护： 任给一个集合<span class="math inline">\(a\)</span>，用<span class="math inline">\(t[val]\)</span>表示值<span class="math inline">\(val\)</span>在集合<span class="math inline">\(a\)</span>中出现的次数(即数组<span class="math inline">\(a\)</span>的桶)，那么<span class="math inline">\(\sum_{i=x}^{y}t[i]\)</span>表示的就是集合<span class="math inline">\(a\)</span>中值的范围在<span class="math inline">\([x,y]\)</span>中元素的个数。</p>
-<p>1.我们用树状数组维护数组<span class="math inline">\(t\)</span>。首先建立一个树状数组，范围是<span class="math inline">\(a\)</span>取值范围（如有必要可以离散化）。初始化全为<span class="math inline">\(0\)</span>。 2.倒序扫描给定的序列<span class="math inline">\(a\)</span>，对于每一个数<span class="math inline">\(a[i]\)</span>： (1):在树状数组中查询<span class="math inline">\(\sum_{i=0}^{a[i]-1}t[i]\)</span>。 (2):执行树状数组单点修改。因为扫描到<span class="math inline">\(a[i]\)</span>，<span class="math inline">\(val=a[i]\)</span>的出现次数增加了一次，而该树状数组维护的正是出现次数，树状数组需要修改。</p>
+<p>1.我们用树状数组维护数组<span class="math inline">\(t\)</span>。首先建立一个树状数组，范围是<span class="math inline">\(a\)</span>取值范围（如有必要可以离散化）。初始化全为<span class="math inline">\(0\)</span>。 2.倒序扫描给定的序列<span class="math inline">\(a\)</span>，对于每一个数<span class="math inline">\(a[i]\)</span>： (1):在树状数组中查询<span class="math inline">\(\sum_{i=0}^{a[i]-1}t[i]\)</span>。
+(2):执行树状数组单点修改。因为扫描到<span class="math inline">\(a[i]\)</span>，<span class="math inline">\(val=a[i]\)</span>的出现次数增加了一次，而该树状数组维护的正是出现次数，树状数组需要修改。</p>
 <p>在这个算法中，扫描到<span class="math inline">\(a[i]\)</span>，树状数组中维护的是<span class="math inline">\(a[i]\)</span>后面的数据，而<span class="math inline">\(\sum_{i=0}^{a[i]-1}t[i]\)</span>就是求范围在<span class="math inline">\(0\)</span>到集合<span class="math inline">\(a[i]-1\)</span>中数的个数的</p>
 
     </div>
@@ -356,7 +359,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

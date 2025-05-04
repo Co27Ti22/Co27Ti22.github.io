@@ -203,14 +203,18 @@
 <p><span class="math display">\[
 g(n)=\sum_k\binom nk(-1)^kf(k)\iff f(n)=\sum_k\binom nk(-1)^kg(k)
 \]</span></p>
-<p><span class="math inline">\(f(n)\)</span>是一个未知函数，但是<span class="math inline">\(g(n)\)</span>已知，并且知道<span class="math inline">\(g(n)\)</span>可以写成关于<span class="math inline">\(f(n)\)</span>的这样一个和式，那么就可以使用二项式反演，把<span class="math inline">\(f(n)\)</span>表示成<span class="math inline">\(\displaystyle \sum_k\binom nk(-1)^kg(k)\)</span>。</p>
+<p><span class="math inline">\(f(n)\)</span>是一个未知函数，但是<span class="math inline">\(g(n)\)</span>已知，并且知道<span class="math inline">\(g(n)\)</span>可以写成关于<span class="math inline">\(f(n)\)</span>的这样一个和式，那么就可以使用二项式反演，把<span class="math inline">\(f(n)\)</span>表示成<span class="math inline">\(\displaystyle \sum_k\binom
+nk(-1)^kg(k)\)</span>。</p>
 <h2 id="重排">重排</h2>
 <p><span class="math inline">\(h(n,k)\)</span>表示：n个元素随机重新排列，恰有k个元素还在原来位置的方式数。</p>
 <h3 id="递归式">递归式</h3>
-<p>显然，<span class="math inline">\(\displaystyle h(n,k)=\binom nkh(n-k,0)\)</span>。并且<span class="math inline">\(\displaystyle n!=\sum_kh(n,k)\)</span>。这两个式子组成了<span class="math inline">\(h(n,k)\)</span>的递归式。</p>
+<p>显然，<span class="math inline">\(\displaystyle h(n,k)=\binom
+nkh(n-k,0)\)</span>。并且<span class="math inline">\(\displaystyle
+n!=\sum_kh(n,k)\)</span>。这两个式子组成了<span class="math inline">\(h(n,k)\)</span>的递归式。</p>
 <h3 id="闭公式">闭公式</h3>
 <p>能不能求出<span class="math inline">\(h(n,k)\)</span>的闭公式呢？</p>
-<p>因为<span class="math inline">\(\displaystyle h(n,k)=\binom nkh(n-k,0)\)</span>，所以如果<span class="math inline">\(h(n,0)\)</span>有闭公式，那问题就解决了。 <span class="math display">\[
+<p>因为<span class="math inline">\(\displaystyle h(n,k)=\binom
+nkh(n-k,0)\)</span>，所以如果<span class="math inline">\(h(n,0)\)</span>有闭公式，那问题就解决了。 <span class="math display">\[
 \begin{aligned}
 n!&amp;=\sum_k h(n,k)\\
 &amp;=\sum_k\binom nkh(n-k,0)\\
@@ -218,7 +222,9 @@ n!&amp;=\sum_k h(n,k)\\
 =\sum_{0\leq n-k\leq n}\binom{n}{k}h(k,0)\\
 &amp;=\sum_{0\leq k\leq n}\binom{n}{k}h(k,0)\\
 \end{aligned}
-\]</span> 令<span class="math inline">\(g(n)=n!,\ f(k)=(-1)^kh(k,0)\)</span>。<span class="math inline">\(\displaystyle g(n)=\sum_k\binom nk(-1)^kf(k)\)</span>。</p>
+\]</span> 令<span class="math inline">\(g(n)=n!,\
+f(k)=(-1)^kh(k,0)\)</span>。<span class="math inline">\(\displaystyle
+g(n)=\sum_k\binom nk(-1)^kf(k)\)</span>。</p>
 <p>反演， <span class="math display">\[
 \begin{aligned}
 &amp;(-1)^nh(n,0)=\sum_k\binom nk(-1)^kk!\\
@@ -230,25 +236,34 @@ n!&amp;=\sum_k h(n,k)\\
 h(n,0)
 =&amp;(-1)^n\sum_k\binom nk(-1)^kk!\\
 =&amp;(-1)^n\sum_k\dfrac{n!}{k!(n-k)!}(-1)^kk!\\
-=&amp;n!\sum_{0\leq k\leq n}\dfrac{(-1)^{n+k}}{(n-k)!}=n!\sum_{0\leq n-k\leq n}\dfrac{(-1)^{2n-k}}{k!}\\
+=&amp;n!\sum_{0\leq k\leq n}\dfrac{(-1)^{n+k}}{(n-k)!}=n!\sum_{0\leq
+n-k\leq n}\dfrac{(-1)^{2n-k}}{k!}\\
 =&amp;n!\sum_{0\leq k\leq n}\dfrac{(-1)^k}{k!}\\
 \approx&amp;\dfrac{n!}{e}
 \end{aligned}
-\]</span> 最后约等于<span class="math inline">\(\dfrac{n!}{e}\)</span>是因为<span class="math inline">\(\displaystyle\sum_{k=0}^n\dfrac{(-1)^k}{k!}\)</span>快速趋近于<span class="math inline">\(\displaystyle e=\sum_{k=0}^\infty \dfrac{(-1)^k}{k!}\)</span>。</p>
-<p><span class="math inline">\(\dfrac{n!}{e}\)</span>与<span class="math inline">\(n!\sum_{0\leq k\leq n}\dfrac{(-1)^k}{k!}\)</span>两者之间的差为 <span class="math display">\[
+\]</span> 最后约等于<span class="math inline">\(\dfrac{n!}{e}\)</span>是因为<span class="math inline">\(\displaystyle\sum_{k=0}^n\dfrac{(-1)^k}{k!}\)</span>快速趋近于<span class="math inline">\(\displaystyle e=\sum_{k=0}^\infty
+\dfrac{(-1)^k}{k!}\)</span>。</p>
+<p><span class="math inline">\(\dfrac{n!}{e}\)</span>与<span class="math inline">\(n!\sum_{0\leq k\leq
+n}\dfrac{(-1)^k}{k!}\)</span>两者之间的差为 <span class="math display">\[
 \begin{aligned}
 &amp; n!\sum_{k&gt;n}\dfrac{(-1)^k}{k!}\\
 =&amp; \dfrac{(n+1)!}{n+1}\sum_{k\geq n+1}\dfrac{(-1)^k}{k!}\\
 =&amp; \dfrac 1{n+1}\sum_{k\geq n+1}(-1)^k\dfrac{(n+1)!}{k!}\\
-=&amp; \dfrac 1{n+1}\sum_{k+n+1\geq n+1}(-1)^{k+n+1}\dfrac{(n+1)!}{(k+n+1)!} = \dfrac 1{n+1}\sum_{k\geq 0}(-1)^{k+n+1}\dfrac{(n+1)!}{(k+n+1)!}\\
-=&amp; \dfrac{(-1)^{n+1}}{n+1}\sum_{k\geq 0}(-1)^k\dfrac{(n+1)!}{(k+n+1)!}
+=&amp; \dfrac 1{n+1}\sum_{k+n+1\geq
+n+1}(-1)^{k+n+1}\dfrac{(n+1)!}{(k+n+1)!} = \dfrac 1{n+1}\sum_{k\geq
+0}(-1)^{k+n+1}\dfrac{(n+1)!}{(k+n+1)!}\\
+=&amp; \dfrac{(-1)^{n+1}}{n+1}\sum_{k\geq
+0}(-1)^k\dfrac{(n+1)!}{(k+n+1)!}
 \end{aligned}
-\]</span> <span class="math inline">\(\sum_{k\geq 0}(-1)^k\dfrac{(n+1)!}{(k+n+1)!}\)</span>介于<span class="math inline">\(1\)</span>和<span class="math inline">\(1-\dfrac 1{n+2}=\dfrac{n+1}{n+2}\)</span>之间。因此<span class="math inline">\(h(n,0)\)</span>与<span class="math inline">\(\dfrac{n!}{e}\)</span>之间的误差介于<span class="math inline">\(\dfrac{1}{n+1}\)</span>和<span class="math inline">\(\dfrac{1}{n+2}\)</span>之间。又因为<span class="math inline">\(h(n,0)\)</span>是整数，所以 <span class="math display">\[
+\]</span> <span class="math inline">\(\sum_{k\geq
+0}(-1)^k\dfrac{(n+1)!}{(k+n+1)!}\)</span>介于<span class="math inline">\(1\)</span>和<span class="math inline">\(1-\dfrac
+1{n+2}=\dfrac{n+1}{n+2}\)</span>之间。因此<span class="math inline">\(h(n,0)\)</span>与<span class="math inline">\(\dfrac{n!}{e}\)</span>之间的误差介于<span class="math inline">\(\dfrac{1}{n+1}\)</span>和<span class="math inline">\(\dfrac{1}{n+2}\)</span>之间。又因为<span class="math inline">\(h(n,0)\)</span>是整数，所以 <span class="math display">\[
 h(n,0)=\lfloor \dfrac{n!}{e}+\dfrac{1}{2} \rfloor + [n=0]
 \]</span> 这就是<span class="math inline">\(h(n,0)\)</span>的闭公式了。</p>
 <h3 id="有关结论">有关结论</h3>
 <h4 id="错排的概率">错排的概率</h4>
-<p>当n很大，对n个元素随机重新排列，每个元素都不在自己原来位置的概率是 <span class="math display">\[
+<p>当n很大，对n个元素随机重新排列，每个元素都不在自己原来位置的概率是
+<span class="math display">\[
 \dfrac{h(n,0)}{n!}=\dfrac{n!/e+O(1)}{n!}\sim\dfrac{1}{e}\approx37\%
 \]</span></p>
 <h4 id="与三角形数的关系">与三角形数的关系</h4>
@@ -262,13 +277,16 @@ h(n,0)=\lfloor \dfrac{n!}{e}+\dfrac{1}{2} \rfloor + [n=0]
 三角形数
 </div>
 </center>
-<p><span class="math inline">\(\displaystyle h(n,n-2)=\binom n{n-2}h(2,0)=\binom{n}{2}\)</span>。</p>
+<p><span class="math inline">\(\displaystyle h(n,n-2)=\binom
+n{n-2}h(2,0)=\binom{n}{2}\)</span>。</p>
 <p>正好就是三角形数。</p>
 <h4 id="错排的递归式">错排的递归式</h4>
 <p><span class="math display">\[
 \begin{aligned}
 h(n,0)-h(n,1)=&amp;h(n,0)-nh(n-1,0)\\
-=&amp;\left(n!\sum_{0\leq k\leq n}\dfrac{(-1)^k}{k!}\right)-\left(n(n-1)!\sum_{0\leq k\leq n-1}\dfrac{(-1)^k}{k!}\right)\\
+=&amp;\left(n!\sum_{0\leq k\leq
+n}\dfrac{(-1)^k}{k!}\right)-\left(n(n-1)!\sum_{0\leq k\leq
+n-1}\dfrac{(-1)^k}{k!}\right)\\
 =&amp;n!\dfrac{(-1)^n}{n!}\\
 =&amp;(-1)^n
 \end{aligned}
@@ -412,7 +430,7 @@ h(n,0)-h(n,1)=&amp;h(n,0)-nh(n-1,0)\\
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
